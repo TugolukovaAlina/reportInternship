@@ -1,0 +1,61 @@
+\documentclass[12pt]{report}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\begin{document}
+
+Let $X_1, X_2, ..., X_n$ be all collected samples during RDS.
+Then RDS estimate $\mu_f$ of the population mean of $f$ is defined \cite{goel2010assessing} as
+$$\mu_f = \frac{1}{\sum\limits_{i=1}^n 1/degree(X_i)} \sum\limits_{i=1}^n \frac{f(X_i)}{degree(X_i)}$$
+
+
+Our estimator (sample mean):
+$$\mu_{f2} = \sum\limits_{i=1}^n \frac{f(X_i)}{n}$$
+
+Estimator $\mu_f$ indeed performs better than estimator $\mu_{f2}$ when values of the nodes depend on the degree of the node.
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=200px]{RGGdegree}
+    \caption{ RGG(200, 0.13), measuring degree}
+\end{figure}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=200px]{RGGfield}
+    \caption{ RGG(200, 0.13), measuring values }
+\end{figure}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=200px]{Pr90field}
+    \caption{ Project 90, measuring ??? race}
+\end{figure}
+
+
+As stated also \cite{goel2010assessing} the advantage to use estimtor1 appears only when the needed for estimation trait depends on the degree of the node. To support this statement they compare particularly the standard error of the sample mean and RDS estimate on the data sets from Project 90 and Add Health. The results are presented on the figure [put pictures]. 
+
+But why it so much better? Why it is so suspicious?
+Possible explanation: degree weights are used to correct the fact that we see high degree nodes more times. Then for sure, if the values are related to the degree of the node it is useful.
+But if not it may do worth? but... it should not 
+
+Another explanation: so we give less weight to the nodes with high degree. But If they are more representative (like in graph with Gibbs field)....?
+
+
+try: separate bias and variance
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=200px]{rdsVSmean}
+    \caption{ Comparison of standard error of RDS estimator and sample mean estimator on Project 90 data (left) and Add Health data (right)  \cite{goel2010assessing}}
+\end{figure}
+
+
+\bibliographystyle{plain}
+\bibliography{rds}
+
+\end{document}
+

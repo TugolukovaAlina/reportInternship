@@ -1,0 +1,98 @@
+\documentclass[12pt]{report}
+\begin{document}
+
+
+\section{Expected energy in steady state}
+
+I create graph and assign values to all nodes uniformly from all possible values. Then I start to change values on nodes according to Gibbs sampling having fixed temperature. I suppose that in steady state energy will converge to some value. Depending on temperature $T$ we should be able to predict this energy.
+
+If expected energy is known it can help detect convergence and indicate when it is time to stop running algorithm. We would like to tune the correlation between nodes in the network. The energy of the network shows this correlation.
+%Due to the fact the values are assigned to nodes according to Gibbs distribution
+
+We can write expected energy by definition as
+
+$$ E(\varepsilon (\bar{x})) = \sum\limits_{\bar{x}} p(\bar{x}) \cdot \varepsilon(\bar{x})$$
+
+where probability of one particular configuration $\bar{x}$ is  
+
+$$ p(\bar{x}) = \frac{ e^{-\frac{ \varepsilon (x)}{T}} }{ \sum\limits_{x'\in |P|^n} e^{-\frac{\varepsilon(x')}{T}}} $$
+
+Both in 1 and 2 formulas summation is over all possible configurations and the number of all possible configuration is huge, $|P|^n$. One of the ways to calculate the expected energy is with Gibbs sampling, running algorithm until convergence and calculating then energy but it is the opposite of what we are trying to do.
+
+
+
+Special case: chain
+
+Let's look at chain with $n$ nodes.
+
+Let's count expected energy after creating random configuration on chain
+
+Let $ \varepsilon (\bar{x})$ be total energy of the graph on configuration $\bar{x}$. Let now $\bar{x}$ be random configuration. We can write global energy as 
+$\varepsilon (\bar{x}) = \frac{1}{2} \sum\limits_{i = 1}^{n} \varepsilon_i(\bar{x})$, where $\varepsilon_i(\bar{x})$ is energy on the node $i$. 
+Then
+$$E(\varepsilon (\bar{x})) = \frac{1}{2} \sum\limits_{i = 1}^{n} E(\varepsilon_i(\bar{x})) = 
+\frac{1}{2} \sum\limits_{i = 1}^{n} E\left( (x_i - x_{i-1})^2 + (x_{i+1} - x_i)^2 \right) =
+$$
+$$ = \sum\limits_{i = 1}^{n} E\left( (x_i - x_{i-1})^2 \right) =
+  n\frac{(|P|+1)(|P|-1)}{6}$$
+
+$$E\left( (x_i - x_{i-1})^2 \right) = \frac{(|P|+1)(|P|-1)}{6}$$
+
+
+
+
+In regular graph with degree $d$ expected energy of the graph on configuration $\bar{x}$ is
+$$E(\varepsilon (\bar{x})) =  nd\frac{(|P|+1)(|P|-1)}{12}$$
+
+In any graph with $m$ edges expected energy of the graph on configuration $\bar{x}$ is
+$$E(\varepsilon (\bar{x})) =  m\frac{(|P|+1)(|P|-1)}{6}$$
+
+(does it depend on structure? for me no)
+
+Probability distribution of values on the node $i$
+
+$$ p(x_i = x) = \frac{ e^{-\frac{E_i(x)}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{E_i(x')}{T}}}  = 
+\sum\limits_{a, b\in P} p(x_{i - 1}  = a)p(x_{i+1} = b)
+\frac{ e^{-\frac{(x - a)^2 + (x - b)^2}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{(x' - a)^2 + (x' - b)^2}{T}}}  $$
+  
+For now we will assume that $x_{i+1} = x_{i-1} = E[x_i]$. It means that 
+$p(x_{i-1}  = E[x_i]) = p(x_{i+1} = E[x_i]) = 1$. Then
+
+$$ p(x_i = x) = 
+\frac{ e^{-\frac{2(x - E[x_i])^2}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{2(x' - E[x_i])^2}{T}}}$$
+
+or on general graph
+
+$$ p(x_i = x) = 
+\frac{ e^{-\frac{N_i(x - E[x_i])^2}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{N_i(x' - E[x_i])^2}{T}}}$$
+
+where $N_i$ number of neighbors of the node $i$.
+
+Then the values on node $i$ are distributed normally (how can I say it in discrete case, binomial?) with mean $E[x_i]$ and variance $\frac{T}{2N}$.
+
+$$P(x_i-x_j = a) = \sum\limits_{b \in P} P(x_i-x_j=a | x_j = b)P(x_j = b) = \sum\limits_{b \in P} P(x_i=a+b | x_j = b)P(x_j = b) = $$
+
+$$P(x_i-x_j = a) = \sum\limits_{b \in P} P(x_i-x_j=a | x_j = b)P(x_j = b) = \sum\limits_{b \in P} P(x_i=a+b | x_j = b)P(x_j = b) = $$
+
+Examples
+
+Chain graph with 100 vertices and values $[1, ..., 9]$
+Expected energy of random configuration 1333.
+
+Chain graph with 100 vertices and values $[1, ..., 5]$
+Expected energy of random configuration 400.
+
+Chain graph with 200 vertices and values $[1, ..., 9]$
+Expected energy of random configuration 2666.
+
+Grid on torus graph with 100 = 10*10 vertices and values $[1, ..., 9]$
+Expected energy of random configuration 2666.
+
+Grid on torus graph with 100 = 5*20 vertices and values $[1, ..., 9]$
+Expected energy of random configuration 2666.
+
+Random ER graph with 100 vertices and values $[1, ..., 9]$ radius = 0.1
+Expected energy of random configuration 6760.
+
+
+\end{document}

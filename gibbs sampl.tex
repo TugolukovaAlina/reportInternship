@@ -1,0 +1,97 @@
+\documentclass[12pt]{report}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\begin{document}
+
+%\chapter{Gibbs sampling}
+\textbf{Gibbs sampling} 
+
+We have graph with $n$ nodes. Each node $i$ has a value $x_i \in \lbrace 1, 2, 3, ..., k \rbrace = P$. 
+
+
+%\section{Algorithm}
+\textbf{Algorithm} 
+
+\begin{enumerate}
+  \item Create random configuration of properties on all nodes.
+  \item Choose the node $i$
+  
+ 	 \begin{itemize}
+		\item according to some distribution $q = q_1, ..., q_n$ or
+		\item visiting each node consequently (periodic Gibbs sampler)
+ 	 \end{itemize}
+  
+  \item For each value $x \in P$ count the local energy on chosen node $i$ as 
+  $$ E_i(x) = \sum\limits_{j | i \sim j}  (x - x_j)^2 $$  
+  
+  \item Choose a new value $x_i$ according to probability
+  
+  $$ \frac{ e^{-\frac{E_i(x)}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{E_i(x')}{T}}} $$
+  
+	where $T$ is temperature.
+\item Continue 2-3 needed number of iterations.
+\end{enumerate}
+
+
+%\section{Simulations} 
+\textbf{Simulations}
+
+First, random geometric graph with 200 nodes and radius 0.13 was created, $RGG(200, 0.13)$. The set of values is $P = \lbrace 1, 2, ..., 10 \rbrace$. According to the first step of algorithm for each node was generated random property. The properties are depicted on the pictures as colors. Following pictures describe the properties of the graph after 2000 iterations of 2-3 steps for different temperature.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=200px]{randomfield}
+    \caption{Random field}
+\end{figure}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=200px]{temp01}
+    \caption{ T = 0.1}
+\end{figure}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=200px]{temp1}
+    \caption{ T = 1 }
+\end{figure}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=200px]{temp2}
+    \caption{ T = 2 }
+\end{figure}
+
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=200px]{temp4}
+    \caption{ T = 4 }
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=200px]{temp8}
+    \caption{ T = 8 }
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=200px]{temp16}
+    \caption{ T = 16 }
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=200px]{temp2048}
+    \caption{ T = 2048 }
+\end{figure}
+
+
+\end{document}
+

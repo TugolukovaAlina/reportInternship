@@ -1,0 +1,53 @@
+\documentclass[12pt]{report}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+
+\begin{document}
+
+\chapter{Covariance of values from Gibbs distribution and covariance of RW samples}
+
+$X_1, X_2, ..., X_n$ are the values assigned to the nodes according to Gibbs distribution. Using simulation we can count correlation between all the nodes (on the same graph structure). So I counted $corr(X_i, X_j)$ for each pair $i, j$.
+
+Sampling with random walk is asymptotically unbiased, since that we will care about variance.
+
+Using random walk for sampling and making estimates one should always keep in mind that collected information is correlated. Thus variance can be bigger than in the case when samples are random. This is especially important for building confidence intervals of estimates.
+
+I perform RW gathering samples $Y_1, Y_2, ..., Y_m$ and I want to count the variance of the estimate $\bar{Y} = \frac{Y_1 + Y_2 + ... + Y_m}{m}$.
+
+$$var[\bar{Y}] = \frac{1}{n^2}\sum_{i=1}^m \sum_{j=1}^m cov[Y_i, Y_j]$$
+
+Let $v(Y_i)$ be the vertex seen on the ith step of RW. 
+I consider that $ cov(Y_{i}, Y_{j}) = cov(X_{v(Y_i)}, X_{v(Y_i)})$
+
+At the same time I count $var[\bar{Y}]$ by performing RW multiple times and computing $\bar{Y}$. What I got.
+
+If random walk is performed on the fixed field but covariances are counted on different fields \ref{fig:var1}. 
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=200px]{varExperGibbsBad}
+    \caption{ $RGG (200, 0.13)$}
+    \label{fig:var1}
+\end{figure}
+
+If random walk is performed each time on one of the fields with this temperature and but covariances are also counted on different fields \ref{fig:var2}. So it is like $Y_{i}$ is random variable and $X_{v(Y_i)}$ is also random variable depending on $Y_{i}$. (It is not like just a function of random variable as in the last case)
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=200px]{varExperGibbsGood}
+    \caption{ $RGG (200, 0.13)$}
+    \label{fig:var2}
+\end{figure}
+
+If random walk is performed on the fixed field and covariances are counted on this fixed field according to the formula from the book \ref{fig:var3}. 
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=200px]{varExperBook}
+    \caption{ $RGG (200, 0.13)$}
+    \label{fig:var3}
+\end{figure}
+
+ 
+\end{document}

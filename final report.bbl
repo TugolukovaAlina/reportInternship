@@ -1,0 +1,37 @@
+\begin{thebibliography}{1}
+
+\bibitem{christakis2007spread}
+Nicholas~A Christakis and James~H Fowler.
+\newblock The spread of obesity in a large social network over 32 years.
+\newblock {\em New England journal of medicine}, 357(4):370--379, 2007.
+
+\bibitem{gile2010respondent}
+Krista~J Gile and Mark~S Handcock.
+\newblock Respondent-driven sampling: An assessment of current methodology.
+\newblock {\em Sociological methodology}, 40(1):285--327, 2010.
+
+\bibitem{goel2009respondent}
+Sharad Goel and Matthew~J Salganik.
+\newblock Respondent-driven sampling as markov chain monte carlo.
+\newblock {\em Statistics in medicine}, 28(17):2202--2229, 2009.
+
+\bibitem{goel2010assessing}
+Sharad Goel and Matthew~J Salganik.
+\newblock Assessing respondent-driven sampling.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  107(15):6743--6747, 2010.
+
+\bibitem{salganik2004sampling}
+Matthew~J Salganik and Douglas~D Heckathorn.
+\newblock Sampling and estimation in hidden populations using respondent-driven
+  sampling.
+\newblock {\em Sociological methodology}, 34(1):193--240, 2004.
+
+\bibitem{singla2008yes}
+Parag Singla and Matthew Richardson.
+\newblock Yes, there is a correlation:-from social networks to personal
+  behavior on the web.
+\newblock In {\em Proceedings of the 17th international conference on World
+  Wide Web}, pages 655--664. ACM, 2008.
+
+\end{thebibliography}

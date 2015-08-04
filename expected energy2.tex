@@ -1,0 +1,162 @@
+\documentclass[12pt]{report}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\begin{document}
+
+
+\section{Expected energy in steady state}
+
+I create graph and assign values to all nodes uniformly from all possible values. Then I start to change values on nodes according to Gibbs sampling having fixed temperature. I suppose that in steady state (after enough amount of steps) energy will have some expected value. Depending on temperature $T$ we should be able to predict this energy.
+%(Actually it does not converge, but maybe I can look at the variance and detect when it is not so big)
+
+If expected energy is known it can help detect convergence and indicate when it is time to stop running algorithm. 
+
+
+Varying temperature $T$ we can change how strongly values of the neighbors are related: low temperature brings high correlation of values and high temperature brings almost random assignment of values. However it is impossible to use only temperature $T$ as a metric of values correlation. Temperature by itself does bring a lot of information. We should take into account structure of graph, possible values that can be assigned to nodes as well. 
+
+More appropriate metric can be energy of the graph or better, in how much times energy decreases from random configuration to configuration chosen from Gibbs distribution. %?????Energy divided by number of connection, hm but also number of values
+
+We can write expected energy by definition as
+
+$$ E[\varepsilon (\bar{x})] = \sum\limits_{\bar{x}} p(\bar{x}) \cdot \varepsilon(\bar{x})$$
+
+where probability of one particular configuration $\bar{x}$ is  
+
+$$ p(\bar{x}) = \frac{ e^{-\frac{ \varepsilon (\bar{x})}{T}} }{ \sum\limits_{\bar{x}'\in |P|^n} e^{-\frac{\varepsilon(\bar{x}')}{T}}} $$
+
+Both in 1 and 2 formulas summation is over all possible configurations and the number of all possible configuration is huge, $|P|^n$. One of the ways to calculate the expected energy is with Gibbs sampling, running algorithm until convergence and calculating then energy but it is the opposite of what we are trying to do.
+
+Let $ \varepsilon (\bar{x})$ be total energy of the graph on configuration $\bar{x}$. We can write global energy as 
+
+
+$$ \varepsilon (\bar{x}) =  \sum\limits_{i \sim j, i \leq j} (x_i - x_j)^2  $$
+
+Then the expected global energy of a field is
+
+$$ E[\varepsilon (\bar{x})] =  \sum\limits_{i \sim j, i \leq j} E[x_i - x_j]^2  $$
+
+In order to calculate expected energy at least approximately we will make some assumptions. 
+But first let's notice that if values are assigned to nodes independently and from the same distribution, then expression for energy becomes
+$$ E[\varepsilon (\bar{x})] =  mE[(x_i - x_j)^2]  = m\left(Var(x_i - x_j) + E[(x_i - x_j)]^2\right) $$
+$$ = m\left(Var(x_i - x_j) + (E[x_i] - E[x_j])^2\right)$$
+$$ = m\left( Var(x_i) + Var(x_j) - 2Cov(x_i, x_j)  \right) = 2mVar(x_i)$$
+
+where $x_i$ and $x_j$ are random variance with the same distribution, $m$ is the number of edges in the graph. 
+
+Particularly, we can compute expected energy in this way for random configuration where the values are assigned to the nodes independently and uniformly from all possible values in $P$. 
+%As values are assigned to nodes independently then $ Cov(x_i, x_j)= 0 $. Because distribution is uniform we have $E[(x_i - x_j)^2] = 0$.
+
+Then expected energy of the graph on random configuration $\bar{x}$ is
+$$E[\varepsilon (\bar{x})] =  m\frac{|P|^2-1}{6}$$
+
+To answer the question: what is the expected energy of the field after reaching steady state, we need to know the distribution of values on the nodes.
+
+
+After reaching stationary state probability that the node $i$ will have value $x \in P$ is
+
+$$ p(x_i = x) = \frac{ e^{-\frac{\varepsilon_i(x)}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{\varepsilon_i(x')}{T}}} $$
+
+where $\varepsilon_i(x)$ is local energy on the node $i$ that is counted as $\varepsilon_i(x) = \sum\limits_{j | i \sim j} (x_i - x_j)^2 $. 
+  
+  
+$$ p(x_i = x) = \frac{ e^{-\frac{\varepsilon_i(x)}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{\varepsilon_i(x')}{T}}}  = 
+\sum\limits_{a_1, ... a_j \subset P} \prod\limits_{j|j \sim i} p(x_j  = a_j)
+\frac{ e^{-\frac{ \sum\limits_{j|j \sim i}(x - a_j)^2 }{T}} }{ \sum\limits_{x'\in P} e^{-\frac{ \sum\limits_{j|j \sim i}(x' - a_j)^2 }{T}}}  $$
+
+So the probability to have some particular value on the node $i$ depends on the values of its neighbors that are also dependent from their neighbors and so on.
+In order to simplify expression for values distribution on the node $i$ we will make some assumptions. First, let's say that all neighbors of the node $i$ have the value $av_P, av_P = average(P)$. Let us denote the set of neighbors of the node $i$ as $N_i$. If for all $j \in N_i : x_j = av_P$ then 
+$p(x_j  = av_P) = 1$. With this assumption probability that the node $i$ will have value $x \in P$ is
+
+
+$$ p(x_i = x) = 
+\frac{ e^{-\frac{N_i(x - av_P)^2}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{N_i(x' - av_P)^2}{T}}}$$
+
+%Then the values on node $i$ are distributed normally with mean $\frac{R}{2}$ and variance $\frac{T}{2N_i}$.
+
+Now let's assume that each node has the same following distribution of values:
+$$ p(x_j = x) = 
+\frac{ e^{-\frac{d(x - av_P)^2}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{d(x' - av_P)^2}{T}}}$$
+
+where $d$ is average degree of the graph. 
+
+Then expected energy is counted in the following way:
+$$ E[\varepsilon (\bar{x})] = 2mVar(x_i) = 2m\left(E[x_i]^2 - (E[x_i])^2\right) = 2m\left(\frac{ \sum\limits_{i\in P} i^2 e^{- \frac{d(i - av_P)^2}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{d(x' - av_P)^2}{T}}} - av_P^2\right)$$
+
+Show that energy is less then in random configuration 
+
+E
+
+
+------------------------------------------------------------
+
+Actually I predict energy as
+
+$$ E[\varepsilon (\bar{x})] = 2mVar(x_i)$$
+
+when I consider that all nodes are identically distributed. And as
+
+$$ E[\varepsilon (\bar{x})] =  \sum\limits_{i=1..n} N_iVar(x_i)$$
+
+when distribution of values depends on the nodes degree.
+
+
+
+
+$$ E[(x_i - x_j)^2] = 2Var(x_i)$$
+
+------------------------------------------------------------
+
+We could approximate this distribution as normal with mean $\frac{R}{2}$ and variance $\frac{T}{2d}$.
+
+If $x_i \sim N(\frac{R}{2}, \frac{T}{2d})$ and $x_j \sim N(\frac{R}{2}, \frac{T}{2d})$ then the differences $x_i-x_j$ is distributed normally with mean 0 and variance
+$\frac{T}{d}$.
+
+$$ p(x_i - x_j = x) = 
+\frac{ e^{-\frac{dx^2}{2T}} }{ \sum\limits_{x'\in P} e^{-\frac{dx'^2}{2T}}}$$
+
+With increasing T approximation gets worse. In reality (in more real approxim)  
+
+On the following examples: red line represents predicted energy for given temperature, blue line represents calculated energy after running algorithm. 
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=200px]{er200x01}
+    \caption{ Random ER graph with 200 vertices and values $[1, ..., 5]$ p = 0.1}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=200px]{rgg200x013}
+    \caption{ Random geometric graph with 200 vertices, radius 0.13 and values $[1, ..., 5]$ }
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=200px]{chain200}
+    \caption{ Chain graph with 100 vertices and values $[1, ..., 5]$}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=200px]{grid20x10}
+    \caption{ Grid on torus graph with 200 = 20x10 vertices and values $[1, ..., 5]$ }
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=200px]{pa200x1}
+    \caption{ Preferential attachment graph with 200 vertices, 1 link for new arriving node and values $[1, ..., 5]$ }
+\end{figure}
+
+
+$$ P(\bar{a}) = \frac{ e^{-\frac{ \varepsilon (\bar{a})}{T}} }{ \sum\limits_{\bar{a}'} e^{-\frac{\varepsilon(\bar{a}')}{T}}} $$
+
+$$ \varepsilon (\bar{a}) =  \sum\limits_{i \sim j, i \leq j} (a_i - a_j)^2  $$
+
+
+$$ E[\varepsilon (\bar{a})] = 2m \sigma^2$$
+
+$$ m = \sum_{i \in V} d_i$$
+
+\end{document}
