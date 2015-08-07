@@ -1,4 +1,15 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{Senate}
+Computer science university of maryland.
+\newblock \url{http://www.cs.umd.edu/hcil/science20}.
+\newblock Accessed: 2015-08-07.
+
+\bibitem{bremaud2013markov}
+Pierre Br{\'e}maud.
+\newblock {\em Markov chains: Gibbs fields, Monte Carlo simulation, and
+  queues}, volume~31.
+\newblock Springer Science \& Business Media, 2013.
 
 \bibitem{christakis2007spread}
 Nicholas~A Christakis and James~H Fowler.
@@ -20,6 +31,20 @@ Sharad Goel and Matthew~J Salganik.
 \newblock Assessing respondent-driven sampling.
 \newblock {\em Proceedings of the National Academy of Sciences},
   107(15):6743--6747, 2010.
+
+\bibitem{kauffmann2007measurement}
+Bruno Kauffmann, Fran{\c{c}}ois Baccelli, Augustin Chaintreau, Vivek Mhatre,
+  Konstantina Papagiannaki, and Christophe Diot.
+\newblock Measurement-based self organization of interfering 802.11 wireless
+  access networks.
+\newblock In {\em INFOCOM 2007. 26th IEEE International Conference on Computer
+  Communications. IEEE}, pages 1451--1459. IEEE, 2007.
+
+\bibitem{pollard2013adolescent}
+Michael Pollard, Harold~D Green, David~P Kennedy, Myong-Hyun Go, and Joan~S
+  Tucker.
+\newblock Adolescent friendship networks and trajectories of binge drinking.
+\newblock 2013.
 
 \bibitem{salganik2004sampling}
 Matthew~J Salganik and Douglas~D Heckathorn.
