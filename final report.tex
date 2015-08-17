@@ -1110,10 +1110,22 @@ On the figure \ref{fig:project90gender} you can see the graph structure built wi
 
 \subsection{Data from the Add health project}
 
-The National Longitudinal Study of Adolescent to Adult Health (Add Health) is a huge study that began with surveying students from the 7-12 grades in the United States during 1994-1995 school year. The study kept on going survey student as they grow. The 
+The National Longitudinal Study of Adolescent to Adult Health (Add Health) is a huge study that began with surveying students from the 7-12 grades in the United States during 1994-1995 school year. In general 90,118 students representing 84 communities took part in this study. The study kept on going survey student as they grow. The 
 data includes information about social, economic, psychological and physical status of the students and other. 
 
-The social network of students' connections was built based on the reported friends. Each of them was asked to provide the names of 0-5 male and 0-5 female friends.
+The social network of students' connections was built based on the reported friends. Each of the students was asked to provide the names of 0-5 male and 0-5 female friends. Then the network structure was built that now can help to analyze if some characteristics of the students indeed are influenced by their friends.
+
+Though this data are very valuable they are not in the free access. Part of them are actually available but the ids of the student and of his/her friends are masked that makes impossible to recreate the network. However the part of the data can be accessed through the link \cite{Addhealth2} but only with few attributes for students, such as:  sex, race, grade in school and, if communities that have two schools, the school code (explain better about sister school). 
+
+There are several network for different communities. 
+On the figure \ref{fig:addhealthRace} represented the graph with 1996 nodes and 8522 edges, built again with the Gephi tool \cite{GEPHI}, where the attribute race is depicted with color for every node.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=500px]{addhealthRace}
+    \caption{Graph from the Add Health data. The colors of the node represent the race: brown nodes correspond to the male participant, green nodes correspond to the female participants}
+    \label{fig:addhealthRace}
+\end{figure}
+
 
 \subsection{Simulated form Gibbs distribution}
 
