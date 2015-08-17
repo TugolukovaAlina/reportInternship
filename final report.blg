@@ -4,46 +4,49 @@ The top-level auxiliary file: final report.aux
 The style file: plain.bst
 Database file #1: rds.bib
 Warning--to sort, need author or key in Senate
+Warning--to sort, need author or key in Project90
+Warning--to sort, need author or key in Addhealth
+Warning--to sort, need author or key in GEPHI
 Warning--empty journal in pollard2013adolescent
-You've used 10 entries,
+You've used 14 entries,
             2118 wiz_defined-function locations,
-            562 strings with 5819 characters,
-and the built_in function-call counts, 3543 in all, are:
-= -- 361
-> -- 147
+            579 strings with 6347 characters,
+and the built_in function-call counts, 4346 in all, are:
+= -- 437
+> -- 173
 < -- 3
-+ -- 59
-- -- 48
-* -- 246
-:= -- 565
-add.period$ -- 32
-call.type$ -- 10
-change.case$ -- 53
++ -- 74
+- -- 56
+* -- 282
+:= -- 677
+add.period$ -- 43
+call.type$ -- 14
+change.case$ -- 69
 chr.to.int$ -- 0
-cite$ -- 12
-duplicate$ -- 132
-empty$ -- 287
-format.name$ -- 48
-if$ -- 753
+cite$ -- 19
+duplicate$ -- 163
+empty$ -- 373
+format.name$ -- 56
+if$ -- 935
 int.to.chr$ -- 0
-int.to.str$ -- 10
-missing$ -- 10
-newline$ -- 53
-num.names$ -- 18
-pop$ -- 62
+int.to.str$ -- 14
+missing$ -- 11
+newline$ -- 72
+num.names$ -- 20
+pop$ -- 97
 preamble$ -- 1
-purify$ -- 44
+purify$ -- 56
 quote$ -- 0
-skip$ -- 98
+skip$ -- 123
 stack$ -- 0
-substring$ -- 260
-swap$ -- 32
+substring$ -- 283
+swap$ -- 36
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 38
-warning$ -- 2
-while$ -- 34
-width$ -- 12
-write$ -- 110
-(There were 2 warnings)
+type$ -- 54
+warning$ -- 5
+while$ -- 36
+width$ -- 16
+write$ -- 145
+(There were 5 warnings)

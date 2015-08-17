@@ -1,5 +1,8 @@
 \documentclass[12pt]{report}
 \usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
 \graphicspath{ {images/} }
 
 \begin{document}
@@ -21,6 +24,60 @@ In order to study we have random graphs where we have some parameters to change.
 IT is written in \cite{gile2010respondent} that V-H estimator outperforms S-H estimator.
 
 
+Show that energy is less then in random configuration 
+
+[try to sample independenlty but with probabilities pi and look at the variance. is it the same, i think no].
+
+
+
+!!! compare when reported degree is not correct and using just mean
+
+
+$B$ - budget
+
+$C_1$ - cost of one step of walk (individuals just provide the correct number of their contacts)
+
+$C_2$ - cost of participation (cost of interview with individuals)
+
+$n$ - number of steps
+
+$m$ - number of participants from $n$
+
+The next equality should be true:
+
+$$B = n \cdot C_1 + m \cdot C_2$$
+
+If we want to skip $k$ steps between taking the node as a participant then
+$$B = nC_1 + \frac{n}{k+1}C_2$$
+
+Here $m = \frac{n}{k+1}$ as we take each $k+1$ node as a participant. So having budget $B$ and skipping each $k$ node allows as to perform $n = \frac{(k+1)B}{(k+1)C_1 + C_2}$ steps with $m = \frac{B}{(k+1)C_1 + C_2}$ number of participants.
+
+Then variance:
+
+$$\frac{\sigma^2}{\frac{B}{(k+1)C_1 + C_2}} \frac{1+\rho^{k+1}}{1-\rho^{k+1}}$$ 
+
+
+
+Then 
+$P^*$ is symmetric [explain why]
+$P^*$ is diagonalizable [explain why]
+eigenvalues of $P$ and $P^*$ are the same
+
+
+Function: variance of mean with skipping having fixed budget and payments (general case)
+$$ var\left[\bar{X} \right] = \frac{1}{n} \sum_{i=2}^r\frac{1-\lambda_i^2 - 2\frac{\lambda_i}{n} + 2\frac{\lambda_i^{n+1}}{n}}{(1 - \lambda_i)^2} <f, v_i>^2_{\pi}$$
+
+
+
+$$ \sigma_{\hat{\mu}}^2(k) = \frac{\sigma^2}{\frac{B}{kC_1 + C_2}} \frac{1+\rho^{k}}{1-\rho^{k}}$$.
+
+$$  \sigma_{\hat{\mu}}^2(k) = \frac{1}{\frac{B}{kC_1 + C_2}} \sum_{i=2}^r\frac{1 + \lambda_i^k}{1 - \lambda_i^k} <g, v_i>^2_{\pi}$$
+
+
+
+$$\sigma_{\hat{\mu}}^2 = \frac{\sigma^2}{n} \frac{1+\rho}{1-\rho}$$
+
+$$\sigma_{\hat{\mu}}^2(k) = \frac{\sigma^2}{n} \frac{1+\rho^k}{1-\rho^k}$$
 
 
 \end{document}

@@ -3,8 +3,10 @@
 \usepackage{url}
 \usepackage[top=60pt,bottom=70pt,left=50pt,right=50pt]{geometry}
 %\usepackage[margin = 50pt]{geometry}
-
-\usepackage{subfigure}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{eurosym}
+\usepackage{amsmath}
 
 \graphicspath{ {images/} }
 
@@ -43,7 +45,7 @@ Alina \textsc{Tuholukova} % Your name
 \begin{minipage}{0.5\textwidth}
 \begin{flushright} \large
 \emph{Supervisors:} \\
-Konstantin \textsc{Avrachenkov} % Supervisor's Name
+Konstantin \textsc{Avrachenkov} \\% Supervisor's Name
 Giovanni \textsc{Neglia} % Supervisor's Name
 \end{flushright}
 \end{minipage}\\[9cm]
@@ -62,7 +64,7 @@ Giovanni \textsc{Neglia} % Supervisor's Name
 %	LOGO SECTION
 %----------------------------------------------------------------------------------------
 
-\includegraphics[height=50px]{univer} 
+\includegraphics[height=50px]{univer} \qquad\qquad
 \includegraphics[height=40px]{inria}\\[1cm] 
 % Include a department/university logo - this will require the graphicx package
  
@@ -113,7 +115,7 @@ Then problem how to know variance (how to be able to say about confidence that r
 
 \section{Challenges}
 
-Estimate an error
+
 
 \section{Goals}
 \section{Contributions}
@@ -176,58 +178,155 @@ process and the structure of the social network connecting the study population.
 
 In \cite{salganik2004sampling} they introduce asymptotically unbiased estimator of the trait
 
-$$ \widehat{PP_A} = \frac{ \widehat{D_B} \cdot \widehat{C_{B, A}}}{ 
-\widehat{D_A} \cdot \widehat{C_{A, B}} + \widehat{D_B} \cdot \widehat{C_{B, A}}} $$
+$$ \widehat{PP_A} = \frac{ \widehat{D}_B \cdot \widehat{C}_{B, A}}{ 
+\widehat{D}_A \cdot \widehat{C}_{A, B} + \widehat{D}_B \cdot \widehat{C}_{B, A}} $$
 
 where
 
-$$ \widehat{D_A} = \frac{n_A}{ \sum_{i=1}^{n_A} \frac{1}{d_i}} $$
+$$ \widehat{D}_A = \frac{n_A}{ \sum_{i=1}^{n_A} \frac{1}{d_i}} $$
 
-$$ \widehat{D_B} = \frac{n_B}{ \sum_{i=1}^{n_B} \frac{1}{d_i}} $$
+$$ \widehat{D}_B = \frac{n_B}{ \sum_{i=1}^{n_B} \frac{1}{d_i}} $$
 
-$$ \widehat{C_{A, B}} = \frac{r_{AB}}{r_{AA} + r_{AB}} $$
+$$ \widehat{C}_{A, B} = \frac{r_{AB}}{r_{AA} + r_{AB}} $$
 
-$$ \widehat{C_{B, A}} = \frac{r_{BA}}{r_{BB} + r_{BA}} $$
+$$ \widehat{C}_{B, A} = \frac{r_{BA}}{r_{BB} + r_{BA}} $$
 
 
 \section{Enhanced RDS}
-To skip or not to skip
+
+\subsection{Comparison of RDS and independent uniform sampling}
+To understand what are the problems with respondent-driven sampling let's compare it with independent uniform sampling.
+
+Let $y_1, y_2, ..., y_n$ be the samples that are taken uniformly at random and all the samples are independent. Let's take the average value of the samples as an estimator of mean population value:
+
+$$ \widehat{\mu}_{avg} = \frac{y_1 + y_2 + ... + y_n}{n}$$
+This estimator is unbiased and its variance depends on the sample size $n$. Let $\sigma$ be the variance of the samples, then the variance of the estimator $ \widehat{\mu}_{avg}$:
+
+$$ \sigma^2_{\hat{\mu}_{avg}} = var\left( \frac{y_1 + y_2 + ... + y_n}{n}\right)=\frac{1}{n^2} var(y_1 + y_2 + ... + y_n) =$$
+
+$$= \frac{1}{n^2} \left(var(y_1) + var(y_2) + ... + var(y_n)\right)=\frac{1}{n^2} \left(\sigma^2 + \sigma^2 + ... + \sigma^2\right) = \frac{\sigma^2}{n}$$
+
+In this case the only thing that we can do in order to have better estimation is to increase sample size. We should try to take as much samples as possible. If each sample has a cost, then sample size is restricted by the budget of the research project. 
+
+
+Of course the way we perform sampling it is not independent uniform sampling. 
+First, nodes are not sampled not uniformly. When each participant select another  participants with the same probability among his friends there is bias towards the nodes with high degrees. So the more contacts an individual has more probable he will be invited to participate in the study. In some cases, when we can control the probability of selecting the next participant we can achieve uniform sampling.
+
+The study \cite{gjoka2009walk} was using Metropolis-Hasting Random Walk to sample Facebook. This method requires information about user's degree and the degrees of all his neighbors. According to this information the selection probabilities are counted for all the friends and then one of them is selected by the computer.
+In Facebook it is feasible to do: with API requests needed information is collected and then probabilities to choose one of the user's friends are counted. Though this method gives us mechanism to sample uniformly even with random walk, it is not really possible in the situations where we can't control selection probabilities. Like in the case with hidden populations: it is individual who decides how to hire. 
+
+Another way to remove degree bias is by reweighing samples according to their degrees, what actually the V-H estimator does. 
+
+Second, collected values are not independent. The participants $i$ and $i+1$ know each other, they can be friends, relatives or just acquaintances, so their traits can be dependent. The drug users may be in contact because they go to then same drug dealer and probably buy the same kind of drugs. 
+
+
+When the values $y_1, y_2, ..., y_n$ are collected with RDS, then the variance of estimator:
+
+$$ \sigma^2_{\hat{\mu}_{avg}} = var\left( \frac{y_1 + y_2 + ... + y_n}{n}\right)=\frac{1}{n^2} var(y_1 + y_2 + ... + y_n) =$$
+
+$$= \frac{1}{n^2} \left(\sum_{i = 1}^n var(y_i) + 2\sum_{i=1}^n \sum_{j=i+1}^n cov(y_i, y_j)\right)= \frac{\sigma^2}{n} + \frac{2\sum_{i=1}^n \sum_{j=i+1}^n cov(y_i, y_j)}{n^2} = $$
+$$ = \frac{\sigma^2}{n} \left(1 + \frac{2\sum_{i=1}^n \sum_{j=i+1}^n cov(y_i, y_j)}{n\sigma^2}\right) = \frac{\sigma^2}{n} \left(1 + \frac{2\sum_{i=1}^n \sum_{j=i+1}^n corr(y_i, y_j)}{n}\right)$$
+
+So variance of estimator is influenced by some correlation factor $f(n)$ where$f(n) > 1$, that depends on how much the values are correlated:
+
+$$ \sigma^2_{\hat{\mu}_{avg}} = \frac{\sigma^2}{n} f(n)$$
+
+On one hand, when we increase number of participants the factor $\sigma^2/n$ decreases, but there is also correlation factor $f(n)$. And then in order to improve estimation we could try reduce this correlation factor.
+
+\subsection{Modified RDS}
+
+We will state three observations. Combining them we will try to improve current RDS technique.
+
+\paragraph{Observation 1} \textit{No matter how values are correlated, the more is sample size, the better is estimation}
+
+Because $f(n) \leq n$,  the bigger $n$ the less is sampling variance. The factor $f(n)$ prevents variance to decrease linearly with increasing $n$ like in the case with independent samples. But increasing $n$ for sure does not bring any harm. So the size of the sample should be always as big as the budget allows.
+
+
+\paragraph{Observation 2} \textit{Just thinning of sample doesn't help}
+
+In order to reduce correlation between sampled values one could try to thin out sample. It means that instead of taking all collected values $y_1, y_2, ..., y_n$ into the estimation we can take only, let's say, each second value, $y_1, y_3, ..., y_n$. The samples $y_1, y_3, ..., y_n$ are less correlated, so we can expect some improvement. But what we observed experimentally (latter we showed it formally) that in general just discarding some samples with the fixed size of recruitment chain will not improve estimation. Experimental results are presented on the figure \ref{fig:observations} (a).
+
+\paragraph{Observation 3} \textit{Skipping reduces variance}
+
+However if the size of the sample is fixed the further are individuals in the chain of recruitment from each other the better. Let's say that we want exactly 30 participants for study and we have options. We can perform RDS until we reach 30th person and then take each one of them, $y_1, y_2, ..., y_{30}$ in the estimation. Or we can continue RDS until we reach 60th person and then take each second of them $y_2, y_4, ..., y_{60}$ in the estimation. The both variants have the same sample size but in the second scenario the values are less correlated. So we expect that the correlation term will decrease. Again on the figure \ref{fig:observations}(b) we can see experimental results and further we will show it formally.
+
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{observation2}
+        \caption{1000 samples are collected with RDS. The sample size is changed as we skip some values. We can observe that error grows when we try to discard each second, each third and so on nodes.}
+
+    \end{subfigure}
+	~ 
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{observation3}
+        \caption{In all cases the sample size is the same. The number of nodes collected with RDS is different. We observe that error decreases when the distance between samples increases}
+
+    \end{subfigure}
+    
+    \caption{Experiments on the data from Project 90}
+    \label{fig:observations}
+\end{figure}
+
+%But the cost of the second scenario is 2 times more than of the first.
+Keeping in mind that we have fixed budget, the second scenario implies that we don't pay to the participants $1, 3, ..., 59$ or we pay to all 60 individuals half of what we payed in the first scenario. But as the motivation to participate in the study is money for the same job people should get the same amount of money.
+
+What we propose lies in the middle. We keep the idea of skipping some values, that will decrease the correlation, but we also suggest to pay less to the individuals that we don't take into the estimation. 
+So among people that are willing to participate some of them will be asked both: to make tests (like blood test, questionnaire) and recruit another participants, let's call them \textit{participants} and some of them will be asked only to recruit other participants, let's call them \textit{informators}. As the informators make less efforts they will be payed less. 
+
+
+Let's say that each informator receives $C_1$  units of money and each participant receives $C_2$ units of money. The amount of money that we can spend on the research, the budget, is fixed and is denoted as $B$. 
+Let $n$ be the length of the chain of all the recruitments (it means that informators and participants in total are $n$).
+
+Let parameter $k$ be the number of skipped samples in the chain between participants (it means that we take only each $k$th individual as a participant participant, the rest $k-1$ individuals are just informators).
+
+The reason to use informators is to try to reduce correlation by making bigger the distance between participants. If the informators were willing to do their job for free then, according to the third observation, we would try to have as more informators between participants as possible. But all the idea of respondent-driven sampling holds on the money incentives, without payment nobody will do anything. For this reason informators should be also payed, but less then actual participants. As we still spend part of the budget on informators the number of participants will decrease with increasing number of informators. 
+
+To understand better the idea, let's imagine that we have 60 euros budget, each informator is payed 2 euros, $C_1 = 2$\euro, each participant is payed 10 euros, $C_2 + C_1 = 10$\euro. On the figure you can see different scenarios of RDS for the same budget. 
+On the figure 1 $k = 1$. Everybody is participant and payed 10 euros. Then with our budget we can collect 6 samples that due to homophily can be highly correlated.
+
+On the figure 2 $k = 2$. It means that we take one participant, one informer, one participant and so on. We can see clearly that we went deeper in the network, the recruitment chain is longer. In this case on our budget we can collect only 5 samples, but they are less correlated than in the previous situation. 
+
+Both scenarios require the same budget, so in the terms of money they are equal. But what is better 6 more correlated samples, or 5 but less correlated samples? That is the question that we are going to analyze. We will quantify the error depending on the number of samples that we skip $k-1$.
+ 
 
 
 
-The quality of estimation depends on the length of the chain and on the number of participants in the estimation.
-In order to make the chain longer we can separate the payment for coming and taking part in the testing and the payment only for providing the list of friends.
-% it would be nice to have probability to do one of this
-This can be especially suitable for people from hard-to-reach populations, where one can obtain some amount of money without revealing needed information about him but only by pointing (or recruiting) his friends. There is a trade-off: on one hand we make the chain longer and reduce dependency between participants. On other hand we spend money on people who do not bring any information needed for research and finally there will be less participants. 
-For now we will assume that it is not people who decide to participate or just provide the list of their friends, but researches. Thus, having fixed budget to conduct the RDS there is need to answer following questions: how much to pay for the participation in their research, how much to pay for simply providing the names of the friends and how many people invite for participation. The goal is to minimize error of the estimated parameter.
+\newpage
 
-Let's say that the payment or cost of providing list of the friends is $c_f$ and cost of participation is $c_p$. In this way each of $n$ person that does one of actions gets the payment for providing friends $c_f$ and part $p$ of $n$ people get additional payment $c_p$ for also participation in test.
-Thus having fixed budget $B$:
+\begin{figure}[h]
+  \begin{minipage}[c]{0.67\textwidth}
+    \includegraphics[width=0.72\textwidth]{skipping1}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.3\textwidth}
+    \caption{
+sd
+    }
+  \end{minipage}
+\end{figure}
 
-$$B = n \cdot c_f + np \cdot c_p$$
+\begin{figure}[h]
+  \begin{minipage}[c]{0.67\textwidth}
+    \includegraphics[width=0.72\textwidth]{skipping2}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.3\textwidth}
+    \caption{
+sd
+    }
+  \end{minipage}
+\end{figure}
 
-Let's say that error of the estimated parameter is the function of $n$ and $p$, $f(n,p)$ that decreases with increasing $n$ and with decreasing $p$.
-
-Insert here graph with the same $p$ and increasing $n$ and with the same $n$ but increasing $p$.
-
-I simulated values on the nodes  according to the Gibbs distribution. Now, I want to estimated the average of these values with the help of the random walk. I use Metropolis-Hasting method to take the samples uniformly(maybe try simple random walk). The question is whether it is better to estimate the average value taking each sample or to skip some samples. 
-
-Assigning values to the nodes with the Gibbs distribution brings dependency of values between neighbors (the value of the property on one node depends on the values on its neighbors).
-
-In this way the values of the nodes that we see on step $k$ and on step $k + 1$ are dependent. So by skipping some nodes can decreases dependency. 
-
-
-The quality of estimation depends on the number of participants in the estimation and on the dependency between them. More participants there are the better is estimation. The less correlation between participants the better.
-In order to make the chain longer we can separate the payment for coming and taking part in the testing and the payment only for providing the list of friends.
-This can be especially suitable for people from hard-to-reach populations, where one can obtain some amount of money without revealing needed information about him but only by pointing (or recruiting) his friends. There is a trade-off: on one hand we make the chain longer and reduce dependency between participants. On other hand we spend money on people who do not bring any information needed for research and finally there will be less participants. 
-For now we will assume that it is not people who decide to participate or just provide the list of their friends, but researches. Thus, having fixed budget to conduct the RDS there is need to answer following questions: how much to pay for the participation in their research, how much to pay for simply providing the names of the friends and how many people invite for participation. The goal is to minimize error of the estimated parameter.
-
-Let's say that the payment or cost of providing list of the friends is $c_f$ and cost of participation is $c_p$. In this way each of $n$ person that does one of actions gets the payment for providing friends $c_f$ and part $p$ of $n$ people get additional payment $c_p$ for also participation in test.
-Thus having fixed budget $B$:
-
-$$B = n \cdot c_f + np \cdot c_p$$
-
-Let's say that error of the estimated parameter is the function of $n$ and $p$, $f(n,p)$ that decreases with increasing $n$ and with decreasing $p$.
+\begin{figure}[h]
+  \begin{minipage}[c]{0.67\textwidth}
+    \includegraphics[width=0.72\textwidth]{skipping3}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.3\textwidth}
+    \caption{
+sd
+    } 
+  \end{minipage}
+\end{figure}
 
 \chapter{Mathematical model}
 
@@ -419,207 +518,332 @@ $$ $$
 %\section{Simulations} 
 \subsection{Demonstration of random graphs with values}
 
-First, random geometric graph with 200 nodes and radius 0.13 was created, $RGG(200, 0.13)$. The set of values is $P = \lbrace 1, 2, ..., 10 \rbrace$. According to the first step of algorithm for each node was generated random property. The properties are depicted on the pictures as colors. Following pictures describe the properties of the graph after 2000 iterations of 2-3 steps for different temperature.
+In order to show that chosen model has sense first we will show the generated graphs with values to see the result visually and then we will look at the ways to measure level of values dependency in the graph.
 
-\begin{figure}[h]
+On the figure \ref{fig:testGibbs} presented the same random geometric graph with 200 nodes and radius 0.13, $RGG(200, 0.13)$ where the values $V = \lbrace 1, 2, ..., 5 \rbrace$ are chosen according to the Gibbs distribution. The values are depicted on the pictures as colors.
+
+
+\begin{figure}[t]
     \centering
-    \includegraphics[height=200px]{randomfield}
-    \caption{Random field}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{rggT1}
+        \caption{Temperature 1}
+
+    \end{subfigure}
+	~ 
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{rggT5}
+        \caption{Temperature 5}
+
+    \end{subfigure}
+
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{rggT20}
+        \caption{Temperature 20}
+
+    \end{subfigure}   
+    ~ 
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{rggT1000}
+        \caption{Temperature 1000}
+
+    \end{subfigure}
+    
+    \caption{RGG(200, 0.13) with generated values for different temperature}
+    \label{fig:testGibbs}
 \end{figure}
 
+From the pictures we can observe that the level of dependency between values of the node changes with different temperature. When temperature is 1 we can distinctly distinguish clusters . With increasing temperature, 5 and 20, the values of neighbors are still similar but with more and more variability. When temperature is very high then the values seem to be assigned randomly.
 
-
-
-\begin{figure} 
-  \subfigure{
-    \includegraphics[width=.4\linewidth]{rggT1} 
-  }
-  \subfigure{
-    \includegraphics[width=.4\linewidth]{rggT5} 
-  }
-  \subfigure{
-    \includegraphics[width=.4\linewidth]{rggT20} 
-  }
-  \subfigure{
-    \includegraphics[width=.4\linewidth]{rggT1000}
-  }
-  \caption{DFT, ruptureasdaosia poaisodiaposd}
-\end{figure}
-
-
-From the pictures we can observe that the level of dependency between values of the node changes with different temperature.
 In order to give more formal illustration we can look at the correlation between values of the nodes that we see during the random walk on the graph.
 
-Let's denote as $Y_0, Y_1, ..., Y_i, ...$  the random nodes that we observe during the random walk. The values on the node $Y_i$ we will denote as $f(Y_i)$.  Let's say that we start random walk with stationary distribution. Then covariance between  two values $f(Y_i)$ and $f(Y_{i+k})$ depends only on the distance $k$ in the sequence $Y_0, Y_1, ..., Y_i, ..., Y_{i+k}, ...$ between them:
+Let's denote as $Y_0, Y_1, ..., Y_i, ...$  the random nodes that we observe during the random walk. The value on the node $Y_i$ we will denote as $f(Y_i)$.  Let's say that we start random walk with stationary distribution. Then covariance between  two values $f(Y_i)$ and $f(Y_{i+k})$ depends only on the distance $k$ in the sequence $Y_0, Y_1, ..., Y_i, ..., Y_{i+k}, ...$ between them:
 $$cov(f(Y_i), f(Y_{i+k})) = cov(f(Y_0), f(Y_k))$$
-On the figures ... we present correlation between values depending on this distance $k$ for the graphs shown above.
+On the figure \ref{fig:testGibbsCorr} we present correlation between values depending on this distance $k$ for the graphs shown above. In this way we can assure us that the higher is temperature the less correlated values of neighbors are.
+
+\begin{figure}[t]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{rggT1corr}
+        \caption{Temperature 1}
+
+    \end{subfigure}
+	~ 
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{rggT5corr}
+        \caption{Temperature 5}
+
+    \end{subfigure}
+
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{rggT20corr}
+        \caption{Temperature 20}
+
+    \end{subfigure}   
+    ~ 
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{rggT1000corr}
+        \caption{Temperature 1000}
+
+    \end{subfigure}
+    
+    \caption{Correlation of the values of the nodes observed during the random walk depending on the difference in their order for different temperature}
+    \label{fig:testGibbsCorr}
+\end{figure}
 
 \section{Expected energy in steady state}
 
-I create graph and assign values to all nodes uniformly from all possible values. Then I start to change values on nodes according to Gibbs sampling having fixed temperature. I suppose that in steady state (after enough amount of steps) energy will have some expected value. Depending on temperature $T$ we should be able to predict this energy.
-%(Actually it does not converge, but maybe I can look at the variance and detect when it is not so big)
+\subsection{Motivation}
 
+The question that is still not clear in the algorithm is when to stop it. How many steps are enough to perform in order to claim that achieved configuration is indeed sampled from the Gibbs distribution?
+
+Let's look as global energy of the graph is changing during the steps of algorithm. For each configuration $\bar{x}$ we can count the global energy of the graph as:
+
+$$ \varepsilon (\bar{x}) =  \sum\limits_{i \sim j, i \leq j} (x_i - x_j)^2  $$
+
+
+
+
+\begin{figure}[t]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{energy2}
+        \caption{Temperature 2}
+
+    \end{subfigure}
+	~ 
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[width=\textwidth]{energy10}
+        \caption{Temperature 10}
+
+    \end{subfigure}
+
+    \caption{ Energy changing with iterations of the algorithm}
+    \label{fig:energyWithTime}
+\end{figure}
+
+First values are assigned to all nodes uniformly from all possible values. We can observe on the figure \ref{fig:energyWithTime} that the energy is high. As values on the nodes are changing according to Gibbs sampling the energy decreases (with some variation). After about 200 steps (it means that up to this time each node updated its state once) we can see that the changes of energy do not exceed some thresholds. So after some time energy comes to some value, stabilizes and does not change a lot. Knowledge about this expected value and its variation can indicate us when it is time to finish the algorithm. 
+ 
+ 
+
+There is another reason why we would like to predict energy.
+We saw previously that varying temperature $T$ we can change how strongly values of the neighbors are related: low temperature brings high correlation of values and high temperature brings almost random assignment of values. However it is impossible to use only temperature $T$ as a metric of values correlation. Temperature by itself does contain a lot of information. For the graph RGG(200, 0.13) the temperature 200 we can consider as high (because values are not really correlated) but for the graph RGG(2000, 0.06) it is not the case. We can't judge the level of correlation only by temperature, we should take into account number of nodes, number of edges, structure of graph, possible values that can be assigned to nodes as well. 
+
+
+On the figure \ref{fig:energyWithTime} we can see that starting from the same energy there is different expected global energy and its variation for different temperature. So we see that we start at the maximum energy and then come to its expected value for the fixed temperature.
+
+Then the more appropriate metric can be following number: in how much times energy decreases from its initial value (that corresponds to the random configuration) to its stable value (the one that we want to be able to predict).
+
+The problem here is that the algorithm needs the temperature parameter. So after deciding that we want to decrease the initial energy in 5 times we still need to understand which temperature will bring the system to this target energy.
+
+For this purpose we were interested in finding dependency of the global energy from the temperature. 
+
+
+\subsection{Analysis}
+
+We would like to know the expected value of the global energy. 
 If expected energy is known it can help detect convergence and indicate when it is time to stop running algorithm. 
 
 
-Varying temperature $T$ we can change how strongly values of the neighbors are related: low temperature brings high correlation of values and high temperature brings almost random assignment of values. However it is impossible to use only temperature $T$ as a metric of values correlation. Temperature by itself does bring a lot of information. We should take into account structure of graph, possible values that can be assigned to nodes as well. 
-
-More appropriate metric can be energy of the graph or better, in how much times energy decreases from random configuration to configuration chosen from Gibbs distribution. %?????Energy divided by number of connection, hm but also number of values
-
 We can write expected energy by definition as
 
-$$ E[\varepsilon (\bar{x})] = \sum\limits_{\bar{x}} p(\bar{x}) \cdot \varepsilon(\bar{x})$$
+\begin{equation}
+E[\varepsilon (\bar{x})] = \sum\limits_{\bar{x}} p(\bar{x}) \cdot \varepsilon(\bar{x})
+\end{equation}\label{eq:expEnergy}
+
 
 where probability of one particular configuration $\bar{x}$ is  
 
-$$ p(\bar{x}) = \frac{ e^{-\frac{ \varepsilon (\bar{x})}{T}} }{ \sum\limits_{\bar{x}'\in |P|^n} e^{-\frac{\varepsilon(\bar{x}')}{T}}} $$
+\begin{equation}
+p(\bar{x}) = \frac{ e^{-\frac{ \varepsilon (\bar{x})}{T}} }{ \sum\limits_{\bar{x}'\in |V|^n} e^{-\frac{\varepsilon(\bar{x}')}{T}}} 
+\end{equation}\label{eq:prob}
 
-Both in 1 and 2 formulas summation is over all possible configurations and the number of all possible configuration is huge, $|P|^n$. One of the ways to calculate the expected energy is with Gibbs sampling, running algorithm until convergence and calculating then energy but it is the opposite of what we are trying to do.
+Both in \ref{eq:expEnergy} and in \ref{eq:expEnergy} formulas summation is over all possible configurations and the number of all possible configuration is huge, $|V|^n$. One of the ways to calculate such kind of expressions would be following: use Gibbs sampling, run the algorithm until convergence large enough amount of times, average the result. But actually it is the opposite of what we are trying to do. In this way we can build empirical expected energy dependency of the temperature. Simulations can take a lot of times. But actually I wanted to have an explicit formula.
 
 Let $ \varepsilon (\bar{x})$ be total energy of the graph on configuration $\bar{x}$. We can write global energy as 
 
 
-$$ \varepsilon (\bar{x}) =  \sum\limits_{i \sim j, i \leq j} (x_i - x_j)^2  $$
+$$ \varepsilon (\bar{x}) =  \sum_{i \sim j, i \leq j} (X_i - X_j)^2  $$
 
 Then the expected global energy of a field is
 
-$$ E[\varepsilon (\bar{x})] =  \sum\limits_{i \sim j, i \leq j} E[x_i - x_j]^2  $$
+$$ E[\varepsilon (\bar{x})] =  \sum_{i \sim j, i \leq j} E[X_i - X_j]^2  $$
+ [write more that it is difficulty to count]
+ 
+Difficult to generalize for any graph, because there is correlation
+moreover difficult to write the distribution of values for one particular node. later we will show why.
+In order to calculate expected energy at least approximately we will make some assumptions.
 
-In order to calculate expected energy at least approximately we will make some assumptions. 
-But first let's notice that if values are assigned to nodes independently and from the same distribution, then expression for energy becomes
-$$ E[\varepsilon (\bar{x})] =  mE[(x_i - x_j)^2]  = m\left(Var(x_i - x_j) + E[(x_i - x_j)]^2\right) $$
-$$ = m\left(Var(x_i - x_j) + (E[x_i] - E[x_j])^2\right)$$
-$$ = m\left( Var(x_i) + Var(x_j) - 2Cov(x_i, x_j)  \right) = 2mVar(x_i)$$
+\paragraph{The same expected value}
+\mbox{} \\
 
-where $x_i$ and $x_j$ are random variance with the same distribution, $m$ is the number of edges in the graph. 
 
-Particularly, we can compute expected energy in this way for random configuration where the values are assigned to the nodes independently and uniformly from all possible values in $P$. 
-%As values are assigned to nodes independently then $ Cov(x_i, x_j)= 0 $. Because distribution is uniform we have $E[(x_i - x_j)^2] = 0$.
+$$E[X_i] = av_V$$
 
-Then expected energy of the graph on random configuration $\bar{x}$ is
-$$E[\varepsilon (\bar{x})] =  m\frac{|P|^2-1}{6}$$
+\paragraph{Assumptions about no correlation between neighbors}
+\mbox{} \\
+
+Because difficult [describe difficulties] we will make an assumption that values are assigned independently of each other. Let $N_i$ be the number of the neighbors of the node $i$. So if there is no correlation between value assigned to the nodes, then we can write global energy as:
+$$ E[\varepsilon (\bar{X})] =  \sum_{i \sim j, i \leq j} E[X_i - X_j]^2 = 
+\frac{1}{2} \sum_{i \sim j} E[X_i - X_j]^2 = $$
+
+$$ = \frac{1}{2} \sum_{i \sim j} \left(Var(X_i - X_j) + E[(X_i - X_j)]^2 \right)= 
+= \frac{1}{2} \sum_{i \sim j} \left(Var(X_i - X_j) + (E[X_i] - E[X_j])^2 \right) = 
+$$
+
+
+$$ = \frac{1}{2} \sum_{i \sim j} \left(Var(X_i) + Var(X_j) - 2Cov(X_i, X_j) \right) = \frac{1}{2} \sum_{i \sim j} \left(Var(X_i) + Var(X_j) \right)=
+$$
+
+$$ = \frac{1}{2} \sum_{i \sim j} 2N_iVar(X_i) 
+= \sum_{i \sim j} N_iVar(X_i)  
+$$
+\paragraph{Special case}
+\mbox{} \\
+Let's look at the case when the values are assigned to the nodes according to the same distribution in independent way (that means that there is no correlation between assigned values). Let $m$ be the number of edges in the graph. Then the expression for energy becomes:
+$$ E[\varepsilon (\bar{X})] =  \sum_{i \sim j} N_iVar(X_i) = 2mVar(X_i)$$
+
+where $x_i$ and $x_j$ are random variance with the same distribution.
+Interesting fact that it reminds us the famous formula for energy!
+
+Particularly, we can compute expected energy in this way for random configuration where the values are assigned to the nodes independently and uniformly from all possible values in $V$. 
+When $X_i$ is distributed uniformly in $V$ the variance of $X_i$ is:
+$$var(X_i) = \frac{|V|^2-1}{12}$$
+
+Then the expected energy of the graph on random configuration $\bar{x}$ is
+$$E[\varepsilon (\bar{x})] =  m\frac{|V|^2-1}{6}$$
+
+
+\paragraph{Assumptions about values distribution}
+\mbox{} \\
+
 
 To answer the question: what is the expected energy of the field after reaching steady state, we need to know the distribution of values on the nodes.
 
 
 After reaching stationary state probability that the node $i$ will have value $x \in P$ is
 
-$$ p(x_i = x) = \frac{ e^{-\frac{\varepsilon_i(x)}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{\varepsilon_i(x')}{T}}} $$
+$$ p(X_i = x) = \frac{ e^{-\frac{\varepsilon_i(x)}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{\varepsilon_i(x')}{T}}} $$
 
 where $\varepsilon_i(x)$ is local energy on the node $i$ that is counted as $\varepsilon_i(x) = \sum\limits_{j | i \sim j} (x_i - x_j)^2 $. 
   
-  
-$$ p(x_i = x) = \frac{ e^{-\frac{\varepsilon_i(x)}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{\varepsilon_i(x')}{T}}}  = 
-\sum\limits_{a_1, ... a_j \subset P} \prod\limits_{j|j \sim i} p(x_j  = a_j)
+But this probability actually is conditional on the values of the neighbors. Then the expression becomes:
+$$ p(X_i = x) = \frac{ e^{-\frac{\varepsilon_i(x)}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{\varepsilon_i(x')}{T}}}  = 
+\sum\limits_{a_1, ... a_j \subset P} \prod\limits_{j|j \sim i} p(X_j  = a_j)
 \frac{ e^{-\frac{ \sum\limits_{j|j \sim i}(x - a_j)^2 }{T}} }{ \sum\limits_{x'\in P} e^{-\frac{ \sum\limits_{j|j \sim i}(x' - a_j)^2 }{T}}}  $$
 
 So the probability to have some particular value on the node $i$ depends on the values of its neighbors that are also dependent from their neighbors and so on.
-In order to simplify expression for values distribution on the node $i$ we will make some assumptions. First, let's say that all neighbors of the node $i$ have the value $av_P, av_P = average(P)$. Let us denote the set of neighbors of the node $i$ as $N_i$. If for all $j \in N_i : x_j = av_P$ then 
+In order to simplify expression for values distribution on the node $i$ we will make some assumptions. First, let's say that all neighbors of the node $i$ have the value $av_V, av_V = average(V)$. Let us denote the set of neighbors of the node $i$ as $N_i$. If for all $j \in N_i : x_j = av_P$ then 
 $p(x_j  = av_P) = 1$. With this assumption probability that the node $i$ will have value $x \in P$ is
 
 
-$$ p(x_i = x) = 
+$$ p(X_i = x) = 
 \frac{ e^{-\frac{N_i(x - av_P)^2}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{N_i(x' - av_P)^2}{T}}}$$
 
-%Then the values on node $i$ are distributed normally with mean $\frac{R}{2}$ and variance $\frac{T}{2N_i}$.
+Then we can count expected energy as:
+$$ E[\varepsilon (\bar{X})] =  \sum_{i \sim j} N_iVar(X_i) =
+\sum_{i \sim j} N_i  \left(E[x_i]^2 - (E[x_i])^2\right) =
+\sum_{i \sim j} N_i \left(\frac{ \sum\limits_{i\in P} i^2 e^{- \frac{N_i(i - av_P)^2}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{N_i(x' - av_P)^2}{T}}} - av_P^2\right)
+$$
 
-Now let's assume that each node has the same following distribution of values:
-$$ p(x_j = x) = 
+To simplify even more we can assume that each node has the same following distribution of values:
+$$ p(X_j = x) = 
 \frac{ e^{-\frac{d(x - av_P)^2}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{d(x' - av_P)^2}{T}}}$$
 
 where $d$ is average degree of the graph. 
 
 Then expected energy is counted in the following way:
-$$ E[\varepsilon (\bar{x})] = 2mVar(x_i) = 2m\left(E[x_i]^2 - (E[x_i])^2\right) = 2m\left(\frac{ \sum\limits_{i\in P} i^2 e^{- \frac{d(i - av_P)^2}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{d(x' - av_P)^2}{T}}} - av_P^2\right)$$
-
-Show that energy is less then in random configuration 
-
-E
+$$ E[\varepsilon (\bar{x})] = 2mVar(x_i)  = 2m\left(\frac{ \sum\limits_{i\in P} i^2 e^{- \frac{d(i - av_P)^2}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{d(x' - av_P)^2}{T}}} - av_P^2\right)$$
 
 
-------------------------------------------------------------
-
-Actually I predict energy as
-
-$$ E[\varepsilon (\bar{x})] = 2mVar(x_i)$$
-
-when I consider that all nodes are identically distributed. And as
-
-$$ E[\varepsilon (\bar{x})] =  \sum\limits_{i=1..n} N_iVar(x_i)$$
-
-when distribution of values depends on the nodes degree.
+\subsection{Results}
 
 
 
-
-$$ E[(x_i - x_j)^2] = 2Var(x_i)$$
-
-------------------------------------------------------------
-
-We could approximate this distribution as normal with mean $\frac{R}{2}$ and variance $\frac{T}{2d}$.
-
-If $x_i \sim N(\frac{R}{2}, \frac{T}{2d})$ and $x_j \sim N(\frac{R}{2}, \frac{T}{2d})$ then the differences $x_i-x_j$ is distributed normally with mean 0 and variance
-$\frac{T}{d}$.
-
-$$ p(x_i - x_j = x) = 
-\frac{ e^{-\frac{dx^2}{2T}} }{ \sum\limits_{x'\in P} e^{-\frac{dx'^2}{2T}}}$$
-
-With increasing T approximation gets worse. In reality (in more real approxim)  
 
 On the following examples: red line represents predicted energy for given temperature, blue line represents calculated energy after running algorithm. 
 
-\begin{figure}[ht]
+\begin{figure}[t]
     \centering
-    \includegraphics[height=200px]{er200x01}
-    \caption{ Random ER graph with 200 vertices and values $[1, ..., 5]$ p = 0.1}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{er200x01}
+        \caption{ Random ER graph with 200 vertices and values $[1, ..., 5]$ p = 0.1}
+
+    \end{subfigure}
+	~
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{rgg200x013}
+        \caption{ Random geometric graph with 200 vertices, radius 0.13 and values $[1, ..., 5]$ }
+
+    \end{subfigure}
+
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{grid20x10}
+        \caption{ Grid on torus graph with 200 = 20x10 vertices and values $[1, ..., 5]$ }
+
+    \end{subfigure}   
+    ~
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{pa200x1}
+        \caption{ Preferential attachment graph with 200 vertices, 1 link for new arriving node and values $[1, ..., 5]$ }
+
+    \end{subfigure}
+    
+    \caption{Energy prediction for different gr}
+    \label{fig:energyPrediction}
 \end{figure}
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[height=200px]{rgg200x013}
-    \caption{ Random geometric graph with 200 vertices, radius 0.13 and values $[1, ..., 5]$ }
-\end{figure}
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[height=200px]{chain200}
-    \caption{ Chain graph with 100 vertices and values $[1, ..., 5]$}
-\end{figure}
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[height=200px]{grid20x10}
-    \caption{ Grid on torus graph with 200 = 20x10 vertices and values $[1, ..., 5]$ }
-\end{figure}
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[height=200px]{pa200x1}
-    \caption{ Preferential attachment graph with 200 vertices, 1 link for new arriving node and values $[1, ..., 5]$ }
-\end{figure}
-
-
-$$ P(\bar{a}) = \frac{ e^{-\frac{ \varepsilon (\bar{a})}{T}} }{ \sum\limits_{\bar{a}'} e^{-\frac{\varepsilon(\bar{a}')}{T}}} $$
-
-$$ \varepsilon (\bar{a}) =  \sum\limits_{i \sim j, i \leq j} (a_i - a_j)^2  $$
-
-
-$$ E[\varepsilon (\bar{a})] = 2m \sigma^2$$
-
-$$ m = \sum_{i \in V} d_i$$
-
+Even if the result is not precise it can give us intuition.
 
 \section{Error prediction}
 
-Studying variance of estimator is important for the construction of confidence interval and testing of hypothesis.
+\subsection{Variance prediction}
 
+Let $Y_1, Y_2, Y_3,..., Y_n$ be the samples that are taken during the random walk. Let's take the average value of the samples as an estimator of mean population value:
 
-Let's look on the network graph where nodes have correlated values. Now let's assume that correlation between the nodes depends on the distance between them in the following way: nodes at the distance 1 have correlation $\rho$, at the distance 2 correlation $\rho^2$ and so on.
-If the distance between nodes $i$ and $j$ is $k$ then $corr(X_i, X_j) = \rho^k$.
+$$ \widehat{\mu}_{avg} = \frac{Y_1 + Y_2 + ... + Y_n}{n}$$
 
-First, let's look at the line where nodes are correlated as described above. Then $corr(X_i, X_{i+h}) = \rho^h$. Now let's start to collect the values along the line starting from the first node, $X_1, X_2, ..., X_n$. Then we can count variation of the mean of $X_1, X_2, ..., X_n$.
+We noted that the variance of the estimator $\widehat{\mu}_{avg}$ is influence by the correlation factor as the random variables $Y_1, Y_2, Y_3,..., Y_n$ are correlated:
 
-$$var\left[ \frac{X_1, X_2, ..., X_n}{n} \right] = var\left[\bar{X} \right] = \frac{1}{n^2} \sum_{i=1}^{n}\sum_{j=1}^{n} cov(X_i, X_j) =$$ 
+$$ \sigma^2_{\hat{\mu}_{avg}} = \frac{\sigma^2}{n} f(n)$$
+
+Let's look what will happen with variance in the suggested modified RDS.
+
+We have budget $B$. $n$ individuals that we see during the RDS receive $C_1$ units of money for recruiting another individuals, each $k$th person from them take also part in the study and receives $C_2$ additional units of money. 
+
+In this way $\frac{n}{k+1}$ individuals from $n$ are participants. Then we can write:
+
+$$B = nC_1 + \frac{n}{k}C_2$$
+
+From this equality we can see that the length of the chain $n$ is:
+
+$$n = \frac{kB}{kC_1 + C_2}$$
+
+And then the number of participants is:
+
+$$m = \frac{B}{kC_1 + C_2}$$
+
+So number of participants depends on $k$ and the bigger is $k$ the less participants we have.
+Also we observed experimentally that the bigger is $k$ (with the fixed sample size) the less is the correlation. So actually correlation factor also depends on $k$.
+Saying all this we can write that variance of estimator as:
+
+$$ \sigma^2_{\hat{\mu}_{avg}} = \frac{\sigma^2}{\frac{B}{kC_1 + C_2}} f(k)$$
+
+Now we have to find the expression for the correlation factor.
+
+\subsection{Simple example}
+
+First we will find correlation for simple example and then we will generalize it for any kind of graph.
+
+For now we will not care about graph structure. Let's assume that our collected samples $Y_1, Y_2, ..., Y_n$ are correlated in the known way:
+
+ $$corr(Y_i, Y_{i+k}) = \rho^k$$
+
+So correlation between the nodes that are at the distance 1 in the chain have correlation $\rho$, at distance 2 have correlation $\rho^2$ an so on. 
+Then we can write the variance of the mean estimator as: 
+
+$$\sigma^2_{\hat{\mu}_{avg}} = var\left[\bar{Y} \right] = var\left[ \frac{Y_1 + Y_2 + ..., Y_n}{n} \right] = \frac{1}{n^2} \sum_{i=1}^{n}\sum_{j=1}^{n} cov(Y_i, Y_j) =$$ 
 $$ = \frac{\sigma^2}{n^2} \left( n + 2(n-1)\rho + 2(n-2)\rho^2 + ... + 2\cdot2 \rho^{n-2}+ 2\cdot1 \rho^{n-1} \right) = $$
 $$ = \frac{\sigma^2}{n^2} \left(n + 2\sum_{i=1}^{n-1} (n-i)\rho^i \right) = \frac{\sigma^2}{n^2} \left(n + 2n\sum_{i=1}^{n-1}\rho^i - 2\sum_{i=1}^{n-1}i\rho^i \right) = $$
 $$ = \frac{\sigma^2}{n} \left(n + 2n\frac{\rho-\rho^{n}}{1-\rho} - 2\rho \sum_{i=0}^{n-2} (\rho^{i+1})' \right) = $$
@@ -627,142 +851,328 @@ $$ = \frac{\sigma^2}{n} \left(n + 2n\frac{\rho-\rho^{n}}{1-\rho} - 2\rho\left(\f
 $$ = \frac{\sigma^2}{n} \left(n + 2n\frac{\rho-\rho^{n}}{1-\rho} - 2\rho \frac{(1-n\rho^{n-1})(1-\rho) + \rho - \rho^n}{(1-\rho)^2} \right) = $$
 $$ = \frac{\sigma^2}{n^2} \frac{n-n\rho^2 - 2\rho + 2\rho^{n+1}}{(1-\rho)^2}$$
 
+In the end we have the following expression:
+\begin{equation}
+var\left[\bar{Y} \right] = \frac{\sigma^2}{n}\frac{1-\rho^2 - 2\rho/n + 2\rho^{n+1}/n}{(1-\rho)^2}
+\end{equation}
+\label{eq:varFirst}
 
-$$ var\left[\bar{X} \right] = \frac{\sigma^2}{n^2} \frac{n-n\rho^2 - 2\rho + 2\rho^{n+1}}{(1-\rho)^2}$$
+From here we can get that correlation factor is:
+
+$$f(n) = \frac{1-\rho^2 - 2\rho/n + 2\rho^{n+1}/n}{(1-\rho)^2} $$
+
+It can be shown that this factor $f(n)$ is increasing function of $n, (n > 1)$ and it has its minimum 1 when $n = 1$. It is clear, when there is only one individual there is no correlation, because there is only random variable $Y_1$.
+
+Let's look what happens to the correlation factor when $n$ goes to infinity:
+
+$$f(n)  = \frac{1-\rho^2 - 2\rho/n + 2\rho^{n+1}/n}{(1-\rho)^2} \quad \xrightarrow{n\to \infty} \quad\frac{1-\rho^2}{(1-\rho)^2} = \frac{1+\rho}{1-\rho}$$
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=150px]{corrFactor}
+    \caption{ Correlation factor depending on the number of the participants when $\rho$ is 0.6 }
+\end{figure}
+
+Using the following approximation the expression for the sample variance becomes much more easier:
+
+$$var_{approx}\left[\bar{Y} \right] = \frac{\sigma^2}{n} \frac{1+\rho}{1-\rho}$$
 
 
+Approximation is close when is $n$ big enough. To compare approximated expression with original one, look at the figure \ref{fig:lineGame1} where parameter $\rho$ is $0.6$. As it is reasonable to suppose that the sample size is bigger then 50, we can consider this approximation good enough in this case. The reason to use this approximation is that the expression is much simpler and some facts that are very difficult to prove for real $var\left[\bar{Y} \right]$ become easier for the approximation.
 
-Let's simplify a bit expression for variance by approximated one.
-$$var\left[\bar{X} \right] = \frac{\sigma^2}{n^2} \frac{n-n\rho^2 - 2\rho + 2\rho^{n+1}}{(1-\rho)^2} = \frac{\sigma^2}{n} \frac{n-n\rho^2 - 2\rho + 2\rho^{n+1}}{n(1-\rho)^2} = $$
-$$= \frac{\sigma^2}{n} \frac{1-\rho^2 - 2\rho/n + 2\rho^{n+1}/n}{(1-\rho)^2} \simeq \frac{\sigma^2}{n} \frac{1-\rho^2}{(1-\rho)^2} = \frac{\sigma^2}{n} \frac{1+\rho}{1-\rho}$$
+[??? f(n) < n]
+\paragraph{Observation 1} \textit{No matter how values are correlated, the more is sample size, the better is estimation}
 
-$$var\left[\bar{X} \right] = \frac{\sigma^2}{n} \frac{1+\rho}{1-\rho}$$
+From \ref{eq:varFirst} we can see it.
 
 
-Approximation is especially good with big $n$ and $\rho$.
+If random variables $Y_1, Y_2, ..., Y_n$ were independent then the variance of $\bar{Y}$ would be $var_{ind}[\bar{Y}] = \frac{\sigma^2}{n}$.
 
-If random variables $X_1, X_2, ..., X_n$ were independent then the variance of $\bar{X}$ would be $var_{ind}[\bar{X}] = \frac{\sigma^2}{n}$.
-
-But we consider random variables $X_1, X_2, ..., X_n$ that are dependent with known correlation and the variance in this case is bigger. 
-$$ var\left[\bar{X} \right] = var_{ind}[\bar{X}]\frac{1+\rho}{1-\rho} = var_{ind}[\bar{X}]
-\left(1+ \frac{2\rho}{1-\rho} \right) > var_{ind}[\bar{X}]$$
+But we consider random variables $Y_1, Y_2, ..., Y_n$ that are dependent with known correlation and the variance in this case is bigger. 
+$$ var\left[\bar{Y} \right] = var_{ind}[\bar{Y}]\frac{1+\rho}{1-\rho} = var_{ind}[\bar{Y}]
+\left(1+ \frac{2\rho}{1-\rho} \right) > var_{ind}[\bar{Y}]$$
 
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[height=150px]{varianceIndDep}
-    \caption{ $\rho$ = 0.7 }
+    \includegraphics[height=150px]{lineGame1}
+    \caption{ $\rho$ = 0.6 }
+    \label{fig:lineGame1}
 \end{figure}
 
-The less is correlation between nodes the closer are variances $var\left[\bar{X} \right]$ and $var_{ind}[\bar{X}]$.
+On the figure \ref{fig:diffCorr} we can compare the variance for different level of correlation.
 
 
 \begin{figure}[ht]
     \centering
     \includegraphics[height=150px]{varianceIndDep2}
-    \caption{ $\rho$ = 0.7 }
+    \caption{ $\rho$ = 0.6 }
+    \label{fig:diffCorr}
 \end{figure}
 
 
-Variance with skipping
+\subsection{Variance with skipping}
 
 Let's look at the variance of the next random variable:
 
-$$\bar{X}^k = \frac{X_1 + X_{1+k} + X_{1+2k} + ... + X_{1 + (n-1)k}}{n}$$
+$$\bar{Y}^k = \frac{Y_1 + Y_{1+k} + Y_{1+2k} + ... + Y_{1 + (n-1)k}}{n}$$
 
-So $corr(X_{1 + ik}, X_{1 + (i+h)k}) = \rho^{kh}$. 
-Now let's introduce new random variable $Y_1, Y_2, ..., Y_n$ such that $Y_1 = X_1, Y_2 = X_{1+k}, ..., Y_n = X_{1 + (n-1)k}$ and $r = \rho^k$, $\bar{Y}= \bar{X}^k$. Then $corr(Y_i, Y_{i+h}) = corr(X_{1 + (i-1)k}, X_{1 + (i+h-1)k}) = \rho^{kh} = r^h$.
+where $corr(Y_{1 + ik}, Y_{1 + (i+h)k}) = \rho^{kh}$. 
 
-To sum up we have random variables $Y_1, Y_2, ..., Y_n$ where $corr(Y_i, Y_{i+h} = \rho^{kh} = r^h$. But we already know that 
+If we introduce new random variables $Z_1, Z_2, ..., Z_n$ such that $Z_1 = Y_1, Z_2 = Y_{1+k}, Z_3 = Y_{1+2k},..., Z_n = Y_{1 + (n-1)k}$ and $r = \rho^k$, $\bar{Z}= \bar{Y}^k$. Then:
 
-$$var\left[\bar{Y} \right] \simeq  \frac{\sigma^2}{n} \frac{1+r}{1-r}$$
-Then
-$$var\left[\bar{X}^k \right] \simeq  \frac{\sigma^2}{n} \frac{1+\rho^k}{1-\rho^k}.$$
+$$corr(Z_i, Z_{i+h}) = corr(Y_{1 + (i-1)k}, Y_{1 + (i+h-1)k}) = \rho^{kh} = r^h$$
+
+To sum up we have random variables $Z_1, Z_2, ..., Z_n$ where the correlation between any to of them depends of the distance $corr(Z_i, Z_{i+h}) = \rho^{kh} = r^h$. For this problem we already know the variance of $\bar{Z}$:
 
 
-In RDS context
+$$ var\left[\bar{Z} \right] = \frac{\sigma^2}{n}\frac{1-r^2 - 2r/n + 2r^{n+1}/n}{(1-r)^2}$$
 
-$B$ - budget
+Or approximation:
+$$var\left[\bar{Z} \right] \simeq  \frac{\sigma^2}{n} \frac{1+r}{1-r}$$
+Let's return to the previous notation and get [check with script]:
+$$var\left[\bar{Y}^k \right] = \frac{\sigma^2}{n}\frac{1-\rho^{2k} - 2\rho^k/n + 2\rho^{k(n+1)}/n}{(1-\rho^k)^2}$$
+or:
+$$var\left[\bar{Y}^k \right] \simeq  \frac{\sigma^2}{n} \frac{1+\rho^k}{1-\rho^k}$$
 
-$C_1$ - cost of one step of walk (individuals just provide the correct number of their contacts)
 
-$C_2$ - cost of participation (cost of interview with individuals)
+\subsection{In RDS context}
 
-$n$ - number of steps
+Returning to the RDS context we can finally write the variance for different scenarios with the same budget. On the same budget $B$ taking each $k$ node as a participant we have $m = \frac{B}{kC_1 + C_2}$ samples. Then variance, depending on $k$ will be:
 
-$m$ - number of participants from $n$
+$$ \sigma^2_{\hat{\mu}_{avg}} (k) = \frac{\sigma^2}{m}\frac{1-\rho^{2k} - 2\rho^k/m + 2\rho^{k(n+1)}/m}{(1-\rho^k)^2}$$
 
-The next equality should be true:
+Or:
 
-$$B = n \cdot C_1 + m \cdot C_2$$
+$$ \sigma^2_{\hat{\mu}_{avg}} (k) = \frac{\sigma^2}{\frac{B}{kC_1 + C_2}} \frac{1+\rho^k}{1-\rho^k}$$
 
-If we want to skip $k$ steps between taking the node as a participant then
-$$B = nC_1 + \frac{n}{k+1}C_2$$
+[should put analysis of function: convex, one minimum]
+
+Let's understand what happens when we increase the $k$. If we denote $m$ as the number of participants then on the budget $B$ with 
+
+
+
+So we have some kind of trade-of here. And for sure it is not evident. If the characteristic that we try to estimate does not correlate between friends or people who have contact then it is useless to discard some values (we just pay for nothing). But if the values are highly correlating intuitively skipping can help a lot.
+If we take There is a trade-off: on one hand we make the chain longer and reduce dependency between participants. On other hand we still spend money on people who do not bring any information needed for research and finally there will be less participants. 
+
+, $m$ individuals from the $n$ is the number of participants. 
+So both to informators and participants that are $n$ in total we pay $C_1$ units of money for recruiting new people, but also to the $m$ participants we pay $C_2$ units of money for participating in the research. So the budget is distributed in the following way: 
+$$B = nC_1 + mC_2$$
+
 
 Here $m = \frac{n}{k+1}$ as we take each $k+1$ node as a participant. So having budget $B$ and skipping each $k$ node allows as to perform $n = \frac{(k+1)B}{(k+1)C_1 + C_2}$ steps with $m = \frac{B}{(k+1)C_1 + C_2}$ number of participants.
 
-Then variance:
 
-$$\frac{\sigma^2}{\frac{B}{(k+1)C_1 + C_2}} \frac{1+\rho^{k+1}}{1-\rho^{k+1}}$$ 
+And then variation is actually the function of $k$.
 
+With decreasing k what happens and say that it is not evident what is better.
+And our challenge was to study this problem formally. Can we quantify this number that we should skip. We want to solve it analytically.
+To obtain this result we used several simplifications. On the figures \ref{fig:energyPrediction} presented experimentation results.
+
+
+
+Studying variance of estimator is important for the construction of confidence interval and testing of hypothesis.
 The goal is to minimize variance. Let's look on the next function of $k$:
 
 $$ f(k) = \frac{\sigma^2}{\frac{B}{kC_1 + C_2}} \frac{1+\rho^{k}}{1-\rho^{k}}$$.
 
-It has minimum when $k$ is a solution for the following equation.
-
-$$ 2C_1 \log(\rho) \rho^kk - C_1\rho^{2k} + 2C_2 \log(\rho) \rho^k + C_1 = 0$$
-
-I don't know if there is explicit expression for the solution.
-
-%$f(k)$ seems to be convex
-
-Check if the second derivative is always positive.
-
-Now, let's imagine that I have graph and I know $\rho$. I try to find $k$ experimentally and using $k$ from equation.
-
-I will take as $\rho$ covariance between neighbors on the graph with field.
-=(  It did not work (only in ER graph, but I am not sure)
 
 
-General case
 
-Variance of mean in general case
+\paragraph{Observation 2} \textit{Just thinning of sample doesn't help}
+
+It means that we should look on function 
+
+$$ f(k) = \frac{\sigma^2}{B/(kC)} \frac{1+\rho^{k}}{1-\rho^{k}}$$
+
+it is increasing
+
+\paragraph{Observation 3} \textit{Skipping reduces variance}
+
+If we fix $m$ and will increase $k$:
+
+$$ f(k) = \frac{\sigma^2}{n} \frac{1+\rho^{k}}{1-\rho^{k}}$$.
+
+is decreasing function.
+
+
+\subsection{General case}
+
+In the previous example we were able to write the variance of the estimator because the correlation between all the collected samples was known. We would like to generalize formula: where RDS is random walk on the arbitrary graph.
+
+Let $f = {f_1 , f_2, ..., f_n}$ be the values of the attribute on the nodes $1, 2, ..., n$.
+First, let $P$ be the transition matrix of the random walk. We consider that probability for the individual to choose any of his friend is the same. Therefore, if the random walk visits the node $i$ then one of the neighbors of this node will be chosen with probability $d_i$. Then we can write the transition matrix:
+
+
+\[
+    p_{ij}=\left\{
+                \begin{array}{ll}
+                  \frac{1}{d_i} \qquad \textnormal{if $i$ and $j$ are neighbors} \\
+                  0 \qquad \textnormal{ if $i$ and $j$ are not neighbors}\\
+                  0 \qquad \textnormal{ if $i = j$}
+                \end{array}
+              \right.
+  \]
+  
+The stationary distribution of the random walk is:
+
+$$\pi = \left( \frac{d_1}{\sum_{i=1}^n d_i}, \frac{d_2}{\sum_{i=1}^n d_i},..., \frac{d_n}{\sum_{i=1}^n d_i}\right)$$
+  
+
+Let $\Pi$ be the matrix that consist of $n$ rows, where each row is the vector $\pi$. Let $f = {f_1 , f_2, ..., f_n}$ be the values of the attribute on the nodes $1, 2, ..., n$.
+
+We consider also that chain starts from initial distribution $\pi$. Then covariance between the random values $X_i$ and $X_j$ depends only on $j-i$:
+
+$$cov(X_i, X_j) = cov (X_0, X_{j-i})$$
+
+And then the formula for the variance
+
+$$var(X_0) = <f, f>_{\pi} - <f, \Pi f>_{\pi}$$
+
+and for the covariance:
+
+$$cov(X_0, X_h) = <f, (P^h - \Pi)f>_{\pi}$$
+
+where $<a,b>_c$ is weighted scalar product and if $a = (a_1, ..., a_n), b = (b_1, ..., b_n), c = (c_1, ..., c_n)$ then:
+
+$$<a,b>_c = \sum_{i = 1}^n a_i b_i c_i$$
+
+To see more, how these formulas were derived, consult 6 chapter of the book \cite{bremaud2013markov}.
+
+For now we can write the formula for the variance of the estimator as:
+
+$$ var\left[\bar{X} \right] = \frac{1}{n^2} \left( nvar(X_i) + 2\sum_{i=1}^n \sum_{j|i < j}^n cov(X_i, X_j)\right) = $$
+
+\begin{equation}
+ = \frac{1}{n^2} \left( n(<f, f>_{\pi} - <f, \Pi f>_{\pi}) + 2\sum_{i=1}^n \sum_{j|i < j}^n  f, (P^{j-i} - \Pi)f> \right)
+\end{equation}\label{eq:varGen}
+
+
+
+Let's look at auxiliary matrix $P^*$. Let $D$ be the matrix $n \times n$ where $d_{ii} = \pi_i$ and $d_{ij} = 0$ if $i$ is different form $j$. Auxiliary matrix $P^*$ is build in the following way:
+
+$$P^* = D^{\frac{1}{2}} P D^{-\frac{1}{2}}$$
+
+
+Then if $\lambda_i$ are eigenvalues, $v_i$ are right eigenvectors and $u_i$ are left eigenvectors of the matrix $P^*$:
+
+\begin{equation}
+P^h - \Pi = \sum_{i = 2}^n \lambda_i^n v_i u_i^T
+\end{equation}\label{eq:varGen2}
+
+For more explanation refer to the chapter 6 of the book \cite{bremaud2013markov}.
+
+Using formulas \ref{eq:varGen} and \ref{eq:varGen2} and reasoning similar to the one in the previous section, when we had know variance we will derive following formula for the variance of the estimator:
 $$ var\left[\bar{X} \right] = \frac{1}{n} \sum_{i=2}^r\frac{1-\lambda_i^2 - 2\frac{\lambda_i}{n} + 2\frac{\lambda_i^{n+1}}{n}}{(1 - \lambda_i)^2} <f, v_i>^2_{\pi}$$
 
-
-Variance of mean simplified
+Again variance can be simplified:
 $$ var\left[\bar{X} \right] = \frac{1}{n} \sum_{i=2}^r\frac{1 + \lambda_i}{1 - \lambda_i} <f, v_i>^2_{\pi}$$
 
-Variance of mean with skipping
+Using the same reasoning as for simple case 
+
 $$ var\left[\bar{X}^k \right] = \frac{1}{n} \sum_{i=2}^r\frac{1 + \lambda_i^k}{1 - \lambda_i^k} <f, v_i>^2_{\pi}$$
 
 Function: variance of mean with skipping having fixed budget and payments (simplified)
 $$ f(k) = \frac{1}{\frac{B}{kC_1 + C_2}} \sum_{i=2}^r\frac{1 + \lambda_i^k}{1 - \lambda_i^k} <g, v_i>^2_{\pi}$$
 
-Function: variance of mean with skipping having fixed budget and payments (general case)
-$$ var\left[\bar{X} \right] = \frac{1}{n} \sum_{i=2}^r\frac{1-\lambda_i^2 - 2\frac{\lambda_i}{n} + 2\frac{\lambda_i^{n+1}}{n}}{(1 - \lambda_i)^2} <f, v_i>^2_{\pi}$$
+[put interpretation of the formula, correlation factor and so on].
+[put the graph]
+\subsection{Error prediction}
+
+However variance it is not the only source of the error. We should also consider bias: the difference between expected value of the estimator and the real value. We can then compute bias of the estimator $\hat{\mu}_{avg}$ as following:
+
+$$bias(\hat{\mu}_{avg}) = E[\hat{\mu}_{avg}] - \mu_{avg} = <f, \pi> - \mu_{avg}$$
+
+Then the mean squared error of the estimator, $MSE(\hat{\mu}_{avg})$, can be written with variance and bias as: 
+
+$$MSE(\hat{\mu}_{avg}) = bias(\hat{\mu}_{avg})^2 + var(\hat{\mu}_{avg})$$
+
+\section{Data}
+
+To validate our theoretical results we used different sources of the data. First, we used random graphs with values generated with the algorithm. 
+Then we used real network structures like part of Facebook \cite{Facebook}  and assigned values with the algorithm.
+
+The network structures where the nodes have some data are scares. But there are several sources like this: data from the Project 90\cite{Project90}, data from the project Add health\cite{Addhealth}. 
+
+\subsection{Data from the Project 90}
+Project 90 \cite{Project90} studied how the network structure influences on the HIV prevalence. Besides the data about social connection the study collected some data about drug user, such as race, gender, whether he/she is sex worker, pimp, sex work client, drug dealer, drug cook, thief, retired, housewife, disabled, unemployed, homeless.
 
 
+For our experiments we took the largest connect component from the available data, which consists from 4430 nodes and 18407 edges.
 
-$$ \sigma_{\hat{\mu}}^2(k) = \frac{\sigma^2}{\frac{B}{kC_1 + C_2}} \frac{1+\rho^{k}}{1-\rho^{k}}$$.
+On the figure \ref{fig:project90gender} you can see the graph structure built with the Gephi tool \cite{GEPHI}, where the attribute gender is depicted with color for every node.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=500px]{project90gender}
+    \caption{Graph from the Project 90 data. The colors of the node represent the gender: brown nodes correspond to the male participant, green nodes correspond to the female participants}
+    \label{fig:project90gender}
+\end{figure}
 
-$$  \sigma_{\hat{\mu}}^2(k) = \frac{1}{\frac{B}{kC_1 + C_2}} \sum_{i=2}^r\frac{1 + \lambda_i^k}{1 - \lambda_i^k} <g, v_i>^2_{\pi}$$
+\subsection{Data from the Add health project}
 
+The National Longitudinal Study of Adolescent to Adult Health (Add Health) is a huge study that began with surveying students from the 7-12 grades in the United States during 1994-1995 school year. The study kept on going survey student as they grow. The 
+data includes information about social, economic, psychological and physical status of the students and other. 
 
+The social network of students' connections was built based on the reported friends. Each of them was asked to provide the names of 0-5 male and 0-5 female friends.
 
-$$\sigma_{\hat{\mu}}^2 = \frac{\sigma^2}{n} \frac{1+\rho}{1-\rho}$$
+\subsection{Simulated form Gibbs distribution}
 
-$$\sigma_{\hat{\mu}}^2(k) = \frac{\sigma^2}{n} \frac{1+\rho^k}{1-\rho^k}$$
-
-
-\chapter{Results}
-
+\subsection{Experiments}
 
 \chapter{Comparing to other methods}
 
 We use mean as a estimator.
 Two commonly used estimators of sampling variance in RDS are the Salganik bootstrap estimator (SBE) and the Volz-Heckathon estimator (VHE). These estimators try to take into account the correlation between neighbors in the referral chain.
+
+
+Let $X_1, X_2, ..., X_n$ be all collected samples during RDS.
+Then RDS estimate $\mu_f$ of the population mean of $f$ is defined \cite{goel2010assessing} as
+$$\mu_f = \frac{1}{\sum\limits_{i=1}^n 1/degree(X_i)} \sum\limits_{i=1}^n \frac{f(X_i)}{degree(X_i)}$$
+
+
+Our estimator (sample mean):
+$$\mu_{f2} = \sum\limits_{i=1}^n \frac{f(X_i)}{n}$$
+
+Estimator $\mu_f$ indeed performs better than estimator $\mu_{f2}$ when values of the nodes depend on the degree of the node.
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=200px]{RGGdegree}
+    \caption{ RGG(200, 0.13), measuring degree}
+\end{figure}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=200px]{RGGfield}
+    \caption{ RGG(200, 0.13), measuring values }
+\end{figure}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=200px]{Pr90field}
+    \caption{ Project 90, measuring ??? race}
+\end{figure}
+
+
+As stated also \cite{goel2010assessing} the advantage to use estimtor1 appears only when the needed for estimation trait depends on the degree of the node. To support this statement they compare particularly the standard error of the sample mean and RDS estimate on the data sets from Project 90 and Add Health. The results are presented on the figure [put pictures]. 
+
+But why it so much better? Why it is so suspicious?
+Possible explanation: degree weights are used to correct the fact that we see high degree nodes more times. Then for sure, if the values are related to the degree of the node it is useful.
+But if not it may do worth? but... it should not 
+
+Another explanation: so we give less weight to the nodes with high degree. But If they are more representative (like in graph with Gibbs field)....?
+
+
+try: separate bias and variance
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=200px]{rdsVSmean}
+    \caption{ Comparison of standard error of RDS estimator and sample mean estimator on Project 90 data (left) and Add Health data (right)  \cite{goel2010assessing}}
+\end{figure}
 
 \chapter{Conclusion}
 

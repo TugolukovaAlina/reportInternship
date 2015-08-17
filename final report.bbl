@@ -5,6 +5,20 @@ Computer science university of maryland.
 \newblock \url{http://www.cs.umd.edu/hcil/science20}.
 \newblock Accessed: 2015-08-07.
 
+\bibitem{GEPHI}
+Gephi - the open graph viz platform.
+\newblock \url{http://gephi.github.io/}.
+
+\bibitem{Addhealth}
+The national longitudinal study of adolescent to adult health.
+\newblock \url{http://www.cpc.unc.edu/projects/addhealth}.
+\newblock Accessed: 2015-07-01.
+
+\bibitem{Project90}
+The office of population research at princeton university.
+\newblock \url{https://opr.princeton.edu/archive/p90/}.
+\newblock Accessed: 2015-07-01.
+
 \bibitem{bremaud2013markov}
 Pierre Br{\'e}maud.
 \newblock {\em Markov chains: Gibbs fields, Monte Carlo simulation, and
@@ -20,6 +34,12 @@ Nicholas~A Christakis and James~H Fowler.
 Krista~J Gile and Mark~S Handcock.
 \newblock Respondent-driven sampling: An assessment of current methodology.
 \newblock {\em Sociological methodology}, 40(1):285--327, 2010.
+
+\bibitem{gjoka2009walk}
+Minas Gjoka, Maciej Kurant, Carter~T Butts, and Athina Markopoulou.
+\newblock A walk in facebook: Uniform sampling of users in online social
+  networks.
+\newblock {\em arXiv preprint arXiv:0906.0060}, 2009.
 
 \bibitem{goel2009respondent}
 Sharad Goel and Matthew~J Salganik.
