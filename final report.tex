@@ -74,67 +74,56 @@ Giovanni \textsc{Neglia} % Supervisor's Name
 
 \end{titlepage}
 
-\chapter{Abstract}
+\chapter*{Introduction}
 
-\chapter{Introduction to the network sampling}
+We are living in the era of information when it is crucial to collect data, to be able to analyze them and draw potentially valuable conclusions. Particularly it is interesting to analyze network structures. The examples are: online-social networks, peer-to-peer networks, real social networks, hidden populations.
 
-\section{Motivation and challenges}
-
-We are living in the era of information when it is crucial to collect data, to be able to analyze them and draw potentially valuable conclusions. Particularly it is interesting to analyze network structures such as online-social networks (OSNs), peer-to-peer networks (P2P) or network of individuals.
-
-There can be variety reasons to collect information about the networks.
-
-For example, we can be interested in estimation of total number of peers in network or number of peers that satisfy needed characteristics. This information can be used in peer-to-peer protocols. For example, peer-to-peer protocol Viceroy needs to know number of nodes in network before including the new one in it (2). Some gossip based peer-to-peer protocols require knowledge about network size in order to disseminate information (2).
-
-OSNs possess huge amount of information about population that can be interesting for different areas of life: sociology, marketing, network engineering (3).
-
-Another example it is human networks.
-
-Unfortunately sampling such kind of structure is not always evident and easy. It is not always possible to identify all the nodes of the network in order to take representative subset of them for the analysis. 
+Online-social network are thriving nowadays. The most popular are: Google+ (around 1.6 billion users), Facebook (around 1.28 billion users), Twitter (around 645 million users), Instagram (around 300 million users), VK (around 250 million users), LinkedIn (around 200 million users). These networks gather a lot of valuable information like users interests, users characteristics, etc. Great part of it is in the free access. This information can facilitate the life to the sociologists and give them another instrument for the research.
 
 
-The simplest idea is to take node uniformly at random knowing the identity of all nodes in network (uniform sampling). This technique can provide us uniform choosing of nodes and independency of received samples. But here we can confront some problems.
+As well as it interesting to analyze the structure of network graph by itself it can be useful to study the connection between network structure and the characteristics of the users. It is frequently observed fact that friends tend to be similar interests. It can be the influence of your friend that you listen to the rock music or the opposite you both are fond of rock music and therefore you are friends. One way or another this property of sharing the common characteristics between people that are in contact is usually observed in the networks and is called \textit{\textbf{homophily}}.
 
-Having all these advantages of P2P networks, on the other side, it is not so easy to collect needed characteristics of network what is direct in centralized systems. Moreover, the P2P networks have distributed nature, what usually implies that no node maintains the knowledge of all topology. Nevertheless, even if P2P protocol assumes existing of such a node (like BitTorrent tracker in BitTorrent protocol) it is usually regarded as its weak side. 
+And actually sometimes it is the common interest that is in foundation of the network. Online social network Flixster can help to meet people with the similar tastes in movies, the Russian online social network Odnoklassniki helps people to find their old classmates. All people are also the members of the numerous real social networks like network of friends, business contacts, colleagues, lovers of board games etc.
 
-In social networks each user has ID. So having the whole list of IDs would perfectly fit to uniform sampling technique. However, the social network owners can hide information about all IDs due to their privacy policy. Moreover, some of the IDs can be not valid. 
+These property of gathering around similar interest can help to study such particular problem as hidden populations. Examples of hidden populations are drug users, sex workers, jazz musicians. The participants of the hidden population are hard to reach, it means that there is no easy and quick access to the members of these populations. But once the researcher knows some of them he can use this fact that probably they are in contact with another representatives of this population. The individuals of hidden populations from the network around their interest. In this way the subset of this population can be found by "crawling" this graph.
 
-Performing too much requests can be expensive in the meaning of resources (4). Rather than trying to find valid ID by random requests it can be more useful to choose small but representative set of nodes (3).
+The methods of sampling that use the contacts of individuals in order to find another members of the population are called \textit{\textbf{chain-referral methods}}.
 
-The other sampling techniques are based on random walking (crawling techniques). The network is regarded as a graph. The simplest method is called the Random Tour method, where probability to go from the node to each of his neighbor is equal. It is can be shown that probability distribution is not uniform. It is biased toward the nodes that have greater number of neighbors. 
+This way of sampling is different from uniform independent sampling. The homophily in the network plus the this fashion of sampling together increase the bias and variance of the estimators. 
 
-The other methods remove this bias by spending less time in the nodes with greater number of neighbors. Particularly, we will regard three methods: Maximum degree 
-method, Local degree method and Metropolis Hasting method. All crawling techniques work only on connected graphs while uniform sampling techniques can be applied even to disconnected. They also suffer from dependency of samples.
-
-Though this network structure brings difficulties at the same time it can (naturally suggest) help to collect data from the network using chain-referral methods.
-The one of such examples is sampling hidden populations(e.g., drug users).
-Being comfortable method for finding people for studies RDS introduces some additional difficulties comparing to simple random sampling. The most important is dependency of the samples.
-
-Then problem how to know variance (how to be able to say about confidence that result is correct).
+The structure of the report is following.
+In the chapter 1 we will introduce the current method of sampling hidden populations that is called respondent-driven sampling (RDS). We will discuss what are the problems and challenges related to this method. Next we will propose the enhancement of the current RDS method that we will study later.
+The chapter 2 will develop the mathematical model for studying RDS. Particularly we will introduce the model for controlling the level of homophily for the given network structure. Further using the built model we will find the exact expressions for variance and bias for existing RDS model and enhanced in order to compare them later.
+In the chapter 3, we will compare the performance of the currently used RDS method to our method. Also we will give some practical recommendations for the users of RDS.
 
 
-\section{Challenges}
-
-
-
-\section{Goals}
-\section{Contributions}
-
-The new idea to create network values in such a way that bla bla.
-This is general contribution that makes possible to create ... where we can control and mathematically studying properties that is very important for research purposes.
 
 \chapter{Respondent-driven sampling}
+
 \section{Motivation}
 
-In order to make correct estimates it is not enough to have just subset of individuals. We also have to know the probability of one particular individual to be selected. For example, by using telephone survey in order to collect information we automatically exclude some subsets of people (like homeless, poor) which can affect the correctness of the estimate because it is impossible to predict bias. 
+In order to make the statistical analysis about a particular population researchers need to find the representative subset of this population. After analyzing collected data they can produced the results generalized on the whole population.
 
-Examples of hidden populations: drug users, men who have sex with men, sex workers, illegal immigrants, participants in some social movements, homeless \cite{salganik2004sampling}
+However sometimes they can have difficulties in finding the subset of the some population. Examples can be the population of the drug users, or the men who have sex with men, or the sex workers, or illegal immigrants, or participants in some social movements, or homeless and so on \cite{salganik2004sampling}. The members of these populations are hard to find, they are not willing to participate in the research, that's why these populations are called \textit{hidden populations}.
+
+The reasons to study them can be various: studying the prevalence of HIV among the drug users can help to understand and control the spreading of the disease. [put papers that study HIV][why study jazz musicians about improvisation]
+
+
+
+[describe more these methods or remove the next paragraph]
+There are several existing solutions for sampling hidden population such as snowball sampling, targeted sampling, time-space sampling, key-informant sampling. The main disadvantage of all these methods is unknown bias and variance of obtained estimation.
+
+In order to collect samples from the hidden population some special technique were developed. The main challenge here is that the technique should assure that samples are collected with the same probability (or with the known probability). For example, using telephone survey in order to collect information would automatically exclude some subsets of people (like homeless, poor) that don't have telephone number. This fact can affect the correctness of the estimate because it is impossible to predict the bias. 
+
+Targeted sampling tries to 
+
+Another branch is chain-referral techniques.
+The researchers are using the fact that people tend to know each other when they have common interests. A jazz musician has a lot of reasons to know another jazz musicians: they may perform in the same clubs, they probably attend the same events, they may collaborate with each other and so on. The researcher use this fact in the following way. They find some representatives of hidden population and then they ask them to provide the contacts of another  member of this population.
+
+These methods of sampling the population are called chain-referral methods. On 
+
 
 Respondent-driven sampling is a technique for estimating traits in hidden population. It is widely used for studying prevalence of HIV/AIDS among injection drug users, sex workers, men who have sex with men.  
-
-Studying prevalence of disease can help to understand and control its spreading. Unfortunately, there are difficulties with such kind of research as there is no sampling frame and members of hidden groups may not want reveal themselves. 
-
-There are several existing solutions for sampling hidden population such as snowball sampling, targeted sampling, time-space sampling, key-informant sampling. The main disadvantage of all these methods is unknown bias and variance of obtained estimation.
 
 
 \section{Technique of respondent-driven sampling}
@@ -191,7 +180,7 @@ $$ \widehat{C}_{A, B} = \frac{r_{AB}}{r_{AA} + r_{AB}} $$
 
 $$ \widehat{C}_{B, A} = \frac{r_{BA}}{r_{BB} + r_{BA}} $$
 
-
+\section{Caution notes}
 \section{Enhanced RDS}
 
 \subsection{Comparison of RDS and independent uniform sampling}
@@ -335,14 +324,6 @@ In order to imitate the network structure
 
 There is number of different random networks that can imitate real networks. Erdos Renui for peer-to-peer networks. Random geometric graph for sensor networks [check from PFE report]. Others for community.
 \section{Network modeling}
-
-\subsection{Erdos-Renyi model}
-
-\subsection{Random geometric graph}
-
-\subsection{Preferential attachments model}
-
-\subsection{Small world}
 
 \section{Network with values}
 
@@ -1131,7 +1112,7 @@ On the figure \ref{fig:addhealthRace} represented the graph with 1996 nodes and 
 
 \subsection{Experiments}
 
-\chapter{Comparing to other methods}
+\chapter{Comparison to other methods}
 
 We use mean as a estimator.
 Two commonly used estimators of sampling variance in RDS are the Salganik bootstrap estimator (SBE) and the Volz-Heckathon estimator (VHE). These estimators try to take into account the correlation between neighbors in the referral chain.
@@ -1171,14 +1152,7 @@ Estimator $\mu_f$ indeed performs better than estimator $\mu_{f2}$ when values o
 
 As stated also \cite{goel2010assessing} the advantage to use estimtor1 appears only when the needed for estimation trait depends on the degree of the node. To support this statement they compare particularly the standard error of the sample mean and RDS estimate on the data sets from Project 90 and Add Health. The results are presented on the figure [put pictures]. 
 
-But why it so much better? Why it is so suspicious?
-Possible explanation: degree weights are used to correct the fact that we see high degree nodes more times. Then for sure, if the values are related to the degree of the node it is useful.
-But if not it may do worth? but... it should not 
 
-Another explanation: so we give less weight to the nodes with high degree. But If they are more representative (like in graph with Gibbs field)....?
-
-
-try: separate bias and variance
 
 \begin{figure}[h]
     \centering
@@ -1187,6 +1161,14 @@ try: separate bias and variance
 \end{figure}
 
 \chapter{Conclusion}
+
+\section{Contributions}
+
+
+The new idea to create network values in such a way that ....
+This is general contribution that makes possible to create ... where we can control and mathematically studying properties that is very important for research purposes.
+
+\section{Further study}
 
 
 \bibliographystyle{plain}
