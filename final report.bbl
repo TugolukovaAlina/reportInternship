@@ -9,6 +9,13 @@ Computer science university of maryland.
 Gephi - the open graph viz platform.
 \newblock \url{http://gephi.github.io/}.
 
+\bibitem{Addhealth2}
+Linton c. freeman, research professor, department of sociology and institute
+  for mathematical behavioral sciences school of social sciences, university of
+  california, irvine.
+\newblock \url{http://moreno.ss.uci.edu/data.html}.
+\newblock Accessed: 2015-07-01.
+
 \bibitem{Addhealth}
 The national longitudinal study of adolescent to adult health.
 \newblock \url{http://www.cpc.unc.edu/projects/addhealth}.
@@ -17,6 +24,11 @@ The national longitudinal study of adolescent to adult health.
 \bibitem{Project90}
 The office of population research at princeton university.
 \newblock \url{https://opr.princeton.edu/archive/p90/}.
+\newblock Accessed: 2015-07-01.
+
+\bibitem{Facebook}
+Stanford large network dataset collection.
+\newblock \url{https://snap.stanford.edu/data/}.
 \newblock Accessed: 2015-07-01.
 
 \bibitem{bremaud2013markov}
@@ -52,6 +64,13 @@ Sharad Goel and Matthew~J Salganik.
 \newblock {\em Proceedings of the National Academy of Sciences},
   107(15):6743--6747, 2010.
 
+\bibitem{heckathorn2003jazz}
+Douglas~D Heckathorn and Joan Jeffri.
+\newblock Jazz networks: Using respondent-driven sampling to study
+  stratification in two jazz musician communities.
+\newblock In {\em Unpublished paper presented at American Sociological
+  Association Annual Meeting}, 2003.
+
 \bibitem{kauffmann2007measurement}
 Bruno Kauffmann, Fran{\c{c}}ois Baccelli, Augustin Chaintreau, Vivek Mhatre,
   Konstantina Papagiannaki, and Christophe Diot.
@@ -60,11 +79,27 @@ Bruno Kauffmann, Fran{\c{c}}ois Baccelli, Augustin Chaintreau, Vivek Mhatre,
 \newblock In {\em INFOCOM 2007. 26th IEEE International Conference on Computer
   Communications. IEEE}, pages 1451--1459. IEEE, 2007.
 
+\bibitem{musyoki2015prevalence}
+Helgar Musyoki, Timothy~A Kellogg, Scott Geibel, Nicholas Muraguri, Jerry Okal,
+  Waimar Tun, H~Fisher Raymond, Sufia Dadabhai, Meredith Sheehy, and Andrea~A
+  Kim.
+\newblock Prevalence of hiv, sexually transmitted infections, and risk
+  behaviours among female sex workers in nairobi, kenya: Results of a
+  respondent driven sampling study.
+\newblock {\em AIDS and Behavior}, 19(1):46--58, 2015.
+
 \bibitem{pollard2013adolescent}
 Michael Pollard, Harold~D Green, David~P Kennedy, Myong-Hyun Go, and Joan~S
   Tucker.
 \newblock Adolescent friendship networks and trajectories of binge drinking.
 \newblock 2013.
+
+\bibitem{ramirez2005networks}
+Jesus Ramirez-Valles, Douglas~D Heckathorn, Raquel V{\'a}zquez, Rafael~M Diaz,
+  and Richard~T Campbell.
+\newblock From networks to populations: the development and application of
+  respondent-driven sampling among idus and latino gay men.
+\newblock {\em AIDS and Behavior}, 9(4):387--402, 2005.
 
 \bibitem{salganik2004sampling}
 Matthew~J Salganik and Douglas~D Heckathorn.

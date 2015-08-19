@@ -106,123 +106,168 @@ In order to make the statistical analysis about a particular population research
 
 However sometimes they can have difficulties in finding the subset of the some population. Examples can be the population of the drug users, or the men who have sex with men, or the sex workers, or illegal immigrants, or participants in some social movements, or homeless and so on \cite{salganik2004sampling}. The members of these populations are hard to find, they are not willing to participate in the research, that's why these populations are called \textit{hidden populations}.
 
-The reasons to study them can be various: studying the prevalence of HIV among the drug users can help to understand and control the spreading of the disease. [put papers that study HIV][why study jazz musicians about improvisation]
+The reasons to study them can be various. A lot of research is targeted on the studying the HIV prevalence among hidden populations like drug users, female sex workers \cite{musyoki2015prevalence}, gay men \cite{ramirez2005networks}. Studying the prevalence of HIV can help to understand and control the spreading of the disease. The study \cite{heckathorn2003jazz} was particularly exploring how the connections or the level of professional activity influence more on the income level.
 
 
 
 [describe more these methods or remove the next paragraph]
-There are several existing solutions for sampling hidden population such as snowball sampling, targeted sampling, time-space sampling, key-informant sampling. The main disadvantage of all these methods is unknown bias and variance of obtained estimation.
+There are several existing solutions for sampling hidden population such as snowball sampling, targeted sampling, time-space sampling, key-informant sampling. 
 
 In order to collect samples from the hidden population some special technique were developed. The main challenge here is that the technique should assure that samples are collected with the same probability (or with the known probability). For example, using telephone survey in order to collect information would automatically exclude some subsets of people (like homeless, poor) that don't have telephone number. This fact can affect the correctness of the estimate because it is impossible to predict the bias. 
 
-Targeted sampling tries to 
+Time-space sampling tries to solve this problem by sampling from different venue-time segments. Each venue-time segment is selected with probability based on the expected number of participants at this segment. However it is impossible to sample exhaustive list of all venue-time segments that results again in the  unknown bias of obtained estimation.
 
-Another branch is chain-referral techniques.
-The researchers are using the fact that people tend to know each other when they have common interests. A jazz musician has a lot of reasons to know another jazz musicians: they may perform in the same clubs, they probably attend the same events, they may collaborate with each other and so on. The researcher use this fact in the following way. They find some representatives of hidden population and then they ask them to provide the contacts of another  member of this population.
+Another approach to sample hidden population is using chain-referral techniques. The researchers benefit from the fact that people tend to know each other when they have common interests. A jazz musician has a lot of reasons to know another jazz musicians: they may perform in the same clubs, they probably attend the same events, they may collaborate with each other and so on. The researcher can find just several representatives of hidden population and then ask them to provide the contacts of another members of this population.
 
-These methods of sampling the population are called chain-referral methods. On 
-
-
-Respondent-driven sampling is a technique for estimating traits in hidden population. It is widely used for studying prevalence of HIV/AIDS among injection drug users, sex workers, men who have sex with men.  
+One particular chain-referral technique that is currently widely used for studying prevalence of HIV/AIDS among injection drug users, sex workers, men who have sex with men is called \textit{\textbf{respondent-driven sampling}} (RDS).
 
 
 \section{Technique of respondent-driven sampling}
-RDS begins with selecting group of initial participants that are called seeds. The procedure follows according to chain-referral model: each participant in study recruits another participants. The step is called wave. Both participating in the research and recruiting new participants are encouraged by financial incentive. The sampling continues in this way until needed size of participants is reached. During RDS participants are asked to report how many contacts they have.
+RDS begins with selecting group of initial participants that are called \textit{seeds}. The procedure follows according to chain-referral model: each participant in study recruits another participants. The step is called wave. Both participating in the research and recruiting new participants are encouraged by financial incentive. The sampling continues in this way until needed size of participants is reached. During RDS participants are asked to report how many contacts they have.
 This process enables to collect data for making statistical analysis.
 
-In order to study formally RDS can be regarded as Markov Chain.
-Assumptions:
+[write here about graph and random walk on the graph]
+In order to study formally RDS we will model the network of people as the graphs, where the nodes are presented by the individuals and the contact between two individuals is represented by the edge between the correspondent nodes. Then RDS can be regarded as random walk on the graph when the following assumptions are true:
 \begin{enumerate}
   \item Seeds are chosen proportionally to their degree in the network.  
   \item If individual $A$ knows individual $B$ than individual $B$ knows $A$ as well (network can be represented as undirected graph).
-  \item The same individual can be recruited multiple times (sampling with replacement.
+  \item The same individual can be recruited multiple times (sampling with replacement).
   \item The choice of contacts to recruit is uniformly at random.
-  \item Individuals know precisely their network degree. 
+  \item Individuals know and report precisely their network degree. 
   \item Each individual is reachable from each other individual (network is connected). 
 \end{enumerate}
 
 
-For this process stationary distribution is exactly distribution proportional to network degree. So first assumption guaranties that not only first but all samples during the process are taken with probability proportional to the degree of participants in the network. In \cite{salganik2004sampling} this assumption is considered to be reasonable as the people that are drawn as seeds are well-known people and they have usually more contacts than on average. Without this assumption first there should be performed enough number of waves until sample can be considered drawn from stationary distribution.
- simulation studies about assumptions violation(sensitivity) \cite{gile2010respondent}
+For this process stationary distribution is exactly distribution proportional to network degree. So first assumption guaranties that not only first but all samples during the process are taken with probability proportional to the degree of participants in the network. In \cite{salganik2004sampling} this assumption is considered to be reasonable as the people that are drawn as seeds are well-known people and they have usually more contacts than on average. Without this assumption first there should be performed enough number of waves until sample can be considered drawn from stationary distribution. 
 
-studies of variance
+Some of these assumptions are not so restrictive, like the second one. The other assumptions are arguable. The sensitivity of violation these assumptions were studied in \cite{gile2010respondent} with the simulation experiments. 
 
-In this way individuals with more friends (contacts) are more likely to be recruited. To correct this bias the responses from individuals are weighted according to their degree (number of contacts).
-Let $X_1, X_2, ..., X_n$ be all collected samples during RDS.
-Then estimate $\mu_f$ of the population mean of $f$ is defined \cite{goel2010assessing} as
-$$\mu_f = \frac{1}{\sum\limits_{i=1}^n 1/degree(X_i)} \sum\limits_{i=1}^n \frac{f(X_i)}{degree(X_i)}$$
 
-RDS can perform poorly if the groups of individuals form different communities. It is known fact that friends tend to have similar traits. This fact becomes a source of bias in chain-referral methods of sampling. Structure of network also affects a lot. In \cite{goel2009respondent} it is shown that 'bottlenecks' between different groups in hidden population increases variance of RDS estimator. They try RDS on network structure with communities, but where individuals, that are in contact with each other, do not have similar traits and showed that such structure indeed affects on RDS estimate. 
+\section{Current estimators}
 
-Design effect $d$ is variance of RDS estimate over variance of estimate obtained from simple random sampling (SRS). It means that if for SDS we need $n$ samples than to have RDS estimate with the same variance we need $dn$ samples. 
+Some unbiased estimators were developed in order to generalize the results on all population from the collected samples. We will look at some of them: Sample average (SA), Volz-Heckathon estimator (VHE) that was introduced in the paper \cite{goel2010assessing}  [check this] and estimator presented in the paper \cite{salganik2004sampling} that we will call Group estimator (GE). 
 
-It is known fact that people tend to be friends if they share some traits: have similar age, common language, the same university.
+\subsection{Sample average}
 
-Homophily - the tendency for individuals with similar attributes to be friends with one another.
-% not mine
-The fact that the majority of participants are recruited by other respondents and not by researchers makes RDS a successful method of data collection. However, the same feature also inherently complicates inference because it requires researchers to make assumptions about the recruitment
-process and the structure of the social network connecting the study population.
+Let $y_1, y_2, ..., y_n$ be all collected samples during RDS. The simplest estimator of the population mean it is just a samples average:
 
-\section{Estimator black and white}
+$$ \widehat{\mu}_{SA} = \frac{y_1 + y_2 + ... + y_n}{n}$$
 
-In \cite{salganik2004sampling} they introduce asymptotically unbiased estimator of the trait
+But this estimator is biased. In the way that sampling is performed the individuals with more contacts are more likely to be recruited. The probability to encounter the node on the step $i$ with the value $y_i$ is proportional to its degree $d_i$.
+So this estimator is biased towards the nodes with higher degrees.
 
-$$ \widehat{PP_A} = \frac{ \widehat{D}_B \cdot \widehat{C}_{B, A}}{ 
-\widehat{D}_A \cdot \widehat{C}_{A, B} + \widehat{D}_B \cdot \widehat{C}_{B, A}} $$
+ 
+\subsection{Volz-Heckathon estimator}
 
-where
+In the way that sampling is performed the individuals with more contacts are more likely to be recruited. To correct this bias the responses from individuals are weighted according to their number of contacts. Volz-Heckathon estimator corrects the bias toward the nodes with higher degrees in the following way.
+
+Let $y_1, y_2, ..., y_n$ be all collected samples during RDS. Let denote as $d_1, d_2, ..., d_n$ the number of contacts accordingly to the observed samples.
+Then estimate $\mu$ of the population mean is defined as:
+$$ \hat{\mu} = \frac{1}{\sum\limits_{i=1}^n 1/d_i} \sum\limits_{i=1}^n \frac{y_i}{d_i}$$
+
+It is shown that this estimator produces asymptotically unbiased results. [put the reference]
+
+\subsection{Group estimator}
+
+This estimator is targeted on the estimation of the percentage of population with certain characteristic. Let's say that the people from the group $A$ possess this characteristic and people from the group $B$ no. 
+
+Again each observed individual should report his number of contacts: $d_1, d_2, ..., d_n$ and whether he/she possess the asked trait. After collecting all the samples the total number of the representatives of the group $A$, denoted as $n_A$, and the total number of the representatives of the group $B$, denoted as $n_B$, are counted. 
+
+Then the estimators of the average number of contacts in the group $A$ and in the group $B$ are respectively:
 
 $$ \widehat{D}_A = \frac{n_A}{ \sum_{i=1}^{n_A} \frac{1}{d_i}} $$
 
 $$ \widehat{D}_B = \frac{n_B}{ \sum_{i=1}^{n_B} \frac{1}{d_i}} $$
 
+Observing the chain of recruitment the number of recruitment between and inside groups are counted. Let's denote $r_{AB}$ as number of rectuitments from the individual in the group $A$ to the individual in the group $B$, $r_{AA}$ as number of rectuitments from the individual in the group $A$ to the individual in the group $A$ and in the same way $r_{BB}$, $r_{BA}$.
+
+Then the estimates for the probability to hire person from the group $B$ by the person from the group $A$ and in the opposite way are respectively:
+
+
 $$ \widehat{C}_{A, B} = \frac{r_{AB}}{r_{AA} + r_{AB}} $$
 
 $$ \widehat{C}_{B, A} = \frac{r_{BA}}{r_{BB} + r_{BA}} $$
 
-\section{Caution notes}
-\section{Enhanced RDS}
+Finally the estimate of the fraction of population from the group $A$ is:
 
-\subsection{Comparison of RDS and independent uniform sampling}
-To understand what are the problems with respondent-driven sampling let's compare it with independent uniform sampling.
+$$ \widehat{PP_A} = \frac{ \widehat{D}_B \cdot \widehat{C}_{B, A}}{ 
+\widehat{D}_A \cdot \widehat{C}_{A, B} + \widehat{D}_B \cdot \widehat{C}_{B, A}} $$
 
+The prove that the Group estimator produces asymptotically unbiased results can be access in \cite{salganik2004sampling}.
+
+Let's note with the VHE it is also possible to estimate the percentage of the population with the given trait. If the $i$th observed sample obtain this trait then the value if $y_i$ should be set at 1, otherwise at 0.
+
+[to put may be that this is exactly VHE estimator if each person recruits exactly one person]
+
+\section{Problems of RDS}
+
+To understand what are the problems with respondent-driven sampling let's compare it with the "ideal" sampling: independent uniform sampling.
+
+First, let's look at the variance of the uniform sampling.
 Let $y_1, y_2, ..., y_n$ be the samples that are taken uniformly at random and all the samples are independent. Let's take the average value of the samples as an estimator of mean population value:
 
-$$ \widehat{\mu}_{avg} = \frac{y_1 + y_2 + ... + y_n}{n}$$
-This estimator is unbiased and its variance depends on the sample size $n$. Let $\sigma$ be the variance of the samples, then the variance of the estimator $ \widehat{\mu}_{avg}$:
+$$ \widehat{\mu}_{SA} = \frac{y_1 + y_2 + ... + y_n}{n}$$
+This estimator is unbiased and its variance depends on the sample size $n$. Let $\sigma$ be the variance of the samples, then the variance of the estimator $ \widehat{\mu}_{SA}$:
 
-$$ \sigma^2_{\hat{\mu}_{avg}} = var\left( \frac{y_1 + y_2 + ... + y_n}{n}\right)=\frac{1}{n^2} var(y_1 + y_2 + ... + y_n) =$$
+$$ \sigma^2_{\hat{\mu}_{SA}} = var\left( \frac{y_1 + y_2 + ... + y_n}{n}\right)=\frac{1}{n^2} var(y_1 + y_2 + ... + y_n) =$$
 
 $$= \frac{1}{n^2} \left(var(y_1) + var(y_2) + ... + var(y_n)\right)=\frac{1}{n^2} \left(\sigma^2 + \sigma^2 + ... + \sigma^2\right) = \frac{\sigma^2}{n}$$
 
-In this case the only thing that we can do in order to have better estimation is to increase sample size. We should try to take as much samples as possible. If each sample has a cost, then sample size is restricted by the budget of the research project. 
+In this case the only thing that we can do in order to have better estimation is to increase sample size. To have more precise result we should try to take as much samples as possible. If each sample has a cost, then sample size is restricted by the budget of the research project. 
+
+
+\subsection{RDS is not uniform}
 
 
 Of course the way we perform sampling it is not independent uniform sampling. 
-First, nodes are not sampled not uniformly. When each participant select another  participants with the same probability among his friends there is bias towards the nodes with high degrees. So the more contacts an individual has more probable he will be invited to participate in the study. In some cases, when we can control the probability of selecting the next participant we can achieve uniform sampling.
+First, nodes are not sampled not uniformly. When each participant select another  participants with the same probability among his friends there is bias towards the nodes with high degrees. So the more contacts an individual has more probable he will be invited to participate in the study. In some cases, when we can control the probability of selecting the next participant we can achieve uniform sampling even with random walk.
 
 The study \cite{gjoka2009walk} was using Metropolis-Hasting Random Walk to sample Facebook. This method requires information about user's degree and the degrees of all his neighbors. According to this information the selection probabilities are counted for all the friends and then one of them is selected by the computer.
 In Facebook it is feasible to do: with API requests needed information is collected and then probabilities to choose one of the user's friends are counted. Though this method gives us mechanism to sample uniformly even with random walk, it is not really possible in the situations where we can't control selection probabilities. Like in the case with hidden populations: it is individual who decides how to hire. 
 
-Another way to remove degree bias is by reweighing samples according to their degrees, what actually the V-H estimator does. 
+Another way to remove degree bias is by reweighing samples according to their degrees, what actually the VHE estimator does, we discussed this in the previous section. 
 
-Second, collected values are not independent. The participants $i$ and $i+1$ know each other, they can be friends, relatives or just acquaintances, so their traits can be dependent. The drug users may be in contact because they go to then same drug dealer and probably buy the same kind of drugs. 
+\subsection{RDS is not independent}
+Second, collected values are not independent. The participants $i$ and $i+1$ know each other, they can be friends, relatives or just acquaintances, so their values $y_i$ and $y_{i+1}$ can be dependent. The drug users may be in contact because they go to then same drug dealer and probably buy the same kind of drugs. 
+
+The tendency of people with connections to have the similar characteristics is called \textit{homophily}.
+
+And indeed we encounter often a homophily in the real situations. A lot of real networks demonstrate that the value on the node depends from the values of its neighboring nodes. For instance, the study \cite{christakis2007spread} is evaluating the influence of social connections (friends, relatives, siblings) on obesity of people. Interestingly, if a person has a friend who became obese during some fixed interval of time, the chances that this person can become obese are increased by 57\%. 
+
+Another study \cite{singla2008yes} that analyzes the data of users and their interactions in the MSN Messenger network found strong relation between users communication behavior (the number of messages exchanged, the total time of chatting, etc) and attributes such as age, gender and even query requests!
+
+On the figure \ref{fig:senators} the links present the similar votes of U. S. Senators during 2007. With the red labels representing Republicans, the blue labels representing Democrats, the brown labels representing two Independents we can vividly observe the homophily in this network.
 
 
-When the values $y_1, y_2, ..., y_n$ are collected with RDS, then the variance of estimator:
+\begin{figure}[t]
+    \centering
+    \includegraphics[height = 250px]{senate}
+    \caption{ Voting patterns of U. S. Senators during 2007 \cite{Senate}. The red labels represent Republicans, the blue labels represent Democrats, the brown labels represent two Independents.}
+    \label{fig:senators}
+\end{figure}
 
-$$ \sigma^2_{\hat{\mu}_{avg}} = var\left( \frac{y_1 + y_2 + ... + y_n}{n}\right)=\frac{1}{n^2} var(y_1 + y_2 + ... + y_n) =$$
+Therefore when the values $y_1, y_2, ..., y_n$ are collected with RDS, then the variance of estimator:
+
+$$ \sigma^2_{\hat{\mu}_{SA}} = var\left( \frac{y_1 + y_2 + ... + y_n}{n}\right)=\frac{1}{n^2} var(y_1 + y_2 + ... + y_n) =$$
 
 $$= \frac{1}{n^2} \left(\sum_{i = 1}^n var(y_i) + 2\sum_{i=1}^n \sum_{j=i+1}^n cov(y_i, y_j)\right)= \frac{\sigma^2}{n} + \frac{2\sum_{i=1}^n \sum_{j=i+1}^n cov(y_i, y_j)}{n^2} = $$
 $$ = \frac{\sigma^2}{n} \left(1 + \frac{2\sum_{i=1}^n \sum_{j=i+1}^n cov(y_i, y_j)}{n\sigma^2}\right) = \frac{\sigma^2}{n} \left(1 + \frac{2\sum_{i=1}^n \sum_{j=i+1}^n corr(y_i, y_j)}{n}\right)$$
 
 So variance of estimator is influenced by some correlation factor $f(n)$ where$f(n) > 1$, that depends on how much the values are correlated:
 
-$$ \sigma^2_{\hat{\mu}_{avg}} = \frac{\sigma^2}{n} f(n)$$
+$$ \sigma^2_{\hat{\mu}_{SA}} = \frac{\sigma^2}{n} f(n)$$
 
 On one hand, when we increase number of participants the factor $\sigma^2/n$ decreases, but there is also correlation factor $f(n)$. And then in order to improve estimation we could try reduce this correlation factor.
 
-\subsection{Modified RDS}
+In some literature as in  \cite{goel2010assessing} the ratio of the variance of RDS estimate to the variance of estimate obtained from independent uniform random sampling is called design effect, $d$. They warn the users of RDS: to have the same variance using independent uniform random sampling we need $n$ samples while using RDS need $dn$ samples. We can notice that the correlation factor $f(n)$ is exactly the design effect.
+
+
+\subsection{Other problems}
+
+RDS can perform poorly if the groups of individuals form different communities. In \cite{goel2009respondent} it is shown that 'bottlenecks' between different groups in hidden population increases variance of RDS estimator. They try RDS on network structure with communities, but where individuals, that are in contact with each other, do not have similar traits and showed that such structure indeed affects on RDS estimate. 
+
+
+\section{Enhanced RDS}
 
 We will state three observations. Combining them we will try to improve current RDS technique.
 
@@ -233,7 +278,7 @@ Because $f(n) \leq n$,  the bigger $n$ the less is sampling variance. The factor
 
 \paragraph{Observation 2} \textit{Just thinning of sample doesn't help}
 
-In order to reduce correlation between sampled values one could try to thin out sample. It means that instead of taking all collected values $y_1, y_2, ..., y_n$ into the estimation we can take only, let's say, each second value, $y_1, y_3, ..., y_n$. The samples $y_1, y_3, ..., y_n$ are less correlated, so we can expect some improvement. But what we observed experimentally (latter we showed it formally) that in general just discarding some samples with the fixed size of recruitment chain will not improve estimation. Experimental results are presented on the figure \ref{fig:observations} (a).
+In order to reduce correlation between sampled values one could try to thin out sample. It means that instead of taking all collected values $y_1, y_2, ..., y_n$ into the estimation we can take only, let's say, each second value, $y_1, y_3, ..., y_n$. The samples $y_1, y_3, ..., y_n$ are less correlated then all samples, thus we will reduce correlation factor $f(n)$, so we can expect some improvement. In the same by taking each second values we will degrees in two times the total number of samples. It is not clear if the correlation was reduced enough to compensate this fact. What we observed experimentally (latter we will show it formally) that in general just discarding some samples with the fixed size of recruitment chain will not improve estimation. Experimental results are presented on the figure \ref{fig:observations} (a).
 
 \paragraph{Observation 3} \textit{Skipping reduces variance}
 
@@ -265,19 +310,20 @@ What we propose lies in the middle. We keep the idea of skipping some values, th
 So among people that are willing to participate some of them will be asked both: to make tests (like blood test, questionnaire) and recruit another participants, let's call them \textit{participants} and some of them will be asked only to recruit other participants, let's call them \textit{informators}. As the informators make less efforts they will be payed less. 
 
 
-Let's say that each informator receives $C_1$  units of money and each participant receives $C_2$ units of money. The amount of money that we can spend on the research, the budget, is fixed and is denoted as $B$. 
+Let's say that each informator receives $C_1$  units of money and each participant receives $C_1 + C_2$ units of money. The amount of money that we can spend on the research, the budget, is fixed and is denoted as $B$. 
 Let $n$ be the length of the chain of all the recruitments (it means that informators and participants in total are $n$).
 
 Let parameter $k$ be the number of skipped samples in the chain between participants (it means that we take only each $k$th individual as a participant participant, the rest $k-1$ individuals are just informators).
 
-The reason to use informators is to try to reduce correlation by making bigger the distance between participants. If the informators were willing to do their job for free then, according to the third observation, we would try to have as more informators between participants as possible. But all the idea of respondent-driven sampling holds on the money incentives, without payment nobody will do anything. For this reason informators should be also payed, but less then actual participants. As we still spend part of the budget on informators the number of participants will decrease with increasing number of informators. 
+The reason to use informators is to try to reduce correlation by making bigger the distance between participants and therefore less correlation. If the informators were willing to do their job for free then, according to the third observation, we would try to have as more informators between participants as possible. But all the idea of respondent-driven sampling holds on the money incentives, without payment nobody will do anything. For this reason informators should be also payed, but less then actual participants. As we still spend part of the budget on informators the number of participants will decrease with increasing number of informators. 
 
 To understand better the idea, let's imagine that we have 60 euros budget, each informator is payed 2 euros, $C_1 = 2$\euro, each participant is payed 10 euros, $C_2 + C_1 = 10$\euro. On the figure you can see different scenarios of RDS for the same budget. 
-On the figure 1 $k = 1$. Everybody is participant and payed 10 euros. Then with our budget we can collect 6 samples that due to homophily can be highly correlated.
 
-On the figure 2 $k = 2$. It means that we take one participant, one informer, one participant and so on. We can see clearly that we went deeper in the network, the recruitment chain is longer. In this case on our budget we can collect only 5 samples, but they are less correlated than in the previous situation. 
+On the figure 1 the parameter $k$ is equal to 1. It means that everybody is participant and payed 10 euros. Then with our budget we can collect 6 samples that due to homophily can be highly correlated.
 
-Both scenarios require the same budget, so in the terms of money they are equal. But what is better 6 more correlated samples, or 5 but less correlated samples? That is the question that we are going to analyze. We will quantify the error depending on the number of samples that we skip $k-1$.
+On the figure 2 the parameter $k$ is equal to 2. It means that we take one participant, one informer, one participant and so on. We can see clearly that we went deeper in the network, the recruitment chain is longer. In this case on our budget we can collect only 5 samples, but they are less correlated than in the previous situation. 
+
+Both scenarios require the same budget, so in the terms of money they are equal. But what is better 6 more correlated samples, or 5 but less correlated samples? The better scenario is the one that will have the least error. If we are able to quantify the error depending on the number of samples that we skip $k-1$, we will be able to suggest the sampling method that will bring the most precise result. That is the question that we are going to analyze formally in the next chapter. 
  
 
 
@@ -289,9 +335,19 @@ Both scenarios require the same budget, so in the terms of money they are equal.
     \includegraphics[width=0.72\textwidth]{skipping1}
   \end{minipage}\hfill
   \begin{minipage}[c]{0.3\textwidth}
-    \caption{
-sd
-    }
+    
+		\caption{Scenario 1}
+		
+		\begin{tabular}{l c}
+  			Budget $B$ & 60\euro \\
+ 		    $C_1$ & 2\euro \\
+  		    $C_2$ & 8\euro \\
+  		    $k$   & 1 \\
+  		    Sample size  & 6 \\
+		    Chain size   & 6 \\
+		\end{tabular}	
+		
+    
   \end{minipage}
 \end{figure}
 
@@ -300,9 +356,16 @@ sd
     \includegraphics[width=0.72\textwidth]{skipping2}
   \end{minipage}\hfill
   \begin{minipage}[c]{0.3\textwidth}
-    \caption{
-sd
-    }
+    \caption{Scenario 2}
+		
+		\begin{tabular}{l c}
+  			Budget $B$ & 60\euro \\
+ 		    $C_1$ & 2\euro \\
+  		    $C_2$ & 8\euro \\
+  		    $k$   & 2 \\
+  		    Sample size  & 5 \\
+		    Chain size   & 9 \\
+		\end{tabular}	
   \end{minipage}
 \end{figure}
 
@@ -311,59 +374,55 @@ sd
     \includegraphics[width=0.72\textwidth]{skipping3}
   \end{minipage}\hfill
   \begin{minipage}[c]{0.3\textwidth}
-    \caption{
-sd
-    } 
+ 	\caption{Scenario 3}
+		
+		\begin{tabular}{l c}
+  			Budget $B$ & 60\euro \\
+ 		    $C_1$ & 2\euro \\
+  		    $C_2$ & 8\euro \\
+  		    $k$   & 3 \\
+  		    Sample size  & 4 \\
+		    Chain size   & 10 \\
+		\end{tabular}	
   \end{minipage}
 \end{figure}
 
 \chapter{Mathematical model}
 
-In order to imitate the network structure 
-
-
-There is number of different random networks that can imitate real networks. Erdos Renui for peer-to-peer networks. Random geometric graph for sensor networks [check from PFE report]. Others for community.
 \section{Network modeling}
+
+As it has been already mentioned we will model with the graph the network formed by the members of hidden population. The nodes of this graph correspond to the persons. The edge between to nodes represents the connection between corresponding persons.
+
+We have multiple possibilities to obtain graph structure. First, there are multiple available network structures that were collected from the real networks. Particularly the Stanford Large Network Dataset Collection \cite{Facebook} provide the data of online-social networks (we will use part of Facebook graph), collaboration networks,  web graphs, Internet peer-to-peer network and a lot of others.
+
+The other possibility is to use random graph theory to generate the random graph that will imitate the network structure. There is number of different random graphs. Particularly we used Erdos Renui graph, random geometric graph, preferential attachments graph.
 
 \section{Network with values}
 
 \subsection{Motivation}
 
-All the random graph models give us possibility to generate only the structure of a network. The next step is to generate the values on the nodes of the obtained graph which will represent some attribute. For instance, if we have a social network the attribute can be the age, gender of a user.  
+Each node should maintain the value of the attribute, that is going to be estimated. For instance, if we have a social network the attribute can be the age, gender of a user.  
+
+All the random graph models give us possibility to generate only the structure of a network. The next step is to generate the values on the nodes of the obtained graph which will represent needed attribute. 
 
 The simplest idea is to assign values randomly to the nodes independently of the graph structure. For example, we could assign the age of the user according to the uniform distribution or normal distribution or any distribution we want our attribute to be distributed. This approach has an explicit weakness: it does not take into account the homophily, the tendency of people with connections to have the similar characteristics.
 
-And indeed we encounter often a homophily in the real situations. A lot of real networks demonstrate that the value on the node depends from the values of its neighboring nodes. For instance, the study \cite{christakis2007spread} is evaluating the influence of social connections (friends, relatives, siblings) on obesity of people. Interestingly, if a person has a friend who became obese during some fixed interval of time, the chances that this person can become obese are increased by 57\%. 
+We already explained that this property is frequently encountered in the real networks.
 
-Another study \cite{singla2008yes} that analyzes the data of users and their interactions in the MSN Messenger network found strong relation between users communication behavior (the number of messages exchanged, the total time of chatting, etc) and attributes such as age, gender and even query requests!
-
-On the figure \ref{fig:senators} the links present the similar votes of U. S. Senators during 2007. With the red labels representing Republicans, the blue labels representing Democrats, the brown labels representing two Independents we can vividly observe the homophily in this network.
-
-
-\begin{figure}[t]
-    \centering
-    \includegraphics[height = 250px]{senate}
-    \caption{ Voting patterns of U. S. Senators during 2007 \cite{Senate}. The red labels represent Republicans, the blue labels represent Democrats, the brown labels represent two Independents.}
-    \label{fig:senators}
-\end{figure}
-
-
-The reason why we don't want to ignore homophily is because the way of performing sampling and the property of homophily together influence on the sampling variance. Further we will count formally the sampling variance for given network and attribute of the nodes.
+The reason why we don't want to ignore homophily is because the way of performing sampling and the property of homophily together influence on the sampling variance and bias. Further we will count formally the sampling variance for given network and attribute of the nodes.
 
 So for study purposes we would like to assign values to the nodes of the network in such a way that the value of the node depends on values of its neighbors.
 The other point is that the level of correlation can be different within the same network but for different attributes. 
 
+So moreover we would like to control the level of homophily in the network. 
+
 The study \cite{pollard2013adolescent} was investigating how the binge drinking is influenced by the position of student in the network of students. The students were labeled according to belonging to one the group: member of a bingering group, liasons, isoletes, etc. The researchers looked for the relation of the episodes of binge drinking per fixed period of time and the student's label. They found strong dependency while the students were young, but not when they became adults. So for the same network the different attributes: binge drinking in school and binge drinking after school have different level of dependency of the friend's behavior.
 
-Regarding what was said above we would like also to be able to tune the correlation in the network in the same way as we can tune the ??? density in Erdos-Renui graph. 
-
-
-
- 
+Regarding what was said above we would like also to be able to tune the correlation in the network. For this reason the next technique was developed.
  
 \subsection{Definitions}
 
-We have graph with $n$ nodes. To each node $i$ will be assigned random value $X_i$ from the set $V, V = \lbrace 1, 2, 3, ..., k \rbrace$. 
+We have graph with $n$ nodes. To each node $i$ will be assigned random value $X_i$ from the set of values $V, V = \lbrace 1, 2, 3, ..., k \rbrace$. 
 
 Instead of looking on distributions of the values on nodes independently, we will look at the joint distribution of values on all the nodes. The distribution should take into account the values of the node's neighbors as well.
 
@@ -371,7 +430,7 @@ Let's denote $(X_1, X_2, ..., X_n)$ as $\bar{X}$. We will call $\bar{X}$ as a ra
 
 For simplicity, instead of writing $p(X_1 = x_1, X_2 = x_2, ...,  X_n = x_n)$ where $x_1, x_2, ..., x_n \in V$ we will write $p(\bar{X} = \bar{x})$ or just $p(\bar{x})$.
 
-For each possible configuration $\bar{x}$ we will associate the number that is called global energy of the graph and is counted in the following way:
+For each possible configuration $\bar{x}$ we will associate the number that is called global energy of the graph that is counted in the following way:
 
 $$ \varepsilon (\bar{x}) =  \sum\limits_{i \sim j, i \leq j} (x_i - x_j)^2  $$
 
@@ -398,9 +457,10 @@ p(\bar{x}) = \frac{ e^{-\frac{ \varepsilon (\bar{x})}{T}} }{ \sum\limits_{\bar{x
 where $T$ is temperature, $T > 0$.
 
 
-The reason why it is interesting to look at this distribution follows from the theorem [Theorem 2.1, p. 260], \cite{bremaud2013markov}. When random field has distribution [reference on the formula] then the probability that the node has particular value depends on the values of its neighboring nodes.
+The reason why it is interesting to look at this distribution follows from the theorem [Theorem 2.1, p. 260], \cite{bremaud2013markov}. When random field has distribution \ref{eq:gibbsdistr} then the probability that the node has particular value depends only on the values of its neighboring nodes and does not depend on the values of all other nodes.
 
-This means that for particular node $i$ whatever the values are assign to the vertices  probability that it will have values from the $V$:
+Let's denote $N_i$ as the set of neighbors of the node $i$. If the $L$ is the subset of nodes then $X_{L}$ will denote the set of random variables of the corresponding nodes. 
+The the last property can be formulated in the following way:
 
 $$ p(X_i = x_i | X_{N_i} = x_{N_i}) = p(X_i = x_i | X_{V \setminus i} = x_{V\setminus i}) $$
 
@@ -410,20 +470,17 @@ Moreover for each node $i$, knowing values of its neighbors, we can write the di
 
 $$ p(X_i = x_i) = \frac{ e^{-\frac{\varepsilon_i(x_i)}{T}} }{ \sum\limits_{x'\in V} e^{-\frac{\varepsilon_i(x')}{T}}} $$
 
-The temperature parameter $T$ is very important, it plays the role of the tuner of the correlation level in the network. Later we will show some examples for better understanding. 
+The temperature parameter $T$ is very important. It plays the role of the tuner of the correlation level in the network. Later we will show some examples for better understanding. 
 
-not mine: it favors states of small energy, especially when the temperature is small.
-
-[maybe write about standard application for image processing]
 
 Gibbs distribution found many interesting applications in real-world problems. Particularly it lies in the basement of the proposed in \cite{kauffmann2007measurement} distributed algorithm for channel selection of the Access Points. The channels should be selected in such way that interference in the network is minimized. 
 
 \subsection{Algorithm} 
 
 Practically speaking direct sampling from the distribution \ref{eq:gibbsdistr} is not so easy. Let's just notice that the number of possible configuration $\bar{x}$ is $|V|^n$, where $|V|$ is size of the values set and $n$ is number of the nodes in graph, as to each from $n$ nodes we need to assign the value from the set $V$. 
-In this way for the graph with just 100 nodes and 10 possible values it would take .... to sample.  
+In this way for the graph with just 100 nodes and 10 possible values it would be impossible to sample.  
 
-In order to produce samples from this distribution we are using Gibbs sampler. The idea of Gibbs sampler is to change the configuration $\bar{x}$ with time $k$: $ \bar{x}^k $.
+In order to produce samples from this distribution we are using Gibbs sampler. The idea of Gibbs sampler is to change the configuration $\bar{x}$ with time $k$, we will denote the configuration at the time $k$ as $ \bar{x}^k $.
 From the book \cite{bremaud2013markov} the $ {\bar{x}^k}_{k > 0}$ is regarded as Markov Chain where
 probability.
 
@@ -469,6 +526,10 @@ With different values the node $A$ will have different local energy. Let's summa
 	\hline 4 & 11 \\ 
 	\hline 5 & 21 \\  
 \end{tabular} \end{center}
+
+[and write about connection with energy]
+When the temperature is small the values of the nodes are highly correlated. The nodes prefer to take values that minimize their local energy, the probability that the node will take value that is very low. With increasing temperature the values of the nodes become more random. The nodes still favor but , but there is also not little probability to take some other random value. 
+
 
 As we said the values that bring node to small local energy are favorable. In this example, the highest probability will be for the values 3. 
 
@@ -1170,6 +1231,11 @@ This is general contribution that makes possible to create ... where we can cont
 
 \section{Further study}
 
+to correct:
+- cautions notes 
+- change n on m in the enhanced RDS
+- put explanation about homophily before
+- rename V as P
 
 \bibliographystyle{plain}
 \bibliography{rds}
