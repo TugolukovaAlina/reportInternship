@@ -9,7 +9,9 @@
 \usepackage{amsmath}
 
 \graphicspath{ {images/} }
-
+\usepackage{xcolor}
+\newcommand\myworries[1]{\textcolor{red}{#1}}
+%\renewcommand\myworries[1]{}
 
 \begin{document}
 
@@ -73,6 +75,8 @@ Giovanni \textsc{Neglia} % Supervisor's Name
 \vfill % Fill the rest of the page with whitespace
 
 \end{titlepage}
+
+\tableofcontents
 
 \chapter*{Introduction}
 
@@ -439,7 +443,7 @@ where $i \sim j$ means that the nodes $i$ and $j$ are neighbors in the graph.
 
 Let's turn our attention to the one node $i$. We will define local energy on the node $i$ as:
 
-$$ \varepsilon_i = \sum\limits_{j | i \sim j}  (x_i - x_j)^2 $$  
+$$ \varepsilon_i (x_i) = \sum\limits_{j | i \sim j}  (x_i - x_j)^2 $$  
 
 Then we can rewrite the expression of the global energy knowing the local energies on all the nodes:
 
@@ -462,7 +466,7 @@ The reason why it is interesting to look at this distribution follows from the t
 Let's denote $N_i$ as the set of neighbors of the node $i$. If the $L$ is the subset of nodes then $X_{L}$ will denote the set of random variables of the corresponding nodes. 
 The the last property can be formulated in the following way:
 
-$$ p(X_i = x_i | X_{N_i} = x_{N_i}) = p(X_i = x_i | X_{V \setminus i} = x_{V\setminus i}) $$
+$$ p(X_i = x_i | X_{N_i} = x_{N_i}) = p(X_i = x_i | X_{\lbrace 1, 2, ..., n\rbrace \setminus i} = x_{\lbrace 1, 2, ..., n \rbrace \setminus i}) $$
 
 This property is called Markov property.
 
@@ -470,22 +474,25 @@ Moreover for each node $i$, knowing values of its neighbors, we can write the di
 
 $$ p(X_i = x_i) = \frac{ e^{-\frac{\varepsilon_i(x_i)}{T}} }{ \sum\limits_{x'\in V} e^{-\frac{\varepsilon_i(x')}{T}}} $$
 
-The temperature parameter $T$ is very important. It plays the role of the tuner of the correlation level in the network. Later we will show some examples for better understanding. 
+The temperature parameter $T$ plays very important role of the tuner of the correlation level in the network. Later we will show some examples for better understanding. 
 
 
 Gibbs distribution found many interesting applications in real-world problems. Particularly it lies in the basement of the proposed in \cite{kauffmann2007measurement} distributed algorithm for channel selection of the Access Points. The channels should be selected in such way that interference in the network is minimized. 
 
 \subsection{Algorithm} 
-
+\label{subsec:Algorithm}
 Practically speaking direct sampling from the distribution \ref{eq:gibbsdistr} is not so easy. Let's just notice that the number of possible configuration $\bar{x}$ is $|V|^n$, where $|V|$ is size of the values set and $n$ is number of the nodes in graph, as to each from $n$ nodes we need to assign the value from the set $V$. 
-In this way for the graph with just 100 nodes and 10 possible values it would be impossible to sample.  
+In this way for the graph with just 100 nodes and 10 possible values it would make up $10^{100}$ possible configurations. Then probability for each of $10^{100}$ possible configurations should be counted, which would require huge precision from the computer to be able to sample from derived distribution.
 
-In order to produce samples from this distribution we are using Gibbs sampler. The idea of Gibbs sampler is to change the configuration $\bar{x}$ with time $k$, we will denote the configuration at the time $k$ as $ \bar{x}^k $.
-From the book \cite{bremaud2013markov} the $ {\bar{x}^k}_{k > 0}$ is regarded as Markov Chain where
-probability.
+In order to produce samples from this distribution we are using Gibbs sampler \cite{bremaud2013markov}. 
 
-The stationary distribution of this Markov Chain is exactly \ref{eq:gibbsdistr}.
-Following algorithm after enough amount of step will produce a sample from the distribution \ref{eq:gibbsdistr}.
+Let's regard each configuration $\bar{x}$ as as a state of the Markov chain. Let's denote as $ \bar{x}^k $ the state at the step $k$. There is positive probability to transit form one state to another if the corresponding configurations differ only in the value of one node and the values of all other nodes are the same. Let's take two configurations $(x_1, x_2, ... x_i, ..., x_n)$ and $(x_1, x_2, ... x_i', ..., x_n)$ which differ only in the value of the node $i$. Whatever the value was on the node $i$ in the first configuration the probability to transfer form the first state to the second is:
+
+$$\frac{ e^{-\frac{\varepsilon_i(x_i')}{T}} }{ \sum\limits_{x'\in V} e^{-\frac{\varepsilon_i(x')}{T}}} $$
+
+Interestingly, the stationary distribution of this Markov Chain is exactly \ref{eq:gibbsdistr}.
+
+Therefore following algorithm after converging will produce a sample from the distribution \ref{eq:gibbsdistr}.
 
 \begin{enumerate}
   \item Create random configuration of properties on all nodes.
@@ -496,47 +503,53 @@ Following algorithm after enough amount of step will produce a sample from the d
 		\item visiting each node consequently (periodic Gibbs sampler)
  	 \end{itemize}
   
-  \item For each value $x \in P$ count the local energy on chosen node $i$ as 
-  $$ E_i(x) = \sum\limits_{j | i \sim j}  (x - x_j)^2 $$  
+  \item For each value $x \in V$ count the local energy on chosen node $i$ as 
+  $$ \varepsilon_i(x) = \sum\limits_{j | i \sim j}  (x - x_j)^2 $$  
   
   \item Choose a new value $x_i$ according to probability
   
-  $$ \frac{ e^{-\frac{E_i(x)}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{E_i(x')}{T}}} $$
+  \begin{equation}
+ 	 \frac{ e^{-\frac{\varepsilon_i(x_i)}{T}} }{ \sum\limits_{x'\in V} e^{-\frac{\varepsilon_i(x')}{T}}} 
+ \label{eq:distrNode}
+  \end{equation}
+  
+  
   
 	where $T$ is temperature.
 \item Continue 2-3 needed number of iterations.
 \end{enumerate}
 
 
-
-
-
 \subsection{Explanatory example} 
 
-Let's say that we have the graph to which nodes we want to assign values $1, 2, 3, 4, 5$. Now let's look only at the vertex $A$ its neighbors $B, C, D, E$ which have assigned values $1, 5, 3, 4$. And now it is turn of $A$ to chose a value.
+To understand the influence of the temperature on the value distribution \ref{eq:distrNode} we will look at the following example.
 
-With different values the node $A$ will have different local energy. Let's summarize it in the table [reference].
+Let's say that we have the graph to which nodes we want to assign values $1, 2, 3, 4, 5$. Now let's look only at the vertex $A$ its neighbors $B, C, D, E$ which have assigned values $1, 5, 3, 4$ respectively (figure \ref{fig:nodeA}). And now it is turn of $A$ to choose a value.
 
-[to transpose]
-\begin{center} \begin{tabular}{ c | c } 
-	Value & Energy \\ 
-	\hline 1 & 29  \\ 
-	\hline 2 & 15 \\ 
-	\hline 3 & 9 \\ 
-	\hline 4 & 11 \\ 
-	\hline 5 & 21 \\  
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=100px]{GibbsVertexExample}
+    \caption{ Node $A$ and his neighbors }
+    \label{fig:nodeA}
+\end{figure}
+
+With different values the node $A$ will have different local energy. Let's summarize it in the table.
+  
+\begin{center} \begin{tabular}{ | l || c | c | c | c | c | } 
+    \hline 
+	       \textbf{Value on the node $A$} &  1 & 2  & 3 & 4  & 5\\ 
+	\hline \textbf{Corresponding energy}  & 29 & 15 & 9 & 11 & 21\\  
+	\hline 
 \end{tabular} \end{center}
 
-[and write about connection with energy]
-When the temperature is small the values of the nodes are highly correlated. The nodes prefer to take values that minimize their local energy, the probability that the node will take value that is very low. With increasing temperature the values of the nodes become more random. The nodes still favor but , but there is also not little probability to take some other random value. 
+We can see that with different values the local energy on the node $A$ will be different. And according to the distribution \ref{eq:distrNode} the values that bring low energy is more preferable: the less is the energy that causes particular value the more probable it will be chosen. In this example the lowest temperature corresponds to the values $3$, so it will the highest chance to be picked.
 
 
-As we said the values that bring node to small local energy are favorable. In this example, the highest probability will be for the values 3. 
+It is not only the energy that influences on the distribution \ref{eq:distrNode}. There is also temperature parameter $T$. To feel the impact of temperature we will present the distribution of values for different temperature $T$ in the next table.
 
-But also we have temperature parameter $T$. To feel the impact of temperature we will present the distribution of values for different values of $T$. in the next table.
-
-\begin{center} \begin{tabular}{ l | c | c | c | c | c } 
-	Temperature & $p(A = 1)$ & $p(A = 2)$ & $p(A = 3)$ & $p(A = 4)$ & $p(A = 5)$ \\ 
+\begin{center} \begin{tabular}{ l || c | c | c | c | c } 
+	\textbf{Temperature} & $p(A = 1)$ & $p(A = 2)$ & $p(A = 3)$ & $p(A = 4)$ & $p(A = 5)$ \\ 
+\hline
 	\hline 0.1  &	0.0000  &  0.0000  &  1.0000  &  0.0000  &  0.0000 \\ 
 	\hline 1	&   0.0000  &  0.0022  &  0.8789  &  0.1189  &  0.0000 \\ 
 	\hline 10   &	0.0483  &  0.1957  &  0.3566  &  0.2920  &  0.1074 \\ 
@@ -544,23 +557,17 @@ But also we have temperature parameter $T$. To feel the impact of temperature we
 	\hline 10000&   0.1998  &  0.2000  &  0.2002  &  0.2001  &  0.1999 \\  
 \end{tabular} \end{center}
 
-We can see that when the temperature is $0.1$ the probability to choose the value 3 is 1. And when the temperature is really high the choose of value will not almost depend on the values of its neighbors. 
-That confirms that the distribution favors the values that bring local energy of the node to minimal.
+We can see that when the temperature is $0.1$ the probability to choose the value 3, that has the lowest energy, is 1. So the values of the neighbors $B, C, D, E$ indeed impact a lot on the value of the node $A$. In this case, the value of $A$ is dictated by the values of its neighbors. This is exactly what we wanted to achieve: that characteristic of the person is influenced by its contacts. However we may want to have such dependency but not so high.
 
-To understand this better let's look at the node $i$ [put the figure and reference to it].
-$$ $$
+We can try to play with the temperature parameter. As the temperature increases we can observe more "randomness". Thus when the temperature is $1$ the value $3$ is still very probable, but there is also some positive probability that values $2, 4$ will be picked. And the more we increase temperature the higher becomes probability to choose the value different from 3. We can interpret this as the person still depends on the connections but  he has some "free choice".
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[height=100px]{GibbsVertexExample}
-    \caption{ Preferential attachment graph with 200 vertices, 1 link for new arriving node and values $[1, ..., 5]$ }
-\end{figure}
+When the temperature is really high the choice of value will not almost depend on the values of its neighbors. 
 
+With this example we observed that the distribution favors the values that bring local energy of the node to minimal and the lower the temperature is the more favorable they are. So the higher is temperature the less is the decency between value of the person from his contacts.
 
-%\section{Simulations} 
 \subsection{Demonstration of random graphs with values}
 
-In order to show that chosen model has sense first we will show the generated graphs with values to see the result visually and then we will look at the ways to measure level of values dependency in the graph.
+In order to demonstrate that proposed model works first we will show the generated graphs with values to see the result visually and then we will look at the ways to measure level of values dependency in the graph.
 
 On the figure \ref{fig:testGibbs} presented the same random geometric graph with 200 nodes and radius 0.13, $RGG(200, 0.13)$ where the values $V = \lbrace 1, 2, ..., 5 \rbrace$ are chosen according to the Gibbs distribution. The values are depicted on the pictures as colors.
 
@@ -597,10 +604,15 @@ On the figure \ref{fig:testGibbs} presented the same random geometric graph with
 
 From the pictures we can observe that the level of dependency between values of the node changes with different temperature. When temperature is 1 we can distinctly distinguish clusters . With increasing temperature, 5 and 20, the values of neighbors are still similar but with more and more variability. When temperature is very high then the values seem to be assigned randomly.
 
+\myworries{the correlation of the gibbs field??? maybe to put but then say that it is not the same}
+
 In order to give more formal illustration we can look at the correlation between values of the nodes that we see during the random walk on the graph.
 
-Let's denote as $Y_0, Y_1, ..., Y_i, ...$  the random nodes that we observe during the random walk. The value on the node $Y_i$ we will denote as $f(Y_i)$.  Let's say that we start random walk with stationary distribution. Then covariance between  two values $f(Y_i)$ and $f(Y_{i+k})$ depends only on the distance $k$ in the sequence $Y_0, Y_1, ..., Y_i, ..., Y_{i+k}, ...$ between them:
+Let's denote as $Y_0, Y_1, ..., Y_i, ...$  the sequence of values on the nodes that we observe during the random walk. Let's say that we start random walk with stationary distribution, so the values $Y_0, Y_1, ..., Y_i, ...$ have the same stationary distribution. Then covariance between  two values $Y_i$ and $Y_{i+k}$ depends only on the distance $k$ in the sequence $Y_0, Y_1, ..., Y_i, ..., Y_{i+k}, ...$ between them:
 $$cov(f(Y_i), f(Y_{i+k})) = cov(f(Y_0), f(Y_k))$$
+
+\myworries{explain why}
+
 On the figure \ref{fig:testGibbsCorr} we present correlation between values depending on this distance $k$ for the graphs shown above. In this way we can assure us that the higher is temperature the less correlated values of neighbors are.
 
 \begin{figure}[t]
@@ -637,9 +649,13 @@ On the figure \ref{fig:testGibbsCorr} we present correlation between values depe
 
 \subsection{Motivation}
 
-The question that is still not clear in the algorithm is when to stop it. How many steps are enough to perform in order to claim that achieved configuration is indeed sampled from the Gibbs distribution?
+The question that is still not clear about the algorithm is when to stop it. How many steps are enough to perform in order to claim that achieved configuration is indeed sampled from the Gibbs distribution?
+In order to answer this question we should try to understand if we can detect somehow that the process described in the subsection\ref{subsec:Algorithm} has reached its stationary state.
 
-Let's look as global energy of the graph is changing during the steps of algorithm. For each configuration $\bar{x}$ we can count the global energy of the graph as:
+For this purpose we can try to use the notion of the global energy that can be counted for each configuration. Maybe it can signalize us when it is save to stop the algorithm.
+
+ 
+Let's look how the global energy of the graph is changing during the steps of algorithm. For each configuration $\bar{x}$ t the global energy of the graph is:
 
 $$ \varepsilon (\bar{x}) =  \sum\limits_{i \sim j, i \leq j} (x_i - x_j)^2  $$
 
@@ -664,15 +680,18 @@ $$ \varepsilon (\bar{x}) =  \sum\limits_{i \sim j, i \leq j} (x_i - x_j)^2  $$
     \label{fig:energyWithTime}
 \end{figure}
 
-First values are assigned to all nodes uniformly from all possible values. We can observe on the figure \ref{fig:energyWithTime} that the energy is high. As values on the nodes are changing according to Gibbs sampling the energy decreases (with some variation). After about 200 steps (it means that up to this time each node updated its state once) we can see that the changes of energy do not exceed some thresholds. So after some time energy comes to some value, stabilizes and does not change a lot. Knowledge about this expected value and its variation can indicate us when it is time to finish the algorithm. 
+For each iteration of the algorithm when the configuration is changed the global energy is counted. The results are presented on the figure \ref{fig:energyWithTime} .
+
+
+At the beginning of the algorithm values are assigned to all nodes uniformly from all possible values. We can observe on the figure \ref{fig:energyWithTime} that the energy for this first random configuration is the highest. As values on the nodes are changing according to Gibbs sampling the energy decreases (with some variation). After about 200 steps (it means that up to this time each node updated its state once) we can see that the changes of energy do not exceed some thresholds. So after some time energy comes to some value, stabilizes and does not change a lot. We will call this value as \textbf{\textit{expected global energy}}. Knowledge about this value and its variation can indicate us when it is time to finish the algorithm. 
  
  
 
 There is another reason why we would like to predict energy.
-We saw previously that varying temperature $T$ we can change how strongly values of the neighbors are related: low temperature brings high correlation of values and high temperature brings almost random assignment of values. However it is impossible to use only temperature $T$ as a metric of values correlation. Temperature by itself does contain a lot of information. For the graph RGG(200, 0.13) the temperature 200 we can consider as high (because values are not really correlated) but for the graph RGG(2000, 0.06) it is not the case. We can't judge the level of correlation only by temperature, we should take into account number of nodes, number of edges, structure of graph, possible values that can be assigned to nodes as well. 
+We saw previously that by varying the temperature $T$ we can change how strongly values of the neighbors are related: low temperature brings high correlation of values and high temperature brings almost random assignment of values. However it is impossible to use only temperature $T$ as a metric of values correlation. Temperature by itself does contain a lot of information. For the graph RGG(200, 0.13) the temperature 200 we can consider as high (because values are not really correlated) but for the graph RGG(2000, 0.06) it is not the case. We can't judge the level of correlation only by temperature, we should take into account number of nodes, number of edges, structure of graph, possible values that can be assigned to nodes as well. 
 
 
-On the figure \ref{fig:energyWithTime} we can see that starting from the same energy there is different expected global energy and its variation for different temperature. So we see that we start at the maximum energy and then come to its expected value for the fixed temperature.
+That's why we need another metric. And again the knowledge about expected global energy can help us. On the figure \ref{fig:energyWithTime} we can see two illustrations of energy changing with time for different temperature. Moreover for different temperature there is different expected global energy (and the its variance is also different). On the both pictures starting from the same initial configuration but applying the algorithm with different temperatures we come to different expected energy.
 
 Then the more appropriate metric can be following number: in how much times energy decreases from its initial value (that corresponds to the random configuration) to its stable value (the one that we want to be able to predict).
 
@@ -683,49 +702,70 @@ For this purpose we were interested in finding dependency of the global energy f
 
 \subsection{Analysis}
 
-We would like to know the expected value of the global energy. 
-If expected energy is known it can help detect convergence and indicate when it is time to stop running algorithm. 
+For the reasons discussed above we would like to know the expected value of the global energy. 
 
+Let the random variable $ \varepsilon (\bar{X})$ be total energy of the graph with random field $\bar{X} = (X_1, X_2, ..., X_n)$. We can write expected energy by definition as:
 
-We can write expected energy by definition as
-
-\begin{equation}
-E[\varepsilon (\bar{x})] = \sum\limits_{\bar{x}} p(\bar{x}) \cdot \varepsilon(\bar{x})
-\end{equation}\label{eq:expEnergy}
+\begin{equation}\label{eq:expEnergy}
+E[\varepsilon (\bar{X})] = \sum\limits_{\bar{x}} p(\bar{x}) \cdot \varepsilon(\bar{x})
+\end{equation}
 
 
 where probability of one particular configuration $\bar{x}$ is  
 
-\begin{equation}
+\begin{equation}\label{eq:prob}
 p(\bar{x}) = \frac{ e^{-\frac{ \varepsilon (\bar{x})}{T}} }{ \sum\limits_{\bar{x}'\in |V|^n} e^{-\frac{\varepsilon(\bar{x}')}{T}}} 
-\end{equation}\label{eq:prob}
+\end{equation}
 
-Both in \ref{eq:expEnergy} and in \ref{eq:expEnergy} formulas summation is over all possible configurations and the number of all possible configuration is huge, $|V|^n$. One of the ways to calculate such kind of expressions would be following: use Gibbs sampling, run the algorithm until convergence large enough amount of times, average the result. But actually it is the opposite of what we are trying to do. In this way we can build empirical expected energy dependency of the temperature. Simulations can take a lot of times. But actually I wanted to have an explicit formula.
+Both in \ref{eq:expEnergy} and in \ref{eq:prob} formulas summation is over all possible configurations and the number of all possible configuration is huge, $|V|^n$. One of the ways to calculate such kind of expressions would be following: using Gibbs sampling, run the algorithm until convergence large enough amount of times, and then average the result. But actually it is the opposite of what we are trying to do. In this way we can build empirical dependency of expected energy from the temperature. But to have these empirical results we need to perform the algorithm large amount of times and for different temperature. Such simulations can take a lot of time, especially because we don't know when it is safe to stop algorithm. So actually we would like to have some theoretical results (at least approximated, just to have a notion about energy dependency from the temperature).
 
-Let $ \varepsilon (\bar{x})$ be total energy of the graph on configuration $\bar{x}$. We can write global energy as 
+First, let's rewrite global energy as:
 
 
-$$ \varepsilon (\bar{x}) =  \sum_{i \sim j, i \leq j} (X_i - X_j)^2  $$
+$$ \varepsilon (\bar{X}) =  \sum_{i \sim j, i \leq j} (X_i - X_j)^2  $$
 
-Then the expected global energy of a field is
+Then the expected global energy of a field is:
 
-$$ E[\varepsilon (\bar{x})] =  \sum_{i \sim j, i \leq j} E[X_i - X_j]^2  $$
- [write more that it is difficulty to count]
- 
-Difficult to generalize for any graph, because there is correlation
-moreover difficult to write the distribution of values for one particular node. later we will show why.
-In order to calculate expected energy at least approximately we will make some assumptions.
+$$ E[\varepsilon (\bar{X})] =  \sum_{i \sim j, i \leq j} E[X_i - X_j]^2  $$
+
+In order to count this expression we need to know the distribution of values for each node, $X_1, X_2, ..., X_n$. Moreover, we need to know the correlation between random variables $X_i, X_j$ for all pairs  $i, j$.
+
+In reality both these requirements are difficult to satisfy.
+
+In fact, it seems that we know the distribution of values on the nodes. So the first demand should be easy. We have already written that the values on the node $i$ are distributed in the following way:
+
+\begin{equation}
+\label{eq:prob2} 
+p(X_i = x) = \frac{ e^{-\frac{\varepsilon_i(x)}{T}} }{ \sum\limits_{x'\in V} e^{-\frac{\varepsilon_i(x')}{T}}}
+\end{equation}
+But if we look closer at the local energy on the node $i$, $\varepsilon_i(x)$, we will notice that it implies that the values on the neighboring nodes are known:
+
+ $$\varepsilon_i(x) = \sum\limits_{j | i \sim j} (x - x_j)^2 $$
+  
+It means that distribution \ref{eq:prob2} is actually conditional on the values of the neighbors. We can rewrite it as:
+$$ p(X_i = x) = \frac{ e^{-\frac{\varepsilon_i(x)}{T}} }{ \sum\limits_{x'\in V} e^{-\frac{\varepsilon_i(x')}{T}}}  = 
+\sum\limits_{a_1, ... a_j \subset V} \prod\limits_{j|j \sim i} p(X_j  = a_j)
+\frac{ e^{-\frac{ \sum\limits_{j|j \sim i}(x - a_j)^2 }{T}} }{ \sum\limits_{x'\in V} e^{-\frac{ \sum\limits_{j|j \sim i}(x' - a_j)^2 }{T}}}  $$
+
+We can see that this expression includes also probabilities for other nodes to have some particular values. So the probability to have a value on the node $i$ depends on the values of its neighbors that are also dependent from their neighbors and so on.
+
+The second demand of knowing correlation for all pairs $X_i, X_j$ require to know the joint distribution of these random variables. That brings us to the same problem: no way to write explicitly the expression of this distribution
+
+That's why in order to calculate expected energy at least approximately we will make some assumptions.
 
 \paragraph{The same expected value}
 \mbox{} \\
 
+The experiments showed us that the expected value of the each variable $X_1, X_2, ..., X_n$ is the same and equals to the average value of the values from the set $V$. 
 
 $$E[X_i] = av_V$$
 
+We didn't show it formally, that's why we will write that this is assumption. But we have reasons to believe that it is true and can be proved.
 \paragraph{Assumptions about no correlation between neighbors}
 \mbox{} \\
 
-Because difficult [describe difficulties] we will make an assumption that values are assigned independently of each other. Let $N_i$ be the number of the neighbors of the node $i$. So if there is no correlation between value assigned to the nodes, then we can write global energy as:
+We will make an assumption that values are assigned independently of each other. Of course it is not the truth. But we can get the approximated expression that can give us the idea about energy-temperature dependency.
+ Let $N_i$ be the number of the neighbors of the node $i$. So if there is no correlation between value assigned to the nodes, then we can write global energy as:
 $$ E[\varepsilon (\bar{X})] =  \sum_{i \sim j, i \leq j} E[X_i - X_j]^2 = 
 \frac{1}{2} \sum_{i \sim j} E[X_i - X_j]^2 = $$
 
@@ -737,9 +777,12 @@ $$
 $$ = \frac{1}{2} \sum_{i \sim j} \left(Var(X_i) + Var(X_j) - 2Cov(X_i, X_j) \right) = \frac{1}{2} \sum_{i \sim j} \left(Var(X_i) + Var(X_j) \right)=
 $$
 
-$$ = \frac{1}{2} \sum_{i \sim j} 2N_iVar(X_i) 
+\begin{equation}
+\label{eq:noCorr}
+ = \frac{1}{2} \sum_{i \sim j} 2N_iVar(X_i) 
 = \sum_{i \sim j} N_iVar(X_i)  
-$$
+\end{equation}
+
 \paragraph{Special case}
 \mbox{} \\
 Let's look at the case when the values are assigned to the nodes according to the same distribution in independent way (that means that there is no correlation between assigned values). Let $m$ be the number of edges in the graph. Then the expression for energy becomes:
@@ -759,38 +802,27 @@ $$E[\varepsilon (\bar{x})] =  m\frac{|V|^2-1}{6}$$
 \paragraph{Assumptions about values distribution}
 \mbox{} \\
 
+In order to simplify expression for values distribution on the node $i$ we will make some assumptions. First, let's say that all neighbors of the node $i$ have the value $av_V, av_V = average(V)$. If for all $j \in N_i : x_j = av_V$ then 
+$p(x_j  = av_V) = 1$. With this assumption probability that the node $i$ will have value $x \in V$ is
 
-To answer the question: what is the expected energy of the field after reaching steady state, we need to know the distribution of values on the nodes.
+\begin{equation}
+\label{eq:simpleDisrt}
+ p(X_i = x) = 
+\frac{ e^{-\frac{N_i(x - av_V)^2}{T}} }{ \sum\limits_{x'\in V} e^{-\frac{N_i(x' - av_V)^2}{T}}}
+\end{equation}
 
-
-After reaching stationary state probability that the node $i$ will have value $x \in P$ is
-
-$$ p(X_i = x) = \frac{ e^{-\frac{\varepsilon_i(x)}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{\varepsilon_i(x')}{T}}} $$
-
-where $\varepsilon_i(x)$ is local energy on the node $i$ that is counted as $\varepsilon_i(x) = \sum\limits_{j | i \sim j} (x_i - x_j)^2 $. 
-  
-But this probability actually is conditional on the values of the neighbors. Then the expression becomes:
-$$ p(X_i = x) = \frac{ e^{-\frac{\varepsilon_i(x)}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{\varepsilon_i(x')}{T}}}  = 
-\sum\limits_{a_1, ... a_j \subset P} \prod\limits_{j|j \sim i} p(X_j  = a_j)
-\frac{ e^{-\frac{ \sum\limits_{j|j \sim i}(x - a_j)^2 }{T}} }{ \sum\limits_{x'\in P} e^{-\frac{ \sum\limits_{j|j \sim i}(x' - a_j)^2 }{T}}}  $$
-
-So the probability to have some particular value on the node $i$ depends on the values of its neighbors that are also dependent from their neighbors and so on.
-In order to simplify expression for values distribution on the node $i$ we will make some assumptions. First, let's say that all neighbors of the node $i$ have the value $av_V, av_V = average(V)$. Let us denote the set of neighbors of the node $i$ as $N_i$. If for all $j \in N_i : x_j = av_P$ then 
-$p(x_j  = av_P) = 1$. With this assumption probability that the node $i$ will have value $x \in P$ is
-
-
-$$ p(X_i = x) = 
-\frac{ e^{-\frac{N_i(x - av_P)^2}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{N_i(x' - av_P)^2}{T}}}$$
-
-Then we can count expected energy as:
+Then combining expressions \ref{eq:noCorr} and \ref{eq:simpleDisrt} we can write expected energy as:
 $$ E[\varepsilon (\bar{X})] =  \sum_{i \sim j} N_iVar(X_i) =
 \sum_{i \sim j} N_i  \left(E[x_i]^2 - (E[x_i])^2\right) =
-\sum_{i \sim j} N_i \left(\frac{ \sum\limits_{i\in P} i^2 e^{- \frac{N_i(i - av_P)^2}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{N_i(x' - av_P)^2}{T}}} - av_P^2\right)
+\sum_{i \sim j} N_i \left(\frac{ \sum\limits_{i\in V} i^2 e^{- \frac{N_i(i - av_V)^2}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{N_i(x' - av_V)^2}{T}}} - av_V^2\right)
 $$
 
 To simplify even more we can assume that each node has the same following distribution of values:
-$$ p(X_j = x) = 
-\frac{ e^{-\frac{d(x - av_P)^2}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{d(x' - av_P)^2}{T}}}$$
+\begin{equation}
+\label{eq:simpleDisrt2}
+p(X_j = x) = 
+\frac{ e^{-\frac{d(x - av_P)^2}{T}} }{ \sum\limits_{x'\in P} e^{-\frac{d(x' - av_P)^2}{T}}}
+\end{equation}
 
 where $d$ is average degree of the graph. 
 
@@ -800,10 +832,9 @@ $$ E[\varepsilon (\bar{x})] = 2mVar(x_i)  = 2m\left(\frac{ \sum\limits_{i\in P} 
 
 \subsection{Results}
 
+On the figure \ref{fig:energyPrediction} we can observe predicted energy with assumptions including that the values on the nodes are distributed as in \ref{eq:simpleDisrt}, predicted energy with assumptions including that the values on the nodes are distributed as in \ref{eq:simpleDisrt2} and the expected energy counted with simulations.
 
-
-
-On the following examples: red line represents predicted energy for given temperature, blue line represents calculated energy after running algorithm. 
+We can see that both predictions coincides well with the experiments and the first prediction is more accurate.
 
 \begin{figure}[t]
     \centering
@@ -831,7 +862,7 @@ On the following examples: red line represents predicted energy for given temper
 
     \end{subfigure}
     
-    \caption{Energy prediction for different gr}
+    \caption{Energy prediction for different graphs}
     \label{fig:energyPrediction}
 \end{figure}
 
@@ -1231,11 +1262,13 @@ This is general contribution that makes possible to create ... where we can cont
 
 \section{Further study}
 
+\myworries{
 to correct:
 - cautions notes 
 - change n on m in the enhanced RDS
-- put explanation about homophily before
-- rename V as P
+- put the transition matrix in the beginning of the second chapter
+- everywhere expected energy of random field not configuration!!!
+}
 
 \bibliographystyle{plain}
 \bibliography{rds}
