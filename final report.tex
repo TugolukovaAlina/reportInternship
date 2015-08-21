@@ -322,7 +322,12 @@ On the figure 1 the parameter $k$ is equal to 1. It means that everybody is part
 
 On the figure 2 the parameter $k$ is equal to 2. It means that we take one participant, one informer, one participant and so on. We can see clearly that we went deeper in the network, the recruitment chain is longer. In this case on our budget we can collect only 5 samples, but they are less correlated than in the previous situation. 
 
-Both scenarios require the same budget, so in the terms of money they are equal. But what is better 6 more correlated samples, or 5 but less correlated samples? The better scenario is the one that will have the least error. If we are able to quantify the error depending on the number of samples that we skip $k-1$, we will be able to suggest the sampling method that will bring the most precise result. That is the question that we are going to analyze formally in the next chapter. 
+Both scenarios require the same budget, so in the terms of money they are equal. But what is better 6 more correlated samples, or 5 but less correlated samples? 
+
+If the characteristic that we try to estimate does not correlate between friends or people who have contact then it is useless to discard some values (we just pay for nothing). But if the values are highly correlating intuitively skipping can help a lot. There is a trade-off: on one hand we make the chain longer and reduce dependency between participants. On other hand we still spend money on people who do not bring any information needed for research and finally there will be less participants. 
+
+
+The better scenario will be the one that has the least error. If we are able to quantify the error depending on the number of samples that we skip $k-1$, we will be able to suggest the sampling method that will bring the most precise result. That is the question that we are going to analyze formally in the next chapter. 
  
 
 
@@ -902,7 +907,7 @@ $$m = \frac{B}{kC_1 + C_2}$$
 
 Then for each scenario with the fixed budget $B$ depending on the $k$ the estimator is:
 
-$$ \widehat{\mu}_{SA}^k = \frac{Y_1 + Y_k+ Y_{2k}+ ...+ Y_{\frac{kB}{kC_1 + C_2}}}{\frac{B}{kC_1 + C_2}}$$
+$$ \widehat{\mu}_{SA}^k = \frac{Y_k+ Y_{2k}+ ...+ Y_{\frac{kB}{kC_1 + C_2}}}{\frac{B}{kC_1 + C_2}}$$
 
 
 We can see that the number of participants depends on $k$ and the bigger is $k$ the less participants we have.
@@ -920,12 +925,12 @@ First we will find correlation for simple example and then we will generalize it
 
 For now we will not care about graph structure. Let's assume that our collected samples $Y_1, Y_2, ..., Y_n$ are correlated in the known way:
 
- $$corr(Y_i, Y_{i+k}) = \rho^k$$
+ $$corr(Y_i, Y_{i+h}) = \rho^h$$
 
 So correlation between the nodes that are at the distance 1 in the chain have correlation $\rho$, at distance 2 have correlation $\rho^2$ an so on. 
 Then we can write the variance of the mean estimator as: 
 
-$$\sigma^2_{\hat{\mu}_{SA}} = var\left[\bar{Y} \right] = var\left[ \frac{Y_1 + Y_2 + ..., Y_n}{n} \right] = \frac{1}{n^2} \sum_{i=1}^{n}\sum_{j=1}^{n} cov(Y_i, Y_j) =$$ 
+$$\sigma^2_{\hat{\mu}_{SA}} = var\left[\bar{Y} \right] = var\left[ \frac{Y_1 + Y_2 + ...+ Y_n}{n} \right] = \frac{1}{n^2} \sum_{i=1}^{n}\sum_{j=1}^{n} cov(Y_i, Y_j) =$$ 
 $$ = \frac{\sigma^2}{n^2} \left( n + 2(n-1)\rho + 2(n-2)\rho^2 + ... + 2\cdot2 \rho^{n-2}+ 2\cdot1 \rho^{n-1} \right) = $$
 $$ = \frac{\sigma^2}{n^2} \left(n + 2\sum_{i=1}^{n-1} (n-i)\rho^i \right) = \frac{\sigma^2}{n^2} \left(n + 2n\sum_{i=1}^{n-1}\rho^i - 2\sum_{i=1}^{n-1}i\rho^i \right) = $$
 $$ = \frac{\sigma^2}{n} \left(n + 2n\frac{\rho-\rho^{n}}{1-\rho} - 2\rho \sum_{i=0}^{n-2} (\rho^{i+1})' \right) = $$
@@ -982,15 +987,17 @@ On the figure \ref{fig:diffCorr} we can compare the variance for different level
 
 \subsection{Variance with skipping}
 
-Let's look at the variance of the next random variable:
+Let's say that now we collected $nk$ samples $Y_1, Y_2, Y_3, ..., Y_{kn}$ that are correlated in the same way as in previous subsection. We  will take each $k$ sample and look at the variance of the next random variable:
 
-$$\bar{Y}^k = \frac{Y_1 + Y_{1+k} + Y_{1+2k} + ... + Y_{1 + (n-1)k}}{n}$$
+$$\bar{Y}^k = \frac{Y_k + Y_{2k} + Y_{3k} + ... + Y_{nk}}{n}$$
 
-where $corr(Y_{1 + ik}, Y_{1 + (i+h)k}) = \rho^{kh}$. 
+Let's note that the correlation between the variables $Y_{ik}$ and $Y_{(i+h)k}$ is: 
 
-If we introduce new random variables $Z_1, Z_2, ..., Z_n$ such that $Z_1 = Y_1, Z_2 = Y_{1+k}, Z_3 = Y_{1+2k},..., Z_n = Y_{1 + (n-1)k}$ and $r = \rho^k$, $\bar{Z}= \bar{Y}^k$. Then:
+ $$corr(Y_{ik}, Y_{(i+h)k}) = \rho^{kh}$$
 
-$$corr(Z_i, Z_{i+h}) = corr(Y_{1 + (i-1)k}, Y_{1 + (i+h-1)k}) = \rho^{kh} = r^h$$
+If we introduce new random variables $Z_1, Z_2, ..., Z_n$ such that $Z_1 = Y_k, Z_2 = Y_{2k}, Z_3 = Y_{3k},..., Z_n = Y_{nk}$ and $r = \rho^k$, $\bar{Z}= \bar{Y}^k$. Then:
+
+$$corr(Z_i, Z_{i+h}) = corr(Y_{ik}, Y_{(i+h)k}) = \rho^{kh} = r^h$$
 
 To sum up we have random variables $Z_1, Z_2, ..., Z_n$ where the correlation between any to of them depends of the distance $corr(Z_i, Z_{i+h}) = \rho^{kh} = r^h$. For this problem we already know the variance of $\bar{Z}$:
 
@@ -999,7 +1006,10 @@ $$ var\left[\bar{Z} \right] = \frac{\sigma^2}{n}\frac{1-r^2 - 2r/n + 2r^{n+1}/n}
 
 Or approximation:
 $$var\left[\bar{Z} \right] \simeq  \frac{\sigma^2}{n} \frac{1+r}{1-r}$$
-Let's return to the previous notation and get [check with script]:
+
+
+
+Let's return to the previous notation and then we get:
 $$var\left[\bar{Y}^k \right] = \frac{\sigma^2}{n}\frac{1-\rho^{2k} - 2\rho^k/n + 2\rho^{k(n+1)}/n}{(1-\rho^k)^2}$$
 or:
 $$var\left[\bar{Y}^k \right] \simeq  \frac{\sigma^2}{n} \frac{1+\rho^k}{1-\rho^k}$$
@@ -1007,64 +1017,65 @@ $$var\left[\bar{Y}^k \right] \simeq  \frac{\sigma^2}{n} \frac{1+\rho^k}{1-\rho^k
 
 \subsection{In RDS context}
 
-Returning to the RDS context we can finally write the variance for different scenarios with the same budget. On the same budget $B$ taking each $k$ node as a participant we have $m = \frac{B}{kC_1 + C_2}$ samples. Then variance, depending on $k$ will be:
+Returning to the RDS context we can finally write the variance for different scenarios with the same budget. On the same budget $B$ we have and taking each $k$ node as a participant we will collect samples $Y_k, Y_{2k}, ..., Y_{\frac{kB}{kC_1 + C_2}}$, where number of participants is $m = \frac{B}{kC_1 + C_2}$. 
+ 
+And if the samples are correlated as in the precvious section then variance of the estimator, depending on $k$, will be:
 
-$$ \sigma^2_{\hat{\mu}_{avg}} (k) = \frac{\sigma^2}{m}\frac{1-\rho^{2k} - 2\rho^k/m + 2\rho^{k(n+1)}/m}{(1-\rho^k)^2}$$
+$$ \sigma^2_{\hat{\mu}_{SA}} (k) = \frac{\sigma^2}{\frac{B}{kC_1 + C_2}}\frac{1-\rho^{2k} - 2\rho^k/\frac{B}{kC_1 + C_2} + 2\rho^{k(\frac{B}{kC_1 + C_2}+1)}/\frac{B}{kC_1 + C_2}}{(1-\rho^k)^2}$$
 
-Or:
+Or approximated:
 
-$$ \sigma^2_{\hat{\mu}_{avg}} (k) = \frac{\sigma^2}{\frac{B}{kC_1 + C_2}} \frac{1+\rho^k}{1-\rho^k}$$
+\begin{equation}
+\label{eq:varApprox}
+ \sigma^2_{\hat{\mu}_{SA}} (k) = \frac{\sigma^2}{\frac{B}{kC_1 + C_2}} \frac{1+\rho^k}{1-\rho^k}
+\end{equation}
 
-[should put analysis of function: convex, one minimum]
-
-Let's understand what happens when we increase the $k$. If we denote $m$ as the number of participants then on the budget $B$ with 
-
-
-
-So we have some kind of trade-of here. And for sure it is not evident. If the characteristic that we try to estimate does not correlate between friends or people who have contact then it is useless to discard some values (we just pay for nothing). But if the values are highly correlating intuitively skipping can help a lot.
-If we take There is a trade-off: on one hand we make the chain longer and reduce dependency between participants. On other hand we still spend money on people who do not bring any information needed for research and finally there will be less participants. 
-
-, $m$ individuals from the $n$ is the number of participants. 
-So both to informators and participants that are $n$ in total we pay $C_1$ units of money for recruiting new people, but also to the $m$ participants we pay $C_2$ units of money for participating in the research. So the budget is distributed in the following way: 
-$$B = nC_1 + mC_2$$
+We can regard this expression as at the function of $k$. Now in order to decide, how much samples to skip between the participant, we need to find the minimum of it.
 
 
-Here $m = \frac{n}{k+1}$ as we take each $k+1$ node as a participant. So having budget $B$ and skipping each $k$ node allows as to perform $n = \frac{(k+1)B}{(k+1)C_1 + C_2}$ steps with $m = \frac{B}{(k+1)C_1 + C_2}$ number of participants.
+On the figure \ref{fig:varPredDifRho} how the variance \ref{eq:varApprox} changes for different level of dependency among values.
 
 
-And then variation is actually the function of $k$.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=200px]{varPredDifRho}
+    \caption{Variance with the formula \ref{eq:varApprox} when $B = 100, C_1 = 1, C_2 = 4$}
+    \label{fig:varPredDifRho}
+\end{figure}
 
-With decreasing k what happens and say that it is not evident what is better.
-And our challenge was to study this problem formally. Can we quantify this number that we should skip. We want to solve it analytically.
-To obtain this result we used several simplifications. On the figures \ref{fig:energyPrediction} presented experimentation results.
+First let's observe what happens to the factors of the variance when we increase the $k$. The number of participants decreases, so the left factor in the expression \ref{eq:varApprox} $\frac{\sigma^2}{\frac{B}{kC_1 + C_2}}$ increases. In the same time the participants are less correlated, the right factor  $\frac{1+\rho^k}{1-\rho^k}$ decreases. And the behavior of the variance depends on which factor is "stronger".
 
+Let's for now concentrate on the case when $\rho = 0.8$. Starting when the $k = 1$ we observe that variance decreases when $k$ increases. It means that correlation is very high and by skipping some values we reduce it significantly for the variance. When $k = 7$ we observe that function reaches its minimum. This result says that in these settings by taking only each seventh individual as a participant we will obtain the minimum error.  As $k$ further increase, the variance also start to increase slowly. It signals as that by skipping more that 7 persons, we will not decrease significantly the correlation, Trying to skip more then seven individuals we will just waste money on informators without any purpose.
 
+We have a trade-off here. If we skip too many values we can drastically decrease the number of participants. And the opposite, if we don't skip at all the correlation between values can be too high. 
 
-Studying variance of estimator is important for the construction of confidence interval and testing of hypothesis.
-The goal is to minimize variance. Let's look on the next function of $k$:
+The value $k$ when the variance is minimal depends on the level of correlation. Thus we observe that when we take lower values of $rho$ the desired value of $k$ decreases. This coincides with our intuition: the lower is dependency, the less values we need to skip. Finally we see, that in case of no correlation ($\rho = 0$) it is useless to skip.
+ 
+Moreover by studying the variance function, we can notice some interesting properties. Particularly, the observations that we stated in the scetion \ref{sec:Enhanced RDS} were based on the observation and human logic. Now, we can show it formally.
 
-$$ f(k) = \frac{\sigma^2}{\frac{B}{kC_1 + C_2}} \frac{1+\rho^{k}}{1-\rho^{k}}$$.
+\paragraph{Observation 1} \textit{Just thinning of sample doesn't help}
 
+Just thinning means that when all the samples are collected $y_1, y_2, ...,y_n$ we can try to take only $k$ part of them. However to collect each sample we spend equal amount of money, let's denote it as $(C_1+C_2)$. It means that we should look on function:
 
+$$ f(k) = \frac{\sigma^2}{B/(k(C_1 + C_2))} \frac{1+\rho^{k}}{1-\rho^{k}}$$
 
+This function is strictly increasing when $k \geq 1$. It means that thinning the sample can only harm. 
 
-\paragraph{Observation 2} \textit{Just thinning of sample doesn't help}
+\myworries{put the proof in the appendix}
 
-It means that we should look on function 
+\paragraph{Observation 2} \textit{Skipping reduces variance}
 
-$$ f(k) = \frac{\sigma^2}{B/(kC)} \frac{1+\rho^{k}}{1-\rho^{k}}$$
+Here we have the fixed sample size $n$. However we can change the distance between samples as much as we want for free, $C_1 = 0$. Then we should look at the function:
 
-it is increasing
+$$ f(k) = \frac{\sigma^2}{n} \frac{1+\rho^{k}}{1-\rho^{k}}$$
 
-\paragraph{Observation 3} \textit{Skipping reduces variance}
+which is decreasing function.
 
-If we fix $m$ and will increase $k$:
+This result is also very logical. When informators are not payed we should use them as much as we can.
 
-$$ f(k) = \frac{\sigma^2}{n} \frac{1+\rho^{k}}{1-\rho^{k}}$$.
+\subsection{Trying to use the result}
 
-is decreasing function.
-
-
+Underestimates
 \subsection{General case}
 
 In the previous example we were able to write the variance of the estimator because the correlation between all the collected samples was known. We would like to generalize formula: where RDS is random walk on the arbitrary graph.

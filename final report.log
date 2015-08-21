@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.2.27)  21 AUG 2015 14:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.2.27)  21 AUG 2015 19:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -348,21 +348,21 @@ ping1.jpeg, id=63, 720.44156pt x 438.13687pt>
 File: images/skipping1.jpeg Graphic file (type jpg)
 
 <use images/skipping1.jpeg>
-Package pdftex.def Info: images/skipping1.jpeg used on input line 334.
+Package pdftex.def Info: images/skipping1.jpeg used on input line 339.
 (pdftex.def)             Requested size: 248.09564pt x 150.87659pt.
 
 <images/skipping2.jpeg, id=64, 720.44156pt x 438.13687pt>
 File: images/skipping2.jpeg Graphic file (type jpg)
 
 <use images/skipping2.jpeg>
-Package pdftex.def Info: images/skipping2.jpeg used on input line 355.
+Package pdftex.def Info: images/skipping2.jpeg used on input line 360.
 (pdftex.def)             Requested size: 248.09564pt x 150.87659pt.
 
 <images/skipping3.jpeg, id=65, 720.44156pt x 438.13687pt>
 File: images/skipping3.jpeg Graphic file (type jpg)
 
 <use images/skipping3.jpeg>
-Package pdftex.def Info: images/skipping3.jpeg used on input line 373.
+Package pdftex.def Info: images/skipping3.jpeg used on input line 378.
 (pdftex.def)             Requested size: 248.09564pt x 150.87659pt.
  [13 <./images/skipping1.jpeg> <./images/skipping2.jpeg> <./images/skipping3.jp
 eg>]
@@ -370,101 +370,101 @@ Chapter 2.
 [14
 
 ] [15] [16]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 497.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 502.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 497.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 502.
 
 <images/GibbsVertexExample.jpeg, id=81, 251.43938pt x 185.19188pt>
 File: images/GibbsVertexExample.jpeg Graphic file (type jpg)
 
 <use images/GibbsVertexExample.jpeg>
-Package pdftex.def Info: images/GibbsVertexExample.jpeg used on input line 526.
+Package pdftex.def Info: images/GibbsVertexExample.jpeg used on input line 531.
 
 (pdftex.def)             Requested size: 136.28166pt x 100.37537pt.
  [17 <./images/GibbsVertexExample.jpeg>]
 <images/rggT1.jpg, id=85, 562.1pt x 421.575pt>
 File: images/rggT1.jpg Graphic file (type jpg)
  <use images/rggT1.jpg>
-Package pdftex.def Info: images/rggT1.jpg used on input line 573.
+Package pdftex.def Info: images/rggT1.jpg used on input line 578.
 (pdftex.def)             Requested size: 205.71486pt x 154.28206pt.
 
 <images/rggT5.jpg, id=86, 564.1075pt x 419.5675pt>
 File: images/rggT5.jpg Graphic file (type jpg)
  <use images/rggT5.jpg>
-Package pdftex.def Info: images/rggT5.jpg used on input line 579.
+Package pdftex.def Info: images/rggT5.jpg used on input line 584.
 (pdftex.def)             Requested size: 205.71486pt x 153.00322pt.
 
 <images/rggT20.jpg, id=87, 564.1075pt x 419.5675pt>
 File: images/rggT20.jpg Graphic file (type jpg)
  <use images/rggT20.jpg>
-Package pdftex.def Info: images/rggT20.jpg used on input line 585.
+Package pdftex.def Info: images/rggT20.jpg used on input line 590.
 (pdftex.def)             Requested size: 205.71486pt x 153.00322pt.
 
 <images/rggT1000.jpg, id=88, 562.1pt x 421.575pt>
 File: images/rggT1000.jpg Graphic file (type jpg)
  <use images/rggT1000.jpg>
-Package pdftex.def Info: images/rggT1000.jpg used on input line 591.
+Package pdftex.def Info: images/rggT1000.jpg used on input line 596.
 (pdftex.def)             Requested size: 205.71486pt x 154.28206pt.
 
 [18] <images/rggT1corr.jpg, id=93, 501.875pt x 250.9375pt>
 File: images/rggT1corr.jpg Graphic file (type jpg)
 
 <use images/rggT1corr.jpg>
-Package pdftex.def Info: images/rggT1corr.jpg used on input line 616.
+Package pdftex.def Info: images/rggT1corr.jpg used on input line 621.
 (pdftex.def)             Requested size: 205.71486pt x 102.85823pt.
 
 <images/rggT5corr.jpg, id=94, 501.875pt x 250.9375pt>
 File: images/rggT5corr.jpg Graphic file (type jpg)
 
 <use images/rggT5corr.jpg>
-Package pdftex.def Info: images/rggT5corr.jpg used on input line 622.
+Package pdftex.def Info: images/rggT5corr.jpg used on input line 627.
 (pdftex.def)             Requested size: 205.71486pt x 102.85823pt.
 
 <images/rggT20corr.jpg, id=95, 503.8825pt x 248.93pt>
 File: images/rggT20corr.jpg Graphic file (type jpg)
 
 <use images/rggT20corr.jpg>
-Package pdftex.def Info: images/rggT20corr.jpg used on input line 628.
+Package pdftex.def Info: images/rggT20corr.jpg used on input line 633.
 (pdftex.def)             Requested size: 205.71486pt x 101.62894pt.
 
 <images/rggT1000corr.jpg, id=96, 503.8825pt x 248.93pt>
 File: images/rggT1000corr.jpg Graphic file (type jpg)
 
 <use images/rggT1000corr.jpg>
-Package pdftex.def Info: images/rggT1000corr.jpg used on input line 634.
+Package pdftex.def Info: images/rggT1000corr.jpg used on input line 639.
 (pdftex.def)             Requested size: 205.71486pt x 101.62894pt.
  [19 <./images/rggT1.jpg> <./images/rggT5.jpg> <./images/rggT20.jpg> <./images/
 rggT1000.jpg>]
 <images/energy2.jpg, id=100, 564.1075pt x 419.5675pt>
 File: images/energy2.jpg Graphic file (type jpg)
  <use images/energy2.jpg>
-Package pdftex.def Info: images/energy2.jpg used on input line 663.
+Package pdftex.def Info: images/energy2.jpg used on input line 668.
 (pdftex.def)             Requested size: 231.43117pt x 172.13261pt.
 
 <images/energy10.jpg, id=101, 564.1075pt x 419.5675pt>
 File: images/energy10.jpg Graphic file (type jpg)
 
 <use images/energy10.jpg>
-Package pdftex.def Info: images/energy10.jpg used on input line 669.
+Package pdftex.def Info: images/energy10.jpg used on input line 674.
 (pdftex.def)             Requested size: 231.43117pt x 172.13261pt.
  [20 <./images/rggT1corr.jpg> <./images/rggT5corr.jpg> <./images/rggT20corr.jpg
 > <./images/rggT1000corr.jpg>] [21 <./images/energy2.jpg> <./images/energy10.jp
 g>] [22]
-Underfull \hbox (badness 10000) in paragraph at lines 752--753
+Underfull \hbox (badness 10000) in paragraph at lines 757--758
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 760--761
+Underfull \hbox (badness 10000) in paragraph at lines 765--766
 
  []
 
 [23]
-Underfull \hbox (badness 10000) in paragraph at lines 799--800
+Underfull \hbox (badness 10000) in paragraph at lines 804--805
 
  []
 
@@ -472,37 +472,37 @@ Underfull \hbox (badness 10000) in paragraph at lines 799--800
 File: images/er200x01.jpg Graphic file (type jpg)
 
 <use images/er200x01.jpg>
-Package pdftex.def Info: images/er200x01.jpg used on input line 838.
+Package pdftex.def Info: images/er200x01.jpg used on input line 843.
 (pdftex.def)             Requested size: 205.71486pt x 154.28206pt.
  <images/rgg200x013.jpg, id=120, 562.1pt x 421.575pt>
 File: images/rgg200x013.jpg Graphic file (type jpg)
 
 <use images/rgg200x013.jpg>
-Package pdftex.def Info: images/rgg200x013.jpg used on input line 844.
+Package pdftex.def Info: images/rgg200x013.jpg used on input line 849.
 (pdftex.def)             Requested size: 205.71486pt x 154.28206pt.
 
 <images/grid20x10.jpg, id=121, 562.1pt x 421.575pt>
 File: images/grid20x10.jpg Graphic file (type jpg)
  <use images/grid20x10.jpg>
-Package pdftex.def Info: images/grid20x10.jpg used on input line 850.
+Package pdftex.def Info: images/grid20x10.jpg used on input line 855.
 (pdftex.def)             Requested size: 205.71486pt x 154.28206pt.
 
 <images/pa200x1.jpg, id=122, 1402.23875pt x 688.5725pt>
 File: images/pa200x1.jpg Graphic file (type jpg)
 
 <use images/pa200x1.jpg>
-Package pdftex.def Info: images/pa200x1.jpg used on input line 856.
+Package pdftex.def Info: images/pa200x1.jpg used on input line 861.
 (pdftex.def)             Requested size: 205.71486pt x 101.01195pt.
  [25 <./images/er200x01.jpg> <./images/rgg200x013.jpg> <./images/grid20x10.jpg>
  <./images/pa200x1.jpg>]
-Overfull \hbox (15.85301pt too wide) in paragraph at lines 900--901
+Overfull \hbox (15.85301pt too wide) in paragraph at lines 905--906
 []\OT1/cmr/m/n/12 When each $\OML/cmm/m/it/12 k$\OT1/cmr/m/n/12 th per-son is a
  par-tic-i-pant, it means that for real we have only val-ues $\OML/cmm/m/it/12 
 Y[]; Y[]; Y[]; :::; Y[]$
  []
 
 [26]
-Overfull \hbox (6.40062pt too wide) in paragraph at lines 921--922
+Overfull \hbox (6.40062pt too wide) in paragraph at lines 926--927
 []\OT1/cmr/m/n/12 For now we will not care about graph struc-ture. Let's as-sum
 e that our col-lected sam-ples $\OML/cmm/m/it/12 Y[]; Y[]; :::; Y[]$
  []
@@ -511,70 +511,69 @@ e that our col-lected sam-ples $\OML/cmm/m/it/12 Y[]; Y[]; :::; Y[]$
 File: images/corrFactor.jpg Graphic file (type jpg)
 
 <use images/corrFactor.jpg>
-Package pdftex.def Info: images/corrFactor.jpg used on input line 954.
+Package pdftex.def Info: images/corrFactor.jpg used on input line 959.
 (pdftex.def)             Requested size: 283.9912pt x 150.56305pt.
 
 <images/lineGame1.jpg, id=134, 564.1075pt x 343.2825pt>
 File: images/lineGame1.jpg Graphic file (type jpg)
 
 <use images/lineGame1.jpg>
-Package pdftex.def Info: images/lineGame1.jpg used on input line 967.
+Package pdftex.def Info: images/lineGame1.jpg used on input line 972.
 (pdftex.def)             Requested size: 247.41617pt x 150.56305pt.
 
 <images/varianceIndDep2.jpg, id=135, 871.255pt x 459.7175pt>
 File: images/varianceIndDep2.jpg Graphic file (type jpg)
 
 <use images/varianceIndDep2.jpg>
-Package pdftex.def Info: images/varianceIndDep2.jpg used on input line 977.
+Package pdftex.def Info: images/varianceIndDep2.jpg used on input line 982.
 (pdftex.def)             Requested size: 285.34807pt x 150.56305pt.
+ [28 <./images/corrFactor.jpg>] [29 <./images/lineGame1.jpg> <./images/variance
+IndDep2.jpg>]
+<images/varPredDifRho.jpg, id=142, 697.60625pt x 461.725pt>
+File: images/varPredDifRho.jpg Graphic file (type jpg)
 
-Overfull \hbox (13.7869pt too wide) in paragraph at lines 991--992
-[]\OT1/cmr/m/n/12 If we in-tro-duce new ran-dom vari-ables $\OML/cmm/m/it/12 Z[
-]; Z[]; :::; Z[]$ \OT1/cmr/m/n/12 such that $\OML/cmm/m/it/12 Z[] \OT1/cmr/m/n/
-12 = \OML/cmm/m/it/12 Y[]; Z[] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 Y[]; Z[] \OT1
-/cmr/m/n/12 = \OML/cmm/m/it/12 Y[]; :::; Z[] \OT1/cmr/m/n/12 =
- []
-
-[28 <./images/corrFactor.jpg>] [29 <./images/lineGame1.jpg> <./images/varianceI
-ndDep2.jpg>] [30] [31] [32]
-<images/project90gender.png, id=152, 1027.84pt x 1027.84pt>
+<use images/varPredDifRho.jpg>
+Package pdftex.def Info: images/varPredDifRho.jpg used on input line 1041.
+(pdftex.def)             Requested size: 303.30724pt x 200.75073pt.
+ [30 <./images/varPredDifRho.jpg>] [31] [32]
+[33] <images/project90gender.png, id=156, 1027.84pt x 1027.84pt>
 File: images/project90gender.png Graphic file (type png)
 
 <use images/project90gender.png>
-Package pdftex.def Info: images/project90gender.png used on input line 1175.
+Package pdftex.def Info: images/project90gender.png used on input line 1186.
 (pdftex.def)             Requested size: 501.87376pt x 501.87683pt.
 
-<images/addhealthRace.png, id=154, 1027.84pt x 1027.84pt>
+<images/addhealthRace.png, id=158, 1027.84pt x 1027.84pt>
 File: images/addhealthRace.png Graphic file (type png)
 
 <use images/addhealthRace.png>
-Package pdftex.def Info: images/addhealthRace.png used on input line 1193.
+Package pdftex.def Info: images/addhealthRace.png used on input line 1204.
 (pdftex.def)             Requested size: 501.87376pt x 501.87683pt.
- [33] [34] [35 <./images/project90gender.png>]
+ [34] [35 <./images/project90gender.png>]
 [36 <./images/addhealthRace.png>]
 Chapter 3.
-<images/RGGdegree.jpg, id=170, 564.1075pt x 419.5675pt>
+<images/RGGdegree.jpg, id=171, 564.1075pt x 419.5675pt>
 File: images/RGGdegree.jpg Graphic file (type jpg)
 
 <use images/RGGdegree.jpg>
-Package pdftex.def Info: images/RGGdegree.jpg used on input line 1222.
+Package pdftex.def Info: images/RGGdegree.jpg used on input line 1233.
 (pdftex.def)             Requested size: 269.90776pt x 200.75073pt.
 
-<images/RGGfield.jpg, id=171, 564.1075pt x 419.5675pt>
+<images/RGGfield.jpg, id=172, 564.1075pt x 419.5675pt>
 File: images/RGGfield.jpg Graphic file (type jpg)
 
 <use images/RGGfield.jpg>
-Package pdftex.def Info: images/RGGfield.jpg used on input line 1229.
+Package pdftex.def Info: images/RGGfield.jpg used on input line 1240.
 (pdftex.def)             Requested size: 269.90776pt x 200.75073pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<images/Pr90field.jpg, id=172, 564.1075pt x 419.5675pt>
+<images/Pr90field.jpg, id=173, 564.1075pt x 419.5675pt>
 File: images/Pr90field.jpg Graphic file (type jpg)
 
 <use images/Pr90field.jpg>
-Package pdftex.def Info: images/Pr90field.jpg used on input line 1236.
+Package pdftex.def Info: images/Pr90field.jpg used on input line 1247.
 (pdftex.def)             Requested size: 269.90776pt x 200.75073pt.
 
 
@@ -583,11 +582,11 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [37
 
  <./images/RGGdegree.jpg>]
-<images/rdsVSmean.png, id=176, 588.69937pt x 278.54062pt>
+<images/rdsVSmean.png, id=177, 588.69937pt x 278.54062pt>
 File: images/rdsVSmean.png Graphic file (type png)
 
 <use images/rdsVSmean.png>
-Package pdftex.def Info: images/rdsVSmean.png used on input line 1247.
+Package pdftex.def Info: images/rdsVSmean.png used on input line 1258.
 (pdftex.def)             Requested size: 424.29439pt x 200.75073pt.
 
 
@@ -600,37 +599,41 @@ Chapter 4.
 
 ] [41
 
-]) [42] (./final report.aux) ) 
+]) [42] (./final report.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 4530 strings out of 495025
- 67001 string characters out of 6181515
- 139025 words of memory out of 5000000
- 7655 multiletter control sequences out of 15000+600000
+ 4537 strings out of 495025
+ 67166 string characters out of 6181515
+ 139049 words of memory out of 5000000
+ 7661 multiletter control sequences out of 15000+600000
  13084 words of font info for 47 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  38i,12n,38p,923b,488s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-ex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cme
-x7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/eurosym/feymr10.pfb>
-Output written on "final report.pdf" (43 pages, 2923209 bytes).
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/eurosym/feymr10.pfb>
+Output written on "final report.pdf" (43 pages, 2952166 bytes).
 PDF statistics:
- 258 PDF objects out of 1000 (max. 8388607)
+ 259 PDF objects out of 1000 (max. 8388607)
  156 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 161 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 166 words of extra memory for PDF output out of 10000 (max. 10000000)
 
