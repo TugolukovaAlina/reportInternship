@@ -833,7 +833,7 @@ $$ E[\varepsilon (\bar{x})] = 2mVar(x_i)  = 2m\left(\frac{ \sum\limits_{i\in P} 
 
 \subsection{Results}
 
-On the figure \ref{fig:energyPrediction} we can observe predicted energy with assumptions including that the values on the nodes are distributed as in \ref{eq:simpleDisrt}, predicted energy with assumptions including that the values on the nodes are distributed as in \ref{eq:simpleDisrt2} and the expected energy counted with simulations.
+On the figure \ref{fig:energyPrediction} we can observe predicted energy with assumptions including that the values on the nodes are distributed as in \ref{eq:simpleDisrt} (it is called first prediction), predicted energy with assumptions including that the values on the nodes are distributed as in \ref{eq:simpleDisrt2} (it is called second prediction) and the expected energy counted with simulations.
 
 We can see that both predictions coincides well with the experiments and the first prediction is more accurate.
 
@@ -846,16 +846,16 @@ We can see that both predictions coincides well with the experiments and the fir
     \end{subfigure}
 	~
     \begin{subfigure}[b]{0.4\textwidth}
-        \includegraphics[width=\textwidth]{rgg200x013}
-        \caption{ Random geometric graph with 200 vertices, radius 0.13 and values $[1, ..., 5]$ }
-
-    \end{subfigure}
-
-    \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{grid20x10}
         \caption{ Grid on torus graph with 200 = 20x10 vertices and values $[1, ..., 5]$ }
 
     \end{subfigure}   
+    
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{rgg200x013}
+        \caption{ Random geometric graph with 200 vertices, radius 0.13 and values $[1, ..., 5]$ }
+
+    \end{subfigure}
     ~
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{pa200x1}
@@ -868,7 +868,9 @@ We can see that both predictions coincides well with the experiments and the fir
 \end{figure}
 
 
-Even if the result is not precise it can give us intuition.
+Even if the result is approximated it can give us great intuition about energy-temperature dependency.
+
+Practically speaking, it takes 20 minutes of experiments to understand that we need to use temperature 30 in order to reduce the initial temperature in 4 times in the presented ER graph just with 200 nodes and just few seconds with obtained result.
 
 \section{Error prediction}
 
@@ -1075,7 +1077,13 @@ This result is also very logical. When informators are not payed we should use t
 
 \subsection{Trying to use the result}
 
-Underestimates
+Having the shown result we tried to use it. To use the function \ref{fig:varPredDifRho} to find the desired $k$ which minimizes the error we need to define parameter $\rho$. What we tried is to take as $\rho$ the average correlation between the immediate neighbors when the graph and the values on its nodes are given.
+
+However, the suggested $k$ did not coincide with the $k$ found with the experimentations. In the scenario when values $Y_1, Y_2, ..., Y_n$ have correlation $corr(Y_i, Y_{i+h}) = \rho^h$. However when we walk on the graph the values $Y_1$ and $Y_100$ can appear to be of the immediate neighbors. And when in reality the values of the corresponding nodes can be pretty much correlated, according to the geometrical model their correlation is so small that can be neglected.
+
+\myworries{put picture where is suggested k with this method does not coinc with exper results !!! the one with facebook}
+
+Therefore, the model is too easy to use. In the next section we will generalize it on any graph with any values.
 \subsection{General case}
 
 In the previous example we were able to write the variance of the estimator because the correlation between all the collected samples was known. We would like to generalize formula: where RDS is random walk on the arbitrary graph.
