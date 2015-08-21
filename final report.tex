@@ -114,8 +114,6 @@ The reasons to study them can be various. A lot of research is targeted on the s
 
 
 
-[describe more these methods or remove the next paragraph]
-There are several existing solutions for sampling hidden population such as snowball sampling, targeted sampling, time-space sampling, key-informant sampling. 
 
 In order to collect samples from the hidden population some special technique were developed. The main challenge here is that the technique should assure that samples are collected with the same probability (or with the known probability). For example, using telephone survey in order to collect information would automatically exclude some subsets of people (like homeless, poor) that don't have telephone number. This fact can affect the correctness of the estimate because it is impossible to predict the bias. 
 
@@ -130,7 +128,6 @@ One particular chain-referral technique that is currently widely used for studyi
 RDS begins with selecting group of initial participants that are called \textit{seeds}. The procedure follows according to chain-referral model: each participant in study recruits another participants. The step is called wave. Both participating in the research and recruiting new participants are encouraged by financial incentive. The sampling continues in this way until needed size of participants is reached. During RDS participants are asked to report how many contacts they have.
 This process enables to collect data for making statistical analysis.
 
-[write here about graph and random walk on the graph]
 In order to study formally RDS we will model the network of people as the graphs, where the nodes are presented by the individuals and the contact between two individuals is represented by the edge between the correspondent nodes. Then RDS can be regarded as random walk on the graph when the following assumptions are true:
 \begin{enumerate}
   \item Seeds are chosen proportionally to their degree in the network.  
@@ -261,7 +258,7 @@ So variance of estimator is influenced by some correlation factor $f(n)$ where$f
 
 $$ \sigma^2_{\hat{\mu}_{SA}} = \frac{\sigma^2}{n} f(n)$$
 
-On one hand, when we increase number of participants the factor $\sigma^2/n$ decreases, but there is also correlation factor $f(n)$. And then in order to improve estimation we could try reduce this correlation factor.
+On one hand, when we increase number of participants the factor $\sigma^2/n$ decreases, but there is also correlation factor $f(n)$, the bigger nuber of participants, the bigger is this correlation factor. And then in order to improve estimation we could try reduce this correlation factor.
 
 In some literature as in  \cite{goel2010assessing} the ratio of the variance of RDS estimate to the variance of estimate obtained from independent uniform random sampling is called design effect, $d$. They warn the users of RDS: to have the same variance using independent uniform random sampling we need $n$ samples while using RDS need $dn$ samples. We can notice that the correlation factor $f(n)$ is exactly the design effect.
 
@@ -272,19 +269,17 @@ RDS can perform poorly if the groups of individuals form different communities. 
 
 
 \section{Enhanced RDS}
-
-We will state three observations. Combining them we will try to improve current RDS technique.
-
-\paragraph{Observation 1} \textit{No matter how values are correlated, the more is sample size, the better is estimation}
-
-Because $f(n) \leq n$,  the bigger $n$ the less is sampling variance. The factor $f(n)$ prevents variance to decrease linearly with increasing $n$ like in the case with independent samples. But increasing $n$ for sure does not bring any harm. So the size of the sample should be always as big as the budget allows.
+\label{sec:Enhanced RDS}
 
 
-\paragraph{Observation 2} \textit{Just thinning of sample doesn't help}
+We will state two observations. Combining them we will try to improve current RDS technique.
+
+
+\paragraph{Observation 1} \textit{Just thinning of sample doesn't help}
 
 In order to reduce correlation between sampled values one could try to thin out sample. It means that instead of taking all collected values $y_1, y_2, ..., y_n$ into the estimation we can take only, let's say, each second value, $y_1, y_3, ..., y_n$. The samples $y_1, y_3, ..., y_n$ are less correlated then all samples, thus we will reduce correlation factor $f(n)$, so we can expect some improvement. In the same by taking each second values we will degrees in two times the total number of samples. It is not clear if the correlation was reduced enough to compensate this fact. What we observed experimentally (latter we will show it formally) that in general just discarding some samples with the fixed size of recruitment chain will not improve estimation. Experimental results are presented on the figure \ref{fig:observations} (a).
 
-\paragraph{Observation 3} \textit{Skipping reduces variance}
+\paragraph{Observation 2} \textit{Skipping reduces variance}
 
 However if the size of the sample is fixed the further are individuals in the chain of recruitment from each other the better. Let's say that we want exactly 30 participants for study and we have options. We can perform RDS until we reach 30th person and then take each one of them, $y_1, y_2, ..., y_{30}$ in the estimation. Or we can continue RDS until we reach 60th person and then take each second of them $y_2, y_4, ..., y_{60}$ in the estimation. The both variants have the same sample size but in the second scenario the values are less correlated. So we expect that the correlation term will decrease. Again on the figure \ref{fig:observations}(b) we can see experimental results and further we will show it formally.
 
@@ -609,7 +604,7 @@ From the pictures we can observe that the level of dependency between values of 
 In order to give more formal illustration we can look at the correlation between values of the nodes that we see during the random walk on the graph.
 
 Let's denote as $Y_0, Y_1, ..., Y_i, ...$  the sequence of values on the nodes that we observe during the random walk. Let's say that we start random walk with stationary distribution, so the values $Y_0, Y_1, ..., Y_i, ...$ have the same stationary distribution. Then covariance between  two values $Y_i$ and $Y_{i+k}$ depends only on the distance $k$ in the sequence $Y_0, Y_1, ..., Y_i, ..., Y_{i+k}, ...$ between them:
-$$cov(f(Y_i), f(Y_{i+k})) = cov(f(Y_0), f(Y_k))$$
+$$cov(Y_i, Y_{i+k}) = cov(Y_0, Y_k)$$
 
 \myworries{explain why}
 
@@ -760,11 +755,12 @@ The experiments showed us that the expected value of the each variable $X_1, X_2
 
 $$E[X_i] = av_V$$
 
-We didn't show it formally, that's why we will write that this is assumption. But we have reasons to believe that it is true and can be proved.
+We didn't show it formally, that's why we will write that this is an assumption. But we have reasons to believe that it is true and can be proved.
 \paragraph{Assumptions about no correlation between neighbors}
 \mbox{} \\
 
-We will make an assumption that values are assigned independently of each other. Of course it is not the truth. But we can get the approximated expression that can give us the idea about energy-temperature dependency.
+We will make an assumption that values are assigned independently of each other. Of course it is not true. The distribution of the values on a node takes into the account the values of his neighbors. By making this assumption we will make some error, but we can get the approximated expression. If the approximation is close to the reality it can give us at least the idea about energy-temperature dependency.
+
  Let $N_i$ be the number of the neighbors of the node $i$. So if there is no correlation between value assigned to the nodes, then we can write global energy as:
 $$ E[\varepsilon (\bar{X})] =  \sum_{i \sim j, i \leq j} E[X_i - X_j]^2 = 
 \frac{1}{2} \sum_{i \sim j} E[X_i - X_j]^2 = $$
@@ -788,22 +784,22 @@ $$
 Let's look at the case when the values are assigned to the nodes according to the same distribution in independent way (that means that there is no correlation between assigned values). Let $m$ be the number of edges in the graph. Then the expression for energy becomes:
 $$ E[\varepsilon (\bar{X})] =  \sum_{i \sim j} N_iVar(X_i) = 2mVar(X_i)$$
 
-where $x_i$ and $x_j$ are random variance with the same distribution.
+where $X_i$ and $X_j$ are random variables with the same distribution.
 Interesting fact that it reminds us the famous formula for energy!
 
-Particularly, we can compute expected energy in this way for random configuration where the values are assigned to the nodes independently and uniformly from all possible values in $V$. 
+Particularly, we can compute expected energy in this way for initial random configuration where the values are assigned to the nodes independently and uniformly from all possible values in $V$. 
 When $X_i$ is distributed uniformly in $V$ the variance of $X_i$ is:
 $$var(X_i) = \frac{|V|^2-1}{12}$$
 
 Then the expected energy of the graph on random configuration $\bar{x}$ is
-$$E[\varepsilon (\bar{x})] =  m\frac{|V|^2-1}{6}$$
+$$E[\varepsilon (\bar{X})] =  m\frac{|V|^2-1}{6}$$
 
 
 \paragraph{Assumptions about values distribution}
 \mbox{} \\
 
-In order to simplify expression for values distribution on the node $i$ we will make some assumptions. First, let's say that all neighbors of the node $i$ have the value $av_V, av_V = average(V)$. If for all $j \in N_i : x_j = av_V$ then 
-$p(x_j  = av_V) = 1$. With this assumption probability that the node $i$ will have value $x \in V$ is
+We saw that it is impossible to write explicitly the distribution of the values on one node explicitly. In order to simplify the expression for values distribution on the node $i$ we will also make some assumptions. First, let's say that all neighbors of the node $i$ have the value $av_V, av_V = average(V)$. If for all $j \in N_i : X_j = av_V$ then 
+$p(X_j  = av_V) = 1$. With this assumption probability that the node $i$ will have value $x \in V$ is
 
 \begin{equation}
 \label{eq:simpleDisrt}
@@ -871,39 +867,52 @@ Even if the result is not precise it can give us intuition.
 
 \section{Error prediction}
 
+Now, when we have network, where each node maintain the value we can begin to study formally described in the section 
+\ref{sec:Enhanced RDS} method of enhanced RDS.
+
+Due to homoplily in the network and the way the respondent-driven sampling is performed the variance of the estimator will be different from the case if it was just independent uniform sampling. Studying variance is important for multiple reasons. It essential for building confidence intervals. It is the factor the influences on the error of estimator. When we have multiple estimators and we know the error of each of them we have the instrument to compare them.
+
+
+In this section we will take the sample average (SA) as the estimator for the population mean. In order to decrease the variance of the estimator we will increase the distance between samples as it was described in the section \ref{sec:Enhanced RDS}. We will look at the different possibilities of sampling hidden populations in the conditions of limited budget. For each scenario we will have different estimators. We are going to choose the best of them, the one that has the minimum error. Then we will compare it with existing estimators.
+
 \subsection{Variance prediction}
 
 Let $Y_1, Y_2, Y_3,..., Y_n$ be the samples that are taken during the random walk. Let's take the average value of the samples as an estimator of mean population value:
 
-$$ \widehat{\mu}_{avg} = \frac{Y_1 + Y_2 + ... + Y_n}{n}$$
+$$ \widehat{\mu}_{SA} = \frac{Y_1 + Y_2 + ... + Y_n}{n}$$
 
 We noted that the variance of the estimator $\widehat{\mu}_{avg}$ is influence by the correlation factor as the random variables $Y_1, Y_2, Y_3,..., Y_n$ are correlated:
 
-$$ \sigma^2_{\hat{\mu}_{avg}} = \frac{\sigma^2}{n} f(n)$$
+$$ \sigma^2_{\hat{\mu}_{SA}} = \frac{\sigma^2}{n} f(n)$$
 
-Let's look what will happen with variance in the suggested modified RDS.
+Let's look what will happen with variance in the suggested enhanced RDS.
 
-We have budget $B$. $n$ individuals that we see during the RDS receive $C_1$ units of money for recruiting another individuals, each $k$th person from them take also part in the study and receives $C_2$ additional units of money. 
+To remind the notation, we denote budget as $B$, $n$ individuals that we see during the RDS receive $C_1$ units of money for recruiting another individuals, each $k$th person from them take also part in the study and receives $C_2$ additional units of money. 
 
-In this way $\frac{n}{k+1}$ individuals from $n$ are participants. Then we can write:
+In this way $\frac{n}{k}$ individuals from $n$ are participants. Then the following equality should be true:
 
 $$B = nC_1 + \frac{n}{k}C_2$$
 
-From this equality we can see that the length of the chain $n$ is:
+From this equality we can see that with the fixed budget $B$ and skipping $k-1$ individuals between participants, the length of the chain $n$ can be:
 
 $$n = \frac{kB}{kC_1 + C_2}$$
 
-And then the number of participants is:
-
+When each $k$th person is a participant, it means that for real we have only values $Y_1, Y_k, Y_{2k}, ..., Y_{\frac{kB}{kC_1 + C_2}}$ that we can take for the estimation. In this way the number of participants $m$ is:
 $$m = \frac{B}{kC_1 + C_2}$$
 
-So number of participants depends on $k$ and the bigger is $k$ the less participants we have.
-Also we observed experimentally that the bigger is $k$ (with the fixed sample size) the less is the correlation. So actually correlation factor also depends on $k$.
-Saying all this we can write that variance of estimator as:
+Then for each scenario with the fixed budget $B$ depending on the $k$ the estimator is:
 
-$$ \sigma^2_{\hat{\mu}_{avg}} = \frac{\sigma^2}{\frac{B}{kC_1 + C_2}} f(k)$$
+$$ \widehat{\mu}_{SA}^k = \frac{Y_1 + Y_k+ Y_{2k}+ ...+ Y_{\frac{kB}{kC_1 + C_2}}}{\frac{B}{kC_1 + C_2}}$$
 
-Now we have to find the expression for the correlation factor.
+
+We can see that the number of participants depends on $k$ and the bigger is $k$ the less participants we have.
+Also we observed experimentally that the bigger is $k$ (with the fixed sample size) the less is the correlation. So actually correlation factor  depends on $k$.
+Saying all this we can write the variance of estimator as:
+
+$$ \sigma^2_{\hat{\mu}_{SA}^k} = \frac{\sigma^2}{\frac{B}{kC_1 + C_2}} f(k)$$
+
+
+Now we have to find the expression for the correlation factor $f(k)$.
 
 \subsection{Simple example}
 
@@ -916,7 +925,7 @@ For now we will not care about graph structure. Let's assume that our collected 
 So correlation between the nodes that are at the distance 1 in the chain have correlation $\rho$, at distance 2 have correlation $\rho^2$ an so on. 
 Then we can write the variance of the mean estimator as: 
 
-$$\sigma^2_{\hat{\mu}_{avg}} = var\left[\bar{Y} \right] = var\left[ \frac{Y_1 + Y_2 + ..., Y_n}{n} \right] = \frac{1}{n^2} \sum_{i=1}^{n}\sum_{j=1}^{n} cov(Y_i, Y_j) =$$ 
+$$\sigma^2_{\hat{\mu}_{SA}} = var\left[\bar{Y} \right] = var\left[ \frac{Y_1 + Y_2 + ..., Y_n}{n} \right] = \frac{1}{n^2} \sum_{i=1}^{n}\sum_{j=1}^{n} cov(Y_i, Y_j) =$$ 
 $$ = \frac{\sigma^2}{n^2} \left( n + 2(n-1)\rho + 2(n-2)\rho^2 + ... + 2\cdot2 \rho^{n-2}+ 2\cdot1 \rho^{n-1} \right) = $$
 $$ = \frac{\sigma^2}{n^2} \left(n + 2\sum_{i=1}^{n-1} (n-i)\rho^i \right) = \frac{\sigma^2}{n^2} \left(n + 2n\sum_{i=1}^{n-1}\rho^i - 2\sum_{i=1}^{n-1}i\rho^i \right) = $$
 $$ = \frac{\sigma^2}{n} \left(n + 2n\frac{\rho-\rho^{n}}{1-\rho} - 2\rho \sum_{i=0}^{n-2} (\rho^{i+1})' \right) = $$
@@ -925,16 +934,16 @@ $$ = \frac{\sigma^2}{n} \left(n + 2n\frac{\rho-\rho^{n}}{1-\rho} - 2\rho \frac{(
 $$ = \frac{\sigma^2}{n^2} \frac{n-n\rho^2 - 2\rho + 2\rho^{n+1}}{(1-\rho)^2}$$
 
 In the end we have the following expression:
-\begin{equation}
+\begin{equation}\label{eq:varFirst}
 var\left[\bar{Y} \right] = \frac{\sigma^2}{n}\frac{1-\rho^2 - 2\rho/n + 2\rho^{n+1}/n}{(1-\rho)^2}
 \end{equation}
-\label{eq:varFirst}
+
 
 From here we can get that correlation factor is:
 
 $$f(n) = \frac{1-\rho^2 - 2\rho/n + 2\rho^{n+1}/n}{(1-\rho)^2} $$
 
-It can be shown that this factor $f(n)$ is increasing function of $n, (n > 1)$ and it has its minimum 1 when $n = 1$. It is clear, when there is only one individual there is no correlation, because there is only random variable $Y_1$.
+It can be shown that this factor $f(n)$ is increasing function of $n, (n > 1)$ and it has its minimum 1 when $n = 1$. It is clear, when there is only one individual there is no correlation, because there is only random variable $Y_1$. When new participants are invited, the correlation increase due to homophily as we explained earlier.
 
 Let's look what happens to the correlation factor when $n$ goes to infinity:
 
@@ -952,19 +961,6 @@ $$var_{approx}\left[\bar{Y} \right] = \frac{\sigma^2}{n} \frac{1+\rho}{1-\rho}$$
 
 
 Approximation is close when is $n$ big enough. To compare approximated expression with original one, look at the figure \ref{fig:lineGame1} where parameter $\rho$ is $0.6$. As it is reasonable to suppose that the sample size is bigger then 50, we can consider this approximation good enough in this case. The reason to use this approximation is that the expression is much simpler and some facts that are very difficult to prove for real $var\left[\bar{Y} \right]$ become easier for the approximation.
-
-[??? f(n) < n]
-\paragraph{Observation 1} \textit{No matter how values are correlated, the more is sample size, the better is estimation}
-
-From \ref{eq:varFirst} we can see it.
-
-
-If random variables $Y_1, Y_2, ..., Y_n$ were independent then the variance of $\bar{Y}$ would be $var_{ind}[\bar{Y}] = \frac{\sigma^2}{n}$.
-
-But we consider random variables $Y_1, Y_2, ..., Y_n$ that are dependent with known correlation and the variance in this case is bigger. 
-$$ var\left[\bar{Y} \right] = var_{ind}[\bar{Y}]\frac{1+\rho}{1-\rho} = var_{ind}[\bar{Y}]
-\left(1+ \frac{2\rho}{1-\rho} \right) > var_{ind}[\bar{Y}]$$
-
 
 \begin{figure}[ht]
     \centering
@@ -1116,9 +1112,9 @@ For now we can write the formula for the variance of the estimator as:
 
 $$ var\left[\bar{X} \right] = \frac{1}{n^2} \left( nvar(X_i) + 2\sum_{i=1}^n \sum_{j|i < j}^n cov(X_i, X_j)\right) = $$
 
-\begin{equation}
+\begin{equation}\label{eq:varGen}
  = \frac{1}{n^2} \left( n(<f, f>_{\pi} - <f, \Pi f>_{\pi}) + 2\sum_{i=1}^n \sum_{j|i < j}^n  f, (P^{j-i} - \Pi)f> \right)
-\end{equation}\label{eq:varGen}
+\end{equation}
 
 
 
@@ -1129,9 +1125,9 @@ $$P^* = D^{\frac{1}{2}} P D^{-\frac{1}{2}}$$
 
 Then if $\lambda_i$ are eigenvalues, $v_i$ are right eigenvectors and $u_i$ are left eigenvectors of the matrix $P^*$:
 
-\begin{equation}
+\begin{equation}\label{eq:varGen2}
 P^h - \Pi = \sum_{i = 2}^n \lambda_i^n v_i u_i^T
-\end{equation}\label{eq:varGen2}
+\end{equation}
 
 For more explanation refer to the chapter 6 of the book \cite{bremaud2013markov}.
 
