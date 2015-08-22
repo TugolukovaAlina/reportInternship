@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.2.27)  21 AUG 2015 20:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.2.27)  22 AUG 2015 17:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -541,14 +541,14 @@ Package pdftex.def Info: images/varPredDifRho.jpg used on input line 1043.
 File: images/project90gender.png Graphic file (type png)
 
 <use images/project90gender.png>
-Package pdftex.def Info: images/project90gender.png used on input line 1194.
+Package pdftex.def Info: images/project90gender.png used on input line 1204.
 (pdftex.def)             Requested size: 501.87376pt x 501.87683pt.
  [34]
 <images/addhealthRace.png, id=161, 1027.84pt x 1027.84pt>
 File: images/addhealthRace.png Graphic file (type png)
 
 <use images/addhealthRace.png>
-Package pdftex.def Info: images/addhealthRace.png used on input line 1212.
+Package pdftex.def Info: images/addhealthRace.png used on input line 1222.
 (pdftex.def)             Requested size: 501.87376pt x 501.87683pt.
  [35] [36 <./images/project90gender.png>]
 [37 <./images/addhealthRace.png>]
@@ -557,14 +557,14 @@ Chapter 3.
 File: images/RGGdegree.jpg Graphic file (type jpg)
 
 <use images/RGGdegree.jpg>
-Package pdftex.def Info: images/RGGdegree.jpg used on input line 1241.
+Package pdftex.def Info: images/RGGdegree.jpg used on input line 1251.
 (pdftex.def)             Requested size: 269.90776pt x 200.75073pt.
 
 <images/RGGfield.jpg, id=175, 564.1075pt x 419.5675pt>
 File: images/RGGfield.jpg Graphic file (type jpg)
 
 <use images/RGGfield.jpg>
-Package pdftex.def Info: images/RGGfield.jpg used on input line 1248.
+Package pdftex.def Info: images/RGGfield.jpg used on input line 1258.
 (pdftex.def)             Requested size: 269.90776pt x 200.75073pt.
 
 
@@ -574,7 +574,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: images/Pr90field.jpg Graphic file (type jpg)
 
 <use images/Pr90field.jpg>
-Package pdftex.def Info: images/Pr90field.jpg used on input line 1255.
+Package pdftex.def Info: images/Pr90field.jpg used on input line 1265.
 (pdftex.def)             Requested size: 269.90776pt x 200.75073pt.
 
 
@@ -587,7 +587,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: images/rdsVSmean.png Graphic file (type png)
 
 <use images/rdsVSmean.png>
-Package pdftex.def Info: images/rdsVSmean.png used on input line 1266.
+Package pdftex.def Info: images/rdsVSmean.png used on input line 1276.
 (pdftex.def)             Requested size: 424.29439pt x 200.75073pt.
 
 
@@ -627,7 +627,7 @@ nts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/public/eurosym/feymr10.pfb>
-Output written on "final report.pdf" (44 pages, 2966442 bytes).
+Output written on "final report.pdf" (44 pages, 2967738 bytes).
 PDF statistics:
  262 PDF objects out of 1000 (max. 8388607)
  158 compressed objects within 2 object streams
