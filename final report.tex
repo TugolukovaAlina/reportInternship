@@ -921,7 +921,7 @@ $$ \sigma^2_{\hat{\mu}_{SA}^k} = \frac{\sigma^2}{\frac{B}{kC_1 + C_2}} f(k)$$
 
 Now we have to find the expression for the correlation factor $f(k)$.
 
-\subsection{Simple example}
+\subsection{Geometric correlation}
 
 First we will find correlation for simple example and then we will generalize it for any kind of graph.
 
@@ -929,7 +929,7 @@ For now we will not care about graph structure. Let's assume that our collected 
 
  $$corr(Y_i, Y_{i+h}) = \rho^h$$
 
-So correlation between the nodes that are at the distance 1 in the chain have correlation $\rho$, at distance 2 have correlation $\rho^2$ an so on. 
+So correlation between the nodes that are at the distance 1 in the chain have correlation $\rho$, at distance 2 have correlation $\rho^2$ an so on. We will refer to this model with indicated correlation as to \textit{geometric model}.
 Then we can write the variance of the mean estimator as: 
 
 $$\sigma^2_{\hat{\mu}_{SA}} = var\left[\bar{Y} \right] = var\left[ \frac{Y_1 + Y_2 + ...+ Y_n}{n} \right] = \frac{1}{n^2} \sum_{i=1}^{n}\sum_{j=1}^{n} cov(Y_i, Y_j) =$$ 
@@ -1115,19 +1115,19 @@ The stationary distribution of the random walk is:
 $$\pi = \left( \frac{d_1}{\sum_{i=1}^n d_i}, \frac{d_2}{\sum_{i=1}^n d_i},..., \frac{d_n}{\sum_{i=1}^n d_i}\right)$$
   
 
-Let $\Pi$ be the matrix that consist of $n$ rows, where each row is the vector $\pi$. Let $f = {f_1 , f_2, ..., f_n}$ be the values of the attribute on the nodes $1, 2, ..., n$.
+Let $\Pi$ be the matrix that consist of $n$ rows, where each row is the vector $\pi$. Let $f = (f_1 , f_2, ..., f_n)$ be the values of the attribute on the nodes $1, 2, ..., n$.
 
-We consider also that chain starts from initial distribution $\pi$. Then covariance between the random values $X_i$ and $X_j$ depends only on $j-i$:
+We consider also that chain starts from initial distribution $\pi$. Then covariance between the random values $Y_i$ and $Y_j$ depends only on $j-i$:
 
-$$cov(X_i, X_j) = cov (X_0, X_{j-i})$$
+$$cov(Y_i, Y_j) = cov (Y_0, Y_{j-i})$$
 
-And then the formula for the variance
+And then the formula for the variance:
 
-$$var(X_0) = <f, f>_{\pi} - <f, \Pi f>_{\pi}$$
+$$var(Y_0) = <f, f>_{\pi} - <f, \Pi f>_{\pi}$$
 
 and for the covariance:
 
-$$cov(X_0, X_h) = <f, (P^h - \Pi)f>_{\pi}$$
+$$cov(Y_0, Y_h) = <f, (P^h - \Pi)f>_{\pi}$$
 
 where $<a,b>_c$ is weighted scalar product and if $a = (a_1, ..., a_n), b = (b_1, ..., b_n), c = (c_1, ..., c_n)$ then:
 
@@ -1135,53 +1135,84 @@ $$<a,b>_c = \sum_{i = 1}^n a_i b_i c_i$$
 
 To see, how these formulas were derived, consult 6 chapter of the book \cite{bremaud2013markov}.
 
-For now we can write the formula for the variance of the estimator as:
 
-$$ var\left[\bar{X} \right] = \frac{1}{n^2} \left( nvar(X_i) + 2\sum_{i=1}^n \sum_{j|i < j}^n cov(X_i, X_j)\right) = $$
+
+Using these formulas we can write the formula for the variance of the estimator as:
+
+$$ var\left[\bar{Y} \right] = \frac{1}{n^2} \left( nvar(X_i) + 2\sum_{i=1}^n \sum_{j|i < j}^n cov(Y_i, Y_j)\right) = $$
 
 \begin{equation}\label{eq:varGen}
  = \frac{1}{n^2} \left( n(<f, f>_{\pi} - <f, \Pi f>_{\pi}) + 2\sum_{i=1}^n \sum_{j|i < j}^n  f, (P^{j-i} - \Pi)f> \right)
 \end{equation}
 
-
+In this way we know the variance of the SA estimator, the expression is quite cumbersome. Another problem is that practically speaking computing the large powers of the matrix $P$ can take a lot of time. Therefore, we will try to simplify this expression. 
 
 Let's look at auxiliary matrix $P^*$. Let $D$ be the matrix $n \times n$ where $d_{ii} = \pi_i$ and $d_{ij} = 0$ if $i$ is different form $j$. Auxiliary matrix $P^*$ is build in the following way:
 
 $$P^* = D^{\frac{1}{2}} P D^{-\frac{1}{2}}$$
 
 
-Then if $\lambda_i$ are eigenvalues, $v_i$ are right eigenvectors and $u_i$ are left eigenvectors of the matrix $P^*$:
+Then if $\lambda_i (i=1..r)$ are eigenvalues, $v_i$ are corresponding right eigenvectors and $u_i$ are corresponding left eigenvectors of the matrix $P^*$:
 
 \begin{equation}\label{eq:varGen2}
-P^h - \Pi = \sum_{i = 2}^n \lambda_i^n v_i u_i^T
+P^h - \Pi = \sum_{i = 2}^r \lambda_i^h v_i u_i^T
 \end{equation}
 
 For more explanation refer to the chapter 6 of the book \cite{bremaud2013markov}.
 
-Using formulas \ref{eq:varGen} and \ref{eq:varGen2} and reasoning similar to the one in the previous section, when we had know variance we will derive following formula for the variance of the estimator:
-$$ var\left[\bar{X} \right] = \frac{1}{n} \sum_{i=2}^r\frac{1-\lambda_i^2 - 2\frac{\lambda_i}{n} + 2\frac{\lambda_i^{n+1}}{n}}{(1 - \lambda_i)^2} <f, v_i>^2_{\pi}$$
 
-Again variance can be simplified:
-$$ var\left[\bar{X} \right] = \frac{1}{n} \sum_{i=2}^r\frac{1 + \lambda_i}{1 - \lambda_i} <f, v_i>^2_{\pi}$$
+Using formulas \ref{eq:varGen} and \ref{eq:varGen2} and reasoning similar to the case with the geometric model we will derive following formula for the variance of the estimator SA:
 
-Using the same reasoning as for simple case 
+\begin{equation}
+\label{eq:varGenCase}
+ var\left[\bar{Y} \right] = \frac{1}{n} \sum_{i=2}^r\frac{1-\lambda_i^2 - 2\frac{\lambda_i}{n} + 2\frac{\lambda_i^{n+1}}{n}}{(1 - \lambda_i)^2} <f, v_i>^2_{\pi}
+\end{equation}
 
-$$ var\left[\bar{X}^k \right] = \frac{1}{n} \sum_{i=2}^r\frac{1 + \lambda_i^k}{1 - \lambda_i^k} <f, v_i>^2_{\pi}$$
+It means that for general model the correlation factor $f(n)$ is:
 
-Function: variance of mean with skipping having fixed budget and payments (simplified)
-$$ f(k) = \frac{1}{\frac{B}{kC_1 + C_2}} \sum_{i=2}^r\frac{1 + \lambda_i^k}{1 - \lambda_i^k} <g, v_i>^2_{\pi}$$
+$$ f(n) = \frac{1}{var(Y_0)} \sum_{i=2}^r\frac{1-\lambda_i^2 - 2\frac{\lambda_i}{n} + 2\frac{\lambda_i^{n+1}}{n}}{(1 - \lambda_i)^2} <f, v_i>^2_{\pi}$$
 
-[put interpretation of the formula, correlation factor and so on].
-[put the graph]
+Again as in the geometric model the expression \ref{eq:varGenCase} for the variance can be simplified if we take as the correlation factor when $n$ approaches infinity:
+
+$$ var\left[\bar{Y} \right] = \frac{1}{n} \sum_{i=2}^r\frac{1 + \lambda_i}{1 - \lambda_i} <f, v_i>^2_{\pi}$$
+
+Finally when we know the expression for estimator we can go back to the problem of sampling hidden population. Then for the different scenarios with different number of samples that are skipped between the participants $k - 1$ we get the variance: 
+
+
+\begin{equation}
+\label{eq:genVarSkip}
+var\left[\bar{Y}^k \right] =  \frac{1}{\frac{B}{kC_1 + C_2}} \sum_{i=2}^r\frac{1-\lambda_i^{2k} - 2\frac{\lambda_i^k}{\frac{B}{kC_1 + C_2}} + 2\frac{\lambda_i^{k\left(\frac{B}{kC_1 + C_2}+1\right)}}{\frac{B}{kC_1 + C_2}}}{(1 - \lambda_i)^{2k}} <f, v_i>^2_{\pi}
+\end{equation}
+
+
+or simplified version:
+$$ var\left[\bar{Y}^k \right] = \frac{1}{\frac{B}{kC_1 + C_2}} \sum_{i=2}^r\frac{1 + \lambda_i^k}{1 - \lambda_i^k} <g, v_i>^2_{\pi}$$
+
+Interestingly, the expression for the variance in general case has the same structure as for the geometric model. Therefore, all the proved observations for the geometric model are true for the general model. Moreover the interpretation of the derived formula is the same. The are tow factors, left and right, that "compete" with each other. If we try to decrease the lest factor, we will increase the right and the opposite. In order to find the desired parameter $k$ we need to find the minimum of the estimator function for variance. 
+
+Even if it is difficult to obtain the explicit formula for $k$, the fact that $k$ is integer allows us just to find it with search.
+
+
 \subsection{Error prediction}
 
 However variance it is not the only source of the error. We should also consider bias: the difference between expected value of the estimator and the real value. We can then compute bias of the estimator $\hat{\mu}_{avg}$ as following:
 
-$$bias(\hat{\mu}_{avg}) = E[\hat{\mu}_{avg}] - \mu_{avg} = <f, \pi> - \mu_{avg}$$
+$$bias(\hat{\mu}_{SA}) = E[\hat{\mu}_{SA}] - \mu_{SA} = <f, \pi> - \mu_{SA}$$
 
-Then the mean squared error of the estimator, $MSE(\hat{\mu}_{avg})$, can be written with variance and bias as: 
+Then the mean squared error of the estimator, $MSE(\hat{\mu}_{SA})$, can be written with variance and bias as: 
 
-$$MSE(\hat{\mu}_{avg}) = bias(\hat{\mu}_{avg})^2 + var(\hat{\mu}_{avg})$$
+$$MSE(\hat{\mu}_{SA}) = bias(\hat{\mu}_{SA})^2 + var(\hat{\mu}_{SA})$$
+
+We should note, that for all the scenarios with different $k$ the bias is the same as this bias is due to the way that sampling is perform, random walk, that is the way of sampling for all the scenarios.
+
+\subsection{Discussion}
+
+The formula \ref{eq:genVarSkip} implies that the graph and the values on the nodes are known. In this case we can correctly predict the error of the estimator. However, the researchers usually do not possess this information.
+
+The expression \ref{eq:genVarSkip} may be simplified for the graphs for which the distribution of eigenvalues is known. Like this it will be applicable, but it will lose generality.
+
+There is know way to predict this value correctly without knowing the graph and the values of the nodes. The variance depends both on the graph structure . When researchers start respondent-driven sampling they may have no clue about graph structure. Therefore they can have only guesses about the error of the estimator that they will get.
+
 
 \section{Data}
 
@@ -1208,7 +1239,7 @@ On the figure \ref{fig:project90gender} you can see the graph structure built wi
 
 \subsection{Data from the Add health project}
 
-The National Longitudinal Study of Adolescent to Adult Health (Add Health) is a huge study that began with surveying students from the 7-12 grades in the United States during 1994-1995 school year. In general 90,118 students representing 84 communities took part in this study. The study kept on going survey student as they grow. The 
+The National Longitudinal Study of Adolescent to Adult Health (Add Health) is a huge study that began with surveying students from the 7-12 grades in the United States during 1994-1995 school year. In general 90,118 students representing 84 communities took part in this study. The study kept on going survey student as they growing up. The 
 data includes information about social, economic, psychological and physical status of the students and other. 
 
 The social network of students' connections was built based on the reported friends. Each of the students was asked to provide the names of 0-5 male and 0-5 female friends. Then the network structure was built that now can help to analyze if some characteristics of the students indeed are influenced by their friends.
@@ -1220,7 +1251,7 @@ On the figure \ref{fig:addhealthRace} represented the graph with 1996 nodes and 
 \begin{figure}[ht]
     \centering
     \includegraphics[height=500px]{addhealthRace}
-    \caption{Graph from the Add Health data. The colors of the node represent the race: brown nodes correspond to the male participant, green nodes correspond to the female participants}
+    \caption{Graph from the Add Health data. The colors of the node represent the race}
     \label{fig:addhealthRace}
 \end{figure}
 
@@ -1231,55 +1262,19 @@ On the figure \ref{fig:addhealthRace} represented the graph with 1996 nodes and 
 
 \chapter{Comparison to other methods}
 
-We use mean as a estimator.
-Two commonly used estimators of sampling variance in RDS are the Salganik bootstrap estimator (SBE) and the Volz-Heckathon estimator (VHE). These estimators try to take into account the correlation between neighbors in the referral chain.
+Estimator 1
 
+Estimator 2
 
-Let $X_1, X_2, ..., X_n$ be all collected samples during RDS.
-Then RDS estimate $\mu_f$ of the population mean of $f$ is defined \cite{goel2010assessing} as
-$$\mu_f = \frac{1}{\sum\limits_{i=1}^n 1/degree(X_i)} \sum\limits_{i=1}^n \frac{f(X_i)}{degree(X_i)}$$
-
-
-Our estimator (sample mean):
-$$\mu_{f2} = \sum\limits_{i=1}^n \frac{f(X_i)}{n}$$
-
-Estimator $\mu_f$ indeed performs better than estimator $\mu_{f2}$ when values of the nodes depend on the degree of the node.
-
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[height=200px]{RGGdegree}
-    \caption{ RGG(200, 0.13), measuring degree}
-\end{figure}
-
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[height=200px]{RGGfield}
-    \caption{ RGG(200, 0.13), measuring values }
-\end{figure}
-
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[height=200px]{Pr90field}
-    \caption{ Project 90, measuring ??? race}
-\end{figure}
+Estimator 3
 
 
 As stated also \cite{goel2010assessing} the advantage to use estimtor1 appears only when the needed for estimation trait depends on the degree of the node. To support this statement they compare particularly the standard error of the sample mean and RDS estimate on the data sets from Project 90 and Add Health. The results are presented on the figure [put pictures]. 
 
+\section{Further study}
 
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[height=200px]{rdsVSmean}
-    \caption{ Comparison of standard error of RDS estimator and sample mean estimator on Project 90 data (left) and Add Health data (right)  \cite{goel2010assessing}}
-\end{figure}
-
-\chapter{Conclusion}
-
-\section{Contributions}
+\section*{Conclusion}
 
 
 The new idea to create network values in such a way that ....
@@ -1287,7 +1282,7 @@ This is general contribution that makes possible to create ... where we can cont
 
 However, knowing that the result from the model is underestimated, it can give us the \textit{minimal} number of node to skip. And the result may not be the best possible, but comparing to the standard scenario has lower error.
 
-\section{Further study}
+
 
 \myworries{
 to correct:
@@ -1295,7 +1290,15 @@ to correct:
 - change n on m in the enhanced RDS
 - put the transition matrix in the beginning of the second chapter
 - everywhere expected energy of random field not configuration!!!
+
+
+
+restructure report
 }
+
+geometric model allow to show some rasults taht are easy generalized to the general case
+
+search everywhere: instead variation - variances
 
 \bibliographystyle{plain}
 \bibliography{rds}
