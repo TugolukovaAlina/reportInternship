@@ -1274,13 +1274,22 @@ As stated also \cite{goel2010assessing} the advantage to use estimtor1 appears o
 \section{Further study}
 
 
-\section*{Conclusion}
+\chapter*{Conclusion}
 
 
-The new idea to create network values in such a way that ....
-This is general contribution that makes possible to create ... where we can control and mathematically studying properties that is very important for research purposes.
+In this work we regarded the sampling technique that is called respondent-driven sampling. This technique can  be very useful in the cases when the members of the population are hard to find. The fact that members of the population form a network allows researcher to use their connections to reach another members.
 
-However, knowing that the result from the model is underestimated, it can give us the \textit{minimal} number of node to skip. And the result may not be the best possible, but comparing to the standard scenario has lower error.
+We observed that this way of sampling is not uniform independent sampling. The way of sampling and the presence of homophily in the network influence on the error of the estimator. The researchers should keep attention that particularly the variance of the estimator is grater than in the uniform independent sampling.
+
+The level of the homoplily in the network influences on the correlation between samples. One way of decreasing the correlation is thinning out the sample. We showed formally that just thinning the sample will increase the error of the estimator. Instead we proposed to enhanced respondent-driven sampling that allows to decrease the correlation between samples without reducing drastically sample size.
+
+In the same way that random graphs can imitate the structure of the graph with needed correlation we needed the mechanism of assigning values to the nodes in such a way that it imitates the property of homophily in the network. Created algorithm allows not only to do this but also to control the level of correlation in the network. This result is not applicable to this particular model. But it is the general mechanism that allows to create the network with controllable level of dependency between neighbours. That is highly valuable for research purposes.
+
+Using created mathematical model we targeted to find the error of the estimator for different scenarios of enhanced RDS. The scenario with the minimal error would be the best and recommended for applying. First we regarded the geometric model where correlation between samples is the power of difference between observing time of two samples.
+
+Though this model turned out to be too simplify to produce the exact result it gave us valuable products. First, some . Second, it can give us the lower bound.
+
+Then we were able to generalize the result for any kind of graph with any kind of correlation. Theoretical results were validated with experimentations. For the network with values with used created model and the real networks as well.
 
 
 
@@ -1290,10 +1299,8 @@ to correct:
 - change n on m in the enhanced RDS
 - put the transition matrix in the beginning of the second chapter
 - everywhere expected energy of random field not configuration!!!
-
-
-
 restructure report
+appeared - > turned out
 }
 
 geometric model allow to show some rasults taht are easy generalized to the general case
