@@ -1330,10 +1330,140 @@ On the following figures we can observe that the experiments results are very cl
 
 \section{Other estimators}
 
-In the section \ref{sec:Current estimators} we got acquainted with  estimators: Sample average, Volz-Heckathon estimator, Group estimator. 
+In the section \ref{sec:Current estimators} we got acquainted with following estimators: Sample average, Volz-Heckathon estimator, Group estimator. 
 
-Volz-Heckathon estimator deals with the problem that random walk visits the nodes with higher degree more frequently. However the problem of homophily remains.
+Our methods use the sample average estimator, but the error of estimator differs for each scenario, as for each scenario the sample size and correlation factor is different. The purpose of this study was to suggest the best number of nodes to skip between taking two samples. However, as we  mentioned, the sample average estimator (and therefore estimators for all scenarios) suffers from the bias toward the nodes with higher degrees. We don't know if the estimator for the best scenario performs better than Volz-Heckathon estimator or no.  
 
+Volz-Heckathon estimator deals with the problem that random walk visits the nodes with higher degree more frequently. However the problem of dependency between samples remains. The same situation is with the Group estimator.
+Therefore the skipping may also improve Volz-Heckathon estimator. That's why in our experiments for each $k$ we will apply both estimators. 
+
+However, the error of group estimator will be counted only for the case when $k$ as this estimator uses the information about who hired whom, what would be not correct to use with skipping.
+
+
+On the following figures you can see the performance of the estimators for different $k$. The group estimator was applied to the cases when the trait to estimate has only two values (like gender).
+
+\begin{figure}[h]
+\centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{estimators_disabled}
+        \caption{ Project 90 disabled}
+
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{corrDegreeStud}
+        \caption{ Add health sex }
+
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{corrDegreeStud}
+        \caption{ Add health sex }
+
+    \end{subfigure}
+    
+    
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{corrDegreePr90}
+        \caption{ Project 90 sex}
+
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{corrDegreeStud}
+        \caption{ Add health sex }
+
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{corrDegreeStud}
+        \caption{ Add health sex }
+
+    \end{subfigure}
+    
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{corrDegreePr90}
+        \caption{ Project 90 sex}
+
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{corrDegreeStud}
+        \caption{ Add health sex }
+
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{corrDegreeStud}
+        \caption{ Add health sex }
+
+    \end{subfigure}
+    
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{corrDegreePr90}
+        \caption{ Project 90 sex}
+
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{corrDegreeStud}
+        \caption{ Add health sex }
+
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{corrDegreeStud}
+        \caption{ Add health sex }
+
+    \end{subfigure}
+    
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{corrDegreePr90}
+        \caption{ Project 90 sex}
+
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{corrDegreeStud}
+        \caption{ Add health sex }
+
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{corrDegreeStud}
+        \caption{ Add health sex }
+
+    \end{subfigure}
+    
+
+\end{figure} 
+
+
+
+
+First, we can notice that the group estimator corresponds to the V-E estimator when $k = 1$. Indeed in the case when each person hires exactly one person these estimators coincide. As part of this work we considered only this way of recruitment. Therefore in all our experiments the classic VE estimator is exactly the same as Group Estimator.
+
+We see that Volz-Heckathon estimator also imporves. defining the error can be one of the future works.
+
+We also see that in one cases 
+
+This is connected woth dependence degree-value
+
+\begin{figure}[h]
+\centering
+    \begin{subfigure}[b]{0.6\textwidth}
+        \includegraphics[width=\textwidth]{corrDegreePr90}
+        \caption{ Project 90 sex}
+
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{corrDegreeStud}
+        \caption{ Add health sex }
+
+    \end{subfigure}
+
+\end{figure} 
 
 On the following figures presented result to compare
 
