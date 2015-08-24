@@ -114,4 +114,9 @@ Parag Singla and Matthew Richardson.
 \newblock In {\em Proceedings of the 17th international conference on World
   Wide Web}, pages 655--664. ACM, 2008.
 
+\bibitem{volz2008probability}
+Erik Volz and Douglas~D Heckathorn.
+\newblock Probability based estimation theory for respondent driven sampling.
+\newblock {\em Journal of official statistics}, 24(1):79, 2008.
+
 \end{thebibliography}

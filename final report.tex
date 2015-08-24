@@ -145,8 +145,9 @@ Some of these assumptions are not so restrictive, like the second one. The other
 
 
 \section{Current estimators}
+\label{sec:Current estimators}
 
-Some unbiased estimators were developed in order to generalize the results on all population from the collected samples. We will look at some of them: Sample average (SA), Volz-Heckathon estimator (VHE) that was introduced in the paper \cite{goel2010assessing}  [check this] and estimator presented in the paper \cite{salganik2004sampling} that we will call Group estimator (GE). 
+Some unbiased estimators were developed in order to generalize the results on all population from the collected samples. We will look at some of them: Sample average (SA), Volz-Heckathon estimator (VHE) that was introduced in the paper \cite{volz2008probability} and estimator presented in the paper \cite{salganik2004sampling} that we will call Group estimator (GE). 
 
 \subsection{Sample average}
 
@@ -833,9 +834,9 @@ $$ E[\varepsilon (\bar{x})] = 2mVar(x_i)  = 2m\left(\frac{ \sum\limits_{i\in P} 
 
 \subsection{Results}
 
-On the figure \ref{fig:energyPrediction} we can observe predicted energy with assumptions including that the values on the nodes are distributed as in \ref{eq:simpleDisrt} (it is called first prediction), predicted energy with assumptions including that the values on the nodes are distributed as in \ref{eq:simpleDisrt2} (it is called second prediction) and the expected energy counted with simulations.
+On the figure \ref{fig:energyPrediction} we can observe predicted energy with assumptions including that the values on the nodes are distributed as in \ref{eq:simpleDisrt} when we consider for each vertex its number of neighbors (it is called prediction ALL-N), predicted energy with assumptions including that the values on the nodes are distributed as in \ref{eq:simpleDisrt2} when for each vertex we take the average degree (it is called prediction AV-D) and the expected energy counted with simulations.
 
-We can see that both predictions coincides well with the experiments and the first prediction is more accurate.
+We can see that both predictions coincides well with the experiments. The prediction \ref{eq:simpleDisrt} is more accurate where each vertex has distribution of values according to its degree. As the number of neighbors influences on the distribution and prediction \ref{eq:simpleDisrt2} ignores it, it performs worse than prediction \ref{eq:simpleDisrt}.
 
 \begin{figure}[t]
     \centering
@@ -846,8 +847,8 @@ We can see that both predictions coincides well with the experiments and the fir
     \end{subfigure}
 	~
     \begin{subfigure}[b]{0.4\textwidth}
-        \includegraphics[width=\textwidth]{grid20x10}
-        \caption{ Grid on torus graph with 200 = 20x10 vertices and values $[1, ..., 5]$ }
+        \includegraphics[width=\textwidth]{pa200x1}
+        \caption{ Preferential attachment graph with 200 vertices, 1 link for new arriving node and values $[1, ..., 5]$  }
 
     \end{subfigure}   
     
@@ -858,8 +859,8 @@ We can see that both predictions coincides well with the experiments and the fir
     \end{subfigure}
     ~
     \begin{subfigure}[b]{0.4\textwidth}
-        \includegraphics[width=\textwidth]{pa200x1}
-        \caption{ Preferential attachment graph with 200 vertices, 1 link for new arriving node and values $[1, ..., 5]$ }
+        \includegraphics[width=\textwidth]{facebookEnergy}
+        \caption{ Part of Facebook graph \cite{Facebook} with generated values from the Gibbs sampler }
 
     \end{subfigure}
     
@@ -868,9 +869,9 @@ We can see that both predictions coincides well with the experiments and the fir
 \end{figure}
 
 
-Even if the result is approximated it can give us great intuition about energy-temperature dependency.
+Even if the result is approximated it can give us great intuition about energy-temperature dependency and save time.
 
-Practically speaking, it takes 20 minutes of experiments to understand that we need to use temperature 30 in order to reduce the initial temperature in 4 times in the presented ER graph just with 200 nodes and just few seconds with obtained result.
+To understand practical value, let's look at the part of Facebook graph\ref{fig:energyPrediction} where the values are generated with the Gibbs sampler. It took almost 4 hours to build the energy-temperature dependency and less then 1 second to build both predictions. The prediction \ref{eq:simpleDisrt} is very accurate. Having this prediction there is no difficulty to understand what temperature we need to take to reduce the initial energy let's say in five times.
 
 \section{Error prediction}
 
@@ -1077,17 +1078,24 @@ This result is also very logical. When informators are not payed we should use t
 
 \subsection{Trying to use the result}
 
-Having the shown result we tried to use it. To use the function \ref{fig:varPredDifRho} to find the desired $k$ which minimizes the error we need to define parameter $\rho$. What we tried is to take as $\rho$ the average correlation between the immediate neighbors when the graph and the values on its nodes are given.
+Having the shown result we tried to use it. To use the function \ref{fig:varPredDifRho} to find the desired $k$ which minimizes the error we need to define parameter $\rho$. What we tried is to take as $\rho$ is the average correlation between the immediate neighbors when the graph and the values on its nodes are given.
 
-However, the suggested $k$ did not coincide with the $k$ found with the experimentations. The explanation could be following. 
+However, the suggested $k$ did not coincide with the $k$ found with the experiments (look the figure \ref{fig:facebookBad}). The explanation could be following. 
 
-We that the values $Y_1, Y_2, ..., Y_n$ have correlation $corr(Y_i, Y_{i+h}) = \rho^h$. Correlation between values $Y_1, Y_101$ is of the power 100. However when we walk on the graph the values $Y_1$ and $Y_{101}$ can appear to be of the immediate neighbors. And when in reality the values of the corresponding nodes can be pretty much correlated, according to the geometrical model their correlation is so small that can be neglected.
+According to geometrical model the values $Y_1, Y_2, ..., Y_n$ have correlation $corr(Y_i, Y_{i+h}) = \rho^h$. Correlation between values $Y_1, Y_{101}$ is of the power 100. However when we walk on the graph the values $Y_1$ and $Y_{101}$ can appear to be the values of the immediate neighbors. And when in reality the values of the corresponding nodes can be pretty much correlated, according to the geometrical model their correlation is so small that can be neglected.
 
-The correlation between values is underestimated, except for the correlation of the two consecutive samples $Y_i, Y_{i+1}$. Therefore the correlation factor and its influence are underestimated. And when in reality skipping one more value would significantly reduce correlation, in the model it can be different.
+The correlation between values is underestimated, except for the correlation of the two consecutive samples $Y_i, Y_{i+1}$. Therefore the correlation factor and its influence are underestimated. And when in reality skipping one more value could significantly reduce correlation,  the geometrical model can show that it is useless.
 
-\myworries{put picture where is suggested k with this method does not coinc with exper results !!! the one with facebook}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=200px]{facebookBad}
+    \caption{Variance of the estimator according to the formula \ref{eq:varApprox} and counted with the experiments scenarios for different $k$. The graph is the part of Facebook network \cite{Facebook} with generated values from the Gibbs sampler}
+    \label{fig:facebookBad}
+\end{figure}
 
-Therefore, the model is too simplified to use. In the next section we will generalize it on any graph with any values. However, knowing that the result from the model is underestimated, it can give us the \textit{minimal} number of node to skip. And the result may not be the best possible, but comparing to the standard scenario has lower error.
+Therefore, the model is too simplified to find the exact result. However, its application can be very important. Knowing that the result from the model is underestimated, it can give us the \textit{minimal} number of node to skip. And the result may not be the best possible, but comparing to the standard scenario has lower error. So this model will give us the lower bound on the value $k$.
+
+In the next section we will generalize it on any graph with any values.
 \subsection{General case}
 
 Due to the fact that the correlation between samples was oversimplified the results of geometric model were not exactly the same that in reality. This results could give us the lower bound on the value $k$, but we wanted to find it precisely. 
@@ -1192,6 +1200,15 @@ Interestingly, the expression for the variance in general case has the same stru
 
 Even if it is difficult to obtain the explicit formula for $k$, the fact that $k$ is integer allows us just to find it with search.
 
+On the figure \ref{fig:facebookGood} we can see that the variance computed with experiments coincides with the variance \ref{eq:genVarSkip}. The same graph and values of its nodes are the same as in figure \ref{fig:facebookBad}, but now prediction is correct.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=200px]{facebookGood}
+    \caption{Variance of the estimator according to the formula \ref{eq:genVarSkip} and counted with the experiments scenarios for different $k$. The graph is the part of Facebook network \cite{Facebook} with generated values from the Gibbs sampler}
+    \label{fig:facebookGood}
+\end{figure}
+
 
 \subsection{Error prediction}
 
@@ -1230,12 +1247,7 @@ Project 90 \cite{Project90} studied how the network structure influences on the 
 For our experiments we took the largest connect component from the available data, which consists from 4430 nodes and 18407 edges.
 
 On the figure \ref{fig:project90gender} you can see the graph structure built with the Gephi tool \cite{GEPHI}, where the attribute gender is depicted with color for every node.
-\begin{figure}[ht]
-    \centering
-    \includegraphics[height=500px]{project90gender}
-    \caption{Graph from the Project 90 data. The colors of the node represent the gender: brown nodes correspond to the male participant, green nodes correspond to the female participants}
-    \label{fig:project90gender}
-\end{figure}
+
 
 \subsection{Data from the Add health project}
 
@@ -1248,30 +1260,92 @@ Though this data are very valuable they are not in the free access. Part of them
 
 There are several network for different communities. 
 On the figure \ref{fig:addhealthRace} represented the graph with 1996 nodes and 8522 edges, built again with the Gephi tool \cite{GEPHI}, where the attribute race is depicted with color for every node.
+
+
+\subsection{Experiments}
+
+On the following figures we can observe that the experiments results are very close to the theoretical.
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{pr90race}
+        \caption{ Project 90 race}
+
+    \end{subfigure}
+	~
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{studRace}
+        \caption{ Add health race }
+
+    \end{subfigure}   
+\end{figure}    
+\begin{figure}[h]
+\centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{pr90gender}
+        \caption{ Project 90 sex}
+
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{studSex}
+        \caption{ Add health sex }
+
+    \end{subfigure}
+
+\end{figure}    
+\begin{figure}[h]    
+        \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{pr90dealer}
+        \caption{ Project 90 drug dealer  }
+
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{studGrade}
+        \caption{ Add health grade }
+
+    \end{subfigure}
+    
+    \caption{Energy prediction for different graphs}
+    \label{fig:energyPrediction}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=500px]{project90gender}
+    \caption{Graph from the Project 90 data. The colors of the node represent the gender: brown nodes correspond to the male participant, green nodes correspond to the female participants}
+    \label{fig:project90gender}
+\end{figure}
+
 \begin{figure}[ht]
     \centering
     \includegraphics[height=500px]{addhealthRace}
     \caption{Graph from the Add Health data. The colors of the node represent the race}
     \label{fig:addhealthRace}
 \end{figure}
-
-
-\subsection{Simulated form Gibbs distribution}
-
-\subsection{Experiments}
-
 \chapter{Comparison to other methods}
 
-Estimator 1
+\section{Other estimators}
 
-Estimator 2
+In the section \ref{sec:Current estimators} we got acquainted with  estimators: Sample average, Volz-Heckathon estimator, Group estimator. 
 
-Estimator 3
+Volz-Heckathon estimator deals with the problem that random walk visits the nodes with higher degree more frequently. However the problem of homophily remains.
 
 
-As stated also \cite{goel2010assessing} the advantage to use estimtor1 appears only when the needed for estimation trait depends on the degree of the node. To support this statement they compare particularly the standard error of the sample mean and RDS estimate on the data sets from Project 90 and Add Health. The results are presented on the figure [put pictures]. 
+On the following figures presented result to compare
 
-\section{Further study}
+As stated in \cite{goel2010assessing} the advantage to use VHE appears only when the estimated attribute depends on the degree of the node. 
+
+Indeed we can confirm that .
+
+
+
+
+To support this statement they compare particularly the standard error of the sample mean and RDS estimate on the data sets from Project 90 and Add Health. The results are presented on the figure [put pictures]. 
+
 
 
 \chapter*{Conclusion}

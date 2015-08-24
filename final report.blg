@@ -10,45 +10,45 @@ Warning--to sort, need author or key in Addhealth
 Warning--to sort, need author or key in GEPHI
 Warning--to sort, need author or key in Addhealth2
 Warning--empty journal in pollard2013adolescent
-You've used 19 entries,
+You've used 20 entries,
             2118 wiz_defined-function locations,
-            606 strings with 7595 characters,
-and the built_in function-call counts, 5943 in all, are:
-= -- 584
-> -- 269
+            613 strings with 7773 characters,
+and the built_in function-call counts, 6218 in all, are:
+= -- 610
+> -- 282
 < -- 3
-+ -- 113
-- -- 90
-* -- 401
-:= -- 934
-add.period$ -- 58
-call.type$ -- 19
-change.case$ -- 101
++ -- 118
+- -- 94
+* -- 421
+:= -- 983
+add.period$ -- 61
+call.type$ -- 20
+change.case$ -- 106
 chr.to.int$ -- 0
-cite$ -- 26
-duplicate$ -- 213
-empty$ -- 499
-format.name$ -- 90
-if$ -- 1265
+cite$ -- 27
+duplicate$ -- 224
+empty$ -- 521
+format.name$ -- 94
+if$ -- 1321
 int.to.chr$ -- 0
-int.to.str$ -- 19
-missing$ -- 14
-newline$ -- 97
-num.names$ -- 26
-pop$ -- 143
+int.to.str$ -- 20
+missing$ -- 15
+newline$ -- 102
+num.names$ -- 28
+pop$ -- 146
 preamble$ -- 1
-purify$ -- 83
+purify$ -- 87
 quote$ -- 0
-skip$ -- 155
+skip$ -- 163
 stack$ -- 0
-substring$ -- 352
-swap$ -- 42
+substring$ -- 363
+swap$ -- 43
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 74
+type$ -- 78
 warning$ -- 7
-while$ -- 46
-width$ -- 21
-write$ -- 195
+while$ -- 49
+width$ -- 22
+write$ -- 206
 (There were 7 warnings)

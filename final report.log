@@ -1,21 +1,14 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.17)  24 AUG 2015 00:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.2.27)  24 AUG 2015 16:05
 entering extended mode
-**final*report.tex
-("E:\report for internship\reportInternship\final report.tex"
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**"final report.tex"
+(./final report.tex
 LaTeX2e <2011/06/27>
-Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
-abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
-croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
-lician, german, german-x-2013-05-26, greek, gujarati, hindi, hungarian, iceland
-ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
- lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
-german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
-ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
-an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
-ishmax, welsh, loaded.
-("D:\Program Files\MiKTeX 2.9\tex\latex\base\report.cls"
+Babel <3.9k> and hyphenation patterns for 2 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
-("D:\Program Files\MiKTeX 2.9\tex\latex\base\size12.clo"
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
 File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -31,31 +24,31 @@ File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("D:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-("D:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-("D:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-("D:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("D:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
-File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-("D:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
-("D:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 )
-("D:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count88
@@ -63,22 +56,22 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
-("D:\Program Files\MiKTeX 2.9\tex\latex\url\url.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip10
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-("D:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2010/09/12 v5.6 Page Geometry
 
-("D:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
 Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
-("D:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
 Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
 Package ifvtex Info: VTeX not detected.
 )
-("D:\Program Files\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty"
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
 Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 )
 \Gm@cnth=\count89
@@ -93,12 +86,11 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layouthoffset=\dimen111
 \Gm@layoutvoffset=\dimen112
 \Gm@dimlist=\toks15
-
-("D:\Program Files\MiKTeX 2.9\tex\latex\geometry\geometry.cfg"))
-("D:\Program Files\MiKTeX 2.9\tex\latex\caption\caption.sty"
+)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2013/05/02 v3.3-89 Customizing captions (AR)
 
-("D:\Program Files\MiKTeX 2.9\tex\latex\caption\caption3.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 57.
 \captionmargin=\dimen113
@@ -111,33 +103,33 @@ Package caption3 Info: TeX engine: e-TeX on input line 57.
 )
 \c@ContinuedFloat=\count92
 )
-("D:\Program Files\MiKTeX 2.9\tex\latex\caption\subcaption.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
 Package: subcaption 2013/02/03 v1.1-62 Sub-captions (AR)
 \c@subfigure=\count93
 \c@subtable=\count94
 )
-("D:\Program Files\MiKTeX 2.9\tex\latex\eurosym\eurosym.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/eurosym/eurosym.sty
 Package: eurosym 1998/08/06 v1.1 European currency symbol ``Euro''
 \@eurobox=\box26
 )
-("D:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsmath.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2013/01/14 v2.14 AMS math features
 \@mathmargin=\skip43
 
 For additional information on amsmath, use the `?' option.
-("D:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amstext.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01
 
-("D:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
 \@emptytoks=\toks16
 \ex@=\dimen120
 ))
-("D:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d
 \pmbraise@=\dimen121
 )
-("D:\Program Files\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
 \inf@bad=\count95
@@ -178,10 +170,10 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-("D:\Program Files\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty"
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
 
-("D:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
@@ -195,7 +187,13 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
-("E:\report for internship\reportInternship\final report.aux")
+(./final report.aux
+
+LaTeX Warning: Label `fig:energyPrediction' multiply defined.
+
+)
+\openout1 = `"final report.aux"'.
+
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
@@ -208,8 +206,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
 LaTeX Font Info:    ... okay on input line 16.
-
-("D:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+ (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count107
 \scratchdimen=\dimen129
@@ -222,7 +219,50 @@ LaTeX Font Info:    ... okay on input line 16.
 \MPnumerator=\count111
 \makeMPintoPDFobject=\count112
 \everyMPtoPDFconversion=\toks22
+) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -273,299 +313,350 @@ Package pdftex.def Info: images/inria.png used on input line 70.
 
 [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <E:/report for internship/
-reportInternship/images/univer.png> <E:/report for internship/reportInternship/
-images/inria.png>]
-("E:\report for internship\reportInternship\final report.toc" [1
+{/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map} <./images/un
+iver.png> <./images/inria.png>] (./final report.toc [1
 
 ])
 \tf@toc=\write3
+\openout3 = `"final report.toc"'.
+
  [2] [3
 
-]
-[4]
+] [4]
 Chapter 1.
 [5
 
-] [6] [7] [8] <images/senate.jpg, id=44, 803.0pt x 461.725pt>
+] [6] [7] [8] <images/senate.jpg, id=45, 803.0pt x 461.725pt>
 File: images/senate.jpg Graphic file (type jpg)
 
 <use images/senate.jpg>
-Package pdftex.def Info: images/senate.jpg used on input line 245.
+Package pdftex.def Info: images/senate.jpg used on input line 246.
 (pdftex.def)             Requested size: 436.41943pt x 250.93842pt.
- [9] [10 <E:/report for internship/reportInternship/images/senate.jpg>] <images
-/observation2.jpg, id=51, 564.1075pt x 419.5675pt>
+ [9] [10 <./images/senate.jpg>]
+<images/observation2.jpg, id=52, 564.1075pt x 419.5675pt>
 File: images/observation2.jpg Graphic file (type jpg)
 
 <use images/observation2.jpg>
-Package pdftex.def Info: images/observation2.jpg used on input line 290.
+Package pdftex.def Info: images/observation2.jpg used on input line 291.
 (pdftex.def)             Requested size: 231.43117pt x 172.13261pt.
 
-<images/observation3.jpg, id=52, 564.1075pt x 419.5675pt>
+<images/observation3.jpg, id=53, 564.1075pt x 419.5675pt>
 File: images/observation3.jpg Graphic file (type jpg)
 
 <use images/observation3.jpg>
-Package pdftex.def Info: images/observation3.jpg used on input line 296.
+Package pdftex.def Info: images/observation3.jpg used on input line 297.
 (pdftex.def)             Requested size: 231.43117pt x 172.13261pt.
- [11 <E:/report for internship/reportInternship/images/observation2.jpg> <E:/re
-port for internship/reportInternship/images/observation3.jpg>] [12] <images/ski
-pping1.jpeg, id=62, 720.44156pt x 438.13687pt>
+ [11 <./images/observation2.jpg> <./images/observation3.jpg>] [12] <images/skip
+ping1.jpeg, id=63, 720.44156pt x 438.13687pt>
 File: images/skipping1.jpeg Graphic file (type jpg)
 
 <use images/skipping1.jpeg>
-Package pdftex.def Info: images/skipping1.jpeg used on input line 339.
+Package pdftex.def Info: images/skipping1.jpeg used on input line 340.
 (pdftex.def)             Requested size: 248.09564pt x 150.87659pt.
 
-<images/skipping2.jpeg, id=63, 720.44156pt x 438.13687pt>
+<images/skipping2.jpeg, id=64, 720.44156pt x 438.13687pt>
 File: images/skipping2.jpeg Graphic file (type jpg)
 
 <use images/skipping2.jpeg>
-Package pdftex.def Info: images/skipping2.jpeg used on input line 360.
+Package pdftex.def Info: images/skipping2.jpeg used on input line 361.
 (pdftex.def)             Requested size: 248.09564pt x 150.87659pt.
 
-<images/skipping3.jpeg, id=64, 720.44156pt x 438.13687pt>
+<images/skipping3.jpeg, id=65, 720.44156pt x 438.13687pt>
 File: images/skipping3.jpeg Graphic file (type jpg)
 
 <use images/skipping3.jpeg>
-Package pdftex.def Info: images/skipping3.jpeg used on input line 378.
+Package pdftex.def Info: images/skipping3.jpeg used on input line 379.
 (pdftex.def)             Requested size: 248.09564pt x 150.87659pt.
- [13 <E:/report for internship/reportInternship/images/skipping1.jpeg> <E:/repo
-rt for internship/reportInternship/images/skipping2.jpeg> <E:/report for intern
-ship/reportInternship/images/skipping3.jpeg>]
+ [13 <./images/skipping1.jpeg> <./images/skipping2.jpeg> <./images/skipping3.jp
+eg>]
 Chapter 2.
 [14
 
 ] [15] [16]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 502.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 503.
 
- ("D:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 502.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 503.
 
-<images/GibbsVertexExample.jpeg, id=80, 251.43938pt x 185.19188pt>
+<images/GibbsVertexExample.jpeg, id=81, 251.43938pt x 185.19188pt>
 File: images/GibbsVertexExample.jpeg Graphic file (type jpg)
 
 <use images/GibbsVertexExample.jpeg>
-Package pdftex.def Info: images/GibbsVertexExample.jpeg used on input line 531.
+Package pdftex.def Info: images/GibbsVertexExample.jpeg used on input line 532.
 
 (pdftex.def)             Requested size: 136.28166pt x 100.37537pt.
- [17 <E:/report for internship/reportInternship/images/GibbsVertexExample.jpeg>
-]
-<images/rggT1.jpg, id=84, 562.1pt x 421.575pt>
+ [17 <./images/GibbsVertexExample.jpeg>]
+<images/rggT1.jpg, id=85, 562.1pt x 421.575pt>
 File: images/rggT1.jpg Graphic file (type jpg)
  <use images/rggT1.jpg>
-Package pdftex.def Info: images/rggT1.jpg used on input line 578.
+Package pdftex.def Info: images/rggT1.jpg used on input line 579.
 (pdftex.def)             Requested size: 205.71486pt x 154.28206pt.
 
-<images/rggT5.jpg, id=85, 564.1075pt x 419.5675pt>
+<images/rggT5.jpg, id=86, 564.1075pt x 419.5675pt>
 File: images/rggT5.jpg Graphic file (type jpg)
  <use images/rggT5.jpg>
-Package pdftex.def Info: images/rggT5.jpg used on input line 584.
+Package pdftex.def Info: images/rggT5.jpg used on input line 585.
 (pdftex.def)             Requested size: 205.71486pt x 153.00322pt.
 
-<images/rggT20.jpg, id=86, 564.1075pt x 419.5675pt>
+<images/rggT20.jpg, id=87, 564.1075pt x 419.5675pt>
 File: images/rggT20.jpg Graphic file (type jpg)
  <use images/rggT20.jpg>
-Package pdftex.def Info: images/rggT20.jpg used on input line 590.
+Package pdftex.def Info: images/rggT20.jpg used on input line 591.
 (pdftex.def)             Requested size: 205.71486pt x 153.00322pt.
 
-<images/rggT1000.jpg, id=87, 562.1pt x 421.575pt>
+<images/rggT1000.jpg, id=88, 562.1pt x 421.575pt>
 File: images/rggT1000.jpg Graphic file (type jpg)
  <use images/rggT1000.jpg>
-Package pdftex.def Info: images/rggT1000.jpg used on input line 596.
+Package pdftex.def Info: images/rggT1000.jpg used on input line 597.
 (pdftex.def)             Requested size: 205.71486pt x 154.28206pt.
 
-[18] <images/rggT1corr.jpg, id=92, 501.875pt x 250.9375pt>
+[18] <images/rggT1corr.jpg, id=93, 501.875pt x 250.9375pt>
 File: images/rggT1corr.jpg Graphic file (type jpg)
 
 <use images/rggT1corr.jpg>
-Package pdftex.def Info: images/rggT1corr.jpg used on input line 621.
+Package pdftex.def Info: images/rggT1corr.jpg used on input line 622.
 (pdftex.def)             Requested size: 205.71486pt x 102.85823pt.
 
-<images/rggT5corr.jpg, id=93, 501.875pt x 250.9375pt>
+<images/rggT5corr.jpg, id=94, 501.875pt x 250.9375pt>
 File: images/rggT5corr.jpg Graphic file (type jpg)
 
 <use images/rggT5corr.jpg>
-Package pdftex.def Info: images/rggT5corr.jpg used on input line 627.
+Package pdftex.def Info: images/rggT5corr.jpg used on input line 628.
 (pdftex.def)             Requested size: 205.71486pt x 102.85823pt.
 
-<images/rggT20corr.jpg, id=94, 503.8825pt x 248.93pt>
+<images/rggT20corr.jpg, id=95, 503.8825pt x 248.93pt>
 File: images/rggT20corr.jpg Graphic file (type jpg)
 
 <use images/rggT20corr.jpg>
-Package pdftex.def Info: images/rggT20corr.jpg used on input line 633.
+Package pdftex.def Info: images/rggT20corr.jpg used on input line 634.
 (pdftex.def)             Requested size: 205.71486pt x 101.62894pt.
 
-<images/rggT1000corr.jpg, id=95, 503.8825pt x 248.93pt>
+<images/rggT1000corr.jpg, id=96, 503.8825pt x 248.93pt>
 File: images/rggT1000corr.jpg Graphic file (type jpg)
 
 <use images/rggT1000corr.jpg>
-Package pdftex.def Info: images/rggT1000corr.jpg used on input line 639.
+Package pdftex.def Info: images/rggT1000corr.jpg used on input line 640.
 (pdftex.def)             Requested size: 205.71486pt x 101.62894pt.
- [19 <E:/report for internship/reportInternship/images/rggT1.jpg> <E:/report fo
-r internship/reportInternship/images/rggT5.jpg> <E:/report for internship/repor
-tInternship/images/rggT20.jpg> <E:/report for internship/reportInternship/image
-s/rggT1000.jpg>]
-<images/energy2.jpg, id=99, 564.1075pt x 419.5675pt>
+ [19 <./images/rggT1.jpg> <./images/rggT5.jpg> <./images/rggT20.jpg> <./images/
+rggT1000.jpg>]
+<images/energy2.jpg, id=100, 564.1075pt x 419.5675pt>
 File: images/energy2.jpg Graphic file (type jpg)
  <use images/energy2.jpg>
-Package pdftex.def Info: images/energy2.jpg used on input line 668.
+Package pdftex.def Info: images/energy2.jpg used on input line 669.
 (pdftex.def)             Requested size: 231.43117pt x 172.13261pt.
 
-<images/energy10.jpg, id=100, 564.1075pt x 419.5675pt>
+<images/energy10.jpg, id=101, 564.1075pt x 419.5675pt>
 File: images/energy10.jpg Graphic file (type jpg)
 
 <use images/energy10.jpg>
-Package pdftex.def Info: images/energy10.jpg used on input line 674.
+Package pdftex.def Info: images/energy10.jpg used on input line 675.
 (pdftex.def)             Requested size: 231.43117pt x 172.13261pt.
- [20 <E:/report for internship/reportInternship/images/rggT1corr.jpg> <E:/repor
-t for internship/reportInternship/images/rggT5corr.jpg> <E:/report for internsh
-ip/reportInternship/images/rggT20corr.jpg> <E:/report for internship/reportInte
-rnship/images/rggT1000corr.jpg>] [21 <E:/report for internship/reportInternship
-/images/energy2.jpg> <E:/report for internship/reportInternship/images/energy10
-.jpg>] [22]
-Underfull \hbox (badness 10000) in paragraph at lines 757--758
+ [20 <./images/rggT1corr.jpg> <./images/rggT5corr.jpg> <./images/rggT20corr.jpg
+> <./images/rggT1000corr.jpg>] [21 <./images/energy2.jpg> <./images/energy10.jp
+g>] [22]
+Underfull \hbox (badness 10000) in paragraph at lines 758--759
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 765--766
+Underfull \hbox (badness 10000) in paragraph at lines 766--767
 
  []
 
 [23]
-Underfull \hbox (badness 10000) in paragraph at lines 804--805
+Underfull \hbox (badness 10000) in paragraph at lines 805--806
 
  []
 
-[24] <images/er200x01.jpg, id=118, 562.1pt x 421.575pt>
+[24] <images/er200x01.jpg, id=119, 562.1pt x 421.575pt>
 File: images/er200x01.jpg Graphic file (type jpg)
 
 <use images/er200x01.jpg>
-Package pdftex.def Info: images/er200x01.jpg used on input line 843.
-(pdftex.def)             Requested size: 205.71486pt x 154.28206pt.
- <images/grid20x10.jpg, id=119, 562.1pt x 421.575pt>
-File: images/grid20x10.jpg Graphic file (type jpg)
-
-<use images/grid20x10.jpg>
-Package pdftex.def Info: images/grid20x10.jpg used on input line 849.
+Package pdftex.def Info: images/er200x01.jpg used on input line 844.
 (pdftex.def)             Requested size: 205.71486pt x 154.28206pt.
 
-<images/rgg200x013.jpg, id=120, 697.60625pt x 425.59pt>
-File: images/rgg200x013.jpg Graphic file (type jpg)
-
-<use images/rgg200x013.jpg>
-Package pdftex.def Info: images/rgg200x013.jpg used on input line 855.
-(pdftex.def)             Requested size: 205.71486pt x 125.50249pt.
-
-<images/pa200x1.jpg, id=121, 641.39626pt x 423.5825pt>
+<images/pa200x1.jpg, id=120, 641.39626pt x 524.96124pt>
 File: images/pa200x1.jpg Graphic file (type jpg)
 
 <use images/pa200x1.jpg>
-Package pdftex.def Info: images/pa200x1.jpg used on input line 861.
-(pdftex.def)             Requested size: 205.71486pt x 135.85294pt.
- [25 <E:/report for internship/reportInternship/images/er200x01.jpg> <E:/report
- for internship/reportInternship/images/grid20x10.jpg> <E:/report for internshi
-p/reportInternship/images/rgg200x013.jpg> <E:/report for internship/reportInter
-nship/images/pa200x1.jpg>]
-Overfull \hbox (15.85301pt too wide) in paragraph at lines 907--908
+Package pdftex.def Info: images/pa200x1.jpg used on input line 850.
+(pdftex.def)             Requested size: 205.71486pt x 168.36751pt.
+
+<images/rgg200x013.jpg, id=121, 564.1075pt x 419.5675pt>
+File: images/rgg200x013.jpg Graphic file (type jpg)
+
+<use images/rgg200x013.jpg>
+Package pdftex.def Info: images/rgg200x013.jpg used on input line 856.
+(pdftex.def)             Requested size: 205.71486pt x 153.00322pt.
+
+<images/facebookEnergy.jpg, id=122, 564.1075pt x 419.5675pt>
+File: images/facebookEnergy.jpg Graphic file (type jpg)
+
+<use images/facebookEnergy.jpg>
+Package pdftex.def Info: images/facebookEnergy.jpg used on input line 862.
+(pdftex.def)             Requested size: 205.71486pt x 153.00322pt.
+ [25] [26 <./images/er200x01.jpg> <./images/pa200x1.jpg> <./images/rgg200x013.j
+pg> <./images/facebookEnergy.jpg>]
+Overfull \hbox (15.85301pt too wide) in paragraph at lines 908--909
 []\OT1/cmr/m/n/12 When each $\OML/cmm/m/it/12 k$\OT1/cmr/m/n/12 th per-son is a
  par-tic-i-pant, it means that for real we have only val-ues $\OML/cmm/m/it/12 
 Y[]; Y[]; Y[]; :::; Y[]$
  []
 
-[26]
-Overfull \hbox (6.40062pt too wide) in paragraph at lines 928--929
+
+Overfull \hbox (6.40062pt too wide) in paragraph at lines 929--930
 []\OT1/cmr/m/n/12 For now we will not care about graph struc-ture. Let's as-sum
 e that our col-lected sam-ples $\OML/cmm/m/it/12 Y[]; Y[]; :::; Y[]$
  []
 
-[27] <images/corrFactor.jpg, id=132, 632.3625pt x 335.2525pt>
+[27] <images/corrFactor.jpg, id=133, 632.3625pt x 335.2525pt>
 File: images/corrFactor.jpg Graphic file (type jpg)
 
 <use images/corrFactor.jpg>
-Package pdftex.def Info: images/corrFactor.jpg used on input line 961.
+Package pdftex.def Info: images/corrFactor.jpg used on input line 962.
 (pdftex.def)             Requested size: 283.9912pt x 150.56305pt.
 
-<images/lineGame1.jpg, id=133, 564.1075pt x 343.2825pt>
+<images/lineGame1.jpg, id=134, 564.1075pt x 343.2825pt>
 File: images/lineGame1.jpg Graphic file (type jpg)
 
 <use images/lineGame1.jpg>
-Package pdftex.def Info: images/lineGame1.jpg used on input line 974.
+Package pdftex.def Info: images/lineGame1.jpg used on input line 975.
 (pdftex.def)             Requested size: 247.41617pt x 150.56305pt.
 
-<images/varianceIndDep2.jpg, id=134, 871.255pt x 459.7175pt>
+<images/varianceIndDep2.jpg, id=135, 871.255pt x 459.7175pt>
 File: images/varianceIndDep2.jpg Graphic file (type jpg)
 
 <use images/varianceIndDep2.jpg>
-Package pdftex.def Info: images/varianceIndDep2.jpg used on input line 984.
+Package pdftex.def Info: images/varianceIndDep2.jpg used on input line 985.
 (pdftex.def)             Requested size: 285.34807pt x 150.56305pt.
- [28 <E:/report for internship/reportInternship/images/corrFactor.jpg>] [29 <E:
-/report for internship/reportInternship/images/lineGame1.jpg> <E:/report for in
-ternship/reportInternship/images/varianceIndDep2.jpg>] <images/varPredDifRho.jp
-g, id=141, 697.60625pt x 461.725pt>
+ [28 <./images/corrFactor.jpg>] [29 <./images/lineGame1.jpg> <./images/variance
+IndDep2.jpg>]
+<images/varPredDifRho.jpg, id=142, 697.60625pt x 461.725pt>
 File: images/varPredDifRho.jpg Graphic file (type jpg)
 
 <use images/varPredDifRho.jpg>
-Package pdftex.def Info: images/varPredDifRho.jpg used on input line 1043.
+Package pdftex.def Info: images/varPredDifRho.jpg used on input line 1044.
 (pdftex.def)             Requested size: 303.30724pt x 200.75073pt.
- [30] [31 <E:/report for internship/reportInternship/images/varPredDifRho.jpg>]
- [32] [33] [34]
-<images/project90gender.png, id=158, 1027.84pt x 1027.84pt>
+ [30] [31 <./images/varPredDifRho.jpg>]
+<images/facebookBad.jpg, id=150, 564.1075pt x 419.5675pt>
+File: images/facebookBad.jpg Graphic file (type jpg)
+
+<use images/facebookBad.jpg>
+Package pdftex.def Info: images/facebookBad.jpg used on input line 1091.
+(pdftex.def)             Requested size: 269.90776pt x 200.75073pt.
+ [32 <./images/facebookBad.jpg>] [33] [34]
+<images/facebookGood.jpg, id=160, 564.1075pt x 419.5675pt>
+File: images/facebookGood.jpg Graphic file (type jpg)
+
+<use images/facebookGood.jpg>
+Package pdftex.def Info: images/facebookGood.jpg used on input line 1207.
+(pdftex.def)             Requested size: 269.90776pt x 200.75073pt.
+ [35 <./images/facebookGood.jpg>] [36]
+<images/pr90race.jpg, id=168, 641.39626pt x 431.6125pt>
+File: images/pr90race.jpg Graphic file (type jpg)
+
+<use images/pr90race.jpg>
+Package pdftex.def Info: images/pr90race.jpg used on input line 1272.
+(pdftex.def)             Requested size: 205.71486pt x 138.42834pt.
+
+<images/studRace.jpg, id=169, 641.39626pt x 403.5075pt>
+File: images/studRace.jpg Graphic file (type jpg)
+
+<use images/studRace.jpg>
+Package pdftex.def Info: images/studRace.jpg used on input line 1278.
+(pdftex.def)             Requested size: 205.71486pt x 129.41441pt.
+
+<images/pr90gender.jpg, id=170, 641.39626pt x 435.6275pt>
+File: images/pr90gender.jpg Graphic file (type jpg)
+
+<use images/pr90gender.jpg>
+Package pdftex.def Info: images/pr90gender.jpg used on input line 1286.
+(pdftex.def)             Requested size: 205.71486pt x 139.71606pt.
+
+<images/studSex.jpg, id=171, 641.39626pt x 409.53pt>
+File: images/studSex.jpg Graphic file (type jpg)
+ <use images/studSex.jpg>
+Package pdftex.def Info: images/studSex.jpg used on input line 1292.
+(pdftex.def)             Requested size: 205.71486pt x 131.34596pt.
+
+<images/pr90dealer.jpg, id=172, 641.39626pt x 447.6725pt>
+File: images/pr90dealer.jpg Graphic file (type jpg)
+
+<use images/pr90dealer.jpg>
+Package pdftex.def Info: images/pr90dealer.jpg used on input line 1301.
+(pdftex.def)             Requested size: 205.71486pt x 143.57918pt.
+
+<images/studGrade.jpg, id=173, 641.39626pt x 451.6875pt>
+File: images/studGrade.jpg Graphic file (type jpg)
+
+<use images/studGrade.jpg>
+Package pdftex.def Info: images/studGrade.jpg used on input line 1307.
+(pdftex.def)             Requested size: 205.71486pt x 144.86688pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<images/project90gender.png, id=174, 1027.84pt x 1027.84pt>
 File: images/project90gender.png Graphic file (type png)
 
 <use images/project90gender.png>
-Package pdftex.def Info: images/project90gender.png used on input line 1235.
+Package pdftex.def Info: images/project90gender.png used on input line 1318.
 (pdftex.def)             Requested size: 501.87376pt x 501.87683pt.
- [35]
-<images/addhealthRace.png, id=163, 1027.84pt x 1027.84pt>
+
+<images/addhealthRace.png, id=176, 1027.84pt x 1027.84pt>
 File: images/addhealthRace.png Graphic file (type png)
 
 <use images/addhealthRace.png>
-Package pdftex.def Info: images/addhealthRace.png used on input line 1253.
+Package pdftex.def Info: images/addhealthRace.png used on input line 1325.
 (pdftex.def)             Requested size: 501.87376pt x 501.87683pt.
- [36] [37 <E:/report for internship/reportInternship/images/project90gender.png
->] [38 <E:/report for internship/reportInternship/images/addhealthRace.png>]
+ [37 <./images/pr90race.jpg> <./images/studRace.jpg> <./images/pr90gender.jpg> 
+<./images/studSex.jpg>] [38 <./images/pr90dealer.jpg> <./images/studGrade.jpg>]
+ [39 <./images/project90gender.png>] [40 <./images/addhealthRace.png>]
 Chapter 3.
-[39
-
-] ("E:\report for internship\reportInternship\final report.bbl" [40
-
-]
 [41
 
-]) [42] ("E:\report for internship\reportInternship\final report.aux") ) 
+] (./final report.bbl [42
+
+] [43
+
+]) [44] (./final report.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 4180 strings out of 493921
- 60883 string characters out of 3147282
- 130866 words of memory out of 3000000
- 7413 multiletter control sequences out of 15000+200000
- 13084 words of font info for 47 fonts, out of 3000000 for 9000
- 841 hyphenation exceptions out of 8191
- 36i,12n,38p,921b,488s stack positions out of 5000i,500n,10000p,200000b,50000s
-<D:/Pro
-gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Program Fil
-es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><D:/Program Files/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><D:/Program Files/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Program Files/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cmextra/cmex7.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmmi10.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cm/cmmi12.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmmi6.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8
-.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/
-Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program F
-iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><D:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Program Files/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmsy6.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmsy8.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmti12.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.
-pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/eurosym/feymr10.pfb>
-Output written on "final report.pdf" (43 pages, 2896726 bytes).
+ 4563 strings out of 495025
+ 67769 string characters out of 6181515
+ 139151 words of memory out of 5000000
+ 7683 multiletter control sequences out of 15000+600000
+ 13084 words of font info for 47 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 38i,12n,38p,923b,488s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/eurosym/feymr10.pfb>
+Output written on "final report.pdf" (45 pages, 3103546 bytes).
 PDF statistics:
- 251 PDF objects out of 1000 (max. 8388607)
+ 268 PDF objects out of 1000 (max. 8388607)
+ 160 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 146 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 186 words of extra memory for PDF output out of 10000 (max. 10000000)
 
