@@ -3,52 +3,52 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: final report.aux
 The style file: plain.bst
 Database file #1: rds.bib
+Warning--to sort, need author or key in Addhealth
 Warning--to sort, need author or key in Senate
 Warning--to sort, need author or key in Facebook
 Warning--to sort, need author or key in Project90
-Warning--to sort, need author or key in Addhealth
 Warning--to sort, need author or key in GEPHI
 Warning--to sort, need author or key in Addhealth2
 Warning--empty journal in pollard2013adolescent
-You've used 20 entries,
+You've used 21 entries,
             2118 wiz_defined-function locations,
-            613 strings with 7773 characters,
-and the built_in function-call counts, 6218 in all, are:
-= -- 610
-> -- 282
+            619 strings with 7985 characters,
+and the built_in function-call counts, 6515 in all, are:
+= -- 639
+> -- 295
 < -- 3
-+ -- 118
-- -- 94
-* -- 421
-:= -- 983
-add.period$ -- 61
-call.type$ -- 20
-change.case$ -- 106
++ -- 123
+- -- 98
+* -- 441
+:= -- 1035
+add.period$ -- 64
+call.type$ -- 21
+change.case$ -- 111
 chr.to.int$ -- 0
-cite$ -- 27
-duplicate$ -- 224
-empty$ -- 521
-format.name$ -- 94
-if$ -- 1321
+cite$ -- 28
+duplicate$ -- 235
+empty$ -- 545
+format.name$ -- 98
+if$ -- 1382
 int.to.chr$ -- 0
-int.to.str$ -- 20
-missing$ -- 15
-newline$ -- 102
-num.names$ -- 28
-pop$ -- 146
+int.to.str$ -- 21
+missing$ -- 16
+newline$ -- 107
+num.names$ -- 30
+pop$ -- 149
 preamble$ -- 1
-purify$ -- 87
+purify$ -- 91
 quote$ -- 0
-skip$ -- 163
+skip$ -- 171
 stack$ -- 0
-substring$ -- 363
-swap$ -- 43
+substring$ -- 383
+swap$ -- 44
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 78
+type$ -- 82
 warning$ -- 7
-while$ -- 49
-width$ -- 22
-write$ -- 206
+while$ -- 52
+width$ -- 23
+write$ -- 217
 (There were 7 warnings)
