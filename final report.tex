@@ -122,23 +122,29 @@ One particular chain-referral technique that is currently widely used for studyi
 
 
 \section{Respondent-driven sampling}
-RDS begins by selecting a group of initial participants that are called \textit{seeds}. The procedure follows according to chain-referral model: each participant in the study recruits other participants. The step is called wave. Both participating in the research and recruiting new participants are encouraged by financial incentive. The sampling continues in this way until the needed size of participants is reached. During the interview participants are asked to report how many contacts in the hidden population they have.
+RDS begins by selecting a group of initial participants that are called \textit{seeds}. The procedure follows according to chain-referral model: each participant in the study recruits other participants. The step is called \textit{wave}. Both participating in the research and recruiting new participants are encouraged by financial incentive. The sampling continues in this way until the needed size of participants is reached. During the interview participants are asked to report how many contacts in the hidden population they have.
 This process enables to collect data for making statistical analysis.
 
-In order to study formally RDS we will model the network of people as a graph, where the individuals are represented by the nodes and the contact between two individuals is represented by the edge between the corresponding nodes. Then the RDS recruitment process can be regarded as random walk on the graph when the following assumptions are true:
+In order to study formally RDS we will model the network of people as a graph, where the individuals are represented by the nodes and the contact between two individuals is represented by the edge between the corresponding nodes. 
+We will make following assumptions:
 \begin{enumerate}
+  \item Contacts to be recruited are selected uniformly at random
+  \item One individual can recruit exactly one another individual
+  \item The same individual can be recruited multiple times
+  
   \item Seeds are chosen proportionally to their degree in the network.  
   \item If individual $A$ knows individual $B$ than individual $B$ knows $A$ as well (the network can be represented as undirected graph).
-  \item The same individual can be recruited multiple times (sampling with replacement).
-  \item The choice of contacts to recruit is uniformly at random.
+  
   \item Individuals know and report precisely their network degree. 
   \item Each individual is reachable from each other individual (the network is connected). 
 \end{enumerate}
 
 
-For this process stationary distribution is exactly distribution proportional to the network degree. So first assumption guaranties that not only first but all samples during the process are taken with probability proportional to the degree of participants in the network. In \cite{salganik2004sampling} this assumption is considered to be reasonable as the people that are drawn as seeds are well-known people and they have usually more contacts than on average. Without this assumption first there should be performed enough number of waves until sample can be considered drawn from stationary distribution. 
+When the contacts to be recruited are selected uniformly at random and one individual can recruit exactly one another individual the process of RDS recruitment can be regarded as \textit{random walk} on the graph. In particular it will be a \textit{standard random walk} when the same individual can be recruited multiple times and a \textit{self-avoiding random walk} if the same individual can be recruited only once. For now we will regard only standard random walk.
 
-Some of these assumptions are not so restrictive, like the second one. The other assumptions are arguable. The sensitivity of violation these assumptions were studied in \cite{gile2010respondent} with the simulation experiments. 
+For this process stationary distribution is exactly distribution proportional to the network degree. However the fourth assumption guarantees that not only the first but all samples during the process are taken with probability proportional to the degree of participants in the network. Without this assumption only the individuals selected after a large enough number of waves would be selected with a probability proportional to their degree, because the random walk could be considered to have reached its stationary distribution. 
+
+Some of these assumptions are not so restrictive. In particular it is reasonably to suppose that acquaintance is symmetric. In \cite{salganik2004sampling} the assumption that seeds are selected proportionally to their degree is considered to be reasonable as the people that are drawn as seeds are well-known people and they have usually more contacts than on average. The other assumptions are arguable. For sure there will be some error in the reported network degree. It is also arguably that the choice of the contact to recruit is uniformly random. The sensitivity to violation of some assumptions was studied in \cite{gile2010respondent}. 
 
 
 \section{Current estimators}
@@ -153,7 +159,7 @@ Let $y_1, y_2, ..., y_n$ be all collected samples during RDS. The simplest estim
 $$ \widehat{\mu}_{SA} = \frac{y_1 + y_2 + ... + y_n}{n}$$
 
 But this estimator is biased. In the way that sampling is performed the individuals with more contacts are more likely to be recruited. The probability to encounter the node on the step $i$ with the value $y_i$ is proportional to its degree $d_i$.
-So this estimator is biased towards the nodes with higher degrees.
+In the case when there is correlation between the quantity if interest $y_i$ and the degree $d_i$ this estimator will be biased towards the nodes with higher degrees.
 
  
 \subsection{Volz-Heckathon estimator}
@@ -168,7 +174,7 @@ It is shown that this estimator produces asymptotically unbiased results. [put t
 
 \subsection{Group estimator}
 
-This estimator is targeted on the estimation of the percentage of population with certain characteristic. Let's say that the people from the group $A$ possess this characteristic and people from the group $B$ no. 
+This estimator is targeted on the estimation of the percentage of population with certain characteristics. Let us say that the people from the group $A$ possess this characteristic and people from the group $B$ no. Then let $\widehat{PP_A}$ be the Group estimator, that estimates the percentage of the members of the group $A$.
 
 Again each observed individual should report his number of contacts: $d_1, d_2, ..., d_n$ and whether he/she possess the asked trait. After collecting all the samples the total number of the representatives of the group $A$, denoted as $n_A$, and the total number of the representatives of the group $B$, denoted as $n_B$, are counted. 
 
@@ -178,7 +184,7 @@ $$ \widehat{D}_A = \frac{n_A}{ \sum_{i=1}^{n_A} \frac{1}{d_i}} $$
 
 $$ \widehat{D}_B = \frac{n_B}{ \sum_{i=1}^{n_B} \frac{1}{d_i}} $$
 
-Observing the chain of recruitment the number of recruitment between and inside groups are counted. Let's denote $r_{AB}$ as number of rectuitments from the individual in the group $A$ to the individual in the group $B$, $r_{AA}$ as number of rectuitments from the individual in the group $A$ to the individual in the group $A$ and in the same way $r_{BB}$, $r_{BA}$.
+Observing the chain of recruitment the number of recruitment between and inside groups are counted. Let's denote $r_{AB}$ as number of recruitments from the individual in the group $A$ to the individual in the group $B$, $r_{AA}$ as number of recruitments from the individual in the group $A$ to the individual in the group $A$ and in the same way $r_{BB}$, $r_{BA}$.
 
 Then the estimates for the probability to hire person from the group $B$ by the person from the group $A$ and in the opposite way are respectively:
 
@@ -187,7 +193,7 @@ $$ \widehat{C}_{A, B} = \frac{r_{AB}}{r_{AA} + r_{AB}} $$
 
 $$ \widehat{C}_{B, A} = \frac{r_{BA}}{r_{BB} + r_{BA}} $$
 
-Finally the estimate of the fraction of population from the group $A$ is:
+Finally the Group estimator $\widehat{PP_A}$ is:
 
 $$ \widehat{PP_A} = \frac{ \widehat{D}_B \cdot \widehat{C}_{B, A}}{ 
 \widehat{D}_A \cdot \widehat{C}_{A, B} + \widehat{D}_B \cdot \widehat{C}_{B, A}} $$
@@ -200,18 +206,21 @@ Let's note with the VHE it is also possible to estimate the percentage of the po
 
 \section{Problems of RDS}
 
-To understand what are the problems with respondent-driven sampling let's compare it with the "ideal" sampling: independent uniform sampling.
+To understand what are the problems with respondent-driven sampling we will compare it with the "ideal" sampling: independent uniform sampling.
 
 First, let's look at the variance of the uniform sampling.
 Let $y_1, y_2, ..., y_n$ be the samples that are taken uniformly at random and all the samples are independent. Let's take the average value of the samples as an estimator of mean population value:
 
 $$ \widehat{\mu}_{SA} = \frac{y_1 + y_2 + ... + y_n}{n}$$
-This estimator is unbiased and its variance depends on the sample size $n$. Let $\sigma$ be the variance of the samples, then the variance of the estimator $ \widehat{\mu}_{SA}$:
 
-$$ \sigma^2_{\hat{\mu}_{SA}} = var\left( \frac{y_1 + y_2 + ... + y_n}{n}\right)=\frac{1}{n^2} var(y_1 + y_2 + ... + y_n) =$$
+It is essential that here the samples $y_1, y_2, ..., y_n$ are \textbf{independent and uniform}. That is why this estimator is unbiased. 
+Let $\sigma$ be the variance of the samples, then the variance of the estimator $ \widehat{\mu}_{SA}$:
 
-$$= \frac{1}{n^2} \left(var(y_1) + var(y_2) + ... + var(y_n)\right)=\frac{1}{n^2} \left(\sigma^2 + \sigma^2 + ... + \sigma^2\right) = \frac{\sigma^2}{n}$$
+$$ \sigma^2_{\hat{\mu}_{SA}} = \mathrm{Var}\left( \frac{y_1 + y_2 + ... + y_n}{n}\right)=\frac{1}{n^2} \mathrm{Var}(y_1 + y_2 + ... + y_n) =$$
 
+$$= \frac{1}{n^2} \left(\mathrm{Var}(y_1) + \mathrm{Var}(y_2) + ... + \mathrm{Var}(y_n)\right)=\frac{1}{n^2} \left(\sigma^2 + \sigma^2 + ... + \sigma^2\right) = \frac{\sigma^2}{n}$$
+
+We can see that the variance of the estimator depends on the sample size $n$. 
 In this case the only thing that we can do in order to have better estimation is to increase sample size. To have more precise result we should try to take as much samples as possible. If each sample has a cost, then sample size is restricted by the budget of the research project. 
 
 
@@ -219,21 +228,21 @@ In this case the only thing that we can do in order to have better estimation is
 
 
 Of course the way we perform sampling it is not independent uniform sampling. 
-First, nodes are not sampled not uniformly. When each participant select another  participants with the same probability among his friends there is bias towards the nodes with high degrees. So the more contacts an individual has more probable he will be invited to participate in the study. In some cases, when we can control the probability of selecting the next participant we can achieve uniform sampling even with random walk.
+First, nodes are not sampled not uniformly. When each participant select another  participants with the same probability among his friends there is bias towards the nodes with high degrees. So the more contacts an individual has more probable he will be invited to participate in the study. 
 
-The study \cite{gjoka2009walk} was using Metropolis-Hasting Random Walk to sample Facebook. This method requires information about user's degree and the degrees of all his neighbors. According to this information the selection probabilities are counted for all the friends and then one of them is selected by the computer.
-In Facebook it is feasible to do: with API requests needed information is collected and then probabilities to choose one of the user's friends are counted. Though this method gives us mechanism to sample uniformly even with random walk, it is not really possible in the situations where we can't control selection probabilities. Like in the case with hidden populations: it is individual who decides how to hire. 
+In some cases, when we can control the probability of selecting the next participant we can achieve uniform sampling even with random walk. For example, the study \cite{gjoka2009walk} was using Metropolis-Hasting Random Walk to sample Facebook. This method requires information about user's degree and the degrees of all his neighbors. According to this information the selection probabilities are counted for all the friends and then one of them is selected by the computer.
+In Facebook it is feasible to do: with API requests needed information is collected and then probabilities to choose one of the user's friends are counted. Though this method gives us mechanism to sample uniformly even with random walk, it is not really possible in the situations where we cannot control selection probabilities. Like in the case with hidden populations: it is individual who decides how to hire. 
 
 Another way to remove degree bias is by reweighing samples according to their degrees, what actually the VHE estimator does, we discussed this in the previous section. 
 
 \subsection{RDS is not independent}
-Second, collected values are not independent. The participants $i$ and $i+1$ know each other, they can be friends, relatives or just acquaintances, so their values $y_i$ and $y_{i+1}$ can be dependent. The drug users may be in contact because they go to then same drug dealer and probably buy the same kind of drugs. 
+Second problem is that collected values are not independent. The participants $i$ and $i+1$ know each other, they can be friends, relatives or just acquaintances, so their values $y_i$ and $y_{i+1}$ can be dependent. The drug users may be in contact because they go to then same drug dealer and probably buy the same kind of drugs. 
 
 The tendency of people with connections to have the similar characteristics is called \textit{homophily}.
 
 And indeed we encounter often a homophily in the real situations. A lot of real networks demonstrate that the value on the node depends from the values of its neighboring nodes. For instance, the study \cite{christakis2007spread} is evaluating the influence of social connections (friends, relatives, siblings) on obesity of people. Interestingly, if a person has a friend who became obese during some fixed interval of time, the chances that this person can become obese are increased by 57\%. 
 
-Another study \cite{singla2008yes} that analyzes the data of users and their interactions in the MSN Messenger network found strong relation between users communication behavior (the number of messages exchanged, the total time of chatting, etc) and attributes such as age, gender and even query requests!
+Another study \cite{singla2008yes} that analyzes the data of users and their interactions in the MSN Messenger network found strong relation between users communication behavior (the number of messages exchanged, the total time of chatting, etc) and attributes such as age, gender and even the categories of the query requests!
 
 On the figure \ref{fig:senators} the links present the similar votes of U. S. Senators during 2007. With the red labels representing Republicans, the blue labels representing Democrats, the brown labels representing two Independents we can vividly observe the homophily in this network.
 
@@ -245,11 +254,11 @@ On the figure \ref{fig:senators} the links present the similar votes of U. S. Se
     \label{fig:senators}
 \end{figure}
 
-Therefore when the values $y_1, y_2, ..., y_n$ are collected with RDS, then the variance of estimator:
+Therefore when the values $y_1, y_2, ..., y_n$ are collected with standard RDS, samples are \textbf{not independent and uniform}, and the variance of estimator is:
 
-$$ \sigma^2_{\hat{\mu}_{SA}} = var\left( \frac{y_1 + y_2 + ... + y_n}{n}\right)=\frac{1}{n^2} var(y_1 + y_2 + ... + y_n) =$$
+$$ \sigma^2_{\hat{\mu}_{SA}} = \mathrm{Var}\left( \frac{y_1 + y_2 + ... + y_n}{n}\right)=\frac{1}{n^2} \mathrm{Var}(y_1 + y_2 + ... + y_n) =$$
 
-$$= \frac{1}{n^2} \left(\sum_{i = 1}^n var(y_i) + 2\sum_{i=1}^n \sum_{j=i+1}^n cov(y_i, y_j)\right)= \frac{\sigma^2}{n} + \frac{2\sum_{i=1}^n \sum_{j=i+1}^n cov(y_i, y_j)}{n^2} = $$
+$$= \frac{1}{n^2} \left(\sum_{i = 1}^n \mathrm{Var}(y_i) + 2\sum_{i=1}^n \sum_{j=i+1}^n cov(y_i, y_j)\right)= \frac{\sigma^2}{n} + \frac{2\sum_{i=1}^n \sum_{j=i+1}^n cov(y_i, y_j)}{n^2} = $$
 $$ = \frac{\sigma^2}{n} \left(1 + \frac{2\sum_{i=1}^n \sum_{j=i+1}^n cov(y_i, y_j)}{n\sigma^2}\right) = \frac{\sigma^2}{n} \left(1 + \frac{2\sum_{i=1}^n \sum_{j=i+1}^n corr(y_i, y_j)}{n}\right)$$
 
 So variance of estimator is influenced by some correlation factor $f(n)$ where$f(n) > 1$, that depends on how much the values are correlated:
@@ -261,10 +270,6 @@ On one hand, when we increase number of participants the factor $\sigma^2/n$ dec
 In some literature as in  \cite{goel2010assessing} the ratio of the variance of RDS estimate to the variance of estimate obtained from independent uniform random sampling is called design effect, $d$. They warn the users of RDS: to have the same variance using independent uniform random sampling we need $n$ samples while using RDS need $dn$ samples. We can notice that the correlation factor $f(n)$ is exactly the design effect.
 
 
-\subsection{Other problems}
-
-RDS can perform poorly if the groups of individuals form different communities. In \cite{goel2009respondent} it is shown that 'bottlenecks' between different groups in hidden population increases variance of RDS estimator. They try RDS on the network structure with communities, but where individuals, that are in contact with each other, do not have similar traits and showed that such structure indeed affects on RDS estimate. 
-
 
 \section{Enhanced RDS}
 \label{sec:Enhanced RDS}
@@ -275,12 +280,13 @@ We will state two observations. Combining them we will try to improve current RD
 
 \paragraph{Observation 1} \textit{Just thinning of sample doesn't help}
 
-In order to reduce correlation between sampled values one could try to thin out sample. It means that instead of taking all collected values $y_1, y_2, ..., y_n$ into the estimation we can take only, let's say, each second value, $y_1, y_3, ..., y_n$. The samples $y_1, y_3, ..., y_n$ are less correlated then all samples, thus we will reduce correlation factor $f(n)$, so we can expect some improvement. In the same by taking each second values we will degrees in two times the total number of samples. It is not clear if the correlation was reduced enough to compensate this fact. What we observed experimentally (latter we will show it formally) that in general just discarding some samples with the fixed size of recruitment chain will not improve estimation. Experimental results are presented on the figure \ref{fig:observations} (a).
+In order to reduce correlation between sampled values one could try to thin out sample. It means that instead of taking all collected values $y_1, y_2, ..., y_n$ into the estimation we can take only, let's say, each second value, $y_1, y_3, ..., y_n$. The samples $y_1, y_3, ..., y_n$ are less correlated then all samples, thus we will reduce correlation factor $f(n)$, so we can expect some improvement. In the same by taking each second values we will degrees in two times the total number of samples. It is not clear if the correlation was reduced enough to compensate this fact. What we observed experimentally (latter we will show it formally) that in general just discarding some samples with the fixed size of recruitment chain will not improve estimation. Experimental results are presented on the figure \ref{fig:observations} (a), where we can observe the \textit{mean squared error} of the estimator for different scenarios.
 
 \paragraph{Observation 2} \textit{Skipping reduces variance}
 
-However if the size of the sample is fixed the further are individuals in the chain of recruitment from each other the better. Let's say that we want exactly 30 participants for study and we have options. We can perform RDS until we reach 30th person and then take each one of them, $y_1, y_2, ..., y_{30}$ in the estimation. Or we can continue RDS until we reach 60th person and then take each second of them $y_2, y_4, ..., y_{60}$ in the estimation. The both variants have the same sample size but in the second scenario the values are less correlated. So we expect that the correlation term will decrease. Again on the figure \ref{fig:observations}(b) we can see experimental results and further we will show it formally.
+However if the size of the sample is fixed the farther are individuals in the chain of recruitment from each other the better. Let's say that we want exactly 30 participants for study and we have options. We can perform RDS until we reach 30th person and then take each one of them, $y_1, y_2, ..., y_{30}$ in the estimation. Or we can continue RDS until we reach 60th person and then take each second of them $y_2, y_4, ..., y_{60}$ in the estimation. The both variants have the same sample size but in the second scenario the values are less correlated. So we expect that the correlation term will decrease. Again on the figure \ref{fig:observations}(b) we can see experimental results and further we will show it formally.
 
+Keeping in mind that we have fixed budget, the second scenario implies that we don't pay to the participants $1, 3, ..., 59$ or we pay to all 60 individuals half of what we paid in the first scenario. But as the motivation to participate in the study is money for the same job people should get the same amount of money.
 
 \begin{figure}[h]
     \centering
@@ -300,23 +306,21 @@ However if the size of the sample is fixed the further are individuals in the ch
     \label{fig:observations}
 \end{figure}
 
-%But the cost of the second scenario is 2 times more than of the first.
-Keeping in mind that we have fixed budget, the second scenario implies that we don't pay to the participants $1, 3, ..., 59$ or we pay to all 60 individuals half of what we payed in the first scenario. But as the motivation to participate in the study is money for the same job people should get the same amount of money.
-
-What we propose lies in the middle. We keep the idea of skipping some values, that will decrease the correlation, but we also suggest to pay less to the individuals that we don't take into the estimation. 
-So among people that are willing to participate some of them will be asked both: to make tests (like blood test, questionnaire) and recruit another participants, let's call them \textit{participants} and some of them will be asked only to recruit other participants, let's call them \textit{informators}. As the informators make less efforts they will be payed less. 
+Now based on the stated observations we can make some conclusions. It can be useful to skip some values between sample, but without reducing sample. But if all individuals involved receive the same amount of money, skipping necessary implies reducing the sample size. At the same time some individuals do less work (individuals that are skipped do not need to come, for example, to the laboratory, and make tests). Therefore, it is reasonably to think that there may be two different incentives: for taking part in the research (making tests, filling questionnaires) and for providing the contacts of other individuals.
+ 
+So among people that are willing to participate some of them will be asked both: to make tests and recruit other participants, let's call them \textit{participants} and some of them will be asked only to recruit other participants, let's call them \textit{informators}. As the informators make less efforts they will be paid less. 
 
 
-Let's say that each informator receives $C_1$  units of money and each participant receives $C_1 + C_2$ units of money. The amount of money that we can spend on the research, the budget, is fixed and is denoted as $B$. 
+Let us say that each informator receives $C_1$  units of money and each participant receives $C_1 + C_2$ units of money. The amount of money that we can spend on the research, the budget, is fixed and is denoted as $B$. 
 Let $n$ be the length of the chain of all the recruitments (it means that informators and participants in total are $n$).
 
-Let parameter $k$ be the number of skipped samples in the chain between participants (it means that we take only each $k$th individual as a participant participant, the rest $k-1$ individuals are just informators).
+Let $k-1$ be the number of skipped samples in the chain between participants (it means that we take only each $k$th individual as a participant participant, the rest $k-1$ individuals are just informators).
 
-The reason to use informators is to try to reduce correlation by making bigger the distance between participants and therefore less correlation. If the informators were willing to do their job for free then, according to the third observation, we would try to have as more informators between participants as possible. But all the idea of respondent-driven sampling holds on the money incentives, without payment nobody will do anything. For this reason informators should be also payed, but less then actual participants. As we still spend part of the budget on informators the number of participants will decrease with increasing number of informators. 
+The reason to use informators is to try to reduce correlation by making bigger the distance between participants and therefore less correlation. If the informators were willing to do their job for free then, according to the third observation, we would try to have as more informators between participants as possible. But all the idea of respondent-driven sampling holds on the money incentives, without payment nobody will do anything. For this reason informators should be also paid, but less then actual participants. As we still spend part of the budget on informators the number of participants will decrease with increasing number of informators. 
 
-To understand better the idea, let's imagine that we have 60 euros budget, each informator is payed 2 euros, $C_1 = 2$\euro, each participant is payed 10 euros, $C_2 + C_1 = 10$\euro. On the figure you can see different scenarios of RDS for the same budget. 
+To understand better the idea, let's imagine that we have 60 euros budget, each informator is paid 2 euros, $C_1 = 2$\euro, each participant is paid 10 euros, $C_2 + C_1 = 10$\euro. On the figure you can see different scenarios of RDS for the same budget. 
 
-On the figure 1 the parameter $k$ is equal to 1. It means that everybody is participant and payed 10 euros. Then with our budget we can collect 6 samples that due to homophily can be highly correlated.
+On the figure 1 the parameter $k$ is equal to 1. It means that everybody is participant and paid 10 euros. Then with our budget we can collect 6 samples that due to homophily can be highly correlated.
 
 On the figure 2 the parameter $k$ is equal to 2. It means that we take one participant, one informer, one participant and so on. We can see clearly that we went deeper in the network, the recruitment chain is longer. In this case on our budget we can collect only 5 samples, but they are less correlated than in the previous situation. 
 
@@ -768,12 +772,12 @@ We will make an assumption that values are assigned independently of each other.
 $$ E[\varepsilon (\bar{X})] =  \sum_{i \sim j, i \leq j} E[X_i - X_j]^2 = 
 \frac{1}{2} \sum_{i \sim j} E[X_i - X_j]^2 = $$
 
-$$ = \frac{1}{2} \sum_{i \sim j} \left(Var(X_i - X_j) + E[(X_i - X_j)]^2 \right)= 
-= \frac{1}{2} \sum_{i \sim j} \left(Var(X_i - X_j) + (E[X_i] - E[X_j])^2 \right) = 
+$$ = \frac{1}{2} \sum_{i \sim j} \left(\mathrm{Var}(X_i - X_j) + E[(X_i - X_j)]^2 \right)= 
+= \frac{1}{2} \sum_{i \sim j} \left(\mathrm{Var}(X_i - X_j) + (E[X_i] - E[X_j])^2 \right) = 
 $$
 
 
-$$ = \frac{1}{2} \sum_{i \sim j} \left(Var(X_i) + Var(X_j) - 2Cov(X_i, X_j) \right) = \frac{1}{2} \sum_{i \sim j} \left(Var(X_i) + Var(X_j) \right)=
+$$ = \frac{1}{2} \sum_{i \sim j} \left(\mathrm{Var}(X_i) + \mathrm{Var}(X_j) - 2Cov(X_i, X_j) \right) = \frac{1}{2} \sum_{i \sim j} \left(\mathrm{Var}(X_i) + \mathrm{Var}(X_j) \right)=
 $$
 
 \begin{equation}
@@ -792,7 +796,7 @@ Interesting fact that it reminds us the famous formula for energy!
 
 Particularly, we can compute expected energy in this way for initial random configuration where the values are assigned to the nodes independently and uniformly from all possible values in $V$. 
 When $X_i$ is distributed uniformly in $V$ the variance of $X_i$ is:
-$$var(X_i) = \frac{|V|^2-1}{12}$$
+$$\mathrm{Var}(X_i) = \frac{|V|^2-1}{12}$$
 
 Then the expected energy of the graph on random configuration $\bar{x}$ is
 $$E[\varepsilon (\bar{X})] =  m\frac{|V|^2-1}{6}$$
@@ -930,7 +934,7 @@ For now we will not care about graph structure. Let's assume that our collected 
 So correlation between the nodes that are at the distance 1 in the chain have correlation $\rho$, at distance 2 have correlation $\rho^2$ an so on. We will refer to this model with indicated correlation as to \textit{geometric model}.
 Then we can write the variance of the mean estimator as: 
 
-$$\sigma^2_{\hat{\mu}_{SA}} = var\left[\bar{Y} \right] = var\left[ \frac{Y_1 + Y_2 + ...+ Y_n}{n} \right] = \frac{1}{n^2} \sum_{i=1}^{n}\sum_{j=1}^{n} cov(Y_i, Y_j) =$$ 
+$$\sigma^2_{\hat{\mu}_{SA}} = \mathrm{Var}\left[\bar{Y} \right] = \mathrm{Var}\left[ \frac{Y_1 + Y_2 + ...+ Y_n}{n} \right] = \frac{1}{n^2} \sum_{i=1}^{n}\sum_{j=1}^{n} cov(Y_i, Y_j) =$$ 
 $$ = \frac{\sigma^2}{n^2} \left( n + 2(n-1)\rho + 2(n-2)\rho^2 + ... + 2\cdot2 \rho^{n-2}+ 2\cdot1 \rho^{n-1} \right) = $$
 $$ = \frac{\sigma^2}{n^2} \left(n + 2\sum_{i=1}^{n-1} (n-i)\rho^i \right) = \frac{\sigma^2}{n^2} \left(n + 2n\sum_{i=1}^{n-1}\rho^i - 2\sum_{i=1}^{n-1}i\rho^i \right) = $$
 $$ = \frac{\sigma^2}{n} \left(n + 2n\frac{\rho-\rho^{n}}{1-\rho} - 2\rho \sum_{i=0}^{n-2} (\rho^{i+1})' \right) = $$
@@ -940,7 +944,7 @@ $$ = \frac{\sigma^2}{n^2} \frac{n-n\rho^2 - 2\rho + 2\rho^{n+1}}{(1-\rho)^2}$$
 
 In the end we have the following expression:
 \begin{equation}\label{eq:varFirst}
-var\left[\bar{Y} \right] = \frac{\sigma^2}{n}\frac{1-\rho^2 - 2\rho/n + 2\rho^{n+1}/n}{(1-\rho)^2}
+\mathrm{Var}\left[\bar{Y} \right] = \frac{\sigma^2}{n}\frac{1-\rho^2 - 2\rho/n + 2\rho^{n+1}/n}{(1-\rho)^2}
 \end{equation}
 
 
@@ -962,10 +966,10 @@ $$f(n)  = \frac{1-\rho^2 - 2\rho/n + 2\rho^{n+1}/n}{(1-\rho)^2} \quad \xrightarr
 
 Using the following approximation the expression for the sample variance becomes much more easier:
 
-$$var_{approx}\left[\bar{Y} \right] = \frac{\sigma^2}{n} \frac{1+\rho}{1-\rho}$$
+$$\mathrm{Var}_{approx}\left[\bar{Y} \right] = \frac{\sigma^2}{n} \frac{1+\rho}{1-\rho}$$
 
 
-Approximation is close when is $n$ big enough. To compare approximated expression with original one, look at the figure \ref{fig:lineGame1} where parameter $\rho$ is $0.6$. As it is reasonable to suppose that the sample size is bigger then 50, we can consider this approximation good enough in this case. The reason to use this approximation is that the expression is much simpler and some facts that are very difficult to prove for real $var\left[\bar{Y} \right]$ become easier for the approximation.
+Approximation is close when is $n$ big enough. To compare approximated expression with original one, look at the figure \ref{fig:lineGame1} where parameter $\rho$ is $0.6$. As it is reasonable to suppose that the sample size is bigger then 50, we can consider this approximation good enough in this case. The reason to use this approximation is that the expression is much simpler and some facts that are very difficult to prove for real $\mathrm{Var}\left[\bar{Y} \right]$ become easier for the approximation.
 
 \begin{figure}[ht]
     \centering
@@ -1002,17 +1006,17 @@ $$corr(Z_i, Z_{i+h}) = corr(Y_{ik}, Y_{(i+h)k}) = \rho^{kh} = r^h$$
 To sum up we have random variables $Z_1, Z_2, ..., Z_n$ where the correlation between any to of them depends of the distance $corr(Z_i, Z_{i+h}) = \rho^{kh} = r^h$. For this problem we already know the variance of $\bar{Z}$:
 
 
-$$ var\left[\bar{Z} \right] = \frac{\sigma^2}{n}\frac{1-r^2 - 2r/n + 2r^{n+1}/n}{(1-r)^2}$$
+$$ \mathrm{Var}\left[\bar{Z} \right] = \frac{\sigma^2}{n}\frac{1-r^2 - 2r/n + 2r^{n+1}/n}{(1-r)^2}$$
 
 Or approximation:
-$$var\left[\bar{Z} \right] \simeq  \frac{\sigma^2}{n} \frac{1+r}{1-r}$$
+$$\mathrm{Var}\left[\bar{Z} \right] \simeq  \frac{\sigma^2}{n} \frac{1+r}{1-r}$$
 
 
 
 Let's return to the previous notation and then we get:
-$$var\left[\bar{Y}^k \right] = \frac{\sigma^2}{n}\frac{1-\rho^{2k} - 2\rho^k/n + 2\rho^{k(n+1)}/n}{(1-\rho^k)^2}$$
+$$\mathrm{Var}\left[\bar{Y}^k \right] = \frac{\sigma^2}{n}\frac{1-\rho^{2k} - 2\rho^k/n + 2\rho^{k(n+1)}/n}{(1-\rho^k)^2}$$
 or:
-$$var\left[\bar{Y}^k \right] \simeq  \frac{\sigma^2}{n} \frac{1+\rho^k}{1-\rho^k}$$
+$$\mathrm{Var}\left[\bar{Y}^k \right] \simeq  \frac{\sigma^2}{n} \frac{1+\rho^k}{1-\rho^k}$$
 
 
 \subsection{In RDS context}
@@ -1128,7 +1132,7 @@ $$cov(Y_i, Y_j) = cov (Y_0, Y_{j-i})$$
 
 And then the formula for the variance:
 
-$$var(Y_0) = <f, f>_{\pi} - <f, \Pi f>_{\pi}$$
+$$\mathrm{Var}(Y_0) = <f, f>_{\pi} - <f, \Pi f>_{\pi}$$
 
 and for the covariance:
 
@@ -1144,7 +1148,7 @@ To see, how these formulas were derived, consult 6 chapter of the book \cite{bre
 
 Using these formulas we can write the formula for the variance of the estimator as:
 
-$$ var\left[\bar{Y} \right] = \frac{1}{n^2} \left( nvar(X_i) + 2\sum_{i=1}^n \sum_{j|i < j}^n cov(Y_i, Y_j)\right) = $$
+$$ \mathrm{Var}\left[\bar{Y} \right] = \frac{1}{n^2} \left( nvar(X_i) + 2\sum_{i=1}^n \sum_{j|i < j}^n cov(Y_i, Y_j)\right) = $$
 
 \begin{equation}\label{eq:varGen}
  = \frac{1}{n^2} \left( n(<f, f>_{\pi} - <f, \Pi f>_{\pi}) + 2\sum_{i=1}^n \sum_{j|i < j}^n  f, (P^{j-i} - \Pi)f> \right)
@@ -1170,28 +1174,28 @@ Using formulas \ref{eq:varGen} and \ref{eq:varGen2} and reasoning similar to the
 
 \begin{equation}
 \label{eq:varGenCase}
- var\left[\bar{Y} \right] = \frac{1}{n} \sum_{i=2}^r\frac{1-\lambda_i^2 - 2\frac{\lambda_i}{n} + 2\frac{\lambda_i^{n+1}}{n}}{(1 - \lambda_i)^2} <f, v_i>^2_{\pi}
+ \mathrm{Var}\left[\bar{Y} \right] = \frac{1}{n} \sum_{i=2}^r\frac{1-\lambda_i^2 - 2\frac{\lambda_i}{n} + 2\frac{\lambda_i^{n+1}}{n}}{(1 - \lambda_i)^2} <f, v_i>^2_{\pi}
 \end{equation}
 
 It means that for general model the correlation factor $f(n)$ is:
 
-$$ f(n) = \frac{1}{var(Y_0)} \sum_{i=2}^r\frac{1-\lambda_i^2 - 2\frac{\lambda_i}{n} + 2\frac{\lambda_i^{n+1}}{n}}{(1 - \lambda_i)^2} <f, v_i>^2_{\pi}$$
+$$ f(n) = \frac{1}{\mathrm{Var}(Y_0)} \sum_{i=2}^r\frac{1-\lambda_i^2 - 2\frac{\lambda_i}{n} + 2\frac{\lambda_i^{n+1}}{n}}{(1 - \lambda_i)^2} <f, v_i>^2_{\pi}$$
 
 Again as in the geometric model the expression \ref{eq:varGenCase} for the variance can be simplified if we take as the correlation factor when $n$ approaches infinity:
 
-$$ var\left[\bar{Y} \right] = \frac{1}{n} \sum_{i=2}^r\frac{1 + \lambda_i}{1 - \lambda_i} <f, v_i>^2_{\pi}$$
+$$ \mathrm{Var}\left[\bar{Y} \right] = \frac{1}{n} \sum_{i=2}^r\frac{1 + \lambda_i}{1 - \lambda_i} <f, v_i>^2_{\pi}$$
 
 Finally when we know the expression for estimator we can go back to the problem of sampling hidden population. Then for the different scenarios with different number of samples that are skipped between the participants $k - 1$ we get the variance: 
 
 
 \begin{equation}
 \label{eq:genVarSkip}
-var\left[\bar{Y}^k \right] =  \frac{1}{\frac{B}{kC_1 + C_2}} \sum_{i=2}^r\frac{1-\lambda_i^{2k} - 2\frac{\lambda_i^k}{\frac{B}{kC_1 + C_2}} + 2\frac{\lambda_i^{k\left(\frac{B}{kC_1 + C_2}+1\right)}}{\frac{B}{kC_1 + C_2}}}{(1 - \lambda_i)^{2k}} <f, v_i>^2_{\pi}
+\mathrm{Var}\left[\bar{Y}^k \right] =  \frac{1}{\frac{B}{kC_1 + C_2}} \sum_{i=2}^r\frac{1-\lambda_i^{2k} - 2\frac{\lambda_i^k}{\frac{B}{kC_1 + C_2}} + 2\frac{\lambda_i^{k\left(\frac{B}{kC_1 + C_2}+1\right)}}{\frac{B}{kC_1 + C_2}}}{(1 - \lambda_i)^{2k}} <f, v_i>^2_{\pi}
 \end{equation}
 
 
 or simplified version:
-$$ var\left[\bar{Y}^k \right] = \frac{1}{\frac{B}{kC_1 + C_2}} \sum_{i=2}^r\frac{1 + \lambda_i^k}{1 - \lambda_i^k} <g, v_i>^2_{\pi}$$
+$$ \mathrm{Var}\left[\bar{Y}^k \right] = \frac{1}{\frac{B}{kC_1 + C_2}} \sum_{i=2}^r\frac{1 + \lambda_i^k}{1 - \lambda_i^k} <g, v_i>^2_{\pi}$$
 
 Interestingly, the expression for the variance in general case has the same structure as for the geometric model. Therefore, all the proved observations for the geometric model are true for the general model. Moreover the interpretation of the derived formula is the same. The are tow factors, left and right, that "compete" with each other. If we try to decrease the lest factor, we will increase the right and the opposite. In order to find the desired parameter $k$ we need to find the minimum of the estimator function for variance. 
 
@@ -1215,7 +1219,7 @@ $$bias(\hat{\mu}_{SA}) = E[\hat{\mu}_{SA}] - \mu_{SA} = <f, \pi> - \mu_{SA}$$
 
 Then the mean squared error of the estimator, $MSE(\hat{\mu}_{SA})$, can be written with variance and bias as: 
 
-$$MSE(\hat{\mu}_{SA}) = bias(\hat{\mu}_{SA})^2 + var(\hat{\mu}_{SA})$$
+$$MSE(\hat{\mu}_{SA}) = bias(\hat{\mu}_{SA})^2 + \mathrm{Var}(\hat{\mu}_{SA})$$
 
 We should note, that for all the scenarios with different $k$ the bias is the same as this bias is due to the way that sampling is perform, random walk, that is the way of sampling for all the scenarios.
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.17)  29 AUG 2015 13:56
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.17)  29 AUG 2015 16:37
 entering extended mode
 **final*report.tex
 ("E:\report for internship\reportInternship\final report.tex"
@@ -290,468 +290,472 @@ images/inria.png>]
 Chapter 1.
 [5
 
-] [6] [7] [8] <images/senate.jpg, id=44, 803.0pt x 461.725pt>
+] [6] [7] [8] [9] <images/senate.jpg, id=47, 803.0pt x 461.725pt>
 File: images/senate.jpg Graphic file (type jpg)
 
 <use images/senate.jpg>
-Package pdftex.def Info: images/senate.jpg used on input line 243.
+Package pdftex.def Info: images/senate.jpg used on input line 252.
 (pdftex.def)             Requested size: 436.41943pt x 250.93842pt.
- [9] [10 <E:/report for internship/reportInternship/images/senate.jpg>] <images
-/observation2.jpg, id=51, 564.1075pt x 419.5675pt>
+ [10 <E:/report for internship/reportInternship/images/senate.jpg>] <images/obs
+ervation2.jpg, id=51, 564.1075pt x 419.5675pt>
 File: images/observation2.jpg Graphic file (type jpg)
 
 <use images/observation2.jpg>
-Package pdftex.def Info: images/observation2.jpg used on input line 288.
+Package pdftex.def Info: images/observation2.jpg used on input line 294.
 (pdftex.def)             Requested size: 222.43123pt x 165.43605pt.
 
 <images/observation3.jpg, id=52, 564.1075pt x 419.5675pt>
 File: images/observation3.jpg Graphic file (type jpg)
 
 <use images/observation3.jpg>
-Package pdftex.def Info: images/observation3.jpg used on input line 294.
+Package pdftex.def Info: images/observation3.jpg used on input line 300.
 (pdftex.def)             Requested size: 222.43123pt x 165.43605pt.
- [11 <E:/report for internship/reportInternship/images/observation2.jpg> <E:/re
-port for internship/reportInternship/images/observation3.jpg>] [12] <images/ski
-pping1.jpeg, id=62, 720.44156pt x 438.13687pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[11] [12 <E:/report for internship/reportInternship/images/observation2.jpg> <E
+:/report for internship/reportInternship/images/observation3.jpg>] [13]
+<images/skipping1.jpeg, id=65, 720.44156pt x 438.13687pt>
 File: images/skipping1.jpeg Graphic file (type jpg)
 
 <use images/skipping1.jpeg>
-Package pdftex.def Info: images/skipping1.jpeg used on input line 337.
+Package pdftex.def Info: images/skipping1.jpeg used on input line 342.
 (pdftex.def)             Requested size: 238.44765pt x 145.00679pt.
 
-<images/skipping2.jpeg, id=63, 720.44156pt x 438.13687pt>
+<images/skipping2.jpeg, id=66, 720.44156pt x 438.13687pt>
 File: images/skipping2.jpeg Graphic file (type jpg)
 
 <use images/skipping2.jpeg>
-Package pdftex.def Info: images/skipping2.jpeg used on input line 358.
+Package pdftex.def Info: images/skipping2.jpeg used on input line 363.
 (pdftex.def)             Requested size: 238.44765pt x 145.00679pt.
 
-<images/skipping3.jpeg, id=64, 720.44156pt x 438.13687pt>
+<images/skipping3.jpeg, id=67, 720.44156pt x 438.13687pt>
 File: images/skipping3.jpeg Graphic file (type jpg)
 
 <use images/skipping3.jpeg>
-Package pdftex.def Info: images/skipping3.jpeg used on input line 376.
+Package pdftex.def Info: images/skipping3.jpeg used on input line 381.
 (pdftex.def)             Requested size: 238.44765pt x 145.00679pt.
- [13 <E:/report for internship/reportInternship/images/skipping1.jpeg> <E:/repo
+ [14 <E:/report for internship/reportInternship/images/skipping1.jpeg> <E:/repo
 rt for internship/reportInternship/images/skipping2.jpeg> <E:/report for intern
 ship/reportInternship/images/skipping3.jpeg>]
 Chapter 2.
-[14
+[15
 
-] [15] [16]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 500.
+] [16] [17]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 505.
 
  ("D:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 500.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 505.
 
-<images/GibbsVertexExample.jpeg, id=80, 251.43938pt x 185.19188pt>
+<images/GibbsVertexExample.jpeg, id=83, 251.43938pt x 185.19188pt>
 File: images/GibbsVertexExample.jpeg Graphic file (type jpg)
 
 <use images/GibbsVertexExample.jpeg>
-Package pdftex.def Info: images/GibbsVertexExample.jpeg used on input line 529.
+Package pdftex.def Info: images/GibbsVertexExample.jpeg used on input line 534.
 
 (pdftex.def)             Requested size: 136.28166pt x 100.37537pt.
- [17] [18 <E:/report for internship/reportInternship/images/GibbsVertexExample.
+ [18] [19 <E:/report for internship/reportInternship/images/GibbsVertexExample.
 jpeg>]
-<images/rggT1.jpg, id=88, 562.1pt x 421.575pt>
+<images/rggT1.jpg, id=91, 562.1pt x 421.575pt>
 File: images/rggT1.jpg Graphic file (type jpg)
  <use images/rggT1.jpg>
-Package pdftex.def Info: images/rggT1.jpg used on input line 576.
+Package pdftex.def Info: images/rggT1.jpg used on input line 581.
 (pdftex.def)             Requested size: 197.71498pt x 148.28677pt.
 
-<images/rggT5.jpg, id=89, 564.1075pt x 419.5675pt>
+<images/rggT5.jpg, id=92, 564.1075pt x 419.5675pt>
 File: images/rggT5.jpg Graphic file (type jpg)
  <use images/rggT5.jpg>
-Package pdftex.def Info: images/rggT5.jpg used on input line 582.
+Package pdftex.def Info: images/rggT5.jpg used on input line 587.
 (pdftex.def)             Requested size: 197.71498pt x 147.05568pt.
 
-<images/rggT20.jpg, id=90, 564.1075pt x 419.5675pt>
+<images/rggT20.jpg, id=93, 564.1075pt x 419.5675pt>
 File: images/rggT20.jpg Graphic file (type jpg)
  <use images/rggT20.jpg>
-Package pdftex.def Info: images/rggT20.jpg used on input line 588.
+Package pdftex.def Info: images/rggT20.jpg used on input line 593.
 (pdftex.def)             Requested size: 197.71498pt x 147.05568pt.
 
-<images/rggT1000.jpg, id=91, 562.1pt x 421.575pt>
+<images/rggT1000.jpg, id=94, 562.1pt x 421.575pt>
 File: images/rggT1000.jpg Graphic file (type jpg)
  <use images/rggT1000.jpg>
-Package pdftex.def Info: images/rggT1000.jpg used on input line 594.
+Package pdftex.def Info: images/rggT1000.jpg used on input line 599.
 (pdftex.def)             Requested size: 197.71498pt x 148.28677pt.
 
-<images/rggT1corr.jpg, id=92, 501.875pt x 250.9375pt>
+<images/rggT1corr.jpg, id=95, 501.875pt x 250.9375pt>
 File: images/rggT1corr.jpg Graphic file (type jpg)
 
 <use images/rggT1corr.jpg>
-Package pdftex.def Info: images/rggT1corr.jpg used on input line 619.
+Package pdftex.def Info: images/rggT1corr.jpg used on input line 624.
 (pdftex.def)             Requested size: 197.71498pt x 98.85693pt.
 
-<images/rggT5corr.jpg, id=93, 501.875pt x 250.9375pt>
+<images/rggT5corr.jpg, id=96, 501.875pt x 250.9375pt>
 File: images/rggT5corr.jpg Graphic file (type jpg)
 
 <use images/rggT5corr.jpg>
-Package pdftex.def Info: images/rggT5corr.jpg used on input line 625.
+Package pdftex.def Info: images/rggT5corr.jpg used on input line 630.
 (pdftex.def)             Requested size: 197.71498pt x 98.85693pt.
 
-<images/rggT20corr.jpg, id=94, 503.8825pt x 248.93pt>
+<images/rggT20corr.jpg, id=97, 503.8825pt x 248.93pt>
 File: images/rggT20corr.jpg Graphic file (type jpg)
 
 <use images/rggT20corr.jpg>
-Package pdftex.def Info: images/rggT20corr.jpg used on input line 631.
+Package pdftex.def Info: images/rggT20corr.jpg used on input line 636.
 (pdftex.def)             Requested size: 197.71498pt x 97.67485pt.
 
-<images/rggT1000corr.jpg, id=95, 503.8825pt x 248.93pt>
+<images/rggT1000corr.jpg, id=98, 503.8825pt x 248.93pt>
 File: images/rggT1000corr.jpg Graphic file (type jpg)
 
 <use images/rggT1000corr.jpg>
-Package pdftex.def Info: images/rggT1000corr.jpg used on input line 637.
+Package pdftex.def Info: images/rggT1000corr.jpg used on input line 642.
 (pdftex.def)             Requested size: 197.71498pt x 97.67485pt.
- [19 <E:/report for internship/reportInternship/images/rggT1.jpg> <E:/report fo
+ [20 <E:/report for internship/reportInternship/images/rggT1.jpg> <E:/report fo
 r internship/reportInternship/images/rggT5.jpg> <E:/report for internship/repor
 tInternship/images/rggT20.jpg> <E:/report for internship/reportInternship/image
 s/rggT1000.jpg>]
-<images/energy2.jpg, id=99, 564.1075pt x 419.5675pt>
+<images/energy2.jpg, id=102, 564.1075pt x 419.5675pt>
 File: images/energy2.jpg Graphic file (type jpg)
  <use images/energy2.jpg>
-Package pdftex.def Info: images/energy2.jpg used on input line 666.
+Package pdftex.def Info: images/energy2.jpg used on input line 671.
 (pdftex.def)             Requested size: 222.43123pt x 165.43605pt.
 
-<images/energy10.jpg, id=100, 564.1075pt x 419.5675pt>
+<images/energy10.jpg, id=103, 564.1075pt x 419.5675pt>
 File: images/energy10.jpg Graphic file (type jpg)
 
 <use images/energy10.jpg>
-Package pdftex.def Info: images/energy10.jpg used on input line 672.
+Package pdftex.def Info: images/energy10.jpg used on input line 677.
 (pdftex.def)             Requested size: 222.43123pt x 165.43605pt.
- [20 <E:/report for internship/reportInternship/images/rggT1corr.jpg> <E:/repor
+ [21 <E:/report for internship/reportInternship/images/rggT1corr.jpg> <E:/repor
 t for internship/reportInternship/images/rggT5corr.jpg> <E:/report for internsh
 ip/reportInternship/images/rggT20corr.jpg> <E:/report for internship/reportInte
 rnship/images/rggT1000corr.jpg>]
-Overfull \hbox (15.44049pt too wide) in paragraph at lines 705--706
+Overfull \hbox (15.44049pt too wide) in paragraph at lines 710--711
 []\OT1/cmr/m/n/12 Let the ran-dom vari-able $\OML/cmm/m/it/12 "\OT1/cmr/m/n/12 
 ([])$ be to-tal en-ergy of the graph with ran-dom field $[] = (\OML/cmm/m/it/12
  X[]; X[]; :::; X[]\OT1/cmr/m/n/12 )$.
  []
 
-[21 <E:/report for internship/reportInternship/images/energy2.jpg> <E:/report f
-or internship/reportInternship/images/energy10.jpg>] [22]
-Underfull \hbox (badness 10000) in paragraph at lines 755--756
+[22 <E:/report for internship/reportInternship/images/energy2.jpg> <E:/report f
+or internship/reportInternship/images/energy10.jpg>] [23]
+Underfull \hbox (badness 10000) in paragraph at lines 760--761
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 763--764
+Underfull \hbox (badness 10000) in paragraph at lines 768--769
 
  []
 
-[23]
-Underfull \hbox (badness 10000) in paragraph at lines 802--803
+[24]
+Underfull \hbox (badness 10000) in paragraph at lines 807--808
 
  []
 
-[24] <images/er200x01.jpg, id=118, 562.1pt x 421.575pt>
+[25] <images/er200x01.jpg, id=121, 562.1pt x 421.575pt>
 File: images/er200x01.jpg Graphic file (type jpg)
 
 <use images/er200x01.jpg>
-Package pdftex.def Info: images/er200x01.jpg used on input line 841.
+Package pdftex.def Info: images/er200x01.jpg used on input line 846.
 (pdftex.def)             Requested size: 197.71498pt x 148.28677pt.
 
-<images/pa200x1.jpg, id=119, 641.39626pt x 524.96124pt>
+<images/pa200x1.jpg, id=122, 641.39626pt x 524.96124pt>
 File: images/pa200x1.jpg Graphic file (type jpg)
 
 <use images/pa200x1.jpg>
-Package pdftex.def Info: images/pa200x1.jpg used on input line 847.
+Package pdftex.def Info: images/pa200x1.jpg used on input line 852.
 (pdftex.def)             Requested size: 197.71498pt x 161.82314pt.
 
-<images/rgg200x013.jpg, id=120, 564.1075pt x 419.5675pt>
+<images/rgg200x013.jpg, id=123, 564.1075pt x 419.5675pt>
 File: images/rgg200x013.jpg Graphic file (type jpg)
 
 <use images/rgg200x013.jpg>
-Package pdftex.def Info: images/rgg200x013.jpg used on input line 853.
+Package pdftex.def Info: images/rgg200x013.jpg used on input line 858.
 (pdftex.def)             Requested size: 197.71498pt x 147.05568pt.
 
-<images/facebookEnergy.jpg, id=121, 564.1075pt x 419.5675pt>
+<images/facebookEnergy.jpg, id=124, 564.1075pt x 419.5675pt>
 File: images/facebookEnergy.jpg Graphic file (type jpg)
 
 <use images/facebookEnergy.jpg>
-Package pdftex.def Info: images/facebookEnergy.jpg used on input line 859.
+Package pdftex.def Info: images/facebookEnergy.jpg used on input line 864.
 (pdftex.def)             Requested size: 197.71498pt x 147.05568pt.
- [25] [26 <E:/report for internship/reportInternship/images/er200x01.jpg> <E:/r
+ [26] [27 <E:/report for internship/reportInternship/images/er200x01.jpg> <E:/r
 eport for internship/reportInternship/images/pa200x1.jpg> <E:/report for intern
 ship/reportInternship/images/rgg200x013.jpg> <E:/report for internship/reportIn
 ternship/images/facebookEnergy.jpg>]
-Overfull \hbox (35.85301pt too wide) in paragraph at lines 905--906
+Overfull \hbox (35.85301pt too wide) in paragraph at lines 910--911
 []\OT1/cmr/m/n/12 When each $\OML/cmm/m/it/12 k$\OT1/cmr/m/n/12 th per-son is a
  par-tic-i-pant, it means that for real we have only val-ues $\OML/cmm/m/it/12 
 Y[]; Y[]; Y[]; :::; Y[]$
  []
 
-[27] <images/corrFactor.jpg, id=132, 632.3625pt x 335.2525pt>
+[28] <images/corrFactor.jpg, id=135, 632.3625pt x 335.2525pt>
 File: images/corrFactor.jpg Graphic file (type jpg)
 
 <use images/corrFactor.jpg>
-Package pdftex.def Info: images/corrFactor.jpg used on input line 959.
+Package pdftex.def Info: images/corrFactor.jpg used on input line 964.
 (pdftex.def)             Requested size: 283.9912pt x 150.56305pt.
- [28 <E:/report for internship/reportInternship/images/corrFactor.jpg>] <images
-/lineGame1.jpg, id=136, 564.1075pt x 343.2825pt>
+ [29 <E:/report for internship/reportInternship/images/corrFactor.jpg>] <images
+/lineGame1.jpg, id=139, 564.1075pt x 343.2825pt>
 File: images/lineGame1.jpg Graphic file (type jpg)
 
 <use images/lineGame1.jpg>
-Package pdftex.def Info: images/lineGame1.jpg used on input line 972.
+Package pdftex.def Info: images/lineGame1.jpg used on input line 977.
 (pdftex.def)             Requested size: 247.41617pt x 150.56305pt.
 
-<images/varianceIndDep2.jpg, id=137, 871.255pt x 459.7175pt>
+<images/varianceIndDep2.jpg, id=140, 871.255pt x 459.7175pt>
 File: images/varianceIndDep2.jpg Graphic file (type jpg)
 
 <use images/varianceIndDep2.jpg>
-Package pdftex.def Info: images/varianceIndDep2.jpg used on input line 982.
+Package pdftex.def Info: images/varianceIndDep2.jpg used on input line 987.
 (pdftex.def)             Requested size: 285.34807pt x 150.56305pt.
- [29 <E:/report for internship/reportInternship/images/lineGame1.jpg> <E:/repor
+ [30 <E:/report for internship/reportInternship/images/lineGame1.jpg> <E:/repor
 t for internship/reportInternship/images/varianceIndDep2.jpg>] <images/varPredD
-ifRho.jpg, id=141, 697.60625pt x 461.725pt>
+ifRho.jpg, id=145, 697.60625pt x 461.725pt>
 File: images/varPredDifRho.jpg Graphic file (type jpg)
 
 <use images/varPredDifRho.jpg>
-Package pdftex.def Info: images/varPredDifRho.jpg used on input line 1041.
+Package pdftex.def Info: images/varPredDifRho.jpg used on input line 1046.
 (pdftex.def)             Requested size: 303.30724pt x 200.75073pt.
- [30] [31 <E:/report for internship/reportInternship/images/varPredDifRho.jpg>]
+ [31] [32 <E:/report for internship/reportInternship/images/varPredDifRho.jpg>]
 
-<images/facebookBad.jpg, id=149, 564.1075pt x 419.5675pt>
+<images/facebookBad.jpg, id=152, 564.1075pt x 419.5675pt>
 File: images/facebookBad.jpg Graphic file (type jpg)
 
 <use images/facebookBad.jpg>
-Package pdftex.def Info: images/facebookBad.jpg used on input line 1088.
+Package pdftex.def Info: images/facebookBad.jpg used on input line 1093.
 (pdftex.def)             Requested size: 269.90776pt x 200.75073pt.
- [32 <E:/report for internship/reportInternship/images/facebookBad.jpg>] [33] [
-34]
-<images/facebookGood.jpg, id=159, 564.1075pt x 419.5675pt>
+ [33 <E:/report for internship/reportInternship/images/facebookBad.jpg>] [34] [
+35]
+<images/facebookGood.jpg, id=162, 564.1075pt x 419.5675pt>
 File: images/facebookGood.jpg Graphic file (type jpg)
 
 <use images/facebookGood.jpg>
-Package pdftex.def Info: images/facebookGood.jpg used on input line 1204.
+Package pdftex.def Info: images/facebookGood.jpg used on input line 1209.
 (pdftex.def)             Requested size: 269.90776pt x 200.75073pt.
- [35 <E:/report for internship/reportInternship/images/facebookGood.jpg>] [36]
-<images/pr90race.jpg, id=167, 641.39626pt x 431.6125pt>
+ [36 <E:/report for internship/reportInternship/images/facebookGood.jpg>] [37]
+<images/pr90race.jpg, id=170, 641.39626pt x 431.6125pt>
 File: images/pr90race.jpg Graphic file (type jpg)
 
 <use images/pr90race.jpg>
-Package pdftex.def Info: images/pr90race.jpg used on input line 1269.
+Package pdftex.def Info: images/pr90race.jpg used on input line 1274.
 (pdftex.def)             Requested size: 197.71498pt x 133.0477pt.
 
-<images/studRace.jpg, id=168, 641.39626pt x 403.5075pt>
+<images/studRace.jpg, id=171, 641.39626pt x 403.5075pt>
 File: images/studRace.jpg Graphic file (type jpg)
 
 <use images/studRace.jpg>
-Package pdftex.def Info: images/studRace.jpg used on input line 1275.
+Package pdftex.def Info: images/studRace.jpg used on input line 1280.
 (pdftex.def)             Requested size: 197.71498pt x 124.38412pt.
 
-<images/pr90gender.jpg, id=169, 641.39626pt x 435.6275pt>
+<images/pr90gender.jpg, id=172, 641.39626pt x 435.6275pt>
 File: images/pr90gender.jpg Graphic file (type jpg)
 
 <use images/pr90gender.jpg>
-Package pdftex.def Info: images/pr90gender.jpg used on input line 1283.
+Package pdftex.def Info: images/pr90gender.jpg used on input line 1288.
 (pdftex.def)             Requested size: 197.71498pt x 134.28535pt.
 
-<images/studSex.jpg, id=170, 641.39626pt x 409.53pt>
+<images/studSex.jpg, id=173, 641.39626pt x 409.53pt>
 File: images/studSex.jpg Graphic file (type jpg)
  <use images/studSex.jpg>
-Package pdftex.def Info: images/studSex.jpg used on input line 1289.
+Package pdftex.def Info: images/studSex.jpg used on input line 1294.
 (pdftex.def)             Requested size: 197.71498pt x 126.2406pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<images/pr90dealer.jpg, id=171, 641.39626pt x 447.6725pt>
+<images/pr90dealer.jpg, id=174, 641.39626pt x 447.6725pt>
 File: images/pr90dealer.jpg Graphic file (type jpg)
 
 <use images/pr90dealer.jpg>
-Package pdftex.def Info: images/pr90dealer.jpg used on input line 1298.
+Package pdftex.def Info: images/pr90dealer.jpg used on input line 1303.
 (pdftex.def)             Requested size: 197.71498pt x 137.9983pt.
 
-<images/studGrade.jpg, id=172, 641.39626pt x 451.6875pt>
+<images/studGrade.jpg, id=175, 641.39626pt x 451.6875pt>
 File: images/studGrade.jpg Graphic file (type jpg)
 
 <use images/studGrade.jpg>
-Package pdftex.def Info: images/studGrade.jpg used on input line 1304.
+Package pdftex.def Info: images/studGrade.jpg used on input line 1309.
 (pdftex.def)             Requested size: 197.71498pt x 139.23596pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<images/project90gender.png, id=173, 1027.84pt x 1027.84pt>
+<images/project90gender.png, id=176, 1027.84pt x 1027.84pt>
 File: images/project90gender.png Graphic file (type png)
 
 <use images/project90gender.png>
-Package pdftex.def Info: images/project90gender.png used on input line 1315.
+Package pdftex.def Info: images/project90gender.png used on input line 1320.
 (pdftex.def)             Requested size: 501.87376pt x 501.87683pt.
 
-Overfull \hbox (7.57877pt too wide) in paragraph at lines 1315--1316
+Overfull \hbox (7.57877pt too wide) in paragraph at lines 1320--1321
  [][] 
  []
 
-<images/addhealthRace.png, id=175, 1027.84pt x 1027.84pt>
+<images/addhealthRace.png, id=178, 1027.84pt x 1027.84pt>
 File: images/addhealthRace.png Graphic file (type png)
 
 <use images/addhealthRace.png>
-Package pdftex.def Info: images/addhealthRace.png used on input line 1322.
+Package pdftex.def Info: images/addhealthRace.png used on input line 1327.
 (pdftex.def)             Requested size: 501.87376pt x 501.87683pt.
 
-Overfull \hbox (7.57877pt too wide) in paragraph at lines 1322--1323
+Overfull \hbox (7.57877pt too wide) in paragraph at lines 1327--1328
  [][] 
  []
 
-[37 <E:/report for internship/reportInternship/images/pr90race.jpg> <E:/report 
-for internship/reportInternship/images/studRace.jpg>] [38 <E:/report for intern
+[38 <E:/report for internship/reportInternship/images/pr90race.jpg> <E:/report 
+for internship/reportInternship/images/studRace.jpg>] [39 <E:/report for intern
 ship/reportInternship/images/pr90gender.jpg> <E:/report for internship/reportIn
 ternship/images/studSex.jpg> <E:/report for internship/reportInternship/images/
 pr90dealer.jpg> <E:/report for internship/reportInternship/images/studGrade.jpg
->] [39 <E:/report for internship/reportInternship/images/project90gender.png>]
-[40 <E:/report for internship/reportInternship/images/addhealthRace.png>]
+>] [40 <E:/report for internship/reportInternship/images/project90gender.png>]
+[41 <E:/report for internship/reportInternship/images/addhealthRace.png>]
 Chapter 3.
-<images/estimators_disabled.jpg, id=190, 714.67pt x 536.0025pt>
+<images/estimators_disabled.jpg, id=193, 714.67pt x 536.0025pt>
 File: images/estimators_disabled.jpg Graphic file (type jpg)
 
 <use images/estimators_disabled.jpg>
-Package pdftex.def Info: images/estimators_disabled.jpg used on input line 1345
+Package pdftex.def Info: images/estimators_disabled.jpg used on input line 1350
 .
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_drugCook.jpg, id=191, 714.67pt x 536.0025pt>
+<images/estimators_drugCook.jpg, id=194, 714.67pt x 536.0025pt>
 File: images/estimators_drugCook.jpg Graphic file (type jpg)
 
 <use images/estimators_drugCook.jpg>
-Package pdftex.def Info: images/estimators_drugCook.jpg used on input line 1351
+Package pdftex.def Info: images/estimators_drugCook.jpg used on input line 1356
 .
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_drugDealer.jpg, id=192, 714.67pt x 536.0025pt>
+<images/estimators_drugDealer.jpg, id=195, 714.67pt x 536.0025pt>
 File: images/estimators_drugDealer.jpg Graphic file (type jpg)
 
 <use images/estimators_drugDealer.jpg>
 Package pdftex.def Info: images/estimators_drugDealer.jpg used on input line 13
-57.
+62.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_homeless.jpg, id=193, 714.67pt x 536.0025pt>
+<images/estimators_homeless.jpg, id=196, 714.67pt x 536.0025pt>
 File: images/estimators_homeless.jpg Graphic file (type jpg)
 
 <use images/estimators_homeless.jpg>
-Package pdftex.def Info: images/estimators_homeless.jpg used on input line 1364
+Package pdftex.def Info: images/estimators_homeless.jpg used on input line 1369
 .
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_housewife.jpg, id=194, 714.67pt x 536.0025pt>
+<images/estimators_housewife.jpg, id=197, 714.67pt x 536.0025pt>
 File: images/estimators_housewife.jpg Graphic file (type jpg)
 
 <use images/estimators_housewife.jpg>
 Package pdftex.def Info: images/estimators_housewife.jpg used on input line 137
-0.
+5.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_pimp.jpg, id=195, 714.67pt x 536.0025pt>
+<images/estimators_pimp.jpg, id=198, 714.67pt x 536.0025pt>
 File: images/estimators_pimp.jpg Graphic file (type jpg)
 
 <use images/estimators_pimp.jpg>
-Package pdftex.def Info: images/estimators_pimp.jpg used on input line 1376.
+Package pdftex.def Info: images/estimators_pimp.jpg used on input line 1381.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_race.jpg, id=196, 714.67pt x 536.0025pt>
+<images/estimators_race.jpg, id=199, 714.67pt x 536.0025pt>
 File: images/estimators_race.jpg Graphic file (type jpg)
 
 <use images/estimators_race.jpg>
-Package pdftex.def Info: images/estimators_race.jpg used on input line 1382.
+Package pdftex.def Info: images/estimators_race.jpg used on input line 1387.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_sexWorkClient.jpg, id=197, 714.67pt x 536.0025pt>
+<images/estimators_sexWorkClient.jpg, id=200, 714.67pt x 536.0025pt>
 File: images/estimators_sexWorkClient.jpg Graphic file (type jpg)
 
 <use images/estimators_sexWorkClient.jpg>
 Package pdftex.def Info: images/estimators_sexWorkClient.jpg used on input line
- 1388.
+ 1393.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_sexWorker.jpg, id=198, 714.67pt x 536.0025pt>
+<images/estimators_sexWorker.jpg, id=201, 714.67pt x 536.0025pt>
 File: images/estimators_sexWorker.jpg Graphic file (type jpg)
 
 <use images/estimators_sexWorker.jpg>
 Package pdftex.def Info: images/estimators_sexWorker.jpg used on input line 139
-4.
+9.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_thief.jpg, id=199, 714.67pt x 536.0025pt>
+<images/estimators_thief.jpg, id=202, 714.67pt x 536.0025pt>
 File: images/estimators_thief.jpg Graphic file (type jpg)
 
 <use images/estimators_thief.jpg>
-Package pdftex.def Info: images/estimators_thief.jpg used on input line 1400.
+Package pdftex.def Info: images/estimators_thief.jpg used on input line 1405.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_unemployed.jpg, id=200, 714.67pt x 536.0025pt>
+<images/estimators_unemployed.jpg, id=203, 714.67pt x 536.0025pt>
 File: images/estimators_unemployed.jpg Graphic file (type jpg)
 
 <use images/estimators_unemployed.jpg>
 Package pdftex.def Info: images/estimators_unemployed.jpg used on input line 14
-06.
+11.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_racesc.jpg, id=201, 714.67pt x 536.0025pt>
+<images/estimators_racesc.jpg, id=204, 714.67pt x 536.0025pt>
 File: images/estimators_racesc.jpg Graphic file (type jpg)
 
 <use images/estimators_racesc.jpg>
-Package pdftex.def Info: images/estimators_racesc.jpg used on input line 1412.
+Package pdftex.def Info: images/estimators_racesc.jpg used on input line 1417.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_sex.jpg, id=202, 714.67pt x 536.0025pt>
+<images/estimators_sex.jpg, id=205, 714.67pt x 536.0025pt>
 File: images/estimators_sex.jpg Graphic file (type jpg)
 
 <use images/estimators_sex.jpg>
-Package pdftex.def Info: images/estimators_sex.jpg used on input line 1418.
+Package pdftex.def Info: images/estimators_sex.jpg used on input line 1423.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_grade.jpg, id=203, 714.67pt x 536.0025pt>
+<images/estimators_grade.jpg, id=206, 714.67pt x 536.0025pt>
 File: images/estimators_grade.jpg Graphic file (type jpg)
 
 <use images/estimators_grade.jpg>
-Package pdftex.def Info: images/estimators_grade.jpg used on input line 1424.
+Package pdftex.def Info: images/estimators_grade.jpg used on input line 1429.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_school.jpg, id=204, 714.67pt x 536.0025pt>
+<images/estimators_school.jpg, id=207, 714.67pt x 536.0025pt>
 File: images/estimators_school.jpg Graphic file (type jpg)
 
 <use images/estimators_school.jpg>
-Package pdftex.def Info: images/estimators_school.jpg used on input line 1430.
+Package pdftex.def Info: images/estimators_school.jpg used on input line 1435.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Package caption Warning: \label without proper \caption on input line 1465.
+Package caption Warning: \label without proper \caption on input line 1474.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `fig:degree-val' on page 41 undefined on input line 14
-46.
+LaTeX Warning: Reference `fig:degree-val' on page 42 undefined on input line 14
+51.
 
-[41
+[42
 
-] <images/corrDegreePr90.jpg, id=208, 986.68625pt x 438.63875pt>
+] <images/corrDegreePr90.jpg, id=212, 986.68625pt x 438.63875pt>
 File: images/corrDegreePr90.jpg Graphic file (type jpg)
 
 <use images/corrDegreePr90.jpg>
-Package pdftex.def Info: images/corrDegreePr90.jpg used on input line 1455.
+Package pdftex.def Info: images/corrDegreePr90.jpg used on input line 1460.
 (pdftex.def)             Requested size: 296.58pt x 131.84697pt.
 
-<images/corrDegreeStud.jpg, id=209, 641.39626pt x 285.065pt>
+<images/corrDegreeStud.jpg, id=213, 641.39626pt x 285.065pt>
 File: images/corrDegreeStud.jpg Graphic file (type jpg)
 
 <use images/corrDegreeStud.jpg>
-Package pdftex.def Info: images/corrDegreeStud.jpg used on input line 1461.
+Package pdftex.def Info: images/corrDegreeStud.jpg used on input line 1466.
 (pdftex.def)             Requested size: 148.29pt x 65.90285pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[42] [43 <E:/report for internship/reportInternship/images/estimators_disabled.
+[43] [44 <E:/report for internship/reportInternship/images/estimators_disabled.
 jpg> <E:/report for internship/reportInternship/images/estimators_drugCook.jpg>
  <E:/report for internship/reportInternship/images/estimators_drugDealer.jpg> <
 E:/report for internship/reportInternship/images/estimators_homeless.jpg> <E:/r
@@ -765,18 +769,18 @@ nternship/images/estimators_unemployed.jpg> <E:/report for internship/reportInt
 ernship/images/estimators_racesc.jpg> <E:/report for internship/reportInternshi
 p/images/estimators_sex.jpg> <E:/report for internship/reportInternship/images/
 estimators_grade.jpg> <E:/report for internship/reportInternship/images/estimat
-ors_school.jpg>] [44 <E:/report for internship/reportInternship/images/corrDegr
+ors_school.jpg>] [45 <E:/report for internship/reportInternship/images/corrDegr
 eePr90.jpg> <E:/report for internship/reportInternship/images/corrDegreeStud.jp
-g>] [45
+g>] [46
 
-] ("E:\report for internship\reportInternship\final report.bbl" [46]
+] ("E:\report for internship\reportInternship\final report.bbl" [47]
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
 
-[47
+[48
 
-]) [48] ("E:\report for internship\reportInternship\final report.aux")
+]) [49] ("E:\report for internship\reportInternship\final report.aux")
 
 LaTeX Warning: There were undefined references.
 
@@ -791,7 +795,7 @@ Here is how much of TeX's memory you used:
  7519 multiletter control sequences out of 15000+200000
  13084 words of font info for 47 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 36i,12n,38p,933b,488s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,12n,38p,973b,488s stack positions out of 5000i,500n,10000p,200000b,50000s
 <D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Pr
 ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><D:/Program 
 Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><D:/Program Files/M
@@ -810,9 +814,9 @@ public/amsfonts/cm/cmsy8.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/am
 sfonts/cm/cmti12.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
 m/cmtt12.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/eurosym/feymr10.pf
 b>
-Output written on "final report.pdf" (49 pages, 3595632 bytes).
+Output written on "final report.pdf" (50 pages, 3597361 bytes).
 PDF statistics:
- 295 PDF objects out of 1000 (max. 8388607)
+ 298 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  271 words of extra memory for PDF output out of 10000 (max. 10000000)
 
