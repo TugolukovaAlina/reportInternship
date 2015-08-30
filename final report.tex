@@ -11,7 +11,7 @@
 \graphicspath{ {images/} }
 \usepackage{xcolor}
 \newcommand\myworries[1]{\textcolor{red}{#1}}
-%\renewcommand\myworries[1]{}
+\renewcommand\myworries[1]{}
 
 \begin{document}
 
@@ -228,7 +228,7 @@ In this case the only thing that we can do in order to have better estimation is
 
 
 Of course the way we perform sampling it is not independent uniform sampling. 
-First, nodes are not sampled not uniformly. When each participant select another  participants with the same probability among his friends there is bias towards the nodes with high degrees. So the more contacts an individual has more probable he will be invited to participate in the study. 
+First, nodes are not sampled not uniformly. When each participant select other  participants with the same probability among his friends there is bias towards the nodes with high degrees. So the more contacts an individual has more probable he will be invited to participate in the study. 
 
 In some cases, when we can control the probability of selecting the next participant we can achieve uniform sampling even with random walk. For example, the study \cite{gjoka2009walk} was using Metropolis-Hasting Random Walk to sample Facebook. This method requires information about user's degree and the degrees of all his neighbors. According to this information the selection probabilities are counted for all the friends and then one of them is selected by the computer.
 In Facebook it is feasible to do: with API requests needed information is collected and then probabilities to choose one of the user's friends are counted. Though this method gives us mechanism to sample uniformly even with random walk, it is not really possible in the situations where we cannot control selection probabilities. Like in the case with hidden populations: it is individual who decides how to hire. 
@@ -395,32 +395,29 @@ The better scenario will be the one that has the least error. If we are able to 
 
 \chapter{Mathematical model}
 
-\section{Network modeling}
-
-As it has been already mentioned we will model with the graph the network formed by the members of hidden population. The nodes of this graph correspond to the persons. The edge between to nodes represents the connection between corresponding persons.
-
-We have multiple possibilities to obtain graph structure. First, there are multiple available network structures that were collected from the real networks. Particularly the Stanford Large Network Dataset Collection \cite{Facebook} provide the data of online-social networks (we will use part of Facebook graph), collaboration networks,  web graphs, Internet peer-to-peer network and a lot of others.
-
-The other possibility is to use random graph theory to generate the random graph that will imitate the network structure. There is number of different random graphs. Particularly we used Erdos Renui graph, random geometric graph, preferential attachments graph.
-
 \section{Network with values}
 
 \subsection{Motivation}
+As it has been already mentioned we will model the network formed by the members of hidden population as a graph. The nodes of this graph correspond to the individuals. The edge between two nodes represents the connection between corresponding persons.
 
-Each node should maintain the value of the attribute, that is going to be estimated. For instance, if we have a social network the attribute can be the age, gender of a user.  
+We have several possibilities to obtain graph structure. First, there are multiple available network structures that were collected from the real networks. In particular the Stanford Large Network Dataset Collection \cite{Facebook} provides the data of online-social networks (we will use part of Facebook graph), collaboration networks,  web graphs, Internet peer-to-peer network and a lot of others.
 
-All the random graph models give us possibility to generate only the structure of a network. The next step is to generate the values on the nodes of the obtained graph which will represent needed attribute. 
+The other possibility is to use random graph theory to generate the random graph that will imitate the network structure. There is number of different random graphs. In particular we used Erd{\H{o}}s-R{\'e}nyi graph, random geometric graph, preferential attachments graph.
+
+Our goal is to study mathematically the mean-squared error of the estimator of the presented enhanced RDS method. Its purpose is to estimate the average value of some attribute on the nodes. For instance, if we have a social network the attribute can be the age, gender of a user. But for now there is nothing to estimate. The Stanford Large Network Dataset Collection contains only real network structures (without attributes on the nodes). All the random graph models give us possibility to generate only the structure of a network.
+However for the purposes of our problem each node should maintain the value of the attribute, that is going to be estimated.  
+
+Of course there are the real network structures where the nodes have some data, but they are scares. The Project 90 data\cite{Project90}, Add health project data\cite{Addhealth} are one of them. 
+But this is not enough for study purposes. We can not justify our results based only on few examples. What would satisfy us is following. In the same way we can generate numerous random graphs with desired properties, we wanted to have mechanism to generate the values on the nodes of the obtained graph which will represent needed attribute. Let us analyze what are the challenges to be encountered in this task.
+
 
 The simplest idea is to assign values randomly to the nodes independently of the graph structure. For example, we could assign the age of the user according to the uniform distribution or normal distribution or any distribution we want our attribute to be distributed. This approach has an explicit weakness: it does not take into account the homophily, the tendency of people with connections to have the similar characteristics.
 
-We already explained that this property is frequently encountered in the real networks.
-
-The reason why we don't want to ignore homophily is because the way of performing sampling and the property of homophily together influence on the sampling variance and bias. Further we will count formally the sampling variance for the given network and attribute of the nodes.
+As we already explained that this property is frequently encountered in the real networks. The reason why we don't want to ignore homophily is because the way of performing sampling and the property of homophily together influence on the sampling variance and bias. Further we will count formally the sampling variance for the given network and attribute of the nodes.
 
 So for study purposes we would like to assign values to the nodes of the network in such a way that the value of the node depends on values of its neighbors.
 The other point is that the level of correlation can be different within the same network but for different attributes. 
 
-So moreover we would like to control the level of homophily in the network. 
 
 The study \cite{pollard2013adolescent} was investigating how the binge drinking is influenced by the position of student in the network of students. The students were labeled according to belonging to one the group: member of a bingering group, liasons, isoletes, etc. The researchers looked for the relation of the episodes of binge drinking per fixed period of time and the student's label. They found strong dependency while the students were young, but not when they became adults. So for the same network the different attributes: binge drinking in school and binge drinking after school have different level of dependency of the friend's behavior.
 
@@ -428,33 +425,39 @@ Regarding what was said above we would like also to be able to tune the correlat
  
 \subsection{Definitions}
 
-We have graph with $n$ nodes. To each node $i$ will be assigned random value $X_i$ from the set of values $V, V = \lbrace 1, 2, 3, ..., k \rbrace$. 
+First we will give some definitions and then we will introduce the method of creating synthetic network with values, where the level of homophily can be tuned.
+
+Let us imagine that we already have the graph with $n$ nodes. To each node $i$ we want to assign a random value $X_i$ from the set of values $V, V = \lbrace 1, 2, 3, ..., k \rbrace$. 
 
 Instead of looking on distributions of the values on nodes independently, we will look at the joint distribution of values on all the nodes. The distribution should take into account the values of the node's neighbors as well.
 
-Let's denote $(X_1, X_2, ..., X_n)$ as $\bar{X}$. We will call $\bar{X}$ as a random field. When random variables $X_1, X_2, ..., X_n$ take values $x_1, x_2, ..., x_n$ respectively we will call $(x_1, x_2, ..., x_n)$ a configuration of a random field and we will denote it as $\bar{x}$. As the basement of distribution we will take Gibbs distribution, that originally comes from physics [put a reference].
+Let's denote $(X_1, X_2, ..., X_n)$ as $\bar{X}$. We will call $\bar{X}$ as a \textit{\textbf{random field}}. When random variables $X_1, X_2, ..., X_n$ take values $x_1, x_2, ..., x_n$ respectively we will call $(x_1, x_2, ..., x_n)$ a \textit{\textbf{configuration}} of a random field and we will denote it as $\bar{x}$. As the basement of distribution we will take Gibbs distribution \cite{bremaud2013markov}.
 
 For simplicity, instead of writing $p(X_1 = x_1, X_2 = x_2, ...,  X_n = x_n)$ where $x_1, x_2, ..., x_n \in V$ we will write $p(\bar{X} = \bar{x})$ or just $p(\bar{x})$.
 
-For each possible configuration $\bar{x}$ we will associate the number that is called global energy of the graph that is counted in the following way:
+For the random field $\bar{X}$ we will associate the random number that is called \textit{\textbf{global energy}} of the graph that is counted in the following way:
 
-$$ \varepsilon (\bar{x}) =  \sum\limits_{i \sim j, i \leq j} (x_i - x_j)^2  $$
+$$ \varepsilon (\bar{X}) =  \sum\limits_{i \sim j, i \leq j} (X_i - X_j)^2  $$
 
 
 where $i \sim j$ means that the nodes $i$ and $j$ are neighbors in the graph.
 
-Let's turn our attention to the one node $i$. We will define local energy on the node $i$ as:
+Let us turn our attention to the one node $i$. Then the \textit{\textbf{local energy}} on the node $i$ will be defined as:
 
-$$ \varepsilon_i (x_i) = \sum\limits_{j | i \sim j}  (x_i - x_j)^2 $$  
+$$ \varepsilon_i (X_i) = \sum\limits_{j | i \sim j}  (X_i - X_j)^2 $$  
 
 Then we can rewrite the expression of the global energy knowing the local energies on all the nodes:
 
-$$ \varepsilon (\bar{x}) = \frac{1}{2}\sum_i \varepsilon_i$$
+$$ \varepsilon (\bar{X}) = \frac{1}{2}\sum_i \varepsilon_i(X_i)$$
 
+When the random field $\bar{X} = (X_1, X_2, ..., X_n)$ takes the configuration $\bar{x} = (x_1, x_2, ..., x_n)$ then the global energy of the configuration $\bar(x)$ is:
+$$ \varepsilon_i (x_i) = \sum\limits_{j | i \sim j}  (x_i - x_j)^2 $$  
+and local energy on the node $i$ is:
+$$ \varepsilon_i (x_i) = \sum\limits_{j | i \sim j}  (x_i - x_j)^2 $$  
 
 \subsection{Gibbs distribution}
 
-Now let's consider the following probability distribution:
+Now let's consider the following probability  of random field $\bar{X}$ to take the configuration $\bar{x}$:
 
 \begin{equation} \label{eq:gibbsdistr}
 p(\bar{x}) = \frac{ e^{-\frac{ \varepsilon (\bar{x})}{T}} }{ \sum\limits_{\bar{x}'\in |V|^n} e^{-\frac{\varepsilon(\bar{x}')}{T}}} 
@@ -463,14 +466,14 @@ p(\bar{x}) = \frac{ e^{-\frac{ \varepsilon (\bar{x})}{T}} }{ \sum\limits_{\bar{x
 where $T$ is temperature, $T > 0$.
 
 
-The reason why it is interesting to look at this distribution follows from the theorem [Theorem 2.1, p. 260], \cite{bremaud2013markov}. When random field has distribution \ref{eq:gibbsdistr} then the probability that the node has particular value depends only on the values of its neighboring nodes and does not depend on the values of all other nodes.
+The reason why it is interesting to look at this distribution follows from the theorem 2.1, p. 260, book \cite{bremaud2013markov}. When random field has distribution \ref{eq:gibbsdistr} then the probability that the node has particular value depends only on the values of its neighboring nodes and does not depend on the values of all other nodes.
 
-Let's denote $N_i$ as the set of neighbors of the node $i$. If the $L$ is the subset of nodes then $X_{L}$ will denote the set of random variables of the corresponding nodes. 
+Let $N_i$ be the set of neighbors of the node $i$. If the $L$ is the subset of nodes then $X_{L}$ will denote the set of random variables of the corresponding nodes. 
 The the last property can be formulated in the following way:
 
 $$ p(X_i = x_i | X_{N_i} = x_{N_i}) = p(X_i = x_i | X_{\lbrace 1, 2, ..., n\rbrace \setminus i} = x_{\lbrace 1, 2, ..., n \rbrace \setminus i}) $$
 
-This property is called Markov property.
+This property is called \textit{Markov} property and it is exactly what we want from the values on the nodes: to be dependent of the values on the neighboring nodes.
 
 Moreover for each node $i$, knowing values of its neighbors, we can write the distribution of values: as following:
 
@@ -479,20 +482,20 @@ $$ p(X_i = x_i) = \frac{ e^{-\frac{\varepsilon_i(x_i)}{T}} }{ \sum\limits_{x'\in
 The temperature parameter $T$ plays very important role of the tuner of the correlation level in the network. Later we will show some examples for better understanding. 
 
 
-Gibbs distribution found many interesting applications in real-world problems. Particularly it lies in the basement of the proposed in \cite{kauffmann2007measurement} distributed algorithm for channel selection of the Access Points. The channels should be selected in such way that interference in the network is minimized. 
+Gibbs distribution found many interesting applications in real-world problems. In particular it lies in the basement of the proposed in \cite{kauffmann2007measurement} distributed algorithm for channel selection of the Access Points. The channels should be selected in such way that interference in the network is minimized and the developed algorithm to achieve this uses Gibbs distribution. 
 
 \subsection{Algorithm} 
 \label{subsec:Algorithm}
-Practically speaking direct sampling from the distribution \ref{eq:gibbsdistr} is not so easy. Let's just notice that the number of possible configuration $\bar{x}$ is $|V|^n$, where $|V|$ is size of the values set and $n$ is number of the nodes in graph, as to each from $n$ nodes we need to assign the value from the set $V$. 
-In this way for the graph with just 100 nodes and 10 possible values it would make up $10^{100}$ possible configurations. Then probability for each of $10^{100}$ possible configurations should be counted, which would require huge precision from the computer to be able to sample from derived distribution.
+Practically speaking direct sampling from the distribution \ref{eq:gibbsdistr} is not so easy. We can just notice that the number of possible configuration $\bar{x}$ is $|V|^n$ (where $|V|$ is size of the values set and $n$ is number of the nodes in graph) as to each from $n$ nodes we need to assign the value from the set $V$. 
+In this way for the graph with just 100 nodes and 10 possible values it would make up $10^{100}$ possible configurations. Then in order to sample from derived distribution probability for each of $10^{100}$ possible configurations should be counted. This would require huge precision from the computer.
 
-In order to produce samples from this distribution we are using Gibbs sampler \cite{bremaud2013markov}. 
+That is why we need another way to produce samples from this distribution. For this purpose we are using Gibbs sampler \cite{bremaud2013markov}. 
 
-Let's regard each configuration $\bar{x}$ as as a state of the Markov chain. Let's denote as $ \bar{x}^k $ the state at the step $k$. There is positive probability to transit form one state to another if the corresponding configurations differ only in the value of one node and the values of all other nodes are the same. Let's take two configurations $(x_1, x_2, ... x_i, ..., x_n)$ and $(x_1, x_2, ... x_i', ..., x_n)$ which differ only in the value of the node $i$. Whatever the value was on the node $i$ in the first configuration the probability to transfer form the first state to the second is:
+We will regard each configuration $\bar{x}$ as a state of the Markov chain. We will denote as $ \bar{x}^k $ the state at the step $k$. Let us regard the following process. There is positive probability to transit from one state to another if the corresponding configurations differ only in the value of one node and the values of all other nodes are the same. Let us take two configurations $(x_1, x_2, ... x_i, ..., x_n)$ and $(x_1, x_2, ... x_i', ..., x_n)$ which differ only in the value of the node $i$. Whatever the value was on the node $i$ in the first configuration the probability to transfer form the first state to the second is:
 
 $$\frac{ e^{-\frac{\varepsilon_i(x_i')}{T}} }{ \sum\limits_{x'\in V} e^{-\frac{\varepsilon_i(x')}{T}}} $$
 
-Interestingly, the stationary distribution of this Markov Chain is exactly \ref{eq:gibbsdistr}.
+And what is the most interesting, the stationary distribution of this Markov Chain is exactly \ref{eq:gibbsdistr}. So now we need only to run described process for enough amount of time. When the Markov Chain achieves its stationary distribution the process can be stopped. The configuration that corresponds to the final state will be sampled from the distribution \ref{eq:gibbsdistr}.
 
 Therefore following algorithm after converging will produce a sample from the distribution \ref{eq:gibbsdistr}.
 
@@ -524,9 +527,11 @@ Therefore following algorithm after converging will produce a sample from the di
 
 \subsection{Explanatory example} 
 
+Presented algorithm let us assign the values to the nodes according to the distribution \ref{eq:gibbsdistr}. The value on each node will depend from the values of its neighbors. In this way we will imitate the homophily in the network. That was one of our goals. The other goal was to control the level of homoplily. Sometimes we want the value of attribute to be very dependent from the neighbors, sometimes no. The role of a homophily level "tuner" plays the parameter temperature $T$.
+
 To understand the influence of the temperature on the value distribution \ref{eq:distrNode} we will look at the following example.
 
-Let's say that we have the graph to which nodes we want to assign values $1, 2, 3, 4, 5$. Now let's look only at the vertex $A$ its neighbors $B, C, D, E$ which have assigned values $1, 5, 3, 4$ respectively (figure \ref{fig:nodeA}). And now it is turn of $A$ to choose a value.
+Let us say that we have the graph to which nodes we want to assign values $1, 2, 3, 4, 5$. Now Let us look only at the vertex $A$ its neighbors $B, C, D, E$ which have assigned values $1, 5, 3, 4$ respectively (figure \ref{fig:nodeA}). And now it is turn of $A$ to choose a value.
 
 \begin{figure}[ht]
     \centering
@@ -535,7 +540,7 @@ Let's say that we have the graph to which nodes we want to assign values $1, 2, 
     \label{fig:nodeA}
 \end{figure}
 
-With different values the node $A$ will have different local energy. Let's summarize it in the table.
+With different values the node $A$ will have different local energy. Let us summarize it in the table.
   
 \begin{center} \begin{tabular}{ | l || c | c | c | c | c | } 
     \hline 
@@ -544,7 +549,7 @@ With different values the node $A$ will have different local energy. Let's summa
 	\hline 
 \end{tabular} \end{center}
 
-We can see that with different values the local energy on the node $A$ will be different. And according to the distribution \ref{eq:distrNode} the values that bring low energy is more preferable: the less is the energy that causes particular value the more probable it will be chosen. In this example the lowest temperature corresponds to the values $3$, so it will the highest chance to be picked.
+We can see that with different values the local energy on the node $A$ will be different. And according to the distribution \ref{eq:distrNode} the values that bring low energy is more preferable: the less is the energy that is caused by particular value the more probable it will be chosen. In this example the lowest temperature corresponds to the values $3$, so it will the highest chance to be picked.
 
 
 It is not only the energy that influences on the distribution \ref{eq:distrNode}. There is also temperature parameter $T$. To feel the impact of temperature we will present the distribution of values for different temperature $T$ in the next table.
@@ -561,11 +566,11 @@ It is not only the energy that influences on the distribution \ref{eq:distrNode}
 
 We can see that when the temperature is $0.1$ the probability to choose the value 3, that has the lowest energy, is 1. So the values of the neighbors $B, C, D, E$ indeed impact a lot on the value of the node $A$. In this case, the value of $A$ is dictated by the values of its neighbors. This is exactly what we wanted to achieve: that characteristic of the person is influenced by its contacts. However we may want to have such dependency but not so high.
 
-We can try to play with the temperature parameter. As the temperature increases we can observe more "randomness". Thus when the temperature is $1$ the value $3$ is still very probable, but there is also some positive probability that values $2, 4$ will be picked. And the more we increase temperature the higher becomes probability to choose the value different from 3. We can interpret this as the person still depends on the connections but  he has some "free choice".
+We can try to play with the temperature parameter. As the temperature increases we can observe more "randomness". Thus when the temperature is $1$ the value $3$ is still very probable, but there is also some positive probability that values $2, 4$ will be picked. And the more we increase temperature the higher becomes probability to choose the value different from 3. We can interpret this as the person still depends on the connections but  has also some "free choice".
 
 When the temperature is really high the choice of value will not almost depend on the values of its neighbors. 
 
-With this example we observed that the distribution favors the values that bring local energy of the node to minimal and the lower the temperature is the more favorable they are. So the higher is temperature the less is the decency between value of the person from his contacts.
+With this example we observed that the distribution favors the values that bring local energy of the node to minimal and the lower the temperature is the more favorable they are. For us it means that the low temperature corresponds to the high level of homophily. If we want to decrease the level of homophily we should increase the temperature.
 
 \subsection{Demonstration of random graphs with values}
 
@@ -610,7 +615,7 @@ From the pictures we can observe that the level of dependency between values of 
 
 In order to give more formal illustration we can look at the correlation between values of the nodes that we see during the random walk on the graph.
 
-Let's denote as $Y_0, Y_1, ..., Y_i, ...$  the sequence of values on the nodes that we observe during the random walk. Let's say that we start random walk with stationary distribution, so the values $Y_0, Y_1, ..., Y_i, ...$ have the same stationary distribution. Then covariance between  two values $Y_i$ and $Y_{i+k}$ depends only on the distance $k$ in the sequence $Y_0, Y_1, ..., Y_i, ..., Y_{i+k}, ...$ between them:
+Let us denote as $Y_0, Y_1, ..., Y_i, ...$  the sequence of values on the nodes that we observe during the random walk. Let us say that we start random walk with stationary distribution, so the values $Y_0, Y_1, ..., Y_i, ...$ have the same stationary distribution. Then covariance between  two values $Y_i$ and $Y_{i+k}$ depends only on the distance $k$ in the sequence $Y_0, Y_1, ..., Y_i, ..., Y_{i+k}, ...$ between them:
 $$cov(Y_i, Y_{i+k}) = cov(Y_0, Y_k)$$
 
 \myworries{explain why}
@@ -652,12 +657,12 @@ On the figure \ref{fig:testGibbsCorr} we present correlation between values depe
 \subsection{Motivation}
 
 The question that is still not clear about the algorithm is when to stop it. How many steps are enough to perform in order to claim that achieved configuration is indeed sampled from the Gibbs distribution?
-In order to answer this question we should try to understand if we can detect somehow that the process described in the subsection\ref{subsec:Algorithm} has reached its stationary state.
+In order to answer this question we should try to understand if we can detect somehow that the process described in the subsection \ref{subsec:Algorithm} has reached its stationary state.
 
-For this purpose we can try to use the notion of the global energy that can be counted for each configuration. Maybe it can signalize us when it is save to stop the algorithm.
+For this purpose we can try to use the notion of the global energy that can be counted for each configuration. Maybe it can signalize us when it is safe to stop the algorithm.
 
  
-Let's look how the global energy of the graph is changing during the steps of algorithm. For each configuration $\bar{x}$ t the global energy of the graph is:
+Let us look how the global energy of the graph is changing during the steps of algorithm. For each configuration $\bar{x}$ t the global energy of the graph is:
 
 $$ \varepsilon (\bar{x}) =  \sum\limits_{i \sim j, i \leq j} (x_i - x_j)^2  $$
 
@@ -685,17 +690,17 @@ $$ \varepsilon (\bar{x}) =  \sum\limits_{i \sim j, i \leq j} (x_i - x_j)^2  $$
 For each iteration of the algorithm when the configuration is changed the global energy is counted. The results are presented on the figure \ref{fig:energyWithTime} .
 
 
-At the beginning of the algorithm values are assigned to all nodes uniformly from all possible values. We can observe on the figure \ref{fig:energyWithTime} that the energy for this first random configuration is the highest. As values on the nodes are changing according to Gibbs sampling the energy decreases (with some variation). After about 200 steps (it means that up to this time each node updated its state once) we can see that the changes of energy do not exceed some thresholds. So after some time energy comes to some value, stabilizes and does not change a lot. We will call this value as \textbf{\textit{expected global energy}}. Knowledge about this value and its variation can indicate us when it is time to finish the algorithm. 
+At the beginning of the algorithm values are assigned to all nodes uniformly from all possible values. We can observe on the figure \ref{fig:energyWithTime} that the energy for this first random configuration is the highest. As values on the nodes are changing according to Gibbs sampling the energy decreases (with some variation). After about 200 steps (it means that up to this time each node updated its state once) we can see that the changes of energy do not exceed some thresholds. So after some time energy comes to some value, stabilizes and does not change a lot. We will call this value \textbf{\textit{stationary global energy}}. Knowledge about its expected value and variance can indicate us when it is time to finish the algorithm. For simplicity we will refer to the expected value of stationary global energy as to \textbf{\textit{expected global energy}}.
  
  
 
 There is another reason why we would like to predict energy.
-We saw previously that by varying the temperature $T$ we can change how strongly values of the neighbors are related: low temperature brings high correlation of values and high temperature brings almost random assignment of values. However it is impossible to use only temperature $T$ as a metric of values correlation. Temperature by itself does contain a lot of information. For the graph RGG(200, 0.13) the temperature 200 we can consider as high (because values are not really correlated) but for the graph RGG(2000, 0.06) it is not the case. We can't judge the level of correlation only by temperature, we should take into account number of nodes, number of edges, structure of graph, possible values that can be assigned to nodes as well. 
+We saw previously that by varying the temperature $T$ we can change how strongly values of the neighbors are related: low temperature brings high correlation of values and high temperature brings almost random assignment of values. However it is impossible to use only temperature $T$ as a metric of values correlation. Temperature by itself does not contain a lot of information. For the graph RGG(200, 0.13) the temperature 200 can be considered as high (because values are not really correlated) but for the graph RGG(2000, 0.06) it is not the case. We can not judge the level of correlation only by temperature, we should take into account also the other factors as number of nodes, number of edges, structure of graph, possible values that can be assigned to nodes. 
 
 
-That's why we need another metric. And again the knowledge about expected global energy can help us. On the figure \ref{fig:energyWithTime} we can see two illustrations of energy changing with time for different temperature. Moreover for different temperature there is different expected global energy (and the its variance is also different). On the both pictures starting from the same initial configuration but applying the algorithm with different temperatures we come to different expected energy.
+That is why we need another metric. And again the knowledge about expected global energy can help us. On the figure \ref{fig:energyWithTime} we can see two illustrations of energy changing with time for different temperature. Moreover for different temperature there is different expected global energy. On the both pictures we see the result of the same algorithm, for the same graph, starting from the same initial configuration, but using different temperatures, and we observe that it comes to different expected global energy.
 
-Then the more appropriate metric can be following number: in how much times energy decreases from its initial value (that corresponds to the random configuration) to its stable value (the one that we want to be able to predict).
+Then the more appropriate metric for the level of homoplily can be following number: in how much times energy decreases from its initial value (that corresponds to the random configuration) to its stable value (expected global energy).
 
 The problem here is that the algorithm needs the temperature parameter. So after deciding that we want to decrease the initial energy in 5 times we still need to understand which temperature will bring the system to this target energy.
 
@@ -721,7 +726,7 @@ p(\bar{x}) = \frac{ e^{-\frac{ \varepsilon (\bar{x})}{T}} }{ \sum\limits_{\bar{x
 
 Both in \ref{eq:expEnergy} and in \ref{eq:prob} formulas summation is over all possible configurations and the number of all possible configuration is huge, $|V|^n$. One of the ways to calculate such kind of expressions would be following: using Gibbs sampling, run the algorithm until convergence large enough amount of times, and then average the result. But actually it is the opposite of what we are trying to do. In this way we can build empirical dependency of expected energy from the temperature. But to have these empirical results we need to perform the algorithm large amount of times and for different temperature. Such simulations can take a lot of time, especially because we don't know when it is safe to stop algorithm. So actually we would like to have some theoretical results (at least approximated, just to have a notion about energy dependency from the temperature).
 
-First, let's rewrite global energy as:
+First, let us rewrite global energy as:
 
 
 $$ \varepsilon (\bar{X}) =  \sum_{i \sim j, i \leq j} (X_i - X_j)^2  $$
@@ -749,9 +754,9 @@ $$ p(X_i = x) = \frac{ e^{-\frac{\varepsilon_i(x)}{T}} }{ \sum\limits_{x'\in V} 
 \sum\limits_{a_1, ... a_j \subset V} \prod\limits_{j|j \sim i} p(X_j  = a_j)
 \frac{ e^{-\frac{ \sum\limits_{j|j \sim i}(x - a_j)^2 }{T}} }{ \sum\limits_{x'\in V} e^{-\frac{ \sum\limits_{j|j \sim i}(x' - a_j)^2 }{T}}}  $$
 
-We can see that this expression includes also probabilities for other nodes to have some particular values. So the probability to have a value on the node $i$ depends on the values of its neighbors that are also dependent from their neighbors and so on.
+We can see that this expression includes also probabilities for other nodes to have some particular values. So the probability to have a value on the node $i$ depends on the values of its neighbors that are also dependent from their neighbors and so on. It means that it can be very difficult or even impossible to write the expression for the distribution of the values on the node in explicit way.
 
-The second demand of knowing correlation for all pairs $X_i, X_j$ require to know the joint distribution of these random variables. That brings us to the same problem: no way to write explicitly the expression of this distribution
+The second demand of knowing correlation for all pairs $X_i, X_j$ require to know the joint distribution of these random variables. That brings us to the same problem: no way to write explicitly the expression of this distribution.
 
 That's why in order to calculate expected energy at least approximately we will make some assumptions.
 
@@ -766,13 +771,13 @@ We didn't show it formally, that's why we will write that this is an assumption.
 \paragraph{Assumptions about no correlation between neighbors}
 \mbox{} \\
 
-We will make an assumption that values are assigned independently of each other. Of course it is not true. The distribution of the values on a node takes into the account the values of his neighbors. By making this assumption we will make some error, but we can get the approximated expression. If the approximation is close to the reality it can give us at least the idea about energy-temperature dependency.
+We will make an assumption that values are assigned independently of each other. Of course it is not true. The distribution of the values on a node takes into the account the values of its neighbors. By making this assumption we will make some error, but we can get the approximated expression. If the approximation is close to the reality it can give us at least the idea about energy-temperature dependency.
 
  Let $N_i$ be the number of the neighbors of the node $i$. So if there is no correlation between value assigned to the nodes, then we can write global energy as:
 $$ E[\varepsilon (\bar{X})] =  \sum_{i \sim j, i \leq j} E[X_i - X_j]^2 = 
 \frac{1}{2} \sum_{i \sim j} E[X_i - X_j]^2 = $$
 
-$$ = \frac{1}{2} \sum_{i \sim j} \left(\mathrm{Var}(X_i - X_j) + E[(X_i - X_j)]^2 \right)= 
+$$ = \frac{1}{2} \sum_{i \sim j} \left(\mathrm{Var}(X_i - X_j) + E[(X_i - X_j)]^2 \right) 
 = \frac{1}{2} \sum_{i \sim j} \left(\mathrm{Var}(X_i - X_j) + (E[X_i] - E[X_j])^2 \right) = 
 $$
 
@@ -782,30 +787,30 @@ $$
 
 \begin{equation}
 \label{eq:noCorr}
- = \frac{1}{2} \sum_{i \sim j} 2N_iVar(X_i) 
-= \sum_{i \sim j} N_iVar(X_i)  
+ = \frac{1}{2} \sum_{i \sim j} 2N_i\mathrm{Var}(X_i) 
+= \sum_{i \sim j} N_i\mathrm{Var}(X_i)  
 \end{equation}
 
 \paragraph{Special case}
 \mbox{} \\
-Let's look at the case when the values are assigned to the nodes according to the same distribution in independent way (that means that there is no correlation between assigned values). Let $m$ be the number of edges in the graph. Then the expression for energy becomes:
-$$ E[\varepsilon (\bar{X})] =  \sum_{i \sim j} N_iVar(X_i) = 2mVar(X_i)$$
+Let us look at the case when the values are assigned to the nodes according to the same distribution in independent way (that means that there is no correlation between assigned values). Let $m$ be the number of edges in the graph. Then the expression for energy becomes:
+$$ E[\varepsilon (\bar{X})] =  \sum_{i \sim j} N_i\mathrm{Var}(X_i) = 2m\mathrm{Var}(X_i)$$
 
 where $X_i$ and $X_j$ are random variables with the same distribution.
-Interesting fact that it reminds us the famous formula for energy!
 
-Particularly, we can compute expected energy in this way for initial random configuration where the values are assigned to the nodes independently and uniformly from all possible values in $V$. 
+
+In particular we can compute expected energy in this way for initial random configuration where the values are assigned to the nodes independently and uniformly from all possible values in $V$. 
 When $X_i$ is distributed uniformly in $V$ the variance of $X_i$ is:
 $$\mathrm{Var}(X_i) = \frac{|V|^2-1}{12}$$
 
-Then the expected energy of the graph on random configuration $\bar{x}$ is
+Then the expected energy of the graph on random field $\bar{X}$ is
 $$E[\varepsilon (\bar{X})] =  m\frac{|V|^2-1}{6}$$
 
 
 \paragraph{Assumptions about values distribution}
 \mbox{} \\
 
-We saw that it is impossible to write explicitly the distribution of the values on one node explicitly. In order to simplify the expression for values distribution on the node $i$ we will also make some assumptions. First, let's say that all neighbors of the node $i$ have the value $av_V, av_V = average(V)$. If for all $j \in N_i : X_j = av_V$ then 
+We saw that it is impossible to write explicitly the distribution of the values on one node. In order to simplify the expression for values distribution on the node $i$ we will also make some assumptions. First, let's say that all neighbors of the node $i$ have the value $av_V, av_V = average(V)$. If for all $j \in N_i : X_j = av_V$ then 
 $p(X_j  = av_V) = 1$. With this assumption probability that the node $i$ will have value $x \in V$ is
 
 \begin{equation}
@@ -872,7 +877,7 @@ We can see that both predictions coincides well with the experiments. The predic
 
 Even if the result is approximated it can give us great intuition about energy-temperature dependency and save time.
 
-To understand practical value, let's look at the part of Facebook graph\ref{fig:energyPrediction} where the values are generated with the Gibbs sampler. It took almost 4 hours to build the energy-temperature dependency and less then 1 second to build both predictions. The prediction \ref{eq:simpleDisrt} is very accurate. Having this prediction there is no difficulty to understand what temperature we need to take to reduce the initial energy let's say in five times.
+To understand the practical significance of this result, let us look at the part of Facebook graph\ref{fig:energyPrediction} where the values are generated with the Gibbs sampler. It took almost 4 hours to build the energy-temperature dependency and less then 1 second to build both predictions. The prediction \ref{eq:simpleDisrt} is very accurate. Having this prediction there is no difficulty to understand what temperature we need to take to reduce the initial energy let's say in five times.
 
 \section{Error prediction}
 
@@ -882,7 +887,7 @@ Now, when we have the network, where each node maintain the value we can begin t
 Due to homoplily in the network and the way the respondent-driven sampling is performed the variance of the estimator will be different from the case if it was just independent uniform sampling. Studying variance is important for multiple reasons. It essential for building confidence intervals. It is the factor the influences on the error of estimator. When we have multiple estimators and we know the error of each of them we have the instrument to compare them.
 
 
-In this section we will take the sample average (SA) as the estimator for the population mean. In order to decrease the variance of the estimator we will increase the distance between samples as it was described in the section \ref{sec:Enhanced RDS}. We will look at the different possibilities of sampling hidden populations in the conditions of limited budget. For each scenario we will have different estimators. We are going to choose the best of them, the one that has the minimum error. Then we will compare it with existing estimators.
+In this section we will take the sample average (SA) as the estimator for the population mean. In order to decrease the variance of the estimator we will increase the distance between samples as it was described in the section \ref{sec:Enhanced RDS}. We will look at the different possibilities of sampling hidden populations in the conditions of limited budget. For each scenario we will have the different error of the estimator. We are going to choose the scenario, that has the minimum error of the estimator. 
 
 \subsection{Variance prediction}
 
@@ -896,7 +901,7 @@ $$ \sigma^2_{\hat{\mu}_{SA}} = \frac{\sigma^2}{n} f(n)$$
 
 Let's look what will happen with variance in the suggested enhanced RDS.
 
-To remind the notation, we denote budget as $B$, $n$ individuals that we see during the RDS receive $C_1$ units of money for recruiting another individuals, each $k$th person from them take also part in the study and receives $C_2$ additional units of money. 
+To remind the notation, we denote budget as $B$, $n$ individuals that we see during the RDS receive $C_1$ units of money for recruiting other individuals, each $k$th person from them take also part in the study and receives $C_2$ additional units of money. 
 
 In this way $\frac{n}{k}$ individuals from $n$ are participants. Then the following equality should be true:
 
@@ -1472,7 +1477,7 @@ Starting from the trait 'disabled', all other traits that have bigger correlatio
 \chapter*{Conclusion}
 
 
-In this work we regarded the sampling technique that is called respondent-driven sampling. This technique can  be very useful in the cases when the members of the population are hard to find. The fact that members of the population form a network allows researcher to use their connections to reach another members.
+In this work we regarded the sampling technique that is called respondent-driven sampling. This technique can  be very useful in the cases when the members of the population are hard to find. The fact that members of the population form a network allows researcher to use their connections to reach other members.
 
 We observed that this way of sampling is not uniform independent sampling. The way of sampling and the presence of homophily in the network influence on the error of the estimator. The researchers should keep attention that particularly the variance of the estimator is grater than in the uniform independent sampling.
 
