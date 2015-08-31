@@ -98,8 +98,11 @@ This way of sampling is different from the ideal uniform independent sampling of
 
 The report is organized as follows.
 In chapter 1 we will introduce the current method of sampling hidden populations that is called respondent-driven sampling (RDS). We will regard different estimators that are used to make inferences about the population based on collected samples. We will discuss what are the problems and challenges related to the RDS. Next we will propose the enhancement of the current RDS method that is trying to solve some of these problems.
-In order to study formally introduced enhanced RDS method the chapter 2 will develop the mathematical model. In particular we will introduce a model to generate synthetic network with the desired level of homophily. Further using the built model we will find the exact expressions for the variance and bias for the existing RDS model and the enhanced one in order to compare them later.
-Chapter 3 presents results of the experiments that confirms the correctness of the theoretical part. In order to validate results we used the created synthetic networks as well as the real ones. We will compare the performance of the currently used RDS method to our method. Also we will give some practical recommendations for the users of RDS.
+
+In order to study formally introduced enhanced RDS method the chapter 2 and 3 will develop the mathematical model. Chapter 2 in particular will introduce a model to generate synthetic network with the desired level of homophily. As this problem can be applied outside the RDS context as well, it is presented in the separated chapter.
+In chapter 3 we will find the exact expressions for the variance and bias for the existing RDS model and the enhanced one in order to compare them later.
+
+Chapter 4 presents results of the experiments that confirms the correctness of the theoretical part. In order to validate results we used the created synthetic networks as well as the real ones. We will compare the performance of the currently used RDS method to our method. Also we will give some practical recommendations for the users of RDS.
 
 
 
@@ -258,8 +261,8 @@ Therefore when the values $y_1, y_2, ..., y_n$ are collected with standard RDS, 
 
 $$ \sigma^2_{\hat{\mu}_{SA}} = \mathrm{Var}\left( \frac{y_1 + y_2 + ... + y_n}{n}\right)=\frac{1}{n^2} \mathrm{Var}(y_1 + y_2 + ... + y_n) =$$
 
-$$= \frac{1}{n^2} \left(\sum_{i = 1}^n \mathrm{Var}(y_i) + 2\sum_{i=1}^n \sum_{j=i+1}^n cov(y_i, y_j)\right)= \frac{\sigma^2}{n} + \frac{2\sum_{i=1}^n \sum_{j=i+1}^n cov(y_i, y_j)}{n^2} = $$
-$$ = \frac{\sigma^2}{n} \left(1 + \frac{2\sum_{i=1}^n \sum_{j=i+1}^n cov(y_i, y_j)}{n\sigma^2}\right) = \frac{\sigma^2}{n} \left(1 + \frac{2\sum_{i=1}^n \sum_{j=i+1}^n corr(y_i, y_j)}{n}\right)$$
+$$= \frac{1}{n^2} \left(\sum_{i = 1}^n \mathrm{Var}(y_i) + 2\sum_{i=1}^n \sum_{j=i+1}^n \mathrm{Cov}(y_i, y_j)\right)= \frac{\sigma^2}{n} + \frac{2\sum_{i=1}^n \sum_{j=i+1}^n \mathrm{Cov}(y_i, y_j)}{n^2} = $$
+$$ = \frac{\sigma^2}{n} \left(1 + \frac{2\sum_{i=1}^n \sum_{j=i+1}^n \mathrm{Cov}(y_i, y_j)}{n\sigma^2}\right) = \frac{\sigma^2}{n} \left(1 + \frac{2\sum_{i=1}^n \sum_{j=i+1}^n \mathrm{corr}(y_i, y_j)}{n}\right)$$
 
 So variance of estimator is influenced by some correlation factor $f(n)$ where$f(n) > 1$, that depends on how much the values are correlated:
 
@@ -393,11 +396,10 @@ The better scenario will be the one that has the least error. If we are able to 
   \end{minipage}
 \end{figure}
 
-\chapter{Mathematical model}
 
-\section{Network with values}
+\chapter{Network with values}
 
-\subsection{Motivation}
+\section{Motivation}
 As it has been already mentioned we will model the network formed by the members of hidden population as a graph. The nodes of this graph correspond to the individuals. The edge between two nodes represents the connection between corresponding persons.
 
 We have several possibilities to obtain graph structure. First, there are multiple available network structures that were collected from the real networks. In particular the Stanford Large Network Dataset Collection \cite{Facebook} provides the data of online-social networks (we will use part of Facebook graph), collaboration networks,  web graphs, Internet peer-to-peer network and a lot of others.
@@ -433,7 +435,7 @@ To sum up we have two goals to be achieved:
 
 In the proceeding we will develop the technique that deals with these two problems.
  
-\subsection{Definitions}
+\section{Definitions}
 
 First we will give some definitions and then we will introduce the algorithm of creating synthetic network with values, where the level of homophily can be tuned.
 
@@ -465,7 +467,7 @@ $$ \varepsilon_i (x_i) = \sum\limits_{j | i \sim j}  (x_i - x_j)^2 $$
 and local energy on the node $i$ is:
 $$ \varepsilon_i (x_i) = \sum\limits_{j | i \sim j}  (x_i - x_j)^2 $$  
 
-\subsection{Gibbs distribution}
+\section{Gibbs distribution}
 
 Now let's consider the following probability  of random field $\bar{X}$ to take the configuration $\bar{x}$:
 
@@ -503,7 +505,11 @@ That is why we need to develop another way to produce samples from this distribu
 
 We will regard each configuration $\bar{x}$ as a state of the Markov chain. We will denote as $ \bar{x}^k $ the state at the step $k$. Let us regard the process with following transition probabilities. There is positive probability to transit from one state to another if the corresponding configurations differ only in the value of one node and the values of all other nodes are the same. Let us take two configurations $(x_1, x_2, ... x_i, ..., x_n)$ and $(x_1, x_2, ... x_i', ..., x_n)$ which differ only in the value of the node $i$. Whatever the value was on the node $i$ in the first configuration the probability to transfer form the first state to the second is:
 
-$$\frac{ e^{-\frac{\varepsilon_i(x_i')}{T}} }{ \sum\limits_{x'\in V} e^{-\frac{\varepsilon_i(x')}{T}}} $$
+\begin{equation}
+\label{eq:prob7}
+\frac{ e^{-\frac{\varepsilon_i(x_i')}{T}} }{ \sum\limits_{x'\in V} e^{-\frac{\varepsilon_i(x')}{T}}}
+\end{equation}
+
 
 And what is the most interesting, the stationary distribution of this Markov Chain is exactly \ref{eq:gibbsdistr}. So now we need only to run described process for enough amount of time. When the Markov Chain achieves its stationary distribution the process can be stopped. The configuration that corresponds to the final state will be taken from the distribution \ref{eq:gibbsdistr}.
 
@@ -524,7 +530,7 @@ Therefore following algorithm after converging will produce a sample from the di
   \item For each value $x \in V$ count the local energy on chosen node $i$ as 
   $$ \varepsilon_i(x) = \sum\limits_{j | i \sim j}  (x - x_j)^2 $$  
   
-  \item Choose a new value $x$ according to probability
+  \item Choose a new value $x$ for the node $i$ according to probability
   
   \begin{equation}
  	 \frac{ e^{-\frac{\varepsilon_i(x)}{T}} }{ \sum\limits_{x'\in V} e^{-\frac{\varepsilon_i(x')}{T}}} 
@@ -537,6 +543,7 @@ Therefore following algorithm after converging will produce a sample from the di
 \item Continue 2-4 needed number of iterations.
 \end{enumerate}
 
+Let us note that in the expression \ref{eq:distrNode} the summation contains only $|V|$ terms. Moreover the energy used in the formula is local, and not global. It means that in order to count this probability the node needs information only about values of its neighbors.
 
 \subsection{Explanatory example} 
 
@@ -577,7 +584,7 @@ To feel the impact of temperature we will present the distribution of values for
 	\hline 10000&   0.1998  &  0.2000  &  0.2002  &  0.2001  &  0.1999 \\  
 \end{tabular} \end{center}
 
-We can see that when the temperature is $0.1$ the probability to choose the value 3, that has the lowest energy, is 1. So the values of the neighbors $B, C, D, E$ indeed impact a lot on the value of the node $A$. In this case, the value of $A$ is dictated by the values of its neighbors. This is exactly what we wanted to achieve: that characteristic of the person is influenced by its contacts. However we may want to have such dependency but not so high.
+We can see that when the temperature is $0.1$ the probability to choose the value 3, that has the lowest energy, is 1. So the values of the neighbors $B, C, D, E$ indeed impact a lot on the value of the node $A$. In this case, the value of $A$ is dictated by the values of its neighbors. This is exactly what we wanted to achieve: that characteristic of the person is influenced by its contacts. In this case we can say that the level of homophily is high. However we may want to have such dependency but not so strong.
 
 We can try to play with the temperature parameter. As the temperature increases we can observe more "randomness". Thus when the temperature is $1$ the value $3$ is still very probable, but there is also some positive probability that values $2, 4$ will be picked. And the more we increase temperature the higher becomes probability to choose the value different from 3. We can interpret this as the person still depends on the connections but  has also some "free choice".
 
@@ -622,18 +629,15 @@ On the figure \ref{fig:testGibbs} presented the same random geometric graph with
     \label{fig:testGibbs}
 \end{figure}
 
-From the pictures we can observe that the level of dependency between values of the node changes with different temperature. When temperature is 1 we can distinctly distinguish clusters . With increasing temperature, 5 and 20, the values of neighbors are still similar but with more and more variability. When temperature is very high then the values seem to be assigned randomly.
+From the pictures we can observe that the level of dependency between values of the node changes with different temperature. When temperature is 1 we can distinctly distinguish clusters. With increasing temperature, 5 and 20, the values of neighbors are still similar but with more and more variability. When temperature is very high then the values seem to be assigned randomly.
 
-\myworries{the correlation of the gibbs field??? maybe to put but then say that it is not the same}
+In order to show formally that the level of homophily decreases when temperature increases we will look at the correlation between values of the nodes that we see during the random walk on the graph.
 
-In order to give more formal illustration we can look at the correlation between values of the nodes that we see during the random walk on the graph.
+Let $Y_0, Y_1, ..., Y_i, ...$ be the sequence of values on the nodes that we observe during the random walk. Let us say that we start random walk with stationary distribution, so the values $Y_0, Y_1, ..., Y_i, ...$ have the same stationary distribution. Then correlation between  two values $Y_i$ and $Y_{i+k}$ depends only on the distance $k$ in the sequence $Y_0, Y_1, ..., Y_i, ..., Y_{i+k}, ...$ between them \cite{bremaud2013markov}:
+$$\mathrm{corr}(Y_i, Y_{i+k}) = \mathrm{corr}(Y_0, Y_k)$$
 
-Let us denote as $Y_0, Y_1, ..., Y_i, ...$  the sequence of values on the nodes that we observe during the random walk. Let us say that we start random walk with stationary distribution, so the values $Y_0, Y_1, ..., Y_i, ...$ have the same stationary distribution. Then covariance between  two values $Y_i$ and $Y_{i+k}$ depends only on the distance $k$ in the sequence $Y_0, Y_1, ..., Y_i, ..., Y_{i+k}, ...$ between them:
-$$cov(Y_i, Y_{i+k}) = cov(Y_0, Y_k)$$
 
-\myworries{explain why}
-
-On the figure \ref{fig:testGibbsCorr} we present correlation between values depending on this distance $k$ for the graphs shown above. In this way we can assure us that the higher is temperature the less correlated values of neighbors are.
+On the figure \ref{fig:testGibbsCorr} we present correlation between values depending on this distance $k$ for the graphs shown above. For each $k$ the height of the bar will correspond to the $\mathrm{corr}(Y_0, Y_k)$. In this way we can assure us that the higher is temperature the less correlated values of neighbors are.
 
 \begin{figure}[t]
     \centering
@@ -675,7 +679,7 @@ In order to answer this question we should try to understand if we can detect so
 For this purpose we can try to use the notion of the global energy that can be counted for each configuration. Maybe it can signalize us when it is safe to stop the algorithm.
 
  
-Let us look how the global energy of the graph is changing during the steps of algorithm. For each configuration $\bar{x}$ t the global energy of the graph is:
+Let us look how the global energy of the configuration is changing during the steps of algorithm. For each configuration $\bar{x}$ t the global energy is:
 
 $$ \varepsilon (\bar{x}) =  \sum\limits_{i \sim j, i \leq j} (x_i - x_j)^2  $$
 
@@ -703,21 +707,19 @@ $$ \varepsilon (\bar{x}) =  \sum\limits_{i \sim j, i \leq j} (x_i - x_j)^2  $$
 For each iteration of the algorithm when the configuration is changed the global energy is counted. The results are presented on the figure \ref{fig:energyWithTime} .
 
 
-At the beginning of the algorithm values are assigned to all nodes uniformly from all possible values. We can observe on the figure \ref{fig:energyWithTime} that the energy for this first random configuration is the highest. As values on the nodes are changing according to Gibbs sampling the energy decreases (with some variation). After about 200 steps (it means that up to this time each node updated its state once) we can see that the changes of energy do not exceed some thresholds. So after some time energy comes to some value, stabilizes and does not change a lot. We will call this value \textbf{\textit{stationary global energy}}. Knowledge about its expected value and variance can indicate us when it is time to finish the algorithm. For simplicity we will refer to the expected value of stationary global energy as to \textbf{\textit{expected global energy}}.
+At the beginning of the algorithm values are assigned to all nodes uniformly from all possible values. We can observe on the figure \ref{fig:energyWithTime} that the energy for this first random configuration is the highest. As values on the nodes are changing according to Gibbs sampling the energy decreases (with some variation). After about 200 steps (it means that up to this time each node updated its state once) we can see that the changes of energy do not exceed some thresholds. So after some time energy comes to some value, stabilizes and does not change a lot. We will call this value \textbf{\textit{stationary global energy}}. Knowledge about its expected value and variance can indicate us when it is time to finish the algorithm. For simplicity we will refer to the expected value of stationary global energy as to \textbf{\textit{expected global energy}}. If we can predict what is the expected global energy, we have the idea when the algorithm can be stopped. 
  
- 
-
 There is another reason why we would like to predict energy.
-We saw previously that by varying the temperature $T$ we can change how strongly values of the neighbors are related: low temperature brings high correlation of values and high temperature brings almost random assignment of values. However it is impossible to use only temperature $T$ as a metric of values correlation. Temperature by itself does not contain a lot of information. For the graph RGG(200, 0.13) the temperature 200 can be considered as high (because values are not really correlated) but for the graph RGG(2000, 0.06) it is not the case. We can not judge the level of correlation only by temperature, we should take into account also the other factors as number of nodes, number of edges, structure of graph, possible values that can be assigned to nodes. 
+We saw previously that by varying the temperature $T$ we can change how strongly values of the neighbors are correlated: low temperature brings high correlation of values and high temperature brings almost random assignment of values. However it is impossible to use only temperature $T$ as a metric of values correlation. Temperature by itself does not contain a lot of information. For the graph RGG(200, 0.13) the temperature 200 can be considered as high (because values are not really correlated) but for the graph RGG(2000, 0.06) it is not the case. We can not judge the level of correlation only by temperature, we should take into account also the other factors as number of nodes, number of edges, structure of graph, possible values that can be assigned to nodes. 
 
 
-That is why we need another metric. And again the knowledge about expected global energy can help us. On the figure \ref{fig:energyWithTime} we can see two illustrations of energy changing with time for different temperature. Moreover for different temperature there is different expected global energy. On the both pictures we see the result of the same algorithm, for the same graph, starting from the same initial configuration, but using different temperatures, and we observe that it comes to different expected global energy.
+That is why we need another metric. And again the knowledge about expected global energy can help us. On the figure \ref{fig:energyWithTime} we can see two illustrations of energy changing with time for different temperature. On the both pictures we see the result of the same algorithm, for the same graph, starting from the same initial configuration, but using different temperatures, and we observe that it comes to different expected global energy.
 
 Then the more appropriate metric for the level of homoplily can be following number: in how much times energy decreases from its initial value (that corresponds to the random configuration) to its stable value (expected global energy).
 
 The problem here is that the algorithm needs the temperature parameter. So after deciding that we want to decrease the initial energy in 5 times we still need to understand which temperature will bring the system to this target energy.
 
-For this purpose we were interested in finding dependency of the global energy from the temperature. 
+For these purposes we were interested in finding dependency of the global energy from the temperature. 
 
 
 \subsection{Analysis}
@@ -737,14 +739,14 @@ where probability of one particular configuration $\bar{x}$ is
 p(\bar{x}) = \frac{ e^{-\frac{ \varepsilon (\bar{x})}{T}} }{ \sum\limits_{\bar{x}'\in |V|^n} e^{-\frac{\varepsilon(\bar{x}')}{T}}} 
 \end{equation}
 
-Both in \ref{eq:expEnergy} and in \ref{eq:prob} formulas summation is over all possible configurations and the number of all possible configuration is huge, $|V|^n$. One of the ways to calculate such kind of expressions would be following: using Gibbs sampling, run the algorithm until convergence large enough amount of times, and then average the result. But actually it is the opposite of what we are trying to do. In this way we can build empirical dependency of expected energy from the temperature. But to have these empirical results we need to perform the algorithm large amount of times and for different temperature. Such simulations can take a lot of time, especially because we don't know when it is safe to stop algorithm. So actually we would like to have some theoretical results (at least approximated, just to have a notion about energy dependency from the temperature).
+Both in \ref{eq:expEnergy} and in \ref{eq:prob} formulas summation is over all possible configurations and the number of all possible configuration is huge, $|V|^n$. One of the ways to calculate such kind of expressions would be following: using Gibbs sampling, run the algorithm until convergence large enough amount of times, and then average the result. In this way we can build empirical dependency of expected energy from the temperature. In order to have these empirical results we need to perform the algorithm large amount of times and for different temperature. Such simulations can take a lot of time, especially because we do not know when it is safe to stop algorithm. So actually we would like to have some theoretical results (at least approximated, just to have a notion about energy dependency from the temperature).
 
 First, let us rewrite global energy as:
 
 
 $$ \varepsilon (\bar{X}) =  \sum_{i \sim j, i \leq j} (X_i - X_j)^2  $$
 
-Then the expected global energy of a field is:
+Then the expected global energy of a random field is:
 
 $$ E[\varepsilon (\bar{X})] =  \sum_{i \sim j, i \leq j} E[X_i - X_j]^2  $$
 
@@ -786,7 +788,7 @@ We didn't show it formally, that's why we will write that this is an assumption.
 
 We will make an assumption that values are assigned independently of each other. Of course it is not true. The distribution of the values on a node takes into the account the values of its neighbors. By making this assumption we will make some error, but we can get the approximated expression. If the approximation is close to the reality it can give us at least the idea about energy-temperature dependency.
 
- Let $N_i$ be the number of the neighbors of the node $i$. So if there is no correlation between value assigned to the nodes, then we can write global energy as:
+ Let $N_i$ be the number of the neighbors of the node $i$. So if there is no correlation between the values assigned to the nodes, then we can write global energy as:
 $$ E[\varepsilon (\bar{X})] =  \sum_{i \sim j, i \leq j} E[X_i - X_j]^2 = 
 \frac{1}{2} \sum_{i \sim j} E[X_i - X_j]^2 = $$
 
@@ -795,7 +797,7 @@ $$ = \frac{1}{2} \sum_{i \sim j} \left(\mathrm{Var}(X_i - X_j) + E[(X_i - X_j)]^
 $$
 
 
-$$ = \frac{1}{2} \sum_{i \sim j} \left(\mathrm{Var}(X_i) + \mathrm{Var}(X_j) - 2Cov(X_i, X_j) \right) = \frac{1}{2} \sum_{i \sim j} \left(\mathrm{Var}(X_i) + \mathrm{Var}(X_j) \right)=
+$$ = \frac{1}{2} \sum_{i \sim j} \left(\mathrm{Var}(X_i) + \mathrm{Var}(X_j) - 2\mathrm{Cov}(X_i, X_j) \right) = \frac{1}{2} \sum_{i \sim j} \left(\mathrm{Var}(X_i) + \mathrm{Var}(X_j) \right)=
 $$
 
 \begin{equation}
@@ -806,7 +808,7 @@ $$
 
 \paragraph{Special case}
 \mbox{} \\
-Let us look at the case when the values are assigned to the nodes according to the same distribution in independent way (that means that there is no correlation between assigned values). Let $m$ be the number of edges in the graph. Then the expression for energy becomes:
+Let us look at the case when the values are assigned to the nodes according to the same distribution in independent way (again there is no correlation between assigned values). Let $m$ be the number of edges in the graph. Then the expression for energy becomes:
 $$ E[\varepsilon (\bar{X})] =  \sum_{i \sim j} N_i\mathrm{Var}(X_i) = 2m\mathrm{Var}(X_i)$$
 
 where $X_i$ and $X_j$ are random variables with the same distribution.
@@ -819,6 +821,7 @@ $$\mathrm{Var}(X_i) = \frac{|V|^2-1}{12}$$
 Then the expected energy of the graph on random field $\bar{X}$ is
 $$E[\varepsilon (\bar{X})] =  m\frac{|V|^2-1}{6}$$
 
+This value is the expected global energy of the initial configuration. It means that there is no need to conduct numerous experiments in order to count the average global energy of initial configuration. This formula gives us exact answer.
 
 \paragraph{Assumptions about values distribution}
 \mbox{} \\
@@ -884,15 +887,24 @@ We can see that both predictions coincides well with the experiments. The predic
     \end{subfigure}
     
     \caption{Energy prediction for different graphs}
-    \label{fig:energyPrediction}
+    \label{fig:energyPrediction5}
 \end{figure}
 
 
 Even if the result is approximated it can give us great intuition about energy-temperature dependency and save time.
 
-To understand the practical significance of this result, let us look at the part of Facebook graph\ref{fig:energyPrediction} where the values are generated with the Gibbs sampler. It took almost 4 hours to build the energy-temperature dependency and less then 1 second to build both predictions. The prediction \ref{eq:simpleDisrt} is very accurate. Having this prediction there is no difficulty to understand what temperature we need to take to reduce the initial energy let's say in five times.
-\subsection{To sum up}
+To understand the practical significance of this result, let us look at the part of Facebook graph \ref{fig:energyPrediction5} where the values are generated with the Gibbs sampler. It took almost 4 hours to build the energy-temperature dependency and less then 1 second to build both predictions. The prediction \ref{eq:simpleDisrt} is very accurate. Having this prediction there is no difficulty to understand what temperature we need to take to reduce the initial energy let's say in five times.
+\subsection{Conclusions}
 
+In this chapter we challenged us with problem to generate the values on the given graph structure that satisfy our two requirements. First, values should imitate homoplily in the network: the value of a node should be correlated with values of its neighbors. For this purpose we introduced the algorithm that allows to assign values to the nodes according to Gibbs distribution. Gibbs distribution has exactly the property that we need: the value of a node is dependent of its neighbors.
+
+Our second requirement, was to be able to control the homophily level in the network. We showed how the temperature parameter deals with this problem. Changing this parameter we can tune the level of correlation of the values.
+
+Finally, we discussed the problem of energy prediction that has two goals. First, it gives us the notion about when to stop the algorithm. Second, it enables us to introduce another metric to have an idea about correlation level in the network. We presented the theoretical results for energy prediction that are approximated ones. However this approximation is close enough to solve the two desired goals.
+
+The problem about generating synthetic network with values was important for the goals of my internship subject. However it is general result that can be applied wherever the researchers need to imitate not only the network but the values on the nodes as well.
+
+\chapter{Mathematical model}
 \section{Error prediction}
 
 Now, when we have the network, where each node maintain the value we can begin to study formally described in the section 
@@ -948,12 +960,12 @@ First we will find correlation for simple example and then we will generalize it
 
 For now we will not care about graph structure. Let's assume that our collected samples $Y_1, Y_2, ..., Y_n$ are correlated in the known way:
 
- $$corr(Y_i, Y_{i+h}) = \rho^h$$
+ $$\mathrm{corr}(Y_i, Y_{i+h}) = \rho^h$$
 
 So correlation between the nodes that are at the distance 1 in the chain have correlation $\rho$, at distance 2 have correlation $\rho^2$ an so on. We will refer to this model with indicated correlation as to \textit{geometric model}.
 Then we can write the variance of the mean estimator as: 
 
-$$\sigma^2_{\hat{\mu}_{SA}} = \mathrm{Var}\left[\bar{Y} \right] = \mathrm{Var}\left[ \frac{Y_1 + Y_2 + ...+ Y_n}{n} \right] = \frac{1}{n^2} \sum_{i=1}^{n}\sum_{j=1}^{n} cov(Y_i, Y_j) =$$ 
+$$\sigma^2_{\hat{\mu}_{SA}} = \mathrm{Var}\left[\bar{Y} \right] = \mathrm{Var}\left[ \frac{Y_1 + Y_2 + ...+ Y_n}{n} \right] = \frac{1}{n^2} \sum_{i=1}^{n}\sum_{j=1}^{n} \mathrm{Cov}(Y_i, Y_j) =$$ 
 $$ = \frac{\sigma^2}{n^2} \left( n + 2(n-1)\rho + 2(n-2)\rho^2 + ... + 2\cdot2 \rho^{n-2}+ 2\cdot1 \rho^{n-1} \right) = $$
 $$ = \frac{\sigma^2}{n^2} \left(n + 2\sum_{i=1}^{n-1} (n-i)\rho^i \right) = \frac{\sigma^2}{n^2} \left(n + 2n\sum_{i=1}^{n-1}\rho^i - 2\sum_{i=1}^{n-1}i\rho^i \right) = $$
 $$ = \frac{\sigma^2}{n} \left(n + 2n\frac{\rho-\rho^{n}}{1-\rho} - 2\rho \sum_{i=0}^{n-2} (\rho^{i+1})' \right) = $$
@@ -1016,13 +1028,13 @@ $$\bar{Y}^k = \frac{Y_k + Y_{2k} + Y_{3k} + ... + Y_{nk}}{n}$$
 
 Let's note that the correlation between the variables $Y_{ik}$ and $Y_{(i+h)k}$ is: 
 
- $$corr(Y_{ik}, Y_{(i+h)k}) = \rho^{kh}$$
+ $$\mathrm{corr}(Y_{ik}, Y_{(i+h)k}) = \rho^{kh}$$
 
 If we introduce new random variables $Z_1, Z_2, ..., Z_n$ such that $Z_1 = Y_k, Z_2 = Y_{2k}, Z_3 = Y_{3k},..., Z_n = Y_{nk}$ and $r = \rho^k$, $\bar{Z}= \bar{Y}^k$. Then:
 
-$$corr(Z_i, Z_{i+h}) = corr(Y_{ik}, Y_{(i+h)k}) = \rho^{kh} = r^h$$
+$$\mathrm{corr}(Z_i, Z_{i+h}) = \mathrm{corr}(Y_{ik}, Y_{(i+h)k}) = \rho^{kh} = r^h$$
 
-To sum up we have random variables $Z_1, Z_2, ..., Z_n$ where the correlation between any to of them depends of the distance $corr(Z_i, Z_{i+h}) = \rho^{kh} = r^h$. For this problem we already know the variance of $\bar{Z}$:
+To sum up we have random variables $Z_1, Z_2, ..., Z_n$ where the correlation between any to of them depends of the distance $\mathrm{corr}(Z_i, Z_{i+h}) = \rho^{kh} = r^h$. For this problem we already know the variance of $\bar{Z}$:
 
 
 $$ \mathrm{Var}\left[\bar{Z} \right] = \frac{\sigma^2}{n}\frac{1-r^2 - 2r/n + 2r^{n+1}/n}{(1-r)^2}$$
@@ -1102,7 +1114,7 @@ Having the shown result we tried to use it. To use the function \ref{fig:varPred
 
 However, the suggested $k$ did not coincide with the $k$ found with the experiments (look the figure \ref{fig:facebookBad}). The explanation could be following. 
 
-According to geometrical model the values $Y_1, Y_2, ..., Y_n$ have correlation $corr(Y_i, Y_{i+h}) = \rho^h$. Correlation between values $Y_1, Y_{101}$ is of the power 100. However when we walk on the graph the values $Y_1$ and $Y_{101}$ can appear to be the values of the immediate neighbors. And when in reality the values of the corresponding nodes can be pretty much correlated, according to the geometrical model their correlation is so small that can be neglected.
+According to geometrical model the values $Y_1, Y_2, ..., Y_n$ have correlation $\mathrm{corr}(Y_i, Y_{i+h}) = \rho^h$. Correlation between values $Y_1, Y_{101}$ is of the power 100. However when we walk on the graph the values $Y_1$ and $Y_{101}$ can appear to be the values of the immediate neighbors. And when in reality the values of the corresponding nodes can be pretty much correlated, according to the geometrical model their correlation is so small that can be neglected.
 
 The correlation between values is underestimated, except for the correlation of the two consecutive samples $Y_i, Y_{i+1}$. Therefore the correlation factor and its influence are underestimated. And when in reality skipping one more value could significantly reduce correlation,  the geometrical model can show that it is useless.
 
@@ -1147,7 +1159,7 @@ Let $\Pi$ be the matrix that consist of $n$ rows, where each row is the vector $
 
 We consider also that chain starts from initial distribution $\pi$. Then covariance between the random values $Y_i$ and $Y_j$ depends only on $j-i$:
 
-$$cov(Y_i, Y_j) = cov (Y_0, Y_{j-i})$$
+$$\mathrm{Cov}(Y_i, Y_j) = \mathrm{Cov} (Y_0, Y_{j-i})$$
 
 And then the formula for the variance:
 
@@ -1155,7 +1167,7 @@ $$\mathrm{Var}(Y_0) = <f, f>_{\pi} - <f, \Pi f>_{\pi}$$
 
 and for the covariance:
 
-$$cov(Y_0, Y_h) = <f, (P^h - \Pi)f>_{\pi}$$
+$$\mathrm{Cov}(Y_0, Y_h) = <f, (P^h - \Pi)f>_{\pi}$$
 
 where $<a,b>_c$ is weighted scalar product and if $a = (a_1, ..., a_n), b = (b_1, ..., b_n), c = (c_1, ..., c_n)$ then:
 
@@ -1167,7 +1179,7 @@ To see, how these formulas were derived, consult 6 chapter of the book \cite{bre
 
 Using these formulas we can write the formula for the variance of the estimator as:
 
-$$ \mathrm{Var}\left[\bar{Y} \right] = \frac{1}{n^2} \left( nvar(X_i) + 2\sum_{i=1}^n \sum_{j|i < j}^n cov(Y_i, Y_j)\right) = $$
+$$ \mathrm{Var}\left[\bar{Y} \right] = \frac{1}{n^2} \left( nvar(X_i) + 2\sum_{i=1}^n \sum_{j|i < j}^n \mathrm{Cov}(Y_i, Y_j)\right) = $$
 
 \begin{equation}\label{eq:varGen}
  = \frac{1}{n^2} \left( n(<f, f>_{\pi} - <f, \Pi f>_{\pi}) + 2\sum_{i=1}^n \sum_{j|i < j}^n  f, (P^{j-i} - \Pi)f> \right)
