@@ -1293,7 +1293,7 @@ We took the graph with 1996 nodes and 8522 edges. It is presented on the figure 
 
 \subsection{Experiments}
 
-On the following figures we can observe that the experiments results are very close to the theoretical.
+On the following figures we can observe that the experiments results are very close to the theoretical. Looking on these figures we can notice that in all cases is would be useful to skip some nodes. However this number differs for different attributes. The reason is the level of homophily changes depending on the attribute, even if the graph structure is the same. 
 
 \begin{figure}[h]
     \centering
@@ -1338,7 +1338,7 @@ On the following figures we can observe that the experiments results are very cl
 
     \end{subfigure}
     
-    \caption{Energy prediction for different graphs}
+    \caption{Predicted and empirical mean-squared error of the estimator for the different scenarios}
     \label{fig:energyPrediction}
 \end{figure}
 
@@ -1360,15 +1360,19 @@ On the following figures we can observe that the experiments results are very cl
 
 In the section \ref{sec:Current estimators} we got acquainted with following estimators: Sample average, Volz-Heckathon estimator, Group estimator. 
 
-Our methods use the sample average estimator, but the error of estimator differs for each scenario, as for each scenario the sample size and correlation factor is different. The purpose of this study was to suggest the best number of nodes to skip between taking two samples. However, as we  mentioned, the sample average estimator (and therefore estimators for all scenarios) suffers from the bias toward the nodes with higher degrees. We don't know if the estimator for the best scenario performs better than for example standard Volz-Heckathon estimator.  
+For the enhanced RDS method we used only the Sample average estimator. We applied Sample average estimator to the different scenarios when some of the nodes are skipped. We saw that the error of estimator differs for each scenario, as for each scenario the sample size and correlation factor is different. The purpose of this study was to suggest the best number of nodes to skip between taking two samples. And we actually observed on the real data that indeed is can be useful to skip.
 
-Volz-Heckathon estimator deals with the problem of visiting the nodes with higher degree more frequently. However the problem of dependency between samples remains. The same situation is with the Group estimator.
-Therefore the skipping may also improve Volz-Heckathon estimator. That's why in our experiments for each $k$ we will apply to the both estimators. 
+However, as we  mentioned, the Sample average estimator (and therefore estimators for all scenarios) suffers from the bias toward the nodes with higher degrees. 
 
-However, the error of group estimator will be counted only for the case when $k = 1$ as this estimator uses the information about who hired whom, what would be not correct to use with skipping.
+Volz-Heckathon estimator is unbiased. However the problem of dependency between samples remains. 
+Therefore the skipping may also improve Volz-Heckathon estimator. That's why in our experiments for each $k$ we will apply the both estimators. 
+
+The error of group estimator will be counted only for the case when $k = 1$ as this estimator uses the information about who hired whom, what would be not correct to use with skipping.
 
 
-On the following figures you can see the performance of the estimators for different $k$. The group estimator was applied to the cases when the trait to estimate has only two values (like gender) and only when $k=1$.
+On the following figures you can see the performance of the estimators for different $k$. The group estimator was applied to the cases when the attribute to estimate has only two values (like gender) and only when $k=1$.
+
+
 
 \begin{figure}[h]
 \centering
@@ -1458,78 +1462,65 @@ On the following figures you can see the performance of the estimators for diffe
     \end{subfigure}
     ~
     \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{estimators_school}
-        
-        %{estimators_legend}
+        \includegraphics[width=\textwidth]{legend}
     \end{subfigure}
     
 
 \end{figure} 
 
 
-First, we can notice that the group estimator corresponds to the V-E estimator when $k = 1$. Indeed in the case when each person hires exactly one person these estimators coincide. As part of this work we considered only this way of recruitment. Therefore in all our experiments the classic VE estimator is exactly the same as Group Estimator.
+First, we can notice that the Group estimator corresponds to the Volz-Heckathon estimator when $k = 1$. Indeed in the case when each person hires exactly one person these estimators coincide. As part of this work we considered only this way of recruitment. Therefore in all our experiments the Volz-Heckathon estimator when $k=1$ is exactly the same as Group Estimator.
 
-Second, we can observe that also Volz-Heckathon benefits from skipping some nodes. This is true for all the examples. Defining the exact error of Volz-Heckthon estimator when some values are discarded can be one of the future works.
+Second, we can observe that also Volz-Heckathon estimator benefits from skipping some nodes. This is true for all the examples. Defining the exact error of Volz-Heckthon estimator when some values are discarded can be one of the future works.
 
-We also see that there is no estimator that perform better in all cases. For example, sample average estimator has less error for the all traits of Add health graph, when Volz-Heckathon estimator has better results for the traits such as disabled, drug dealer, sex worker, thief for the Project 90 graph.
-
-
-As stated in \cite{goel2010assessing} the advantage to use VHE appears only when the estimated attribute depends on the degree of the node. Indeed, we can ybed on the examples. On the figure \ref{fig:degree-val} the correlation between the nodes degree and value for all traits for both graphs is presented.
-
-Starting from the trait 'disabled', all other traits that have bigger correlation with degree benefit from using V-E estimator. For the rest of the traits, the sample mean performs better. 
+We also see that there is no estimator that perform better in all cases. For example, Sample average estimator has less error for the all traits of Add health graph, when Volz-Heckathon estimator has better results for the traits such as disabled, drug dealer, sex worker, thief for the Project 90 graph.
 
 
+As stated in \cite{goel2010assessing} the advantage to use VHE appears only when the estimated attribute depends on the degree of the node. Indeed, our experiments show the same result. 
+
+On the figure \ref{fig:degree-val} the correlation between the nodes degree and value for all attributes of two datasets is presented.
+
+Let's observe the correlation between node degree and attributes for the Project 90. For the attribute 'disabled' and all other attributes that have bigger correlation with degree the VHE performs better. For the rest of the attributes, where the correlation with not degree is not so big, the SA performs better than VHE. None of the estimators have the best performance everywhere. 
 
 \begin{figure}[h]
 \centering
     \begin{subfigure}[b]{0.6\textwidth}
         \includegraphics[width=\textwidth]{corrDegreePr90}
-        \caption{ Project 90 sex}
+        \caption{ Project 90}
 
     \end{subfigure}
     ~
     \begin{subfigure}[b]{0.3\textwidth}
         \includegraphics[width=\textwidth]{corrDegreeStud}
-        \caption{ Add health sex }
+        \caption{ Add health }
 
     \end{subfigure}
 \label{fig:degree-val}
+\caption{Correlation between node degree and its value}
 \end{figure} 
+
 
 \chapter*{Conclusion}
 
 
 In this work we regarded the sampling technique that is called respondent-driven sampling. This technique can  be very useful in the cases when the members of the population are hard to find. The fact that members of the population form a network allows researcher to use their connections to reach other members.
 
-We observed that this way of sampling is not uniform independent sampling. The way of sampling and the presence of homophily in the network influence on the error of the estimator. The researchers should keep attention that particularly the variance of the estimator is grater than in the uniform independent sampling.
+We observed that this way of sampling is not uniform independent sampling. The way of sampling and the presence of homophily in the network influence on the error of the estimator. The researchers should keep attention that particularly the variance of the estimator is greater than in the uniform independent sampling.
 
 The level of the homoplily in the network influences on the correlation between samples. One way of decreasing the correlation is thinning out the sample. We showed formally that just thinning the sample will increase the error of the estimator. Instead we proposed to enhanced respondent-driven sampling that allows to decrease the correlation between samples without reducing drastically sample size.
 
-In the same way that random graphs can imitate the structure of the graph with needed correlation we needed the mechanism of assigning values to the nodes in such a way that it imitates the property of homophily in the network. Created algorithm allows not only to do this but also to control the level of correlation in the network. This result is not applicable to this particular model. But it is the general mechanism that allows to create the network with controllable level of dependency between neighbours. That is highly valuable for research purposes.
+In order to study the performance of the enhanced RDS formally we needed to find the expression for the error of the estimator. The enhanced RDS method looks on the different scenarios when the different number of nodes is skip. Scenario with the lowest error of the estimator is the best one and should be applied.
 
-Using created mathematical model we targeted to find the error of the estimator for different scenarios of enhanced RDS. The scenario with the minimal error would be the best and recommended for applying. First we regarded the geometric model where correlation between samples is the power of difference between observing time of two samples.
+The challenge that we encountered during the study is absence of mechanism to generate network with attributes on the nodes. In the same way that random graphs can imitate the structure of the graph we needed the mechanism of assigning values to the nodes that imitates the property of homophily in the network (the value of the node should depend from the values of its neighbors). Created algorithm allows not only to imitate homophily but also to control its level in the network. This result is general and can be applied surely not only in the context of sampling hidden population. This mechanism allows to create the network with controllable level of dependency between neighbors, that can find its application in different areas.
 
-Though this model turned out to be too simplify to produce the exact result it can give us the lower bound on the desired result.
+Using created mathematical model we targeted to find the error of the estimator for different scenarios of enhanced RDS. The scenario with the minimal error would be the best and recommended for applying. First we regarded the geometric model where correlation between samples is established.
 
-After regarding the simple geometrical model we were able to generalize the result for any kind of graph with any kind of correlation. Theoretical results were then validated with experimentations. For experimentations we used the synthetic networks with values generated according to created model and real data from the school survey Add Health and Project 90.
+Though this model turned out to be too simplified to produce the exact result it can give us the lower bound on the desired result.
 
-Finally, we compared two estimators: sample average and Volz-Hechathon estimator. The conclusion is that for the traits that are correlated with the degree of the node the Volz-Hechathon estimator will produce more correct results. In the cases when there is no such correlation sample average performs better.
+After regarding the simple geometrical model we were able to generalize the result for any kind of graph with any kind of correlation. Theoretical results were then validated with the numerous experiments. For the experiments we used the synthetic networks with values generated according to created model and real data from the school survey Add Health and Project 90.
 
+Finally, we compared two estimators: Sample average and Volz-Hechathon estimator. The exact error for different scenarios of enhanced RDS method was found only for Sample average estimator. However, experiments showed that also VHE benefits from this enhancement of RDS. After comparison VHE and SA extimator we came to the following conclusion: for the attributes that are correlated with the degree of the node the Volz-Hechathon estimator will produce more correct results. In the cases when there is no such correlation sample average performs better.
 
-
-\myworries{
-to correct:
-- cautions notes 
-- change n on m in the enhanced RDS
-- put the transition matrix in the beginning of the second chapter
-- everywhere expected energy of random field not configuration!!!
-restructure report
-appeared - > turned out
-}
-
-geometric model allow to show some rasults taht are easy generalized to the general case
-
-search everywhere: instead variation - variances
 
 \bibliographystyle{plain}
 \bibliography{rds}
