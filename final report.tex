@@ -102,9 +102,7 @@ In chapter 1 we will introduce the current method of sampling hidden populations
 In order to study formally introduced enhanced RDS method the chapter 2 and 3 will develop the mathematical model. Chapter 2 in particular will introduce a model to generate synthetic network with the desired level of homophily. As this problem can be applied outside the RDS context as well, it is presented in the separated chapter.
 In chapter 3 we will find the exact expressions for the variance and bias for the existing RDS model and the enhanced one in order to compare them later.
 
-Chapter 4 presents results of the experiments that confirms the correctness of the theoretical part. In order to validate results we used the created synthetic networks as well as the real ones. We will compare the performance of the currently used RDS method to our method. Also we will give some practical recommendations for the users of RDS.
-
-
+Finally chapter 3 presents results of the experiments that confirms the correctness of the theoretical part. In order to validate results we used the created synthetic networks as well as the real ones. We will compare the performance of the currently used RDS method to our method. 
 
 \chapter{Respondent-driven sampling}
 
@@ -671,8 +669,6 @@ On the figure \ref{fig:testGibbsCorr} we present correlation between values depe
 
 \section{Expected energy in steady state}
 
-\subsection{Motivation}
-
 The question that is still not clear about the algorithm is when to stop it. How many steps are enough to perform in order to claim that achieved configuration is indeed sampled from the Gibbs distribution?
 In order to answer this question we should try to understand if we can detect somehow that the process described in the subsection \ref{subsec:Algorithm} has reached its stationary state.
 
@@ -894,7 +890,7 @@ We can see that both predictions coincides well with the experiments. The predic
 Even if the result is approximated it can give us great intuition about energy-temperature dependency and save time.
 
 To understand the practical significance of this result, let us look at the part of Facebook graph \ref{fig:energyPrediction5} where the values are generated with the Gibbs sampler. It took almost 4 hours to build the energy-temperature dependency and less then 1 second to build both predictions. The prediction \ref{eq:simpleDisrt} is very accurate. Having this prediction there is no difficulty to understand what temperature we need to take to reduce the initial energy let's say in five times.
-\subsection{Conclusions}
+\subsection{Conclusions of the section}
 
 In this chapter we challenged us with problem to generate the values on the given graph structure that satisfy our two requirements. First, values should imitate homoplily in the network: the value of a node should be correlated with values of its neighbors. For this purpose we introduced the algorithm that allows to assign values to the nodes according to Gibbs distribution. Gibbs distribution has exactly the property that we need: the value of a node is dependent of its neighbors.
 
