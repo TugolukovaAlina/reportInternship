@@ -1342,19 +1342,7 @@ On the following figures we can observe that the experiments results are very cl
     \label{fig:energyPrediction}
 \end{figure}
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[height=500px]{project90gender}
-    \caption{Graph from the Project 90 data. The colors of the node represent the gender: brown nodes correspond to the male participant, green nodes correspond to the female participants}
-    \label{fig:project90gender}
-\end{figure}
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[height=500px]{addhealthRace}
-    \caption{Graph from the Add Health data. The colors of the node represent the race}
-    \label{fig:addhealthRace}
-\end{figure}
 
 \section{Other estimators}
 
@@ -1372,6 +1360,35 @@ The error of group estimator will be counted only for the case when $k = 1$ as t
 
 On the following figures you can see the performance of the estimators for different $k$. The group estimator was applied to the cases when the attribute to estimate has only two values (like gender) and only when $k=1$.
 
+First, we can notice that the Group estimator corresponds to the Volz-Heckathon estimator when $k = 1$. Indeed in the case when each person hires exactly one person these estimators coincide. As part of this work we considered only this way of recruitment. Therefore in all our experiments the Volz-Heckathon estimator when $k=1$ is exactly the same as Group Estimator.
+
+Second, we can observe that also Volz-Heckathon estimator benefits from skipping some nodes. This is true for all the examples. Defining the exact error of Volz-Heckthon estimator when some values are discarded can be one of the future works.
+
+We also see that there is no estimator that perform better in all cases. For example, Sample average estimator has less error for the all traits of Add health graph, when Volz-Heckathon estimator has better results for the traits such as disabled, drug dealer, sex worker, thief for the Project 90 graph.
+
+
+As stated in \cite{goel2010assessing} the advantage to use VHE appears only when the estimated attribute depends on the degree of the node. Indeed, our experiments show the same result. 
+
+On the figure \ref{fig:degree-val66} the correlation between the nodes degree and value for all attributes of two datasets is presented.
+
+Let's observe the correlation between node degree and attributes for the Project 90. For the attribute 'disabled' and all other attributes that have bigger correlation with degree the VHE performs better. For the rest of the attributes, where the correlation with not degree is not so big, the SA performs better than VHE. None of the estimators have the best performance everywhere. 
+
+\begin{figure}[h]
+\centering
+    \begin{subfigure}[b]{0.6\textwidth}
+        \includegraphics[width=\textwidth]{corrDegreePr90}
+        \caption{ Project 90}
+
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=\textwidth]{corrDegreeStud}
+        \caption{ Add health }
+
+    \end{subfigure}
+\caption{Correlation between node degree and its value}
+\label{fig:degree-val66}
+\end{figure} 
 
 
 \begin{figure}[h]
@@ -1468,37 +1485,19 @@ On the following figures you can see the performance of the estimators for diffe
 
 \end{figure} 
 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=500px]{project90gender}
+    \caption{Graph from the Project 90 data. The colors of the node represent the gender: brown nodes correspond to the male participant, green nodes correspond to the female participants}
+    \label{fig:project90gender}
+\end{figure}
 
-First, we can notice that the Group estimator corresponds to the Volz-Heckathon estimator when $k = 1$. Indeed in the case when each person hires exactly one person these estimators coincide. As part of this work we considered only this way of recruitment. Therefore in all our experiments the Volz-Heckathon estimator when $k=1$ is exactly the same as Group Estimator.
-
-Second, we can observe that also Volz-Heckathon estimator benefits from skipping some nodes. This is true for all the examples. Defining the exact error of Volz-Heckthon estimator when some values are discarded can be one of the future works.
-
-We also see that there is no estimator that perform better in all cases. For example, Sample average estimator has less error for the all traits of Add health graph, when Volz-Heckathon estimator has better results for the traits such as disabled, drug dealer, sex worker, thief for the Project 90 graph.
-
-
-As stated in \cite{goel2010assessing} the advantage to use VHE appears only when the estimated attribute depends on the degree of the node. Indeed, our experiments show the same result. 
-
-On the figure \ref{fig:degree-val} the correlation between the nodes degree and value for all attributes of two datasets is presented.
-
-Let's observe the correlation between node degree and attributes for the Project 90. For the attribute 'disabled' and all other attributes that have bigger correlation with degree the VHE performs better. For the rest of the attributes, where the correlation with not degree is not so big, the SA performs better than VHE. None of the estimators have the best performance everywhere. 
-
-\begin{figure}[h]
-\centering
-    \begin{subfigure}[b]{0.6\textwidth}
-        \includegraphics[width=\textwidth]{corrDegreePr90}
-        \caption{ Project 90}
-
-    \end{subfigure}
-    ~
-    \begin{subfigure}[b]{0.3\textwidth}
-        \includegraphics[width=\textwidth]{corrDegreeStud}
-        \caption{ Add health }
-
-    \end{subfigure}
-\label{fig:degree-val}
-\caption{Correlation between node degree and its value}
-\end{figure} 
-
+\begin{figure}[ht]
+    \centering
+    \includegraphics[height=500px]{addhealthRace}
+    \caption{Graph from the Add Health data. The colors of the node represent the race}
+    \label{fig:addhealthRace}
+\end{figure}
 
 \chapter*{Conclusion}
 
