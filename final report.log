@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.17)  31 AUG 2015 10:35
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.17)  31 AUG 2015 17:04
 entering extended mode
 **final*report.tex
 ("E:\report for internship\reportInternship\final report.tex"
@@ -485,10 +485,10 @@ Chapter 3.
 [29
 
 ]
-Overfull \hbox (35.85301pt too wide) in paragraph at lines 940--941
+Overfull \hbox (19.02184pt too wide) in paragraph at lines 940--941
 []\OT1/cmr/m/n/12 When each $\OML/cmm/m/it/12 k$\OT1/cmr/m/n/12 th per-son is a
  par-tic-i-pant, it means that for real we have only val-ues $\OML/cmm/m/it/12 
-Y[]; Y[]; Y[]; :::; Y[]$
+Y[]; Y[]; :::; Y[]$
  []
 
 [30] <images/corrFactor.jpg, id=142, 632.3625pt x 335.2525pt>
@@ -525,7 +525,7 @@ Package pdftex.def Info: images/varPredDifRho.jpg used on input line 1076.
 File: images/facebookBad.jpg Graphic file (type jpg)
 
 <use images/facebookBad.jpg>
-Package pdftex.def Info: images/facebookBad.jpg used on input line 1123.
+Package pdftex.def Info: images/facebookBad.jpg used on input line 1121.
 (pdftex.def)             Requested size: 269.90776pt x 200.75073pt.
  [35 <E:/report for internship/reportInternship/images/facebookBad.jpg>] [36] [
 37]
@@ -533,34 +533,34 @@ Package pdftex.def Info: images/facebookBad.jpg used on input line 1123.
 File: images/facebookGood.jpg Graphic file (type jpg)
 
 <use images/facebookGood.jpg>
-Package pdftex.def Info: images/facebookGood.jpg used on input line 1239.
+Package pdftex.def Info: images/facebookGood.jpg used on input line 1237.
 (pdftex.def)             Requested size: 269.90776pt x 200.75073pt.
  [38 <E:/report for internship/reportInternship/images/facebookGood.jpg>] [39]
 <images/pr90race.jpg, id=176, 641.39626pt x 431.6125pt>
 File: images/pr90race.jpg Graphic file (type jpg)
 
 <use images/pr90race.jpg>
-Package pdftex.def Info: images/pr90race.jpg used on input line 1304.
+Package pdftex.def Info: images/pr90race.jpg used on input line 1302.
 (pdftex.def)             Requested size: 197.71498pt x 133.0477pt.
 
 <images/studRace.jpg, id=177, 641.39626pt x 403.5075pt>
 File: images/studRace.jpg Graphic file (type jpg)
 
 <use images/studRace.jpg>
-Package pdftex.def Info: images/studRace.jpg used on input line 1310.
+Package pdftex.def Info: images/studRace.jpg used on input line 1308.
 (pdftex.def)             Requested size: 197.71498pt x 124.38412pt.
 
 <images/pr90gender.jpg, id=178, 641.39626pt x 435.6275pt>
 File: images/pr90gender.jpg Graphic file (type jpg)
 
 <use images/pr90gender.jpg>
-Package pdftex.def Info: images/pr90gender.jpg used on input line 1318.
+Package pdftex.def Info: images/pr90gender.jpg used on input line 1316.
 (pdftex.def)             Requested size: 197.71498pt x 134.28535pt.
 
 <images/studSex.jpg, id=179, 641.39626pt x 409.53pt>
 File: images/studSex.jpg Graphic file (type jpg)
  <use images/studSex.jpg>
-Package pdftex.def Info: images/studSex.jpg used on input line 1324.
+Package pdftex.def Info: images/studSex.jpg used on input line 1322.
 (pdftex.def)             Requested size: 197.71498pt x 126.2406pt.
 
 
@@ -570,14 +570,14 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: images/pr90dealer.jpg Graphic file (type jpg)
 
 <use images/pr90dealer.jpg>
-Package pdftex.def Info: images/pr90dealer.jpg used on input line 1333.
+Package pdftex.def Info: images/pr90dealer.jpg used on input line 1331.
 (pdftex.def)             Requested size: 197.71498pt x 137.9983pt.
 
 <images/studGrade.jpg, id=181, 641.39626pt x 451.6875pt>
 File: images/studGrade.jpg Graphic file (type jpg)
 
 <use images/studGrade.jpg>
-Package pdftex.def Info: images/studGrade.jpg used on input line 1339.
+Package pdftex.def Info: images/studGrade.jpg used on input line 1337.
 (pdftex.def)             Requested size: 197.71498pt x 139.23596pt.
 
 
@@ -587,10 +587,10 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: images/project90gender.png Graphic file (type png)
 
 <use images/project90gender.png>
-Package pdftex.def Info: images/project90gender.png used on input line 1350.
+Package pdftex.def Info: images/project90gender.png used on input line 1348.
 (pdftex.def)             Requested size: 501.87376pt x 501.87683pt.
 
-Overfull \hbox (7.57877pt too wide) in paragraph at lines 1350--1351
+Overfull \hbox (7.57877pt too wide) in paragraph at lines 1348--1349
  [][] 
  []
 
@@ -598,201 +598,196 @@ Overfull \hbox (7.57877pt too wide) in paragraph at lines 1350--1351
 File: images/addhealthRace.png Graphic file (type png)
 
 <use images/addhealthRace.png>
-Package pdftex.def Info: images/addhealthRace.png used on input line 1357.
+Package pdftex.def Info: images/addhealthRace.png used on input line 1355.
 (pdftex.def)             Requested size: 501.87376pt x 501.87683pt.
 
-Overfull \hbox (7.57877pt too wide) in paragraph at lines 1357--1358
+Overfull \hbox (7.57877pt too wide) in paragraph at lines 1355--1356
  [][] 
  []
 
 [40 <E:/report for internship/reportInternship/images/pr90race.jpg> <E:/report 
-for internship/reportInternship/images/studRace.jpg>] [41 <E:/report for intern
-ship/reportInternship/images/pr90gender.jpg> <E:/report for internship/reportIn
-ternship/images/studSex.jpg> <E:/report for internship/reportInternship/images/
-pr90dealer.jpg> <E:/report for internship/reportInternship/images/studGrade.jpg
->] [42 <E:/report for internship/reportInternship/images/project90gender.png>]
-[43 <E:/report for internship/reportInternship/images/addhealthRace.png>]
-Chapter 4.
-<images/estimators_disabled.jpg, id=200, 714.67pt x 536.0025pt>
+for internship/reportInternship/images/studRace.jpg>]
+<images/estimators_disabled.jpg, id=188, 714.67pt x 536.0025pt>
 File: images/estimators_disabled.jpg Graphic file (type jpg)
 
 <use images/estimators_disabled.jpg>
-Package pdftex.def Info: images/estimators_disabled.jpg used on input line 1380
+Package pdftex.def Info: images/estimators_disabled.jpg used on input line 1377
 .
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_drugCook.jpg, id=201, 714.67pt x 536.0025pt>
+<images/estimators_drugCook.jpg, id=189, 714.67pt x 536.0025pt>
 File: images/estimators_drugCook.jpg Graphic file (type jpg)
 
 <use images/estimators_drugCook.jpg>
-Package pdftex.def Info: images/estimators_drugCook.jpg used on input line 1386
+Package pdftex.def Info: images/estimators_drugCook.jpg used on input line 1383
 .
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_drugDealer.jpg, id=202, 714.67pt x 536.0025pt>
+<images/estimators_drugDealer.jpg, id=190, 714.67pt x 536.0025pt>
 File: images/estimators_drugDealer.jpg Graphic file (type jpg)
 
 <use images/estimators_drugDealer.jpg>
 Package pdftex.def Info: images/estimators_drugDealer.jpg used on input line 13
-92.
+89.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_homeless.jpg, id=203, 714.67pt x 536.0025pt>
+<images/estimators_homeless.jpg, id=191, 714.67pt x 536.0025pt>
 File: images/estimators_homeless.jpg Graphic file (type jpg)
 
 <use images/estimators_homeless.jpg>
-Package pdftex.def Info: images/estimators_homeless.jpg used on input line 1399
+Package pdftex.def Info: images/estimators_homeless.jpg used on input line 1396
 .
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_housewife.jpg, id=204, 714.67pt x 536.0025pt>
+<images/estimators_housewife.jpg, id=192, 714.67pt x 536.0025pt>
 File: images/estimators_housewife.jpg Graphic file (type jpg)
 
 <use images/estimators_housewife.jpg>
 Package pdftex.def Info: images/estimators_housewife.jpg used on input line 140
-5.
+2.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_pimp.jpg, id=205, 714.67pt x 536.0025pt>
+<images/estimators_pimp.jpg, id=193, 714.67pt x 536.0025pt>
 File: images/estimators_pimp.jpg Graphic file (type jpg)
 
 <use images/estimators_pimp.jpg>
-Package pdftex.def Info: images/estimators_pimp.jpg used on input line 1411.
+Package pdftex.def Info: images/estimators_pimp.jpg used on input line 1408.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_race.jpg, id=206, 714.67pt x 536.0025pt>
+<images/estimators_race.jpg, id=194, 714.67pt x 536.0025pt>
 File: images/estimators_race.jpg Graphic file (type jpg)
 
 <use images/estimators_race.jpg>
-Package pdftex.def Info: images/estimators_race.jpg used on input line 1417.
+Package pdftex.def Info: images/estimators_race.jpg used on input line 1414.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_sexWorkClient.jpg, id=207, 714.67pt x 536.0025pt>
+<images/estimators_sexWorkClient.jpg, id=195, 714.67pt x 536.0025pt>
 File: images/estimators_sexWorkClient.jpg Graphic file (type jpg)
 
 <use images/estimators_sexWorkClient.jpg>
 Package pdftex.def Info: images/estimators_sexWorkClient.jpg used on input line
- 1423.
+ 1420.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_sexWorker.jpg, id=208, 714.67pt x 536.0025pt>
+<images/estimators_sexWorker.jpg, id=196, 714.67pt x 536.0025pt>
 File: images/estimators_sexWorker.jpg Graphic file (type jpg)
 
 <use images/estimators_sexWorker.jpg>
 Package pdftex.def Info: images/estimators_sexWorker.jpg used on input line 142
-9.
+6.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_thief.jpg, id=209, 714.67pt x 536.0025pt>
+<images/estimators_thief.jpg, id=197, 714.67pt x 536.0025pt>
 File: images/estimators_thief.jpg Graphic file (type jpg)
 
 <use images/estimators_thief.jpg>
-Package pdftex.def Info: images/estimators_thief.jpg used on input line 1435.
+Package pdftex.def Info: images/estimators_thief.jpg used on input line 1432.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_unemployed.jpg, id=210, 714.67pt x 536.0025pt>
+<images/estimators_unemployed.jpg, id=198, 714.67pt x 536.0025pt>
 File: images/estimators_unemployed.jpg Graphic file (type jpg)
 
 <use images/estimators_unemployed.jpg>
 Package pdftex.def Info: images/estimators_unemployed.jpg used on input line 14
-41.
+38.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_racesc.jpg, id=211, 714.67pt x 536.0025pt>
+<images/estimators_racesc.jpg, id=199, 714.67pt x 536.0025pt>
 File: images/estimators_racesc.jpg Graphic file (type jpg)
 
 <use images/estimators_racesc.jpg>
-Package pdftex.def Info: images/estimators_racesc.jpg used on input line 1447.
+Package pdftex.def Info: images/estimators_racesc.jpg used on input line 1444.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_sex.jpg, id=212, 714.67pt x 536.0025pt>
+<images/estimators_sex.jpg, id=200, 714.67pt x 536.0025pt>
 File: images/estimators_sex.jpg Graphic file (type jpg)
 
 <use images/estimators_sex.jpg>
-Package pdftex.def Info: images/estimators_sex.jpg used on input line 1453.
+Package pdftex.def Info: images/estimators_sex.jpg used on input line 1450.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_grade.jpg, id=213, 714.67pt x 536.0025pt>
+<images/estimators_grade.jpg, id=201, 714.67pt x 536.0025pt>
 File: images/estimators_grade.jpg Graphic file (type jpg)
 
 <use images/estimators_grade.jpg>
-Package pdftex.def Info: images/estimators_grade.jpg used on input line 1459.
+Package pdftex.def Info: images/estimators_grade.jpg used on input line 1456.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_school.jpg, id=214, 714.67pt x 536.0025pt>
+<images/estimators_school.jpg, id=202, 714.67pt x 536.0025pt>
 File: images/estimators_school.jpg Graphic file (type jpg)
 
 <use images/estimators_school.jpg>
-Package pdftex.def Info: images/estimators_school.jpg used on input line 1465.
+Package pdftex.def Info: images/estimators_school.jpg used on input line 1462.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[41 <E:/report for internship/reportInternship/images/pr90gender.jpg> <E:/repor
+t for internship/reportInternship/images/studSex.jpg> <E:/report for internship
+/reportInternship/images/pr90dealer.jpg> <E:/report for internship/reportIntern
+ship/images/studGrade.jpg>]
 
-Package caption Warning: \label without proper \caption on input line 1501.
+Package caption Warning: \label without proper \caption on input line 1497.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `fig:degree-val' on page 44 undefined on input line 14
-81.
+LaTeX Warning: Reference `fig:degree-val' on page 42 undefined on input line 14
+78.
 
-[44
-
-] <images/corrDegreePr90.jpg, id=218, 986.68625pt x 438.63875pt>
+<images/corrDegreePr90.jpg, id=206, 986.68625pt x 438.63875pt>
 File: images/corrDegreePr90.jpg Graphic file (type jpg)
 
 <use images/corrDegreePr90.jpg>
-Package pdftex.def Info: images/corrDegreePr90.jpg used on input line 1490.
+Package pdftex.def Info: images/corrDegreePr90.jpg used on input line 1487.
 (pdftex.def)             Requested size: 296.58pt x 131.84697pt.
 
-<images/corrDegreeStud.jpg, id=219, 641.39626pt x 285.065pt>
+<images/corrDegreeStud.jpg, id=207, 641.39626pt x 285.065pt>
 File: images/corrDegreeStud.jpg Graphic file (type jpg)
 
 <use images/corrDegreeStud.jpg>
-Package pdftex.def Info: images/corrDegreeStud.jpg used on input line 1496.
+Package pdftex.def Info: images/corrDegreeStud.jpg used on input line 1493.
 (pdftex.def)             Requested size: 148.29pt x 65.90285pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[45] [46 <E:/report for internship/reportInternship/images/estimators_disabled.
-jpg> <E:/report for internship/reportInternship/images/estimators_drugCook.jpg>
- <E:/report for internship/reportInternship/images/estimators_drugDealer.jpg> <
-E:/report for internship/reportInternship/images/estimators_homeless.jpg> <E:/r
-eport for internship/reportInternship/images/estimators_housewife.jpg> <E:/repo
-rt for internship/reportInternship/images/estimators_pimp.jpg> <E:/report for i
-nternship/reportInternship/images/estimators_race.jpg> <E:/report for internshi
-p/reportInternship/images/estimators_sexWorkClient.jpg> <E:/report for internsh
-ip/reportInternship/images/estimators_sexWorker.jpg> <E:/report for internship/
-reportInternship/images/estimators_thief.jpg> <E:/report for internship/reportI
-nternship/images/estimators_unemployed.jpg> <E:/report for internship/reportInt
-ernship/images/estimators_racesc.jpg> <E:/report for internship/reportInternshi
-p/images/estimators_sex.jpg> <E:/report for internship/reportInternship/images/
-estimators_grade.jpg> <E:/report for internship/reportInternship/images/estimat
-ors_school.jpg>] [47 <E:/report for internship/reportInternship/images/corrDegr
-eePr90.jpg> <E:/report for internship/reportInternship/images/corrDegreeStud.jp
-g>] ("E:\report for internship\reportInternship\final report.bbl" [48
+[42] [43 <E:/report for internship/reportInternship/images/project90gender.png>
+] [44 <E:/report for internship/reportInternship/images/addhealthRace.png>]
+[45 <E:/report for internship/reportInternship/images/estimators_disabled.jpg> 
+<E:/report for internship/reportInternship/images/estimators_drugCook.jpg> <E:/
+report for internship/reportInternship/images/estimators_drugDealer.jpg> <E:/re
+port for internship/reportInternship/images/estimators_homeless.jpg> <E:/report
+ for internship/reportInternship/images/estimators_housewife.jpg> <E:/report fo
+r internship/reportInternship/images/estimators_pimp.jpg> <E:/report for intern
+ship/reportInternship/images/estimators_race.jpg> <E:/report for internship/rep
+ortInternship/images/estimators_sexWorkClient.jpg> <E:/report for internship/re
+portInternship/images/estimators_sexWorker.jpg> <E:/report for internship/repor
+tInternship/images/estimators_thief.jpg> <E:/report for internship/reportIntern
+ship/images/estimators_unemployed.jpg> <E:/report for internship/reportInternsh
+ip/images/estimators_racesc.jpg> <E:/report for internship/reportInternship/ima
+ges/estimators_sex.jpg> <E:/report for internship/reportInternship/images/estim
+ators_grade.jpg> <E:/report for internship/reportInternship/images/estimators_s
+chool.jpg>] [46 <E:/report for internship/reportInternship/images/corrDegreePr9
+0.jpg> <E:/report for internship/reportInternship/images/corrDegreeStud.jpg>]
+("E:\report for internship\reportInternship\final report.bbl" [47
 
 ]
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
- [49
+ [48
 
 ])
-[50] ("E:\report for internship\reportInternship\final report.aux")
+[49] ("E:\report for internship\reportInternship\final report.aux")
 
 LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
  4313 strings out of 493921
  64604 string characters out of 3147282
- 130969 words of memory out of 3000000
+ 130960 words of memory out of 3000000
  7521 multiletter control sequences out of 15000+200000
  13084 words of font info for 47 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
@@ -815,9 +810,9 @@ public/amsfonts/cm/cmsy8.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/am
 sfonts/cm/cmti12.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
 m/cmtt12.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/eurosym/feymr10.pf
 b>
-Output written on "final report.pdf" (51 pages, 3602799 bytes).
+Output written on "final report.pdf" (50 pages, 3601581 bytes).
 PDF statistics:
- 301 PDF objects out of 1000 (max. 8388607)
+ 298 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  271 words of extra memory for PDF output out of 10000 (max. 10000000)
 

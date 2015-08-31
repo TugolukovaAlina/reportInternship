@@ -910,18 +910,18 @@ The problem about generating synthetic network with values was important for the
 Now, when we have the network, where each node maintain the value we can begin to study formally described in the section 
 \ref{sec:Enhanced RDS} method of enhanced RDS.
 
-Due to homoplily in the network and the way the respondent-driven sampling is performed the variance of the estimator will be different from the case if it was just independent uniform sampling. Studying variance is important for multiple reasons. It essential for building confidence intervals. It is the factor the influences on the error of estimator. When we have multiple estimators and we know the error of each of them we have the instrument to compare them.
+Due to homoplily in the network and the way the respondent-driven sampling is performed the variance of the estimator will be different from the case if it was just independent uniform sampling. Studying variance is important for multiple reasons. It essential for building confidence intervals. It is the factor that influences on the error of estimator. When we have multiple estimators and we know the error of each of them we have the instrument to compare them.
 
 
 In this section we will take the sample average (SA) as the estimator for the population mean. In order to decrease the variance of the estimator we will increase the distance between samples as it was described in the section \ref{sec:Enhanced RDS}. We will look at the different possibilities of sampling hidden populations in the conditions of limited budget. For each scenario we will have the different error of the estimator. We are going to choose the scenario, that has the minimum error of the estimator. 
 
 \subsection{Variance prediction}
 
-Let $Y_1, Y_2, Y_3,..., Y_n$ be the samples that are taken during the random walk. Let's take the average value of the samples as an estimator of mean population value:
+Let $Y_1, Y_2, Y_3,..., Y_n$ be the samples that are taken during the random walk. We will take the average value of the samples as an estimator of mean population value:
 
 $$ \widehat{\mu}_{SA} = \frac{Y_1 + Y_2 + ... + Y_n}{n}$$
 
-We noted that the variance of the estimator $\widehat{\mu}_{avg}$ is influence by the correlation factor as the random variables $Y_1, Y_2, Y_3,..., Y_n$ are correlated:
+We noted that the variance of the estimator $\widehat{\mu}_{SA}$ is influence by the correlation factor as the random variables $Y_1, Y_2, Y_3,..., Y_n$ are correlated:
 
 $$ \sigma^2_{\hat{\mu}_{SA}} = \frac{\sigma^2}{n} f(n)$$
 
@@ -937,7 +937,7 @@ From this equality we can see that with the fixed budget $B$ and skipping $k-1$ 
 
 $$n = \frac{kB}{kC_1 + C_2}$$
 
-When each $k$th person is a participant, it means that for real we have only values $Y_1, Y_k, Y_{2k}, ..., Y_{\frac{kB}{kC_1 + C_2}}$ that we can take for the estimation. In this way the number of participants $m$ is:
+When each $k$th person is a participant, it means that for real we have only values $Y_k, Y_{2k}, ..., Y_{\frac{kB}{kC_1 + C_2}}$ that we can take for the estimation. In this way the number of participants $m$ is:
 $$m = \frac{B}{kC_1 + C_2}$$
 
 Then for each scenario with the fixed budget $B$ depending on the $k$ the estimator is:
@@ -947,7 +947,7 @@ $$ \widehat{\mu}_{SA}^k = \frac{Y_k+ Y_{2k}+ ...+ Y_{\frac{kB}{kC_1 + C_2}}}{\fr
 
 We can see that the number of participants depends on $k$ and the bigger is $k$ the less participants we have.
 Also we observed experimentally that the bigger is $k$ (with the fixed sample size) the less is the correlation. So actually correlation factor  depends on $k$.
-Saying all this we can write the variance of estimator as:
+We can write the variance of estimator in the next form:
 
 $$ \sigma^2_{\hat{\mu}_{SA}^k} = \frac{\sigma^2}{\frac{B}{kC_1 + C_2}} f(k)$$
 
@@ -962,7 +962,7 @@ For now we will not care about graph structure. Let's assume that our collected 
 
  $$\mathrm{corr}(Y_i, Y_{i+h}) = \rho^h$$
 
-So correlation between the nodes that are at the distance 1 in the chain have correlation $\rho$, at distance 2 have correlation $\rho^2$ an so on. We will refer to this model with indicated correlation as to \textit{geometric model}.
+In this way the nodes that are at the distance 1 in the chain have correlation $\rho$, at distance 2 have correlation $\rho^2$ an so on. We will refer to this model as to \textit{geometric model}.
 Then we can write the variance of the mean estimator as: 
 
 $$\sigma^2_{\hat{\mu}_{SA}} = \mathrm{Var}\left[\bar{Y} \right] = \mathrm{Var}\left[ \frac{Y_1 + Y_2 + ...+ Y_n}{n} \right] = \frac{1}{n^2} \sum_{i=1}^{n}\sum_{j=1}^{n} \mathrm{Cov}(Y_i, Y_j) =$$ 
@@ -983,7 +983,7 @@ From here we can get that correlation factor is:
 
 $$f(n) = \frac{1-\rho^2 - 2\rho/n + 2\rho^{n+1}/n}{(1-\rho)^2} $$
 
-It can be shown that this factor $f(n)$ is increasing function of $n, (n > 1)$ and it has its minimum 1 when $n = 1$. It is clear, when there is only one individual there is no correlation, because there is only random variable $Y_1$. When new participants are invited, the correlation increase due to homophily as we explained earlier.
+It can be shown that this factor $f(n)$ is increasing function of $n, (n > 1)$ and it has its minimum 1 when $n = 1$. It is clear, when there is only one individual there is no correlation, because there is only random variable $Y_1$. When new participants are invited, the correlation increases due to homophily as we explained earlier.
 
 Let's look what happens to the correlation factor when $n$ goes to infinity:
 
@@ -1000,7 +1000,7 @@ Using the following approximation the expression for the sample variance becomes
 $$\mathrm{Var}_{approx}\left[\bar{Y} \right] = \frac{\sigma^2}{n} \frac{1+\rho}{1-\rho}$$
 
 
-Approximation is close when is $n$ big enough. To compare approximated expression with original one, look at the figure \ref{fig:lineGame1} where parameter $\rho$ is $0.6$. As it is reasonable to suppose that the sample size is bigger then 50, we can consider this approximation good enough in this case. The reason to use this approximation is that the expression is much simpler and some facts that are very difficult to prove for real $\mathrm{Var}\left[\bar{Y} \right]$ become easier for the approximation.
+Approximation is close when $n$ is big enough. To compare approximated expression with original one, look at the figure \ref{fig:lineGame1} where parameter $\rho$ is $0.6$. As it is reasonable to suppose that the sample size is bigger than 50, we can consider this approximation good enough in this case. The reason to use this approximation is that the expression is much simpler and some facts that are very difficult to prove for real $\mathrm{Var}\left[\bar{Y} \right]$ become easier for the approximation.
 
 \begin{figure}[ht]
     \centering
@@ -1030,11 +1030,11 @@ Let's note that the correlation between the variables $Y_{ik}$ and $Y_{(i+h)k}$ 
 
  $$\mathrm{corr}(Y_{ik}, Y_{(i+h)k}) = \rho^{kh}$$
 
-If we introduce new random variables $Z_1, Z_2, ..., Z_n$ such that $Z_1 = Y_k, Z_2 = Y_{2k}, Z_3 = Y_{3k},..., Z_n = Y_{nk}$ and $r = \rho^k$, $\bar{Z}= \bar{Y}^k$. Then:
+If we introduce new random variables $Z_1, Z_2, ..., Z_n$ such that $Z_1 = Y_k, Z_2 = Y_{2k}, Z_3 = Y_{3k},..., Z_n = Y_{nk}$, $\bar{Z}= \bar{Y}^k$ and denote $\rho^k$ as $r$, $r = \rho^k$. Then:
 
 $$\mathrm{corr}(Z_i, Z_{i+h}) = \mathrm{corr}(Y_{ik}, Y_{(i+h)k}) = \rho^{kh} = r^h$$
 
-To sum up we have random variables $Z_1, Z_2, ..., Z_n$ where the correlation between any to of them depends of the distance $\mathrm{corr}(Z_i, Z_{i+h}) = \rho^{kh} = r^h$. For this problem we already know the variance of $\bar{Z}$:
+To sum up we have random variables $Z_1, Z_2, ..., Z_n$ where the correlation between any two of them depends on the distance in the chain in the following way: $\mathrm{corr}(Z_i, Z_{i+h}) = \rho^{kh} = r^h$. For this problem we already know the variance of $\bar{Z}$:
 
 
 $$ \mathrm{Var}\left[\bar{Z} \right] = \frac{\sigma^2}{n}\frac{1-r^2 - 2r/n + 2r^{n+1}/n}{(1-r)^2}$$
@@ -1046,13 +1046,13 @@ $$\mathrm{Var}\left[\bar{Z} \right] \simeq  \frac{\sigma^2}{n} \frac{1+r}{1-r}$$
 
 Let's return to the previous notation and then we get:
 $$\mathrm{Var}\left[\bar{Y}^k \right] = \frac{\sigma^2}{n}\frac{1-\rho^{2k} - 2\rho^k/n + 2\rho^{k(n+1)}/n}{(1-\rho^k)^2}$$
-or:
+Or approximated expression:
 $$\mathrm{Var}\left[\bar{Y}^k \right] \simeq  \frac{\sigma^2}{n} \frac{1+\rho^k}{1-\rho^k}$$
 
 
 \subsection{In RDS context}
 
-Returning to the RDS context we can finally write the variance for different scenarios with the same budget. On the same budget $B$ we have and taking each $k$ node as a participant we will collect samples $Y_k, Y_{2k}, ..., Y_{\frac{kB}{kC_1 + C_2}}$, where number of participants is $m = \frac{B}{kC_1 + C_2}$. 
+Returning to the RDS context we can finally write the variance for different scenarios with the same budget. On the same budget $B$, taking each $k$ node as a participant we will collect samples $Y_k, Y_{2k}, ..., Y_{\frac{kB}{kC_1 + C_2}}$, where number of participants is $m = \frac{B}{kC_1 + C_2}$. 
  
 And if the samples are correlated as in the precvious section then variance of the estimator, depending on $k$, will be:
 
@@ -1065,10 +1065,10 @@ Or approximated:
  \sigma^2_{\hat{\mu}_{SA}} (k) = \frac{\sigma^2}{\frac{B}{kC_1 + C_2}} \frac{1+\rho^k}{1-\rho^k}
 \end{equation}
 
-We can regard this expression as at the function of $k$. Now in order to decide, how much samples to skip between the participant, we need to find the minimum of it.
+We can regard this expression as the function of $k$. Now in order to decide, how much samples to skip between the participant, we need to find the minimum of it.
 
 
-On the figure \ref{fig:varPredDifRho} how the variance \ref{eq:varApprox} changes for different level of dependency among values.
+On the figure \ref{fig:varPredDifRho} we can observe how the variance \ref{eq:varApprox} changes for different level of dependency among values.
 
 
 \begin{figure}[ht]
@@ -1080,13 +1080,13 @@ On the figure \ref{fig:varPredDifRho} how the variance \ref{eq:varApprox} change
 
 First let's observe what happens to the factors of the variance when we increase the $k$. The number of participants decreases, so the left factor in the expression \ref{eq:varApprox} $\frac{\sigma^2}{\frac{B}{kC_1 + C_2}}$ increases. In the same time the participants are less correlated, the right factor  $\frac{1+\rho^k}{1-\rho^k}$ decreases. And the behavior of the variance depends on which factor is "stronger".
 
-Let's for now concentrate on the case when $\rho = 0.8$. Starting when the $k = 1$ we observe that variance decreases when $k$ increases. It means that correlation is very high and by skipping some values we reduce it significantly for the variance. When $k = 7$ we observe that function reaches its minimum. This result says that in these settings by taking only each seventh individual as a participant we will obtain the minimum error.  As $k$ further increase, the variance also start to increase slowly. It signals as that by skipping more that 7 persons, we will not decrease significantly the correlation, Trying to skip more then seven individuals we will just waste money on informators without any purpose.
+Let's for now concentrate on the case when $\rho = 0.8$. Starting when the $k = 1$ we observe that variance decreases when $k$ increases. It means that correlation is very high and by skipping some values we reduce it significantly for the variance. When $k = 7$ we observe that function reaches its minimum. This result says that in these settings by taking only each seventh individual as a participant we will obtain the minimum error.  As $k$ increases further, the variance also start to increase slowly. It signals us that by skipping more that 7 persons, we will not decrease significantly the correlation, Trying to skip more then seven individuals we will just waste budget on skipping without any purpose.
 
 We have a trade-off here. If we skip too many values we can drastically decrease the number of participants. And the opposite, if we don't skip at all the correlation between values can be too high. 
 
-The value $k$ when the variance is minimal depends on the level of correlation. Thus we observe that when we take lower values of $rho$ the desired value of $k$ decreases. This coincides with our intuition: the lower is dependency, the less values we need to skip. Finally we see, that in case of no correlation ($\rho = 0$) it is useless to skip.
+We desire to find the value $k$ when the variance is minimal. This values $k$ depends on the level of correlation, that is expressed here by parameter $\rho$. Thus we observe that when we take lower values of $\rho$ the desired value of $k$ decreases. This coincides with our intuition: the lower is dependency, the less values we need to skip. Finally we see, that in case of no correlation ($\rho = 0$) it is useless to skip.
  
-Moreover by studying the variance function, we can notice some interesting properties. Particularly, the observations that we stated in the scetion \ref{sec:Enhanced RDS} were based on the observation and human logic. Now, we can show it formally.
+By studying the variance function, we can notice some interesting properties. In particular, the observations that we stated in the scetion \ref{sec:Enhanced RDS} were based on the experiments and human logic. Now, we can show it formally.
 
 \paragraph{Observation 1} \textit{Just thinning of sample doesn't help}
 
@@ -1094,25 +1094,23 @@ Just thinning means that when all the samples are collected $y_1, y_2, ...,y_n$ 
 
 $$ f(k) = \frac{\sigma^2}{B/(k(C_1 + C_2))} \frac{1+\rho^{k}}{1-\rho^{k}}$$
 
-This function is strictly increasing when $k \geq 1$. It means that thinning the sample can only harm. 
+This function is strictly increasing when $k \geq 1$. It means that just thinning the sample can only increase the variance. 
 
 \myworries{put the proof in the appendix}
 
 \paragraph{Observation 2} \textit{Skipping reduces variance}
 
-Here we have the fixed sample size $n$. However we can change the distance between samples as much as we want for free, $C_1 = 0$. Then we should look at the function:
+Here we have the fixed sample size $n$. However we can increase the distance $k$ between samples as much as we want for free, $C_1 = 0$. Then we should look at the function:
 
 $$ f(k) = \frac{\sigma^2}{n} \frac{1+\rho^{k}}{1-\rho^{k}}$$
 
 which is decreasing function.
 
-This result is also very logical. When informators are not payed we should use them as much as we can.
-
 \subsection{Trying to use the result}
 
-Having the shown result we tried to use it. To use the function \ref{fig:varPredDifRho} to find the desired $k$ which minimizes the error we need to define parameter $\rho$. What we tried is to take as $\rho$ is the average correlation between the immediate neighbors when the graph and the values on its nodes are given.
+Next we tried to use the derived result. In order to use the function \ref{fig:varPredDifRho} to find the desired $k$ which minimizes the variance we need to define parameter $\rho$. What we tried is to take as $\rho$ is the average correlation between the immediate neighbors when the graph and the values on its nodes are given.
 
-However, the suggested $k$ did not coincide with the $k$ found with the experiments (look the figure \ref{fig:facebookBad}). The explanation could be following. 
+However, the suggested $k$ did not coincide with the $k$ found with the experiments (look the figure \ref{fig:facebookBad}). The value $k$ that is suggested by formula was always underestimated comparing with the real one. The explanation could be following. 
 
 According to geometrical model the values $Y_1, Y_2, ..., Y_n$ have correlation $\mathrm{corr}(Y_i, Y_{i+h}) = \rho^h$. Correlation between values $Y_1, Y_{101}$ is of the power 100. However when we walk on the graph the values $Y_1$ and $Y_{101}$ can appear to be the values of the immediate neighbors. And when in reality the values of the corresponding nodes can be pretty much correlated, according to the geometrical model their correlation is so small that can be neglected.
 
@@ -1125,19 +1123,19 @@ The correlation between values is underestimated, except for the correlation of 
     \label{fig:facebookBad}
 \end{figure}
 
-Therefore, the model is too simplified to find the exact result. However, its application can be very important. Knowing that the result from the model is underestimated, it can give us the \textit{minimal} number of node to skip. And the result may not be the best possible, but comparing to the standard scenario has lower error. So this model will give us the lower bound on the value $k$.
+Therefore, the model is too simplified to find the exact result. However, its application can be very important. Knowing that the result from the model is underestimated, it can give us the \textit{minimal} number of node to skip. And the result may not be the best possible, but comparing to the standard scenario without skipping has lower error. So this model will give us the lower bound on the value $k$.
 
 In the next section we will generalize it on any graph with any values.
 \subsection{General case}
 
-Due to the fact that the correlation between samples was oversimplified the results of geometric model were not exactly the same that in reality. This results could give us the lower bound on the value $k$, but we wanted to find it precisely. 
+Due to the fact that the correlation between samples was oversimplified the results of geometric model were not exactly the same that in reality. This result could give us the lower bound on the value $k$, but we challenged us to find it precisely. 
 
 In the previous example we were able to write the variance of the estimator because the correlation between all the random samples was known. 
 
 So our first goal is to generalize formula for the variance of the estimator when the values $Y_1, Y_2, ..., Y_n$ are collected with the random walk on the graph.
 
-Let $f = {f_1 , f_2, ..., f_n}$ be the values of the attribute on the nodes $1, 2, ..., n$.
-First, let $P$ be the transition matrix of the random walk. We consider that probability for the individual to choose any of his friend is the same. Therefore, if the random walk visits the node $i$ then one of the neighbors of this node will be chosen with probability $d_i$. Then we can write the transition matrix:
+Let $f = (f_1 , f_2, ..., f_n)$ be the values of the attribute on the nodes $1, 2, ..., n$.
+First, let $P$ be the transition matrix of the random walk. We consider that probability for the individual to choose any of his friend is the same. Therefore, if the random walk visits the node $i$ then one of the neighbors of this node will be chosen with probability $\frac{1}{d_i}$. Then we can write the transition matrix:
 
 
 \[
@@ -1179,7 +1177,7 @@ To see, how these formulas were derived, consult 6 chapter of the book \cite{bre
 
 Using these formulas we can write the formula for the variance of the estimator as:
 
-$$ \mathrm{Var}\left[\bar{Y} \right] = \frac{1}{n^2} \left( nvar(X_i) + 2\sum_{i=1}^n \sum_{j|i < j}^n \mathrm{Cov}(Y_i, Y_j)\right) = $$
+$$ \mathrm{Var}\left[\bar{Y} \right] = \frac{1}{n^2} \left( n\mathrm{Var}(X_i) + 2\sum_{i=1}^n \sum_{j|i < j}^n \mathrm{Cov}(Y_i, Y_j)\right) = $$
 
 \begin{equation}\label{eq:varGen}
  = \frac{1}{n^2} \left( n(<f, f>_{\pi} - <f, \Pi f>_{\pi}) + 2\sum_{i=1}^n \sum_{j|i < j}^n  f, (P^{j-i} - \Pi)f> \right)
@@ -1201,7 +1199,7 @@ P^h - \Pi = \sum_{i = 2}^r \lambda_i^h v_i u_i^T
 For more explanation refer to the chapter 6 of the book \cite{bremaud2013markov}.
 
 
-Using formulas \ref{eq:varGen} and \ref{eq:varGen2} and reasoning similar to the case with the geometric model we will derive following formula for the variance of the estimator SA:
+Using formulas \ref{eq:varGen} and \ref{eq:varGen2} and reasoning similar to the case with the geometric model we derived following formula for the variance of the estimator SA:
 
 \begin{equation}
 \label{eq:varGenCase}
@@ -1212,7 +1210,7 @@ It means that for general model the correlation factor $f(n)$ is:
 
 $$ f(n) = \frac{1}{\mathrm{Var}(Y_0)} \sum_{i=2}^r\frac{1-\lambda_i^2 - 2\frac{\lambda_i}{n} + 2\frac{\lambda_i^{n+1}}{n}}{(1 - \lambda_i)^2} <f, v_i>^2_{\pi}$$
 
-Again as in the geometric model the expression \ref{eq:varGenCase} for the variance can be simplified if we take as the correlation factor when $n$ approaches infinity:
+Again as in the geometric model the expression \ref{eq:varGenCase} for the variance can be simplified if we take instead the correlation factor it limiting version when $n$ approaches infinity:
 
 $$ \mathrm{Var}\left[\bar{Y} \right] = \frac{1}{n} \sum_{i=2}^r\frac{1 + \lambda_i}{1 - \lambda_i} <f, v_i>^2_{\pi}$$
 
@@ -1232,7 +1230,7 @@ Interestingly, the expression for the variance in general case has the same stru
 
 Even if it is difficult to obtain the explicit formula for $k$, the fact that $k$ is integer allows us just to find it with search.
 
-On the figure \ref{fig:facebookGood} we can see that the variance computed with experiments coincides with the variance \ref{eq:genVarSkip}. The same graph and values of its nodes are the same as in figure \ref{fig:facebookBad}, but now prediction is correct.
+On the figure \ref{fig:facebookGood} we can see that the variance computed with experiments coincides with the variance \ref{eq:genVarSkip}. The graph is the same and values of its nodes are the same as in figure \ref{fig:facebookBad}, but now prediction is correct.
 
 \begin{figure}[ht]
     \centering
@@ -1244,36 +1242,36 @@ On the figure \ref{fig:facebookGood} we can see that the variance computed with 
 
 \subsection{Error prediction}
 
-However variance it is not the only source of the error. We should also consider bias: the difference between expected value of the estimator and the real value. We can then compute bias of the estimator $\hat{\mu}_{avg}$ as following:
+However variance it is not the only source of the error. We should also consider bias: the difference between expected value of the estimator and the real value. We can then compute bias of the estimator $\hat{\mu}_{SA}$ as follows:
 
-$$bias(\hat{\mu}_{SA}) = E[\hat{\mu}_{SA}] - \mu_{SA} = <f, \pi> - \mu_{SA}$$
+$$\mathrm{Bias}(\hat{\mu}_{SA}) = E[\hat{\mu}_{SA}] - \mu_{SA} = <f, \pi> - \mu_{SA}$$
 
 Then the mean squared error of the estimator, $MSE(\hat{\mu}_{SA})$, can be written with variance and bias as: 
 
-$$MSE(\hat{\mu}_{SA}) = bias(\hat{\mu}_{SA})^2 + \mathrm{Var}(\hat{\mu}_{SA})$$
+$$MSE(\hat{\mu}_{SA}) = \mathrm{Bias}(\hat{\mu}_{SA})^2 + \mathrm{Var}(\hat{\mu}_{SA})$$
 
-We should note, that for all the scenarios with different $k$ the bias is the same as this bias is due to the way that sampling is perform, random walk, that is the way of sampling for all the scenarios.
+We should note, that for all the scenarios with different $k$ the bias is the same. This bias appears due to the way the sampling is performed: random walk visits the nodes with more connections more frequently. And this is the way of sampling for all the scenarios.
 
 \subsection{Discussion}
 
-The formula \ref{eq:genVarSkip} implies that the graph and the values on the nodes are known. In this case we can correctly predict the error of the estimator. However, the researchers usually do not possess this information.
+The formula \ref{eq:genVarSkip} implies that the graph and the values on the nodes are known. In this case we can correctly predict the error of the estimator for different scenarios. However, the researchers usually do not possess this information.
 
-The expression \ref{eq:genVarSkip} may be simplified for the graphs for which the distribution of eigenvalues is known. Like this it will be applicable, but it will lose generality.
+The expression \ref{eq:genVarSkip} may be simplified for the graphs for which the distribution of eigenvalues is known. Like this it will be applicable to some specific graphs, but it will lose generality.
 
-There is know way to predict this value correctly without knowing the graph and the values of the nodes. The variance depends both on the graph structure . When researchers start respondent-driven sampling they may have no clue about graph structure. Therefore they can have only guesses about the error of the estimator that they will get.
+There is no way to predict this value correctly without knowing the graph and the values of the nodes. The variance depends both on the graph structure and homoplily level in the network. When researchers start respondent-driven sampling they may have no clue about graph structure and what is the level of homophily in it. Therefore they can have only guesses about the error of the estimator that they will get. Other option is try to learn more about these two factors.
 
 
 \section{Data}
 
 To validate our theoretical results we performed numerous simulations. For the graph structure with values on the nodes we used different sources of the data. 
 
-First, we used random graphs with values generated with the algorithm. 
-Then we used the real network structures like part of Facebook \cite{Facebook}  and assigned values with the algorithm.
+First, we used random graphs with values generated with the Gibbs sampling algorithm. 
+Apart from this we used the real network structures like part of Facebook \cite{Facebook}, but with values again assigned with the Gibbs sampling algorithm. 
 
 The real network structures where the nodes have some data are scarce. There are just several sources like this. We used data from the Project 90\cite{Project90}, data from the project Add health\cite{Addhealth}. 
 
 \subsection{Data from the Project 90}
-Project 90 \cite{Project90} studied how the network structure influences on the HIV prevalence. Besides the data about social connection the study collected some data about drug user, such as race, gender, whether he/she is sex worker, pimp, sex work client, drug dealer, drug cook, thief, retired, housewife, disabled, unemployed, homeless.
+Project 90 \cite{Project90} studied how the network structure influences on the HIV prevalence. Besides the data about social connections the study collected some data about drug user, such as race, gender, whether he/she is sex worker, pimp, sex work client, drug dealer, drug cook, thief, retired, housewife, disabled, unemployed, homeless.
 
 
 For our experiments we took the largest connect component from the available data, which consists from 4430 nodes and 18407 edges.
@@ -1283,15 +1281,14 @@ On the figure \ref{fig:project90gender} you can see the graph structure built wi
 
 \subsection{Data from the Add health project}
 
-The National Longitudinal Study of Adolescent to Adult Health (Add Health) is a huge study that began with surveying students from the 7-12 grades in the United States during 1994-1995 school year. In general 90,118 students representing 84 communities took part in this study. The study kept on going survey student as they growing up. The 
-data includes information about social, economic, psychological and physical status of the students and other. 
+The National Longitudinal Study of Adolescent to Adult Health (Add Health) is a huge study that began with surveying students from the 7-12 grades in the United States during 1994-1995 school year. In general 90,118 students representing 84 communities took part in this study. The study kept on surveying students as they were growing up. The data includes information about social, economic, psychological and physical status of the students and other. 
 
-The social network of students' connections was built based on the reported friends. Each of the students was asked to provide the names of 0-5 male and 0-5 female friends. Then the network structure was built that now can help to analyze if some characteristics of the students indeed are influenced by their friends.
+The social network of students' connections was built based on the reported friends by each participant. Each of the students was asked to provide the names of 0-5 male and 0-5 female friends. Then the network structure was built that now can help to analyze if some characteristics of the students indeed are influenced by their friends.
 
-Though this data are very valuable they are not in the free access. Part of them are actually available but the ids of the student and of his/her friends are masked that makes impossible to recreate the network. However the part of the data can be accessed through the link \cite{Addhealth2} but only with few attributes for students, such as:  sex, race, grade in school and, if communities that have two schools, the school code (explain better about sister school). 
+Though this data are very valuable they are not in the free access. Part of them are actually available but the ids of the student and of his/her friends are masked that makes impossible to recreate the network. However the part of the data can be accessed through the link \cite{Addhealth2} but only with few attributes for students, such as:  sex, race, grade in school and, if whether they belong to the middle or high school. 
 
-There are several network for different communities. 
-On the figure \ref{fig:addhealthRace} represented the graph with 1996 nodes and 8522 edges, built again with the Gephi tool \cite{GEPHI}, where the attribute race is depicted with color for every node.
+There are several networks available for different communities. 
+We took the graph with 1996 nodes and 8522 edges. It is presented on the figure \ref{fig:addhealthRace}, built again with the Gephi tool \cite{GEPHI}, where the attribute race is depicted with color for every node.
 
 
 \subsection{Experiments}
@@ -1358,7 +1355,6 @@ On the following figures we can observe that the experiments results are very cl
     \caption{Graph from the Add Health data. The colors of the node represent the race}
     \label{fig:addhealthRace}
 \end{figure}
-\chapter{Comparison to other methods}
 
 \section{Other estimators}
 
