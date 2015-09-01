@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.17)  31 AUG 2015 21:02
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.17)  1 SEP 2015 16:25
 entering extended mode
 **final*report.tex
 ("E:\report for internship\reportInternship\final report.tex"
@@ -280,32 +280,111 @@ images/inria.png>]
 
 ])
 \tf@toc=\write3
- [2] [3
+ [2]
 
-]
-[4]
+LaTeX Warning: Citation `Addhealth' on page 3 undefined on input line 87.
+
+
+LaTeX Warning: Citation `jeon2015us' on page 3 undefined on input line 87.
+
+[3
+
+] [4]
 Chapter 1.
+
+LaTeX Warning: Citation `salganik2004sampling' on page 5 undefined on input lin
+e 112.
+
+
+LaTeX Warning: Citation `musyoki2015prevalence' on page 5 undefined on input li
+ne 114.
+
+
+LaTeX Warning: Citation `ramirez2005networks' on page 5 undefined on input line
+ 114.
+
+
+LaTeX Warning: Citation `heckathorn2003jazz' on page 5 undefined on input line 
+114.
+
 [5
 
-] [6] [7] [8] [9] <images/senate.jpg, id=47, 803.0pt x 461.725pt>
-File: images/senate.jpg Graphic file (type jpg)
+]
 
-<use images/senate.jpg>
-Package pdftex.def Info: images/senate.jpg used on input line 255.
+LaTeX Warning: Citation `salganik2004sampling' on page 6 undefined on input lin
+e 148.
+
+
+LaTeX Warning: Citation `gile2010respondent' on page 6 undefined on input line 
+148.
+
+[6]
+
+LaTeX Warning: Citation `volz2008probability' on page 7 undefined on input line
+ 154.
+
+
+LaTeX Warning: Citation `salganik2004sampling' on page 7 undefined on input lin
+e 154.
+
+[7]
+
+LaTeX Warning: Citation `salganik2004sampling' on page 8 undefined on input lin
+e 202.
+
+[8]
+
+LaTeX Warning: Citation `gjoka2009walk' on page 9 undefined on input line 234.
+
+
+LaTeX Warning: Citation `christakis2007spread' on page 9 undefined on input lin
+e 244.
+
+
+LaTeX Warning: Citation `singla2008yes' on page 9 undefined on input line 246.
+
+[9]
+
+LaTeX Warning: Reference `fig:senators' on page 10 undefined on input line 248.
+
+
+<images/senate.jpg, id=47, 803.0pt x 461.725pt>
+File: images/senate.jpg Graphic file (type jpg)
+ <use images/senate.jpg>
+Package pdftex.def Info: images/senate.jpg used on input line 253.
 (pdftex.def)             Requested size: 436.41943pt x 250.93842pt.
- [10 <E:/report for internship/reportInternship/images/senate.jpg>] <images/obs
-ervation2.jpg, id=51, 564.1075pt x 419.5675pt>
+
+
+LaTeX Warning: Citation `Senate' on page 10 undefined on input line 254.
+
+
+LaTeX Warning: Citation `Senate' on page 10 undefined on input line 254.
+
+[10 <E:/report for internship/reportInternship/images/senate.jpg>]
+
+LaTeX Warning: Citation `goel2010assessing' on page 11 undefined on input line 
+271.
+
+
+LaTeX Warning: Reference `fig:observations' on page 11 undefined on input line 
+284.
+
+
+LaTeX Warning: Reference `fig:observations' on page 11 undefined on input line 
+288.
+
+<images/observation2.jpg, id=51, 564.1075pt x 419.5675pt>
 File: images/observation2.jpg Graphic file (type jpg)
 
 <use images/observation2.jpg>
-Package pdftex.def Info: images/observation2.jpg used on input line 297.
+Package pdftex.def Info: images/observation2.jpg used on input line 295.
 (pdftex.def)             Requested size: 222.43123pt x 165.43605pt.
 
 <images/observation3.jpg, id=52, 564.1075pt x 419.5675pt>
 File: images/observation3.jpg Graphic file (type jpg)
 
 <use images/observation3.jpg>
-Package pdftex.def Info: images/observation3.jpg used on input line 303.
+Package pdftex.def Info: images/observation3.jpg used on input line 301.
 (pdftex.def)             Requested size: 222.43123pt x 165.43605pt.
 
 
@@ -317,425 +396,746 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: images/skipping1.jpeg Graphic file (type jpg)
 
 <use images/skipping1.jpeg>
-Package pdftex.def Info: images/skipping1.jpeg used on input line 344.
+Package pdftex.def Info: images/skipping1.jpeg used on input line 342.
 (pdftex.def)             Requested size: 238.44765pt x 145.00679pt.
 
 <images/skipping2.jpeg, id=66, 720.44156pt x 438.13687pt>
 File: images/skipping2.jpeg Graphic file (type jpg)
 
 <use images/skipping2.jpeg>
-Package pdftex.def Info: images/skipping2.jpeg used on input line 365.
+Package pdftex.def Info: images/skipping2.jpeg used on input line 363.
 (pdftex.def)             Requested size: 238.44765pt x 145.00679pt.
 
 <images/skipping3.jpeg, id=67, 720.44156pt x 438.13687pt>
 File: images/skipping3.jpeg Graphic file (type jpg)
 
 <use images/skipping3.jpeg>
-Package pdftex.def Info: images/skipping3.jpeg used on input line 383.
+Package pdftex.def Info: images/skipping3.jpeg used on input line 381.
 (pdftex.def)             Requested size: 238.44765pt x 145.00679pt.
  [14 <E:/report for internship/reportInternship/images/skipping1.jpeg> <E:/repo
 rt for internship/reportInternship/images/skipping2.jpeg> <E:/report for intern
 ship/reportInternship/images/skipping3.jpeg>]
 Chapter 2.
+
+LaTeX Warning: Citation `Facebook' on page 15 undefined on input line 403.
+
+
+LaTeX Warning: Citation `Project90' on page 15 undefined on input line 410.
+
+
+LaTeX Warning: Citation `Addhealth' on page 15 undefined on input line 410.
+
 [15
 
-] [16] [17]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 526.
+]
 
- ("D:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+LaTeX Warning: Citation `pollard2013adolescent' on page 16 undefined on input l
+ine 424.
+
+
+LaTeX Warning: Citation `bremaud2013markov' on page 16 undefined on input line 
+444.
+
+[16]
+
+LaTeX Warning: Citation `bremaud2013markov' on page 17 undefined on input line 
+479.
+
+
+LaTeX Warning: Reference `eq:gibbsdistr' on page 17 undefined on input line 479
+.
+
+[17]
+
+LaTeX Warning: Citation `kauffmann2007measurement' on page 18 undefined on inpu
+t line 495.
+
+
+LaTeX Warning: Reference `eq:gibbsdistr' on page 18 undefined on input line 499
+.
+
+
+LaTeX Warning: Citation `bremaud2013markov' on page 18 undefined on input line 
+502.
+
+
+LaTeX Warning: Reference `eq:gibbsdistr' on page 18 undefined on input line 512
+.
+
+
+LaTeX Warning: Reference `eq:gibbsdistr' on page 18 undefined on input line 512
+.
+
+
+LaTeX Warning: Reference `eq:gibbsdistr' on page 18 undefined on input line 514
+.
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 524.
+
+("D:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 526.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 524.
+ [18]
 
-[18] <images/GibbsVertexExample.jpeg, id=87, 251.43938pt x 185.19188pt>
+LaTeX Warning: Reference `eq:distrNode' on page 19 undefined on input line 544.
+
+
+
+LaTeX Warning: Reference `eq:gibbsdistr' on page 19 undefined on input line 548
+.
+
+
+LaTeX Warning: Reference `eq:distrNode' on page 19 undefined on input line 550.
+
+
+
+LaTeX Warning: Reference `fig:nodeA' on page 19 undefined on input line 552.
+
+<images/GibbsVertexExample.jpeg, id=87, 251.43938pt x 185.19188pt>
 File: images/GibbsVertexExample.jpeg Graphic file (type jpg)
 
 <use images/GibbsVertexExample.jpeg>
-Package pdftex.def Info: images/GibbsVertexExample.jpeg used on input line 558.
+Package pdftex.def Info: images/GibbsVertexExample.jpeg used on input line 556.
 
 (pdftex.def)             Requested size: 136.28166pt x 100.37537pt.
  [19 <E:/report for internship/reportInternship/images/GibbsVertexExample.jpeg>
 ]
+
+LaTeX Warning: Reference `eq:distrNode' on page 20 undefined on input line 570.
+
+
+
+LaTeX Warning: Reference `fig:testGibbs' on page 20 undefined on input line 597
+.
+
 <images/rggT1.jpg, id=91, 562.1pt x 421.575pt>
 File: images/rggT1.jpg Graphic file (type jpg)
  <use images/rggT1.jpg>
-Package pdftex.def Info: images/rggT1.jpg used on input line 605.
+Package pdftex.def Info: images/rggT1.jpg used on input line 603.
 (pdftex.def)             Requested size: 197.71498pt x 148.28677pt.
 
 <images/rggT5.jpg, id=92, 564.1075pt x 419.5675pt>
 File: images/rggT5.jpg Graphic file (type jpg)
  <use images/rggT5.jpg>
-Package pdftex.def Info: images/rggT5.jpg used on input line 611.
+Package pdftex.def Info: images/rggT5.jpg used on input line 609.
 (pdftex.def)             Requested size: 197.71498pt x 147.05568pt.
 
 <images/rggT20.jpg, id=93, 564.1075pt x 419.5675pt>
 File: images/rggT20.jpg Graphic file (type jpg)
  <use images/rggT20.jpg>
-Package pdftex.def Info: images/rggT20.jpg used on input line 617.
+Package pdftex.def Info: images/rggT20.jpg used on input line 615.
 (pdftex.def)             Requested size: 197.71498pt x 147.05568pt.
 
 <images/rggT1000.jpg, id=94, 562.1pt x 421.575pt>
 File: images/rggT1000.jpg Graphic file (type jpg)
  <use images/rggT1000.jpg>
-Package pdftex.def Info: images/rggT1000.jpg used on input line 623.
+Package pdftex.def Info: images/rggT1000.jpg used on input line 621.
 (pdftex.def)             Requested size: 197.71498pt x 148.28677pt.
 
-[20] <images/rggT1corr.jpg, id=98, 501.875pt x 250.9375pt>
+[20]
+
+LaTeX Warning: Citation `bremaud2013markov' on page 21 undefined on input line 
+634.
+
+
+LaTeX Warning: Reference `fig:testGibbsCorr' on page 21 undefined on input line
+ 638.
+
+<images/rggT1corr.jpg, id=98, 501.875pt x 250.9375pt>
 File: images/rggT1corr.jpg Graphic file (type jpg)
 
 <use images/rggT1corr.jpg>
-Package pdftex.def Info: images/rggT1corr.jpg used on input line 645.
+Package pdftex.def Info: images/rggT1corr.jpg used on input line 643.
 (pdftex.def)             Requested size: 197.71498pt x 98.85693pt.
 
 <images/rggT5corr.jpg, id=99, 501.875pt x 250.9375pt>
 File: images/rggT5corr.jpg Graphic file (type jpg)
 
 <use images/rggT5corr.jpg>
-Package pdftex.def Info: images/rggT5corr.jpg used on input line 651.
+Package pdftex.def Info: images/rggT5corr.jpg used on input line 649.
 (pdftex.def)             Requested size: 197.71498pt x 98.85693pt.
 
 <images/rggT20corr.jpg, id=100, 503.8825pt x 248.93pt>
 File: images/rggT20corr.jpg Graphic file (type jpg)
 
 <use images/rggT20corr.jpg>
-Package pdftex.def Info: images/rggT20corr.jpg used on input line 657.
+Package pdftex.def Info: images/rggT20corr.jpg used on input line 655.
 (pdftex.def)             Requested size: 197.71498pt x 97.67485pt.
 
 <images/rggT1000corr.jpg, id=101, 503.8825pt x 248.93pt>
 File: images/rggT1000corr.jpg Graphic file (type jpg)
 
 <use images/rggT1000corr.jpg>
-Package pdftex.def Info: images/rggT1000corr.jpg used on input line 663.
+Package pdftex.def Info: images/rggT1000corr.jpg used on input line 661.
 (pdftex.def)             Requested size: 197.71498pt x 97.67485pt.
- [21 <E:/report for internship/reportInternship/images/rggT1.jpg> <E:/report fo
-r internship/reportInternship/images/rggT5.jpg> <E:/report for internship/repor
-tInternship/images/rggT20.jpg> <E:/report for internship/reportInternship/image
-s/rggT1000.jpg>]
-<images/energy2.jpg, id=105, 564.1075pt x 419.5675pt>
+
+
+LaTeX Warning: Reference `subsec:Algorithm' on page 21 undefined on input line 
+673.
+
+[21 <E:/report for internship/reportInternship/images/rggT1.jpg> <E:/report for
+ internship/reportInternship/images/rggT5.jpg> <E:/report for internship/report
+Internship/images/rggT20.jpg> <E:/report for internship/reportInternship/images
+/rggT1000.jpg>] <images/energy2.jpg, id=105, 564.1075pt x 419.5675pt>
 File: images/energy2.jpg Graphic file (type jpg)
- <use images/energy2.jpg>
-Package pdftex.def Info: images/energy2.jpg used on input line 692.
+
+<use images/energy2.jpg>
+Package pdftex.def Info: images/energy2.jpg used on input line 688.
 (pdftex.def)             Requested size: 222.43123pt x 165.43605pt.
 
 <images/energy10.jpg, id=106, 564.1075pt x 419.5675pt>
 File: images/energy10.jpg Graphic file (type jpg)
 
 <use images/energy10.jpg>
-Package pdftex.def Info: images/energy10.jpg used on input line 698.
+Package pdftex.def Info: images/energy10.jpg used on input line 694.
 (pdftex.def)             Requested size: 222.43123pt x 165.43605pt.
- [22 <E:/report for internship/reportInternship/images/rggT1corr.jpg> <E:/repor
-t for internship/reportInternship/images/rggT5corr.jpg> <E:/report for internsh
-ip/reportInternship/images/rggT20corr.jpg> <E:/report for internship/reportInte
-rnship/images/rggT1000corr.jpg>]
-Overfull \hbox (15.44049pt too wide) in paragraph at lines 729--730
+
+
+LaTeX Warning: Reference `fig:energyWithTime' on page 22 undefined on input lin
+e 703.
+
+
+LaTeX Warning: Reference `fig:energyWithTime' on page 22 undefined on input lin
+e 706.
+
+[22 <E:/report for internship/reportInternship/images/rggT1corr.jpg> <E:/report
+ for internship/reportInternship/images/rggT5corr.jpg> <E:/report for internshi
+p/reportInternship/images/rggT20corr.jpg> <E:/report for internship/reportInter
+nship/images/rggT1000corr.jpg>]
+
+LaTeX Warning: Reference `fig:energyWithTime' on page 23 undefined on input lin
+e 712.
+
+
+Overfull \hbox (15.44049pt too wide) in paragraph at lines 725--726
 []\OT1/cmr/m/n/12 Let the ran-dom vari-able $\OML/cmm/m/it/12 "\OT1/cmr/m/n/12 
 ([])$ be to-tal en-ergy of the graph with ran-dom field $[] = (\OML/cmm/m/it/12
  X[]; X[]; :::; X[]\OT1/cmr/m/n/12 )$.
  []
 
 [23 <E:/report for internship/reportInternship/images/energy2.jpg> <E:/report f
-or internship/reportInternship/images/energy10.jpg>] [24]
-Underfull \hbox (badness 10000) in paragraph at lines 779--780
+or internship/reportInternship/images/energy10.jpg>]
+
+LaTeX Warning: Reference `eq:expEnergy' on page 24 undefined on input line 738.
+
+
+
+LaTeX Warning: Reference `eq:prob' on page 24 undefined on input line 738.
+
+
+LaTeX Warning: Reference `eq:prob2' on page 24 undefined on input line 763.
+
+[24]
+Underfull \hbox (badness 10000) in paragraph at lines 775--776
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 787--788
+Underfull \hbox (badness 10000) in paragraph at lines 783--784
 
  []
 
 [25]
-Underfull \hbox (badness 10000) in paragraph at lines 827--828
+Underfull \hbox (badness 10000) in paragraph at lines 823--824
 
  []
 
-[26] <images/er200x01.jpg, id=124, 562.1pt x 421.575pt>
-File: images/er200x01.jpg Graphic file (type jpg)
 
-<use images/er200x01.jpg>
-Package pdftex.def Info: images/er200x01.jpg used on input line 866.
+LaTeX Warning: Reference `eq:noCorr' on page 26 undefined on input line 834.
+
+
+LaTeX Warning: Reference `eq:simpleDisrt' on page 26 undefined on input line 83
+4.
+
+[26]
+
+LaTeX Warning: Reference `fig:energyPrediction' on page 27 undefined on input l
+ine 855.
+
+
+LaTeX Warning: Reference `eq:simpleDisrt' on page 27 undefined on input line 85
+5.
+
+
+LaTeX Warning: Reference `eq:simpleDisrt2' on page 27 undefined on input line 8
+55.
+
+
+LaTeX Warning: Reference `eq:simpleDisrt' on page 27 undefined on input line 85
+7.
+
+
+LaTeX Warning: Reference `eq:simpleDisrt2' on page 27 undefined on input line 8
+57.
+
+
+LaTeX Warning: Reference `eq:simpleDisrt' on page 27 undefined on input line 85
+7.
+
+<images/er200x01.jpg, id=124, 562.1pt x 421.575pt>
+File: images/er200x01.jpg Graphic file (type jpg)
+ <use images/er200x01.jpg>
+Package pdftex.def Info: images/er200x01.jpg used on input line 862.
 (pdftex.def)             Requested size: 197.71498pt x 148.28677pt.
 
 <images/pa200x1.jpg, id=125, 641.39626pt x 524.96124pt>
 File: images/pa200x1.jpg Graphic file (type jpg)
 
 <use images/pa200x1.jpg>
-Package pdftex.def Info: images/pa200x1.jpg used on input line 872.
+Package pdftex.def Info: images/pa200x1.jpg used on input line 868.
 (pdftex.def)             Requested size: 197.71498pt x 161.82314pt.
 
 <images/rgg200x013.jpg, id=126, 564.1075pt x 419.5675pt>
 File: images/rgg200x013.jpg Graphic file (type jpg)
 
 <use images/rgg200x013.jpg>
-Package pdftex.def Info: images/rgg200x013.jpg used on input line 878.
+Package pdftex.def Info: images/rgg200x013.jpg used on input line 874.
 (pdftex.def)             Requested size: 197.71498pt x 147.05568pt.
 
 <images/facebookEnergy.jpg, id=127, 564.1075pt x 419.5675pt>
 File: images/facebookEnergy.jpg Graphic file (type jpg)
 
 <use images/facebookEnergy.jpg>
-Package pdftex.def Info: images/facebookEnergy.jpg used on input line 884.
+Package pdftex.def Info: images/facebookEnergy.jpg used on input line 880.
 (pdftex.def)             Requested size: 197.71498pt x 147.05568pt.
- [27] [28 <E:/report for internship/reportInternship/images/er200x01.jpg> <E:/r
-eport for internship/reportInternship/images/pa200x1.jpg> <E:/report for intern
-ship/reportInternship/images/rgg200x013.jpg> <E:/report for internship/reportIn
-ternship/images/facebookEnergy.jpg>]
+
+
+LaTeX Warning: Citation `Facebook' on page 27 undefined on input line 881.
+
+
+LaTeX Warning: Citation `Facebook' on page 27 undefined on input line 881.
+
+
+LaTeX Warning: Reference `fig:energyPrediction5' on page 27 undefined on input 
+line 892.
+
+
+LaTeX Warning: Reference `eq:simpleDisrt' on page 27 undefined on input line 89
+2.
+
+[27] [28 <E:/report for internship/reportInternship/images/er200x01.jpg> <E:/re
+port for internship/reportInternship/images/pa200x1.jpg> <E:/report for interns
+hip/reportInternship/images/rgg200x013.jpg> <E:/report for internship/reportInt
+ernship/images/facebookEnergy.jpg>]
 Chapter 3.
+
+LaTeX Warning: Reference `sec:Enhanced RDS' on page 29 undefined on input line 
+907.
+
+
+LaTeX Warning: Reference `sec:Enhanced RDS' on page 29 undefined on input line 
+912.
+
 [29
 
 ]
-Overfull \hbox (19.02184pt too wide) in paragraph at lines 940--941
+Overfull \hbox (19.02184pt too wide) in paragraph at lines 936--937
 []\OT1/cmr/m/n/12 When each $\OML/cmm/m/it/12 k$\OT1/cmr/m/n/12 th per-son is a
  par-tic-i-pant, it means that for real we have only val-ues $\OML/cmm/m/it/12 
 Y[]; Y[]; :::; Y[]$
  []
 
-[30] <images/corrFactor.jpg, id=142, 632.3625pt x 335.2525pt>
+[30] <images/corrFactor.jpg, id=143, 632.3625pt x 335.2525pt>
 File: images/corrFactor.jpg Graphic file (type jpg)
 
 <use images/corrFactor.jpg>
-Package pdftex.def Info: images/corrFactor.jpg used on input line 994.
+Package pdftex.def Info: images/corrFactor.jpg used on input line 990.
 (pdftex.def)             Requested size: 283.9912pt x 150.56305pt.
- [31 <E:/report for internship/reportInternship/images/corrFactor.jpg>] <images
-/lineGame1.jpg, id=146, 564.1075pt x 343.2825pt>
+
+
+LaTeX Warning: Reference `fig:lineGame1' on page 31 undefined on input line 999
+.
+
+[31 <E:/report for internship/reportInternship/images/corrFactor.jpg>]
+<images/lineGame1.jpg, id=147, 564.1075pt x 343.2825pt>
 File: images/lineGame1.jpg Graphic file (type jpg)
 
 <use images/lineGame1.jpg>
-Package pdftex.def Info: images/lineGame1.jpg used on input line 1007.
+Package pdftex.def Info: images/lineGame1.jpg used on input line 1003.
 (pdftex.def)             Requested size: 247.41617pt x 150.56305pt.
 
-<images/varianceIndDep2.jpg, id=147, 871.255pt x 459.7175pt>
+
+LaTeX Warning: Reference `fig:diffCorr' on page 32 undefined on input line 1008
+.
+
+<images/varianceIndDep2.jpg, id=148, 871.255pt x 459.7175pt>
 File: images/varianceIndDep2.jpg Graphic file (type jpg)
 
 <use images/varianceIndDep2.jpg>
-Package pdftex.def Info: images/varianceIndDep2.jpg used on input line 1017.
+Package pdftex.def Info: images/varianceIndDep2.jpg used on input line 1013.
 (pdftex.def)             Requested size: 285.34807pt x 150.56305pt.
  [32 <E:/report for internship/reportInternship/images/lineGame1.jpg> <E:/repor
-t for internship/reportInternship/images/varianceIndDep2.jpg>] <images/varPredD
-ifRho.jpg, id=151, 697.60625pt x 461.725pt>
+t for internship/reportInternship/images/varianceIndDep2.jpg>]
+
+LaTeX Warning: Reference `fig:varPredDifRho' on page 33 undefined on input line
+ 1067.
+
+
+LaTeX Warning: Reference `eq:varApprox' on page 33 undefined on input line 1067
+.
+
+<images/varPredDifRho.jpg, id=152, 697.60625pt x 461.725pt>
 File: images/varPredDifRho.jpg Graphic file (type jpg)
 
 <use images/varPredDifRho.jpg>
-Package pdftex.def Info: images/varPredDifRho.jpg used on input line 1076.
+Package pdftex.def Info: images/varPredDifRho.jpg used on input line 1072.
 (pdftex.def)             Requested size: 303.30724pt x 200.75073pt.
- [33] [34 <E:/report for internship/reportInternship/images/varPredDifRho.jpg>]
 
-<images/facebookBad.jpg, id=158, 564.1075pt x 419.5675pt>
+
+LaTeX Warning: Reference `eq:varApprox' on page 33 undefined on input line 1073
+.
+
+
+LaTeX Warning: Reference `eq:varApprox' on page 33 undefined on input line 1073
+.
+
+
+LaTeX Warning: Reference `eq:varApprox' on page 33 undefined on input line 1077
+.
+
+[33]
+
+LaTeX Warning: Reference `sec:Enhanced RDS' on page 34 undefined on input line 
+1085.
+
+[34 <E:/report for internship/reportInternship/images/varPredDifRho.jpg>]
+
+LaTeX Warning: Reference `fig:varPredDifRho' on page 35 undefined on input line
+ 1107.
+
+
+LaTeX Warning: Reference `fig:facebookBad' on page 35 undefined on input line 1
+109.
+
+<images/facebookBad.jpg, id=159, 564.1075pt x 419.5675pt>
 File: images/facebookBad.jpg Graphic file (type jpg)
 
 <use images/facebookBad.jpg>
-Package pdftex.def Info: images/facebookBad.jpg used on input line 1121.
+Package pdftex.def Info: images/facebookBad.jpg used on input line 1117.
 (pdftex.def)             Requested size: 269.90776pt x 200.75073pt.
- [35 <E:/report for internship/reportInternship/images/facebookBad.jpg>] [36] [
-37]
-<images/facebookGood.jpg, id=169, 564.1075pt x 419.5675pt>
+
+
+LaTeX Warning: Reference `eq:varApprox' on page 35 undefined on input line 1118
+.
+
+
+LaTeX Warning: Citation `Facebook' on page 35 undefined on input line 1118.
+
+
+LaTeX Warning: Reference `eq:varApprox' on page 35 undefined on input line 1118
+.
+
+
+LaTeX Warning: Citation `Facebook' on page 35 undefined on input line 1118.
+
+[35 <E:/report for internship/reportInternship/images/facebookBad.jpg>]
+[36]
+
+LaTeX Warning: Citation `bremaud2013markov' on page 37 undefined on input line 
+1170.
+
+
+LaTeX Warning: Citation `bremaud2013markov' on page 37 undefined on input line 
+1195.
+
+
+LaTeX Warning: Reference `eq:varGen' on page 37 undefined on input line 1198.
+
+
+LaTeX Warning: Reference `eq:varGen2' on page 37 undefined on input line 1198.
+
+
+LaTeX Warning: Reference `eq:varGenCase' on page 37 undefined on input line 120
+9.
+
+[37]
+
+LaTeX Warning: Reference `fig:facebookGood' on page 38 undefined on input line 
+1229.
+
+
+LaTeX Warning: Reference `eq:genVarSkip' on page 38 undefined on input line 122
+9.
+
+
+LaTeX Warning: Reference `fig:facebookBad' on page 38 undefined on input line 1
+229.
+
+<images/facebookGood.jpg, id=170, 564.1075pt x 419.5675pt>
 File: images/facebookGood.jpg Graphic file (type jpg)
 
 <use images/facebookGood.jpg>
-Package pdftex.def Info: images/facebookGood.jpg used on input line 1237.
+Package pdftex.def Info: images/facebookGood.jpg used on input line 1233.
 (pdftex.def)             Requested size: 269.90776pt x 200.75073pt.
- [38 <E:/report for internship/reportInternship/images/facebookGood.jpg>] [39]
-<images/pr90race.jpg, id=176, 641.39626pt x 431.6125pt>
+
+
+LaTeX Warning: Reference `eq:genVarSkip' on page 38 undefined on input line 123
+4.
+
+
+LaTeX Warning: Citation `Facebook' on page 38 undefined on input line 1234.
+
+
+LaTeX Warning: Reference `eq:genVarSkip' on page 38 undefined on input line 123
+4.
+
+
+LaTeX Warning: Citation `Facebook' on page 38 undefined on input line 1234.
+
+[38 <E:/report for internship/reportInternship/images/facebookGood.jpg>]
+
+LaTeX Warning: Reference `eq:genVarSkip' on page 39 undefined on input line 125
+3.
+
+
+LaTeX Warning: Reference `eq:genVarSkip' on page 39 undefined on input line 125
+5.
+
+
+LaTeX Warning: Citation `Facebook' on page 39 undefined on input line 1265.
+
+
+LaTeX Warning: Citation `Project90' on page 39 undefined on input line 1267.
+
+
+LaTeX Warning: Citation `Addhealth' on page 39 undefined on input line 1267.
+
+
+LaTeX Warning: Citation `Project90' on page 39 undefined on input line 1270.
+
+
+LaTeX Warning: Reference `fig:project90gender' on page 39 undefined on input li
+ne 1275.
+
+
+LaTeX Warning: Citation `GEPHI' on page 39 undefined on input line 1275.
+
+[39]
+
+LaTeX Warning: Citation `Addhealth2' on page 40 undefined on input line 1284.
+
+
+LaTeX Warning: Reference `fig:addhealthRace' on page 40 undefined on input line
+ 1287.
+
+
+LaTeX Warning: Citation `GEPHI' on page 40 undefined on input line 1287.
+
+<images/pr90race.jpg, id=177, 641.39626pt x 431.6125pt>
 File: images/pr90race.jpg Graphic file (type jpg)
 
 <use images/pr90race.jpg>
-Package pdftex.def Info: images/pr90race.jpg used on input line 1301.
+Package pdftex.def Info: images/pr90race.jpg used on input line 1297.
 (pdftex.def)             Requested size: 197.71498pt x 133.0477pt.
 
-<images/studRace.jpg, id=177, 641.39626pt x 403.5075pt>
+<images/studRace.jpg, id=178, 641.39626pt x 403.5075pt>
 File: images/studRace.jpg Graphic file (type jpg)
 
 <use images/studRace.jpg>
-Package pdftex.def Info: images/studRace.jpg used on input line 1307.
+Package pdftex.def Info: images/studRace.jpg used on input line 1303.
 (pdftex.def)             Requested size: 197.71498pt x 124.38412pt.
 
-<images/pr90gender.jpg, id=178, 641.39626pt x 435.6275pt>
+<images/pr90gender.jpg, id=179, 641.39626pt x 435.6275pt>
 File: images/pr90gender.jpg Graphic file (type jpg)
 
 <use images/pr90gender.jpg>
-Package pdftex.def Info: images/pr90gender.jpg used on input line 1315.
+Package pdftex.def Info: images/pr90gender.jpg used on input line 1311.
 (pdftex.def)             Requested size: 197.71498pt x 134.28535pt.
 
-<images/studSex.jpg, id=179, 641.39626pt x 409.53pt>
+<images/studSex.jpg, id=180, 641.39626pt x 409.53pt>
 File: images/studSex.jpg Graphic file (type jpg)
  <use images/studSex.jpg>
-Package pdftex.def Info: images/studSex.jpg used on input line 1321.
+Package pdftex.def Info: images/studSex.jpg used on input line 1317.
 (pdftex.def)             Requested size: 197.71498pt x 126.2406pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<images/pr90dealer.jpg, id=180, 641.39626pt x 447.6725pt>
+<images/pr90dealer.jpg, id=181, 641.39626pt x 447.6725pt>
 File: images/pr90dealer.jpg Graphic file (type jpg)
 
 <use images/pr90dealer.jpg>
-Package pdftex.def Info: images/pr90dealer.jpg used on input line 1330.
+Package pdftex.def Info: images/pr90dealer.jpg used on input line 1326.
 (pdftex.def)             Requested size: 197.71498pt x 137.9983pt.
 
-<images/studGrade.jpg, id=181, 641.39626pt x 451.6875pt>
+<images/studGrade.jpg, id=182, 641.39626pt x 451.6875pt>
 File: images/studGrade.jpg Graphic file (type jpg)
 
 <use images/studGrade.jpg>
-Package pdftex.def Info: images/studGrade.jpg used on input line 1336.
+Package pdftex.def Info: images/studGrade.jpg used on input line 1332.
 (pdftex.def)             Requested size: 197.71498pt x 139.23596pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: Reference `sec:Current estimators' on page 40 undefined on input
+ line 1345.
 
 [40 <E:/report for internship/reportInternship/images/pr90race.jpg> <E:/report 
 for internship/reportInternship/images/studRace.jpg>] [41 <E:/report for intern
 ship/reportInternship/images/pr90gender.jpg> <E:/report for internship/reportIn
 ternship/images/studSex.jpg> <E:/report for internship/reportInternship/images/
 pr90dealer.jpg> <E:/report for internship/reportInternship/images/studGrade.jpg
->] <images/corrDegreePr90.jpg, id=188, 986.68625pt x 438.63875pt>
+>]
+
+LaTeX Warning: Citation `goel2010assessing' on page 42 undefined on input line 
+1366.
+
+
+LaTeX Warning: Reference `fig:degree-val66' on page 42 undefined on input line 
+1368.
+
+<images/corrDegreePr90.jpg, id=189, 986.68625pt x 438.63875pt>
 File: images/corrDegreePr90.jpg Graphic file (type jpg)
 
 <use images/corrDegreePr90.jpg>
-Package pdftex.def Info: images/corrDegreePr90.jpg used on input line 1379.
+Package pdftex.def Info: images/corrDegreePr90.jpg used on input line 1375.
 (pdftex.def)             Requested size: 296.58pt x 131.84697pt.
 
-<images/corrDegreeStud.jpg, id=189, 641.39626pt x 285.065pt>
+<images/corrDegreeStud.jpg, id=190, 641.39626pt x 285.065pt>
 File: images/corrDegreeStud.jpg Graphic file (type jpg)
 
 <use images/corrDegreeStud.jpg>
-Package pdftex.def Info: images/corrDegreeStud.jpg used on input line 1385.
+Package pdftex.def Info: images/corrDegreeStud.jpg used on input line 1381.
 (pdftex.def)             Requested size: 148.29pt x 65.90285pt.
 
-<images/estimators_disabled.jpg, id=190, 714.67pt x 536.0025pt>
+<images/estimators_disabled.jpg, id=191, 714.67pt x 536.0025pt>
 File: images/estimators_disabled.jpg Graphic file (type jpg)
 
 <use images/estimators_disabled.jpg>
-Package pdftex.def Info: images/estimators_disabled.jpg used on input line 1397
+Package pdftex.def Info: images/estimators_disabled.jpg used on input line 1393
 .
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_drugCook.jpg, id=191, 714.67pt x 536.0025pt>
+<images/estimators_drugCook.jpg, id=192, 714.67pt x 536.0025pt>
 File: images/estimators_drugCook.jpg Graphic file (type jpg)
 
 <use images/estimators_drugCook.jpg>
-Package pdftex.def Info: images/estimators_drugCook.jpg used on input line 1403
+Package pdftex.def Info: images/estimators_drugCook.jpg used on input line 1399
 .
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_drugDealer.jpg, id=192, 714.67pt x 536.0025pt>
+<images/estimators_drugDealer.jpg, id=193, 714.67pt x 536.0025pt>
 File: images/estimators_drugDealer.jpg Graphic file (type jpg)
 
 <use images/estimators_drugDealer.jpg>
 Package pdftex.def Info: images/estimators_drugDealer.jpg used on input line 14
-09.
+05.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_homeless.jpg, id=193, 714.67pt x 536.0025pt>
+<images/estimators_homeless.jpg, id=194, 714.67pt x 536.0025pt>
 File: images/estimators_homeless.jpg Graphic file (type jpg)
 
 <use images/estimators_homeless.jpg>
-Package pdftex.def Info: images/estimators_homeless.jpg used on input line 1416
+Package pdftex.def Info: images/estimators_homeless.jpg used on input line 1412
 .
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_housewife.jpg, id=194, 714.67pt x 536.0025pt>
+<images/estimators_housewife.jpg, id=195, 714.67pt x 536.0025pt>
 File: images/estimators_housewife.jpg Graphic file (type jpg)
 
 <use images/estimators_housewife.jpg>
-Package pdftex.def Info: images/estimators_housewife.jpg used on input line 142
-2.
+Package pdftex.def Info: images/estimators_housewife.jpg used on input line 141
+8.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_pimp.jpg, id=195, 714.67pt x 536.0025pt>
+<images/estimators_pimp.jpg, id=196, 714.67pt x 536.0025pt>
 File: images/estimators_pimp.jpg Graphic file (type jpg)
 
 <use images/estimators_pimp.jpg>
-Package pdftex.def Info: images/estimators_pimp.jpg used on input line 1428.
+Package pdftex.def Info: images/estimators_pimp.jpg used on input line 1424.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_race.jpg, id=196, 714.67pt x 536.0025pt>
+<images/estimators_race.jpg, id=197, 714.67pt x 536.0025pt>
 File: images/estimators_race.jpg Graphic file (type jpg)
 
 <use images/estimators_race.jpg>
-Package pdftex.def Info: images/estimators_race.jpg used on input line 1434.
+Package pdftex.def Info: images/estimators_race.jpg used on input line 1430.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_sexWorkClient.jpg, id=197, 714.67pt x 536.0025pt>
+<images/estimators_sexWorkClient.jpg, id=198, 714.67pt x 536.0025pt>
 File: images/estimators_sexWorkClient.jpg Graphic file (type jpg)
 
 <use images/estimators_sexWorkClient.jpg>
 Package pdftex.def Info: images/estimators_sexWorkClient.jpg used on input line
- 1440.
+ 1436.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_sexWorker.jpg, id=198, 714.67pt x 536.0025pt>
+<images/estimators_sexWorker.jpg, id=199, 714.67pt x 536.0025pt>
 File: images/estimators_sexWorker.jpg Graphic file (type jpg)
 
 <use images/estimators_sexWorker.jpg>
 Package pdftex.def Info: images/estimators_sexWorker.jpg used on input line 144
-6.
+2.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_thief.jpg, id=199, 714.67pt x 536.0025pt>
+<images/estimators_thief.jpg, id=200, 714.67pt x 536.0025pt>
 File: images/estimators_thief.jpg Graphic file (type jpg)
 
 <use images/estimators_thief.jpg>
-Package pdftex.def Info: images/estimators_thief.jpg used on input line 1452.
+Package pdftex.def Info: images/estimators_thief.jpg used on input line 1448.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_unemployed.jpg, id=200, 714.67pt x 536.0025pt>
+<images/estimators_unemployed.jpg, id=201, 714.67pt x 536.0025pt>
 File: images/estimators_unemployed.jpg Graphic file (type jpg)
 
 <use images/estimators_unemployed.jpg>
 Package pdftex.def Info: images/estimators_unemployed.jpg used on input line 14
-58.
+54.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_racesc.jpg, id=201, 714.67pt x 536.0025pt>
+<images/estimators_racesc.jpg, id=202, 714.67pt x 536.0025pt>
 File: images/estimators_racesc.jpg Graphic file (type jpg)
 
 <use images/estimators_racesc.jpg>
-Package pdftex.def Info: images/estimators_racesc.jpg used on input line 1464.
+Package pdftex.def Info: images/estimators_racesc.jpg used on input line 1460.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_sex.jpg, id=202, 714.67pt x 536.0025pt>
+<images/estimators_sex.jpg, id=203, 714.67pt x 536.0025pt>
 File: images/estimators_sex.jpg Graphic file (type jpg)
 
 <use images/estimators_sex.jpg>
-Package pdftex.def Info: images/estimators_sex.jpg used on input line 1470.
+Package pdftex.def Info: images/estimators_sex.jpg used on input line 1466.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/estimators_grade.jpg, id=203, 714.67pt x 536.0025pt>
+<images/estimators_grade.jpg, id=204, 714.67pt x 536.0025pt>
 File: images/estimators_grade.jpg Graphic file (type jpg)
 
 <use images/estimators_grade.jpg>
-Package pdftex.def Info: images/estimators_grade.jpg used on input line 1476.
+Package pdftex.def Info: images/estimators_grade.jpg used on input line 1472.
 (pdftex.def)             Requested size: 148.29pt x 111.21436pt.
 
-<images/legend.jpg, id=204, 210.7875pt x 101.62968pt>
+<images/legend.jpg, id=205, 210.7875pt x 101.62968pt>
 File: images/legend.jpg Graphic file (type jpg)
  <use images/legend.jpg>
-Package pdftex.def Info: images/legend.jpg used on input line 1482.
+Package pdftex.def Info: images/legend.jpg used on input line 1478.
 (pdftex.def)             Requested size: 148.29pt x 71.4985pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<images/project90gender.png, id=205, 1027.84pt x 1027.84pt>
+<images/project90gender.png, id=206, 1027.84pt x 1027.84pt>
 File: images/project90gender.png Graphic file (type png)
 
 <use images/project90gender.png>
-Package pdftex.def Info: images/project90gender.png used on input line 1490.
+Package pdftex.def Info: images/project90gender.png used on input line 1486.
 (pdftex.def)             Requested size: 501.87376pt x 501.87683pt.
 
-Overfull \hbox (7.57877pt too wide) in paragraph at lines 1490--1491
+Overfull \hbox (7.57877pt too wide) in paragraph at lines 1486--1487
  [][] 
  []
 
-<images/addhealthRace.png, id=207, 1027.84pt x 1027.84pt>
+<images/addhealthRace.png, id=208, 1027.84pt x 1027.84pt>
 File: images/addhealthRace.png Graphic file (type png)
 
 <use images/addhealthRace.png>
-Package pdftex.def Info: images/addhealthRace.png used on input line 1497.
+Package pdftex.def Info: images/addhealthRace.png used on input line 1493.
 (pdftex.def)             Requested size: 501.87376pt x 501.87683pt.
 
-Overfull \hbox (7.57877pt too wide) in paragraph at lines 1497--1498
+Overfull \hbox (7.57877pt too wide) in paragraph at lines 1493--1494
  [][] 
  []
 
@@ -766,36 +1166,43 @@ Missing character: There is no ™ in font cmr12!
  [48
 
 ])
-[49] ("E:\report for internship\reportInternship\final report.aux") ) 
+[49] ("E:\report for internship\reportInternship\final report.aux")
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 4313 strings out of 493921
- 64551 string characters out of 3147282
- 130926 words of memory out of 3000000
- 7521 multiletter control sequences out of 15000+200000
- 13084 words of font info for 47 fonts, out of 3000000 for 9000
+ 4315 strings out of 493921
+ 64575 string characters out of 3147282
+ 130472 words of memory out of 3000000
+ 7522 multiletter control sequences out of 15000+200000
+ 13392 words of font info for 48 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 36i,12n,38p,1019b,488s stack positions out of 5000i,500n,10000p,200000b,50000s
-<D:/Progra
-m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Program Files/
-MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><D:/Program Files/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><D:/Program Files/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmex10.pfb><D:/Program Files/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cmextra/cmex7.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/pu
-blic/amsfonts/cm/cmmi10.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmmi12.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmmi6.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pf
-b><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/Pro
-gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program File
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><D:/Program Files/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Program Files/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmsy6.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmsy8.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-ti12.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb
-><D:/Program Files/MiKTeX 2.9/fonts/type1/public/eurosym/feymr10.pfb>
-Output written on "final report.pdf" (50 pages, 3589472 bytes).
+ 36i,12n,41p,1019b,499s stack positions out of 5000i,500n,10000p,200000b,50000s
+<D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><D:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><D:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><D:/Program Files/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><D:/Program Files/MiKTeX 2.
+9/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/Program Files/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cmextra/cmex7.pfb><D:/Program Files/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmmi10.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmmi12.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmmi6.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi
+8.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:
+/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><D:/Program 
+Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><D:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><D:/Program Files/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmsy10.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmsy6.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmsy8.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmti12.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12
+.pfb><D:/Program Files/MiKTeX 2.9/fonts/type1/public/eurosym/feymr10.pfb>
+Output written on "final report.pdf" (50 pages, 3600465 bytes).
 PDF statistics:
- 298 PDF objects out of 1000 (max. 8388607)
+ 302 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  271 words of extra memory for PDF output out of 10000 (max. 10000000)
 
